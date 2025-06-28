@@ -27,29 +27,22 @@ final class PascalCaseClassNameRule implements Rule
      */
     public function processNode(Node $node, Scope $scope): array
     {
+        $messages = [];
+
         if (! $node instanceof Class_) {
-            return [];
+            return $messages;
         }
 
-        var_dump($node);
-        die();
+        $pattern = '/^[A-Z][a-zA-Z0-9]*$/';
 
-        // $node->class
+        // TODO: Add support for the customizations
 
-        // $node->get
+        if (! preg_match($pattern, $node->name->name)) {
+            $messages[] = RuleErrorBuilder::message(sprintf('Class name "%s" is not in PascalCase.', $node->name->name))
+                ->identifier('MessedUpPhpstan.classNameNotPascalCase')
+                ->build();
+        }
 
-        // $messages = [];
-
-        // foreach ($node->params as $index => $param) {
-        //     if (null !== $param->type || ! $param->var instanceof Node\Expr\Variable || ! is_string($param->var->name)) {
-        //         continue;
-        //     }
-
-        //     $messages[] = RuleErrorBuilder::message(sprintf('Parameter #%d $%s of anonymous function has no typehint.', 1 + $index, $param->var->name))
-        //         ->identifier('closure.parameterMissingTypehint')
-        //         ->build();
-        // }
-
-        // return $messages;
+        return $messages;
     }
 }

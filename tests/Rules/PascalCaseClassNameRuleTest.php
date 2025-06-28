@@ -15,20 +15,8 @@ class PascalCaseClassNameRuleTest extends RuleTestCase
     {
         $this->analyse([__DIR__ . '/data/PascalCaseClassNameRuleFixture.php'], [
             [
-                'Parameter #1 $a of anonymous function has no typehint.',
-                37,
-            ],
-            [
-                'Parameter #2 $b of anonymous function has no typehint.',
-                37,
-            ],
-            [
-                'Parameter #1 $c of anonymous function has no typehint.',
-                46,
-            ],
-            [
-                'Parameter #2 $d of anonymous function has no typehint.',
-                46,
+                'Class name "pascalCaseClassNameRuleFixture" is not in PascalCase.',
+                5,
             ],
         ]);
     }
