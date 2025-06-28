@@ -10,7 +10,8 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Orrison\\MessedUpPhpstan\\": "src/"
+            "Orrison\\MessedUpPhpstan\\": "src/",
+            "Orrison\\MessedUpPhpstan\\Tests\\": "tests/"
         }
     },
     "authors": [
@@ -23,6 +24,7 @@
         "php": "^7.4 || ^8.0"
     },
     "require-dev": {
-        "phpstan/phpstan": "^2.1"
+        "phpstan/phpstan": "^2.1",
+        "phpunit/phpunit": "^12.2"
     }
 }
