@@ -45,31 +45,34 @@ final class CamelCaseMethodNameRule implements Rule
         }
 
         $name = $node->name->name;
-        $pattern = '/^[a-z][a-zA-Z0-9]*$/';
 
         // Early return for ignored methods
         if (in_array($name, $this->ignoredMethods, true)) {
             return $messages;
         }
 
-        // Allow consecutive uppercase letters (e.g., getHTTPResponse)
-        if ($this->config->getAllowConsecutiveUppercase()) {
-            $basePattern = '[a-z][a-zA-Z0-9]*';
-        } else {
-            // Disallow consecutive uppercase (e.g., getHTTPResponse is invalid, getHttpResponse is valid)
-            $basePattern = '[a-z](?:[a-z0-9]+|[A-Z][a-z0-9]+)*';
-        }
+        // Build the base pattern for camelCase
+        $basePattern = $this->config->getAllowConsecutiveUppercase()
+            ? '[a-z][a-zA-Z0-9]*'
+            : '[a-z](?:[a-z0-9]+|[A-Z][a-z0-9]+)*';
 
-        // Allow underscore prefix
-        if ($this->config->getAllowUnderscorePrefix()) {
-            $pattern = '/^_?' . $basePattern . '$/';
-        } else {
-            $pattern = '/^' . $basePattern . '$/';
-        }
+        // Allow optional single underscore prefix
+        $prefix = $this->config->getAllowUnderscorePrefix() ? '_?' : '';
 
         // Allow underscores in test methods
+        $suffix = '';
         if ($this->config->getAllowUnderscoreInTests() && str_starts_with($name, 'test')) {
-            $pattern = str_replace('$', '(_[a-zA-Z0-9]+)*$', $pattern);
+            $suffix = '(_[a-zA-Z0-9]+)*';
+        }
+
+        $pattern = '/^' . $prefix . $basePattern . $suffix . '$/';
+
+        // If underscore prefix is allowed, check for double underscore and disallow (unless ignored)
+        if ($this->config->getAllowUnderscorePrefix() && str_starts_with($name, '__') && !in_array($name, $this->ignoredMethods, true)) {
+            $messages[] = RuleErrorBuilder::message(sprintf('Method name "%s" is not in camelCase (double underscore prefix not allowed).', $name))
+                ->identifier('MessedUpPhpstan.methodNameNotCamelCase')
+                ->build();
+            return $messages;
         }
 
         if (! preg_match($pattern, $name)) {
