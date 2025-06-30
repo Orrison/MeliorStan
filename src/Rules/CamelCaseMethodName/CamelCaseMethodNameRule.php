@@ -18,10 +18,10 @@ final class CamelCaseMethodNameRule implements Rule
     private array $ignoredMethods = [
         '__construct',
         '__destruct',
+        '__set',
+        '__get',
         '__call',
         '__callStatic',
-        '__get',
-        '__set',
         '__isset',
         '__unset',
         '__sleep',
@@ -31,6 +31,8 @@ final class CamelCaseMethodNameRule implements Rule
         '__set_state',
         '__clone',
         '__debugInfo',
+        '__serialize',
+        '__unserialize',
     ];
 
     public function __construct(
