@@ -65,15 +65,7 @@ final class CamelCaseMethodNameRule implements Rule
             $suffix = '(_[a-zA-Z0-9]+)*';
         }
 
-        $pattern = '/^' . $prefix . $basePattern . $suffix . '$/';
-
-        // If underscore prefix is allowed, check for double underscore and disallow (unless ignored)
-        if ($this->config->getAllowUnderscorePrefix() && str_starts_with($name, '__') && !in_array($name, $this->ignoredMethods, true)) {
-            $messages[] = RuleErrorBuilder::message(sprintf('Method name "%s" is not in camelCase (double underscore prefix not allowed).', $name))
-                ->identifier('MessedUpPhpstan.methodNameNotCamelCase')
-                ->build();
-            return $messages;
-        }
+        $pattern = "/^{$prefix}{$basePattern}{$suffix}$/";
 
         if (! preg_match($pattern, $name)) {
             $messages[] = RuleErrorBuilder::message(sprintf('Method name "%s" is not in camelCase.', $name))
