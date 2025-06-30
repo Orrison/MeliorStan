@@ -26,7 +26,7 @@ class AllowConsecutiveUppercaseAndPrefixTest extends RuleTestCase
 
     public static function getAdditionalConfigFiles(): array
     {
-        return [__DIR__ . '/config/combinations/allow_consecutive_uppercase_and_prefix.neon'];
+        return [__DIR__ . '/config/allow_consecutive_uppercase_and_prefix.neon'];
     }
 
     protected function getRule(): Rule

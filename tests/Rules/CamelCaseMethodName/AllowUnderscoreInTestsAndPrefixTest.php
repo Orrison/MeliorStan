@@ -27,7 +27,7 @@ class AllowUnderscoreInTestsAndPrefixTest extends RuleTestCase
 
     public static function getAdditionalConfigFiles(): array
     {
-        return [__DIR__ . '/config/combinations/allow_underscore_in_tests_and_prefix.neon'];
+        return [__DIR__ . '/config/allow_underscore_in_tests_and_prefix.neon'];
     }
 
     protected function getRule(): Rule

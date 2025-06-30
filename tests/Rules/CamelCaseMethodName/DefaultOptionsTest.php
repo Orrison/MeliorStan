@@ -29,7 +29,7 @@ class DefaultOptionsTest extends RuleTestCase
 
     public static function getAdditionalConfigFiles(): array
     {
-        return [__DIR__ . '/config/combinations/default.neon'];
+        return [__DIR__ . '/config/configured_rule.neon'];
     }
 
     protected function getRule(): Rule

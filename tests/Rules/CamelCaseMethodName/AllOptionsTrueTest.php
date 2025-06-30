@@ -25,7 +25,7 @@ class AllOptionsTrueTest extends RuleTestCase
 
     public static function getAdditionalConfigFiles(): array
     {
-        return [__DIR__ . '/config/combinations/all_options_true.neon'];
+        return [__DIR__ . '/config/all_options_true.neon'];
     }
 
     protected function getRule(): Rule
