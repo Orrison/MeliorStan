@@ -16,9 +16,21 @@ use PHPStan\Rules\RuleErrorBuilder;
 final class CamelCaseMethodNameRule implements Rule
 {
     private array $ignoredMethods = [
-        '__construct', '__destruct', '__call', '__callStatic', '__get', '__set', '__isset', '__unset',
-        '__sleep', '__wakeup', '__toString', '__invoke', '__set_state', '__clone', '__debugInfo',
-        // Add more if PHP adds more magic methods in the future
+        '__construct',
+        '__destruct',
+        '__call',
+        '__callStatic',
+        '__get',
+        '__set',
+        '__isset',
+        '__unset',
+        '__sleep',
+        '__wakeup',
+        '__toString',
+        '__invoke',
+        '__set_state',
+        '__clone',
+        '__debugInfo',
     ];
 
     public function __construct(
