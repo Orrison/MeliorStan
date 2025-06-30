@@ -1,0 +1,11 @@
+includes:
+    - ../../../../config/extension.neon
+
+parameters:
+    messed_up:
+        pascal_case_class_name:
+            allow_consecutive_uppercase: true
+
+
+rules:
+    - Orrison\MessedUpPhpstan\Rules\PascalCaseClassName\PascalCaseClassNameRule

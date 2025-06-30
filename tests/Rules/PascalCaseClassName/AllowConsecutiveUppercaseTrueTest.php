@@ -9,7 +9,7 @@ use Orrison\MessedUpPhpstan\Rules\PascalCaseClassName\PascalCaseClassNameRule;
 /**
  * @extends RuleTestCase<PascalCaseClassNameRule>
  */
-class PascalCaseClassNameRuleTest extends RuleTestCase
+class AllowConsecutiveUppercaseTrueTest extends RuleTestCase
 {
     public function testRule(): void
     {
@@ -20,12 +20,7 @@ class PascalCaseClassNameRuleTest extends RuleTestCase
             ],
         ]);
 
-        $this->analyse([__DIR__ . '/Fixture/HTTPResponse.php'], [
-            [
-                'Class name "HTTPResponse" is not in PascalCase.',
-                5,
-            ]
-        ]);
+        $this->analyse([__DIR__ . '/Fixture/HTTPResponse.php'], []);
 
         $this->analyse([__DIR__ . '/Fixture/HttpResponses.php'], []);
     }
@@ -36,7 +31,7 @@ class PascalCaseClassNameRuleTest extends RuleTestCase
     // #[Override]
     public static function getAdditionalConfigFiles(): array
     {
-        return [__DIR__ . '/config/configured_rule.neon'];
+        return [__DIR__ . '/config/allow_consecutive_uppercase_true.neon'];
     }
 
     protected function getRule(): Rule
