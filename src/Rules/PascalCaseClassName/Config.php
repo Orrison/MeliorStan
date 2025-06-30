@@ -5,11 +5,11 @@ namespace Orrison\MessedUpPhpstan\Rules\PascalCaseClassName;
 class Config
 {
     public function __construct(
-        private bool $camelcaseAbbreviations
+        private bool $pascalCaseAbbreviations
     ) {}
 
-    public function getCamelcaseAbbreviations(): bool
+    public function getPascalCaseAbbreviations(): bool
     {
-        return $this->camelcaseAbbreviations;
+        return $this->pascalCaseAbbreviations;
     }
 }

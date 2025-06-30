@@ -38,12 +38,13 @@ final class PascalCaseClassNameRule implements Rule
             return $messages;
         }
 
+        // Default pattern: PascalCase (allows consecutive uppercase, e.g., HTTPResponse)
         $pattern = '/^[A-Z][a-zA-Z0-9]*$/';
 
-        if ($this->config->getCamelcaseAbbreviations()) {
-            // disallow any consecutive uppercase letters
-            // e.g. "HTTPResponse" is not allowed, but "HttpResponse" is allowed
-            $pattern = '/^([A-Z][a-z0-9]+)*$/';
+        if ($this->config->getPascalCaseAbbreviations()) {
+            // Stricter: Disallow consecutive uppercase letters (e.g., HTTPResponse is invalid, HttpResponse is valid)
+            // Each word must start with a single uppercase letter, followed by one or more lowercase/digits
+            $pattern = '/^(?:[A-Z][a-z0-9]+)+$/';
         }
 
         if (! preg_match($pattern, $node->name->name)) {
