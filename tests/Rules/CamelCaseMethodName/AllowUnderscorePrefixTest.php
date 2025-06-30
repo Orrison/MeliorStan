@@ -21,10 +21,8 @@ class AllowUnderscorePrefixTest extends RuleTestCase
             ['Method name "do_something_invalid" is not in camelCase.', 13],
             ['Method name "DoSomethingInvalid" is not in camelCase.', 14],
             ['Method name "getHTTPResponseInvalid" is not in camelCase.', 15],
-            ['Method name "_privateMethodInvalid" is not in camelCase.', 16],
-            ['Method name "_helperFunctionInvalid" is not in camelCase.', 17],
-            ['Method name "test_with_underscores_invalid" is not in camelCase.', 18],
-            ['Method name "getXMLDataInvalid" is not in camelCase.', 20],
+            ['Method name "test_with_underscores_invalid" is not in camelCase.', 17],
+            ['Method name "getXMLDataInvalid" is not in camelCase.', 18],
         ]);
     }
 

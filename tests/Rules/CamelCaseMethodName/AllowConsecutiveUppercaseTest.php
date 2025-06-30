@@ -20,9 +20,8 @@ class AllowConsecutiveUppercaseTest extends RuleTestCase
         ], [
             ['Method name "do_something_invalid" is not in camelCase.', 13],
             ['Method name "DoSomethingInvalid" is not in camelCase.', 14],
-            ['Method name "_privateMethodInvalid" is not in camelCase.', 16],
-            ['Method name "_helperFunctionInvalid" is not in camelCase.', 17],
-            ['Method name "test_with_underscores_invalid" is not in camelCase.', 18],
+            ['Method name "_prefixedWithUnderscore" is not in camelCase.', 16],
+            ['Method name "test_with_underscores_invalid" is not in camelCase.', 17],
         ]);
     }
 

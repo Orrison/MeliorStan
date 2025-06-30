@@ -13,9 +13,7 @@ class ExampleClass
     public function do_something_invalid() {}
     public function DoSomethingInvalid() {}
     public function getHTTPResponseInvalid() {}
-    public function _privateMethodInvalid() {}
-    public function _helperFunctionInvalid() {}
+    public function _prefixedWithUnderscore() {}
     public function test_with_underscores_invalid() {}
-    public function testAnotherInvalid() {}
     public function getXMLDataInvalid() {}
 }
