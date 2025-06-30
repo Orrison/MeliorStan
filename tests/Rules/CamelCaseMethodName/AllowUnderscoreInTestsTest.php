@@ -13,9 +13,18 @@ use Orrison\MessedUpPhpstan\Rules\CamelCaseMethodName\CamelCaseMethodNameRule;
  */
 class AllowUnderscoreInTestsTest extends RuleTestCase
 {
-    public function testAllowUnderscoreInTests(): void
+    public function testExampleClass(): void
     {
-        $this->analyse([__DIR__ . '/Fixture/AllowUnderscoreInTests.php'], []);
+        $this->analyse([
+            __DIR__ . '/Fixture/ExampleClass.php'
+        ], [
+            ['Method name "do_something_invalid" is not in camelCase.', 13],
+            ['Method name "DoSomethingInvalid" is not in camelCase.', 14],
+            ['Method name "getHTTPResponseInvalid" is not in camelCase.', 15],
+            ['Method name "_privateMethodInvalid" is not in camelCase.', 16],
+            ['Method name "_helperFunctionInvalid" is not in camelCase.', 17],
+            ['Method name "getXMLDataInvalid" is not in camelCase.', 20],
+        ]);
     }
 
     /**

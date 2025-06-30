@@ -13,9 +13,17 @@ use Orrison\MessedUpPhpstan\Rules\CamelCaseMethodName\CamelCaseMethodNameRule;
  */
 class AllowConsecutiveUppercaseTest extends RuleTestCase
 {
-    public function testAllowConsecutiveUppercase(): void
+    public function testExampleClass(): void
     {
-        $this->analyse([__DIR__ . '/Fixture/AllowConsecutiveUppercase.php'], []);
+        $this->analyse([
+            __DIR__ . '/Fixture/ExampleClass.php'
+        ], [
+            ['Method name "do_something_invalid" is not in camelCase.', 13],
+            ['Method name "DoSomethingInvalid" is not in camelCase.', 14],
+            ['Method name "_privateMethodInvalid" is not in camelCase.', 16],
+            ['Method name "_helperFunctionInvalid" is not in camelCase.', 17],
+            ['Method name "test_with_underscores_invalid" is not in camelCase.', 18],
+        ]);
     }
 
     /**
