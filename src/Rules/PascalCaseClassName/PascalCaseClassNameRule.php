@@ -1,7 +1,8 @@
 <?php
 
-namespace Orrison\MessedUpPhpstan\Rules;
+namespace Orrison\MessedUpPhpstan\Rules\PascalCaseClassName;
 
+use Orrison\MessedUpPhpstan\Rules\PascalCaseClassName\Config;
 use PhpParser\Node;
 use PhpParser\Node\Stmt\Class_;
 use PHPStan\Analyser\Scope;
@@ -14,6 +15,10 @@ use PHPStan\Rules\RuleErrorBuilder;
  */
 final class PascalCaseClassNameRule implements Rule
 {
+    public function __construct(
+        private Config $config,
+    ) {}
+
     /**
      * @return class-string<Node>
      */

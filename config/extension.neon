@@ -1,0 +1,18 @@
+parametersSchema:
+    messed_up: structure([
+        pascal_case_class_name: structure([
+            camelcase_abbreviations: bool(),
+        ]),
+    ])
+
+# default parameters
+parameters:
+    messed_up:
+        pascal_case_class_name:
+            camelcase_abbreviations: true
+
+services:
+    -
+        factory: Orrison\MessedUpPhpstan\Rules\PascalCaseClassName\Config
+        arguments:
+            - %messed_up.pascal_case_class_name.camelcase_abbreviations%
