@@ -19,6 +19,8 @@ class PascalCaseClassNameRuleTest extends RuleTestCase
                 5,
             ],
         ]);
+
+        $this->analyse([__DIR__ . '/Fixture/HTTPResponse.php'], []);
     }
 
     /**

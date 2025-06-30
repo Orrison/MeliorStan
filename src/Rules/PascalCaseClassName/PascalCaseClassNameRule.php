@@ -40,7 +40,11 @@ final class PascalCaseClassNameRule implements Rule
 
         $pattern = '/^[A-Z][a-zA-Z0-9]*$/';
 
-        // TODO: Add support for the customizations
+        if ($this->config->getCamelcaseAbbreviations()) {
+            // disallow any consecutive uppercase letters
+            // e.g. "HTTPResponse" is not allowed, but "HttpResponse" is allowed
+            $pattern = '/^([A-Z][a-z0-9]+)*$/';
+        }
 
         if (! preg_match($pattern, $node->name->name)) {
             $messages[] = RuleErrorBuilder::message(sprintf('Class name "%s" is not in PascalCase.', $node->name->name))

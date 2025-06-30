@@ -9,7 +9,7 @@ parametersSchema:
 parameters:
     messed_up:
         pascal_case_class_name:
-            camelcase_abbreviations: true
+            camelcase_abbreviations: false
 
 services:
     -
