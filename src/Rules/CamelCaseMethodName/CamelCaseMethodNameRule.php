@@ -15,7 +15,7 @@ use PHPStan\Rules\RuleErrorBuilder;
  */
 final class CamelCaseMethodNameRule implements Rule
 {
-    private const MAGIC_METHODS = [
+    private array $ignoredMethods = [
         '__construct', '__destruct', '__call', '__callStatic', '__get', '__set', '__isset', '__unset',
         '__sleep', '__wakeup', '__toString', '__invoke', '__set_state', '__clone', '__debugInfo',
         // Add more if PHP adds more magic methods in the future
@@ -47,6 +47,11 @@ final class CamelCaseMethodNameRule implements Rule
         $name = $node->name->name;
         $pattern = '/^[a-z][a-zA-Z0-9]*$/';
 
+        // Early return for ignored methods
+        if (in_array($name, $this->ignoredMethods, true)) {
+            return $messages;
+        }
+
         // Allow consecutive uppercase letters (e.g., getHTTPResponse)
         if ($this->config->getAllowConsecutiveUppercase()) {
             $basePattern = '[a-z][a-zA-Z0-9]*';
@@ -65,11 +70,6 @@ final class CamelCaseMethodNameRule implements Rule
         // Allow underscores in test methods
         if ($this->config->getAllowUnderscoreInTests() && str_starts_with($name, 'test')) {
             $pattern = str_replace('$', '(_[a-zA-Z0-9]+)*$', $pattern);
-        }
-
-        // Allow PHP magic methods
-        if (str_starts_with($name, '__') && in_array($name, self::MAGIC_METHODS, true)) {
-            return $messages;
         }
 
         if (! preg_match($pattern, $name)) {
