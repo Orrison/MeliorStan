@@ -2,6 +2,6 @@
 
 namespace Orrison\MessedUpPhpstan\Tests\Rules\Fixture;
 
-class pascalCaseClassNameRuleFixture
+class camelCaseClass
 {
 }

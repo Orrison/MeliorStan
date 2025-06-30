@@ -13,14 +13,19 @@ class PascalCaseClassNameRuleTest extends RuleTestCase
 {
     public function testRule(): void
     {
-        $this->analyse([__DIR__ . '/Fixture/PascalCaseClassNameRuleFixture.php'], [
+        $this->analyse([__DIR__ . '/Fixture/camelCaseClass.php'], [
             [
-                'Class name "pascalCaseClassNameRuleFixture" is not in PascalCase.',
+                'Class name "camelCaseClass" is not in PascalCase.',
                 5,
             ],
         ]);
 
-        $this->analyse([__DIR__ . '/Fixture/HTTPResponse.php'], []);
+        $this->analyse([__DIR__ . '/Fixture/HTTPResponse.php'], [
+            [
+                'Class name "HTTPResponse" is not in PascalCase.',
+                5,
+            ]
+        ]);
     }
 
     /**
