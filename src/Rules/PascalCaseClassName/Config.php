@@ -5,11 +5,11 @@ namespace Orrison\MessedUpPhpstan\Rules\PascalCaseClassName;
 class Config
 {
     public function __construct(
-        private bool $pascalCaseAbbreviations
+        private bool $allowConsecutiveUppercase
     ) {}
 
-    public function getPascalCaseAbbreviations(): bool
+    public function allowConsecutiveUppercase(): bool
     {
-        return $this->pascalCaseAbbreviations;
+        return $this->allowConsecutiveUppercase;
     }
 }

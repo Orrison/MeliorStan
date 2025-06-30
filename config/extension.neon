@@ -1,7 +1,7 @@
 parametersSchema:
     messed_up: structure([
         pascal_case_class_name: structure([
-            pascal_case_abbreviations: bool(),
+            allow_consecutive_uppercase: bool(),
         ]),
     ])
 
@@ -9,10 +9,10 @@ parametersSchema:
 parameters:
     messed_up:
         pascal_case_class_name:
-            pascal_case_abbreviations: false
+            allow_consecutive_uppercase: false
 
 services:
     -
         factory: Orrison\MessedUpPhpstan\Rules\PascalCaseClassName\Config
         arguments:
-            - %messed_up.pascal_case_class_name.pascal_case_abbreviations%
+            - %messed_up.pascal_case_class_name.allow_consecutive_uppercase%
