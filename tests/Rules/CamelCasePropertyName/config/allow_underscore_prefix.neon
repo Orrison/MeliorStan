@@ -1,0 +1,10 @@
+includes:
+    - ../../../../config/extension.neon
+
+parameters:
+    messed_up:
+        camel_case_property_name:
+            allow_underscore_prefix: true
+
+rules:
+    - Orrison\MessedUpPhpstan\Rules\CamelCasePropertyName\CamelCasePropertyNameRule
