@@ -16,8 +16,7 @@ final class CamelCasePropertyNameRule implements Rule
 {
     public function __construct(
         private Config $config,
-    ) {
-    }
+    ) {}
 
     /**
      * @return class-string<Node>
@@ -55,7 +54,7 @@ final class CamelCasePropertyNameRule implements Rule
 
             $pattern .= '$/';
 
-            if (!preg_match($pattern, $name)) {
+            if (! preg_match($pattern, $name)) {
                 $messages[] = RuleErrorBuilder::message(
                     sprintf('Property name "%s" is not in camelCase.', $prop->name->name)
                 )->build();
