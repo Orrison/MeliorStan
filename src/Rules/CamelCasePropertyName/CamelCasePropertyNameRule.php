@@ -41,21 +41,18 @@ final class CamelCasePropertyNameRule implements Rule
         foreach ($node->props as $prop) {
             $name = $prop->name->name;
 
-            $allowUnderscorePrefix = $this->config->getAllowUnderscorePrefix();
-            $allowConsecutiveUppercase = $this->config->getAllowConsecutiveUppercase();
+            $pattern = '/^';
 
-            $pattern = '/';
-            if ($allowUnderscorePrefix) {
-                $pattern .= '^_?';
-            } else {
-                $pattern .= '^';
-            }
+            $pattern .= $this->config->getAllowUnderscorePrefix()
+                ? '_?'
+                : '';
+
             $pattern .= '[a-z]';
-            if ($allowConsecutiveUppercase) {
-                $pattern .= '[a-zA-Z0-9]*';
-            } else {
-                $pattern .= '[a-z0-9]*([A-Z][a-z0-9]*)*';
-            }
+
+            $pattern .= $this->config->getAllowConsecutiveUppercase()
+                ? '[a-zA-Z0-9]*'
+                : '(?:[a-z0-9]+|[A-Z][a-z0-9]+)*';
+
             $pattern .= '$/';
 
             if (!preg_match($pattern, $name)) {
