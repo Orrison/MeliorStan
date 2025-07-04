@@ -1,0 +1,69 @@
+name: CI
+
+on:
+  workflow_call:
+  workflow_dispatch:
+
+jobs:
+  fix-code-style:
+    runs-on: ubuntu-22.04
+
+    timeout-minutes: 10
+
+    steps:
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.4"
+          coverage: none
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+
+      - name: Setup Dependencies
+        uses: ./.github/actions/composer-dependency-setup
+
+      - name: Cache PHP CS Fixer
+        uses: actions/cache@v4
+        with:
+          path: .php-cs-fixer.cache
+          key: ${{ runner.OS }}-${{ github.repository }}-phpcsfixer-${{ github.run_id }}
+          restore-keys: |
+            ${{ runner.OS }}-${{ github.repository }}-phpcsfixer-
+
+      - name: Run Formatters
+        run: composer format
+
+      - name: Check for changes
+        # SHA of release v20.0.1
+        uses: tj-actions/verify-changed-files@6ed7632824d235029086612d4330d659005af687
+        with:
+          fail-if-changed: "true"
+
+  test:
+    strategy:
+      matrix:
+        php-version: ["8.3", "8.4"]
+
+    runs-on: ubuntu-22.04
+
+    timeout-minutes: 15
+
+    steps:
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: "${{ matrix.php-version }}"
+          coverage: none
+
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+
+      - name: Setup Dependencies
+        uses: ./.github/actions/composer-dependency-setup
+        with:
+          php-version: "${{ matrix.php-version }}"
+
+      - name: Execute tests via PHPUnit
+        run: ./vendor/bin/phpunit --configuration phpunit.xml --parallel
