@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Orrison\MessedUpPhpstan\Tests\Rules\CamelCasePropertyName;
 
@@ -18,8 +18,9 @@ class AllOptionsTrueTest extends RuleTestCase
         $this->analyse([
             __DIR__ . '/Fixture/ExampleClass.php',
         ], [
-            ['Property name "$invalid_property" is not in camelCase.', 10],
-            ['Property name "$InvalidProperty" is not in camelCase.', 11],
+            ['Property name "invalid_property" is not in camelCase.', 13],
+            ['Property name "InvalidProperty" is not in camelCase.', 14],
+            ['Property name "HTTPResponseInvalid" is not in camelCase.', 15],
         ]);
     }
 
