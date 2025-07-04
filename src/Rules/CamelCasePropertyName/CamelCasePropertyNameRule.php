@@ -16,7 +16,8 @@ final class CamelCasePropertyNameRule implements Rule
 {
     public function __construct(
         private Config $config,
-    ) {}
+    ) {
+    }
 
     /**
      * @return class-string<Node>
@@ -40,21 +41,7 @@ final class CamelCasePropertyNameRule implements Rule
         foreach ($node->props as $prop) {
             $name = $prop->name->name;
 
-            $pattern = '/^';
-
-            $pattern .= $this->config->getAllowUnderscorePrefix()
-                ? '_?'
-                : '';
-
-            $pattern .= '[a-z]';
-
-            $pattern .= $this->config->getAllowConsecutiveUppercase()
-                ? '[a-zA-Z0-9]*'
-                : '(?:[a-z0-9]+|[A-Z][a-z0-9]+)*';
-
-            $pattern .= '$/';
-
-            if (! preg_match($pattern, $name)) {
+            if (! preg_match($this->buildRegexPattern(), $name)) {
                 $messages[] = RuleErrorBuilder::message(
                     sprintf('Property name "%s" is not in camelCase.', $prop->name->name)
                 )->build();
@@ -62,5 +49,24 @@ final class CamelCasePropertyNameRule implements Rule
         }
 
         return $messages;
+    }
+
+    protected function buildRegexPattern(): string
+    {
+        $pattern = '/^';
+
+        $pattern .= $this->config->getAllowUnderscorePrefix()
+            ? '_?'
+            : '';
+
+        $pattern .= '[a-z]';
+
+        $pattern .= $this->config->getAllowConsecutiveUppercase()
+            ? '[a-zA-Z0-9]*'
+            : '(?:[a-z0-9]+|[A-Z][a-z0-9]+)*';
+
+        $pattern .= '$/';
+
+        return $pattern;
     }
 }
