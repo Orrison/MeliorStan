@@ -30,7 +30,7 @@
     },
     "scripts": {
         "test": [
-            "phpunit"
+            "./vendor/bin/phpunit"
         ],
         "cs-fix": [
             "export PHP_CS_FIXER_IGNORE_ENV=1 ; ./vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix -v --config=./php-cs-fixer.php"

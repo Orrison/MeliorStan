@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Orrison\MessedUpPhpstan\Tests\Rules\CamelCaseMethodName;
 
@@ -18,11 +18,11 @@ class AllowUnderscorePrefixOnlyTest extends RuleTestCase
         $this->analyse([
             __DIR__ . '/Fixture/ExampleClass.php',
         ], [
-            ['Method name "do_something_invalid" is not in camelCase.', 32],
-            ['Method name "DoSomethingInvalid" is not in camelCase.', 33],
-            ['Method name "getHTTPResponseInvalid" is not in camelCase.', 34],
-            ['Method name "test_with_underscores_invalid" is not in camelCase.', 36],
-            ['Method name "getXMLDataInvalid" is not in camelCase.', 37],
+            ['Method name "do_something_invalid" is not in camelCase.', 56],
+            ['Method name "DoSomethingInvalid" is not in camelCase.', 58],
+            ['Method name "getHTTPResponseInvalid" is not in camelCase.', 60],
+            ['Method name "test_with_underscores_invalid" is not in camelCase.', 64],
+            ['Method name "getXMLDataInvalid" is not in camelCase.', 66],
         ]);
     }
 

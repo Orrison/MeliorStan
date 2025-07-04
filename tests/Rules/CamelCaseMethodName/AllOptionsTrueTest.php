@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Orrison\MessedUpPhpstan\Tests\Rules\CamelCaseMethodName;
 
@@ -18,8 +18,8 @@ class AllOptionsTrueTest extends RuleTestCase
         $this->analyse([
             __DIR__ . '/Fixture/ExampleClass.php',
         ], [
-            ['Method name "do_something_invalid" is not in camelCase.', 32],
-            ['Method name "DoSomethingInvalid" is not in camelCase.', 33],
+            ['Method name "do_something_invalid" is not in camelCase.', 56],
+            ['Method name "DoSomethingInvalid" is not in camelCase.', 58],
         ]);
     }
 
