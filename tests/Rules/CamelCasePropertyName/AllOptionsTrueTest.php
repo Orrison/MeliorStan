@@ -18,9 +18,10 @@ class AllOptionsTrueTest extends RuleTestCase
         $this->analyse([
             __DIR__ . '/Fixture/ExampleClass.php',
         ], [
-            ['Property name "invalid_property" is not in camelCase.', 13],
-            ['Property name "InvalidProperty" is not in camelCase.', 14],
-            ['Property name "HTTPResponseInvalid" is not in camelCase.', 15],
+            ['Property name "is_http_response" is not in camelCase.', 9],
+            ['Property name "IsHttpResponse" is not in camelCase.', 11],
+            ['Property name "IsHTTPResponse" is not in camelCase.', 15],
+            ['Property name "ISHTTPRESPONSE" is not in camelCase.', 17],
         ]);
     }
 
