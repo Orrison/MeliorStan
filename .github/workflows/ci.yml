@@ -65,5 +65,5 @@ jobs:
         with:
           php-version: "${{ matrix.php-version }}"
 
-      - name: Execute tests via PHPUnit
-        run: ./vendor/bin/phpunit --configuration phpunit.xml --parallel
+      - name: Execute tests
+        run: composer test
