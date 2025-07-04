@@ -2,7 +2,6 @@
 
 namespace Orrison\MessedUpPhpstan\Rules\PascalCaseClassName;
 
-use Orrison\MessedUpPhpstan\Rules\PascalCaseClassName\Config;
 use PhpParser\Node;
 use PhpParser\Node\Stmt\Class_;
 use PHPStan\Analyser\Scope;

@@ -2,9 +2,9 @@
 
 namespace Orrison\MessedUpPhpstan\Tests\Rules;
 
+use Orrison\MessedUpPhpstan\Rules\PascalCaseClassName\PascalCaseClassNameRule;
 use PHPStan\Rules\Rule;
 use PHPStan\Testing\RuleTestCase;
-use Orrison\MessedUpPhpstan\Rules\PascalCaseClassName\PascalCaseClassNameRule;
 
 /**
  * @extends RuleTestCase<PascalCaseClassNameRule>
@@ -24,7 +24,7 @@ class PascalCaseClassNameRuleTest extends RuleTestCase
             [
                 'Class name "HTTPResponse" is not in PascalCase.',
                 5,
-            ]
+            ],
         ]);
 
         $this->analyse([__DIR__ . '/Fixture/HttpResponses.php'], []);

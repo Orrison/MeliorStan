@@ -2,6 +2,4 @@
 
 namespace Orrison\MessedUpPhpstan\Tests\Rules\PascalCaseClassName\Fixture;
 
-class HttpResponses
-{
-}
+class HttpResponses {}

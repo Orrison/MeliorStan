@@ -1,12 +1,12 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Orrison\MessedUpPhpstan\Tests\Rules\CamelCaseMethodName;
 
+use Orrison\MessedUpPhpstan\Rules\CamelCaseMethodName\CamelCaseMethodNameRule;
 use PHPStan\Rules\Rule;
 use PHPStan\Testing\RuleTestCase;
-use Orrison\MessedUpPhpstan\Rules\CamelCaseMethodName\CamelCaseMethodNameRule;
 
 /**
  * @extends RuleTestCase<CamelCaseMethodNameRule>
@@ -16,7 +16,7 @@ class AllowUnderscoreInTestsAndPrefixTest extends RuleTestCase
     public function testExampleClass(): void
     {
         $this->analyse([
-            __DIR__ . '/Fixture/ExampleClass.php'
+            __DIR__ . '/Fixture/ExampleClass.php',
         ], [
             ['Method name "do_something_invalid" is not in camelCase.', 32],
             ['Method name "DoSomethingInvalid" is not in camelCase.', 33],

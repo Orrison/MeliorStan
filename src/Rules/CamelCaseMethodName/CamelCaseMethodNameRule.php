@@ -2,7 +2,6 @@
 
 namespace Orrison\MessedUpPhpstan\Rules\CamelCaseMethodName;
 
-use Orrison\MessedUpPhpstan\Rules\CamelCaseMethodName\Config;
 use PhpParser\Node;
 use PhpParser\Node\Stmt\ClassMethod;
 use PHPStan\Analyser\Scope;
@@ -75,6 +74,7 @@ final class CamelCaseMethodNameRule implements Rule
 
         // Allow underscores in test methods
         $suffix = '';
+
         if ($this->config->getAllowUnderscoreInTests() && str_starts_with($name, 'test')) {
             $suffix = '(_[a-zA-Z0-9]+)*';
         }
