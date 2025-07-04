@@ -8,6 +8,10 @@ parametersSchema:
             allow_underscore_in_tests: bool(),
             allow_underscore_prefix: bool(),
         ]),
+        camel_case_property_name: structure([
+            allow_consecutive_uppercase: bool(),
+            allow_underscore_prefix: bool(),
+        ]),
     ])
 
 # default parameters
@@ -18,6 +22,9 @@ parameters:
         camel_case_method_name:
             allow_consecutive_uppercase: false
             allow_underscore_in_tests: false
+            allow_underscore_prefix: false
+        camel_case_property_name:
+            allow_consecutive_uppercase: false
             allow_underscore_prefix: false
 
 services:
@@ -31,3 +38,8 @@ services:
             - %messed_up.camel_case_method_name.allow_consecutive_uppercase%
             - %messed_up.camel_case_method_name.allow_underscore_in_tests%
             - %messed_up.camel_case_method_name.allow_underscore_prefix%
+    -
+        factory: Orrison\MessedUpPhpstan\Rules\CamelCasePropertyName\Config
+        arguments:
+            - %messed_up.camel_case_property_name.allow_consecutive_uppercase%
+            - %messed_up.camel_case_property_name.allow_underscore_prefix%
