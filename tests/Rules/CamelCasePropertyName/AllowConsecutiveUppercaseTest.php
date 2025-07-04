@@ -11,7 +11,7 @@ use PHPStan\Testing\RuleTestCase;
 /**
  * @extends RuleTestCase<CamelCasePropertyNameRule>
  */
-class DefaultOptionsTest extends RuleTestCase
+class AllowConsecutiveUppercaseTest extends RuleTestCase
 {
     public function testExampleClass(): void
     {
@@ -20,7 +20,6 @@ class DefaultOptionsTest extends RuleTestCase
         ], [
             ['Property name "is_http_response" is not in camelCase.', 9],
             ['Property name "IsHttpResponse" is not in camelCase.', 11],
-            ['Property name "isHTTPResponse" is not in camelCase.', 13],
             ['Property name "IsHTTPResponse" is not in camelCase.', 15],
             ['Property name "ISHTTPRESPONSE" is not in camelCase.', 17],
             ['Property name "_isHttpResponse" is not in camelCase.', 19],
@@ -30,7 +29,7 @@ class DefaultOptionsTest extends RuleTestCase
 
     public static function getAdditionalConfigFiles(): array
     {
-        return [__DIR__ . '/config/configured_rule.neon'];
+        return [__DIR__ . '/config/allow_consecutive_uppercase.neon'];
     }
 
     protected function getRule(): Rule

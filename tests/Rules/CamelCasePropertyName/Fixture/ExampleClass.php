@@ -15,4 +15,8 @@ class ExampleClass
     public $IsHTTPResponse;
 
     public $ISHTTPRESPONSE;
+
+    public $_isHttpResponse;
+
+    public $_isHTTPResponse;
 }
