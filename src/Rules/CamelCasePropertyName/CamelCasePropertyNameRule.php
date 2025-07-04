@@ -16,7 +16,8 @@ final class CamelCasePropertyNameRule implements Rule
 {
     public function __construct(
         private Config $config,
-    ) {}
+    ) {
+    }
 
     /**
      * @return class-string<Node>
@@ -32,10 +33,6 @@ final class CamelCasePropertyNameRule implements Rule
     public function processNode(Node $node, Scope $scope): array
     {
         $messages = [];
-
-        if (! $node instanceof Property) {
-            return $messages;
-        }
 
         foreach ($node->props as $prop) {
             $name = $prop->name->name;
