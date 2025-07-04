@@ -14,9 +14,12 @@ use PHPStan\Rules\RuleErrorBuilder;
  */
 final class CamelCasePropertyNameRule implements Rule
 {
+    protected string $pattern;
+
     public function __construct(
-        private Config $config,
+        protected Config $config,
     ) {
+        $this->pattern = $this->buildRegexPattern();
     }
 
     /**
@@ -37,7 +40,7 @@ final class CamelCasePropertyNameRule implements Rule
         foreach ($node->props as $prop) {
             $name = $prop->name->name;
 
-            if (! preg_match($this->buildRegexPattern(), $name)) {
+            if (! preg_match($this->pattern, $name)) {
                 $messages[] = RuleErrorBuilder::message(
                     sprintf('Property name "%s" is not in camelCase.', $prop->name->name)
                 )->build();
