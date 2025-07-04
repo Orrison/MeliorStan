@@ -4,13 +4,15 @@ namespace Orrison\MessedUpPhpstan\Tests\Rules\CamelCasePropertyName\Fixture;
 
 class ExampleClass
 {
-    // Valid
-    public $validProperty;
-    public $anotherValidProperty;
-    public $httpResponse;
+    public $isHttpResponse;
 
-    // Invalid for default config
-    public $invalid_property;
-    public $InvalidProperty;
-    public $HTTPResponseInvalid;
+    public $is_http_response;
+
+    public $IsHttpResponse;
+
+    public $isHTTPResponse;
+
+    public $IsHTTPResponse;
+
+    public $ISHTTPRESPONSE;
 }
