@@ -95,7 +95,7 @@ jobs:
       - name: "Result Cache for PHPStan"
         uses: actions/cache@v4
         with:
-          path: tmp
+          path: /tmp/phpstan
           key: "${{ runner.OS }}-${{ github.repository }}-static-analysis-${{ matrix.php-version }}-${{ github.run_id }}"
           restore-keys: |
             ${{ runner.OS }}-${{ github.repository }}-static-analysis-${{ matrix.php-version }}-
