@@ -14,6 +14,7 @@ use PHPStan\Rules\RuleErrorBuilder;
  */
 final class CamelCaseMethodNameRule implements Rule
 {
+    /** @var array<string> */
     private array $ignoredMethods = [
         '__construct',
         '__destruct',
@@ -36,7 +37,8 @@ final class CamelCaseMethodNameRule implements Rule
 
     public function __construct(
         private Config $config,
-    ) {}
+    ) {
+    }
 
     /**
      * @return class-string<Node>
@@ -52,10 +54,6 @@ final class CamelCaseMethodNameRule implements Rule
     public function processNode(Node $node, Scope $scope): array
     {
         $messages = [];
-
-        if (! $node instanceof ClassMethod) {
-            return $messages;
-        }
 
         $name = $node->name->name;
 
