@@ -3,10 +3,11 @@
 namespace Orrison\MessedUpPhpstan\Rules\PascalCaseClassName;
 
 use PhpParser\Node;
-use PhpParser\Node\Stmt\Class_;
-use PHPStan\Analyser\Scope;
 use PHPStan\Rules\Rule;
+use PHPStan\Analyser\Scope;
 use PHPStan\Rules\RuleError;
+use PhpParser\Node\Identifier;
+use PhpParser\Node\Stmt\Class_;
 use PHPStan\Rules\RuleErrorBuilder;
 
 /**
@@ -16,7 +17,8 @@ final class PascalCaseClassNameRule implements Rule
 {
     public function __construct(
         private Config $config,
-    ) {}
+    ) {
+    }
 
     /**
      * @return class-string<Node>
@@ -33,10 +35,6 @@ final class PascalCaseClassNameRule implements Rule
     {
         $messages = [];
 
-        if (! $node instanceof Class_) {
-            return $messages;
-        }
-
         // Default pattern: PascalCase (disallow consecutive uppercase, e.g., HTTPResponse is invalid, HttpResponse is valid)
         $pattern = '/^(?:[A-Z][a-z0-9]+)+$/';
 
@@ -44,6 +42,8 @@ final class PascalCaseClassNameRule implements Rule
             // Allow consecutive uppercase letters (e.g., HTTPResponse is valid)
             $pattern = '/^[A-Z][a-zA-Z0-9]*$/';
         }
+
+        assert($node->name instanceof Identifier);
 
         if (! preg_match($pattern, $node->name->name)) {
             $messages[] = RuleErrorBuilder::message(sprintf('Class name "%s" is not in PascalCase.', $node->name->name))
