@@ -1,6 +1,9 @@
 parameters:
+    level: 10
+
     paths:
         - src/
         - tests/
 
-    level: 10
+    excludePaths:
+        - tests/Rules/*/Fixture/*
