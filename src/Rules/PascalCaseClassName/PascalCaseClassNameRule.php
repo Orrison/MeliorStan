@@ -17,7 +17,8 @@ final class PascalCaseClassNameRule implements Rule
 {
     public function __construct(
         private Config $config,
-    ) {}
+    ) {
+    }
 
     /**
      * @return class-string<Node>
@@ -42,7 +43,10 @@ final class PascalCaseClassNameRule implements Rule
             $pattern = '/^[A-Z][a-zA-Z0-9]*$/';
         }
 
-        assert($node->name instanceof Identifier);
+        if ($node->name === null) {
+            // If the class does not have a name, like for an anonymous class, we cannot validate it
+            return [];
+        }
 
         if (! preg_match($pattern, $node->name->name)) {
             $messages[] = RuleErrorBuilder::message(sprintf('Class name "%s" is not in PascalCase.', $node->name->name))
