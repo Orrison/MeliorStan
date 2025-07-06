@@ -67,3 +67,30 @@ jobs:
 
       - name: Execute tests
         run: composer test
+
+  static-analysis:
+    strategy:
+      matrix:
+        php-version: ["8.3", "8.4"]
+
+    runs-on: ubuntu-22.04
+
+    timeout-minutes: 15
+
+    steps:
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: "${{ matrix.php-version }}"
+          coverage: none
+
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+
+      - name: Setup Dependencies
+        uses: ./.github/actions/composer-dependency-setup
+        with:
+          php-version: "${{ matrix.php-version }}"
+
+      - name: Run PHPStan
+        run: composer analyze
