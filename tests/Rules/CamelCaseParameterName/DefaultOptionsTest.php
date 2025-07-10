@@ -4,9 +4,9 @@ declare(strict_types = 1);
 
 namespace Orrison\MessedUpPhpstan\Tests\Rules\CamelCaseParameterName;
 
+use Orrison\MessedUpPhpstan\Rules\CamelCaseParameterName\CamelCaseParameterNameRule;
 use PHPStan\Rules\Rule;
 use PHPStan\Testing\RuleTestCase;
-use Orrison\MessedUpPhpstan\Rules\CamelCaseParameterName\CamelCaseParameterNameRule;
 
 /**
  * @extends RuleTestCase<CamelCaseParameterNameRule>
