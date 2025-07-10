@@ -1,0 +1,10 @@
+includes:
+    - ../../../../config/extension.neon
+
+parameters:
+    messed_up:
+        camel_case_parameter_name:
+            allow_consecutive_uppercase: true
+
+rules:
+    - Orrison\MessedUpPhpstan\Rules\CamelCaseParameterName\CamelCaseParameterNameRule
