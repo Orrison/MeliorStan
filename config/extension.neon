@@ -53,5 +53,5 @@ services:
     -
         factory: Orrison\MessedUpPhpstan\Rules\CamelCaseParameterName\Config
         arguments:
-            - %messed_up.camel_case_property_name.allow_consecutive_uppercase%
-            - %messed_up.camel_case_property_name.allow_underscore_prefix%
+            - %messed_up.camel_case_parameter_name.allow_consecutive_uppercase%
+            - %messed_up.camel_case_parameter_name.allow_underscore_prefix%
