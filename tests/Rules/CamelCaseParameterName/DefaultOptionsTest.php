@@ -25,6 +25,14 @@ class DefaultOptionsTest extends RuleTestCase
             ['Parameter name "ISHTTPRESPONSE" is not in camelCase.', 9],
             ['Parameter name "_isHttpResponse" is not in camelCase.', 10],
             ['Parameter name "_isHTTPResponse" is not in camelCase.', 11],
+
+            ['Parameter name "is_http_response" is not in camelCase.', 16],
+            ['Parameter name "IsHttpResponse" is not in camelCase.', 17],
+            ['Parameter name "isHTTPResponse" is not in camelCase.', 18],
+            ['Parameter name "IsHTTPResponse" is not in camelCase.', 19],
+            ['Parameter name "ISHTTPRESPONSE" is not in camelCase.', 20],
+            ['Parameter name "_isHttpResponse" is not in camelCase.', 21],
+            ['Parameter name "_isHTTPResponse" is not in camelCase.', 22],
         ]);
     }
 
