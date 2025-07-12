@@ -1,4 +1,4 @@
-# CamelCase Variable Name Rule
+# CamelCaseVariableName
 
 Enforces that local variable names should follow camelCase naming convention.
 

@@ -1,4 +1,4 @@
-# CamelCase Method Name Rule
+# CamelCaseMethodName
 
 Enforces that method names should follow camelCase naming convention.
 
