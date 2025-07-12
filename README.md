@@ -1,6 +1,6 @@
 # Messed Up PHPStan
 
-Provides custom PHPStan rules for different enforcements throughout your codebase to look for potential probems and enforce particular programatic or naming style.
+Provides custom PHPStan rules for different enforcements throughout your codebase to look for potential problems and enforce particular programatic or naming style.
 
 ## Inspiration
 
