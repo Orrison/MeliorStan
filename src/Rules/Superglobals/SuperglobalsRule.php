@@ -51,7 +51,7 @@ final class SuperglobalsRule implements Rule
         if (in_array($name, $this->superglobals, true)) {
             return [
                 RuleErrorBuilder::message(
-                    sprintf('Superglobal "$%s" should not be used in userland code.', $name)
+                    sprintf('Superglobal "$%s" should not be used.', $name)
                 )->identifier('MessedUpPhpstan.superglobalUsage')
                     ->build(),
             ];
