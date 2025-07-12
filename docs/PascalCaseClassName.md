@@ -32,37 +32,22 @@ parameters:
 
 ## Examples
 
-### Valid Class Names (Default Configuration)
+### Default Configuration
 
 ```php
 <?php
 
+// Valid class names
 class UserController {} // ✓ Valid PascalCase
 class HttpResponse {} // ✓ Valid PascalCase
 class DatabaseConnection {} // ✓ Valid PascalCase
-class JsonParser {} // ✓ Valid PascalCase
-
 interface PaymentProcessorInterface {} // ✓ Valid PascalCase
-trait LoggingTrait {} // ✓ Valid PascalCase
-enum StatusEnum {} // ✓ Valid PascalCase
 
-abstract class AbstractBaseClass {} // ✓ Valid PascalCase
-```
-
-### Invalid Class Names (Default Configuration)
-
-```php
-<?php
-
+// Invalid class names
 class userController {} // ✗ Error: Class name "userController" is not in PascalCase.
 class user_controller {} // ✗ Error: Class name "user_controller" is not in PascalCase.
-class USER_CONTROLLER {} // ✗ Error: Class name "USER_CONTROLLER" is not in PascalCase.
 class HTTPClient {} // ✗ Error: Class name "HTTPClient" is not in PascalCase (consecutive uppercase not allowed by default).
-class XMLParser {} // ✗ Error: Class name "XMLParser" is not in PascalCase (consecutive uppercase not allowed by default).
-
-interface payment_processor_interface {} // ✗ Error: Interface name "payment_processor_interface" is not in PascalCase.
 trait logging_trait {} // ✗ Error: Trait name "logging_trait" is not in PascalCase.
-enum status_enum {} // ✗ Error: Enum name "status_enum" is not in PascalCase.
 ```
 
 ### Configuration Examples
@@ -76,17 +61,10 @@ parameters:
             allow_consecutive_uppercase: true
 ```
 
-With this configuration:
 ```php
 class HTTPClient {} // ✓ Now valid
 class XMLParser {} // ✓ Now valid
-class JSONProcessor {} // ✓ Now valid
-class APIController {} // ✓ Now valid
-class URLBuilder {} // ✓ Now valid
-
-interface HTTPClientInterface {} // ✓ Now valid
-trait XMLParserTrait {} // ✓ Now valid
-enum HTTPStatusEnum {} // ✓ Now valid
+interface APIClientInterface {} // ✓ Now valid
 ```
 
 ## Important Notes

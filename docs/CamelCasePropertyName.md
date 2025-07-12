@@ -38,32 +38,22 @@ parameters:
 
 ## Examples
 
-### Valid Property Names (Default Configuration)
+### Default Configuration
 
 ```php
 <?php
 
 class Example
 {
-    private $userData;
-    protected $httpResponse;
-    public $isValid;
-    private $firstName;
-    public $itemCount;
-}
-```
-
-### Invalid Property Names (Default Configuration)
-
-```php
-<?php
-
-class Example
-{
+    // Valid property names
+    private $userData; // ✓ Valid camelCase
+    protected $httpResponse; // ✓ Valid camelCase
+    public $isValid; // ✓ Valid camelCase
+    private $firstName; // ✓ Valid camelCase
+    
+    // Invalid property names
     private $user_data; // ✗ Error: Property name "user_data" is not in camelCase.
     protected $HttpResponse; // ✗ Error: Property name "HttpResponse" is not in camelCase.
-    public $is_valid; // ✗ Error: Property name "is_valid" is not in camelCase.
-    private $first_name; // ✗ Error: Property name "first_name" is not in camelCase.
     public $ITEM_COUNT; // ✗ Error: Property name "ITEM_COUNT" is not in camelCase.
 }
 ```
@@ -79,13 +69,11 @@ parameters:
             allow_consecutive_uppercase: true
 ```
 
-With this configuration:
 ```php
 class Example
 {
     private $httpURL; // ✓ Now valid
-    protected $xmlData; // ✓ Now valid
-    public $apiHTTPResponse; // ✓ Now valid
+    private $xmlAPI; // ✓ Now valid
 }
 ```
 
@@ -98,13 +86,11 @@ parameters:
             allow_underscore_prefix: true
 ```
 
-With this configuration:
 ```php
 class Example
 {
     private $_privateProperty; // ✓ Now valid
     protected $_internalData; // ✓ Now valid
-    public $_tempValue; // ✓ Now valid
 }
 ```
 

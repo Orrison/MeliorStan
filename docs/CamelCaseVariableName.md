@@ -38,51 +38,26 @@ parameters:
 
 ## Examples
 
-### Valid Variable Names (Default Configuration)
+### Default Configuration
 
 ```php
 <?php
 
 function processData($inputData) 
 {
+    // Valid variable names
     $userData = [];
     $httpResponse = null;
     $isValid = true;
     $firstName = 'John';
-    $itemCount = 0;
     
-    foreach ($inputData as $currentItem) {
-        $processedValue = transform($currentItem);
-    }
-}
-
-class Example
-{
-    public function calculate()
-    {
-        $firstNumber = 10;
-        $secondNumber = 20;
-        $resultValue = $firstNumber + $secondNumber;
-        return $resultValue;
-    }
-}
-```
-
-### Invalid Variable Names (Default Configuration)
-
-```php
-<?php
-
-function processData($inputData) 
-{
+    // Invalid variable names
     $user_data = []; // ✗ Error: Variable name "user_data" is not in camelCase.
     $HttpResponse = null; // ✗ Error: Variable name "HttpResponse" is not in camelCase.
-    $is_valid = true; // ✗ Error: Variable name "is_valid" is not in camelCase.
-    $first_name = 'John'; // ✗ Error: Variable name "first_name" is not in camelCase.
     $ITEM_COUNT = 0; // ✗ Error: Variable name "ITEM_COUNT" is not in camelCase.
     
-    foreach ($inputData as $current_item) { // ✗ Error: Variable name "current_item" is not in camelCase.
-        $processed_value = transform($current_item); // ✗ Error: Variable name "processed_value" is not in camelCase.
+    foreach ($inputData as $currentItem) { // ✓ Valid
+        $processed_value = transform($currentItem); // ✗ Error: Variable name "processed_value" is not in camelCase.
     }
 }
 ```
@@ -98,13 +73,11 @@ parameters:
             allow_consecutive_uppercase: true
 ```
 
-With this configuration:
 ```php
 function processData() 
 {
     $httpURL = 'https://example.com'; // ✓ Now valid
-    $xmlData = parseXML($httpURL); // ✓ Now valid
-    $apiHTTPResponse = callAPI($httpURL); // ✓ Now valid
+    $xmlAPI = parseAPI($httpURL); // ✓ Now valid
 }
 ```
 
@@ -117,13 +90,11 @@ parameters:
             allow_underscore_prefix: true
 ```
 
-With this configuration:
 ```php
 function processData() 
 {
     $_tempVariable = 'temporary'; // ✓ Now valid
     $_internalData = getData(); // ✓ Now valid
-    $_privateValue = calculateValue(); // ✓ Now valid
 }
 ```
 
