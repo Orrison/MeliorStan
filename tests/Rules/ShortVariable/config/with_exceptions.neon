@@ -1,0 +1,10 @@
+includes:
+    - ../../../../config/extension.neon
+
+rules:
+    - Orrison\MessedUpPhpstan\Rules\ShortVariable\ShortVariableRule
+
+parameters:
+    messed_up:
+        short_variable:
+            exceptions: ['i', 'j', 'k', 'x', 'y', 'e']
