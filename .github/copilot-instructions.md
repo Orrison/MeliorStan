@@ -212,7 +212,7 @@ parameters:
 ### README Integration
 When adding new rules, update `README.md` in the Rules section:
 ```markdown
-### [Rule Display Name](docs/{RuleName}.md)
+### [{Rule name without the "Rule" suffix, e.g. CamelCaseVariableName}](docs/{RuleName}.md)
 
 {Brief one-line description matching the rule documentation}
 ```
