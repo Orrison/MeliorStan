@@ -16,6 +16,10 @@ parametersSchema:
             allow_consecutive_uppercase: bool(),
             allow_underscore_prefix: bool(),
         ]),
+        camel_case_variable_name: structure([
+            allow_consecutive_uppercase: bool(),
+            allow_underscore_prefix: bool(),
+        ]),
     ])
 
 # default parameters
@@ -31,6 +35,9 @@ parameters:
             allow_consecutive_uppercase: false
             allow_underscore_prefix: false
         camel_case_parameter_name:
+            allow_consecutive_uppercase: false
+            allow_underscore_prefix: false
+        camel_case_variable_name:
             allow_consecutive_uppercase: false
             allow_underscore_prefix: false
 
@@ -55,3 +62,8 @@ services:
         arguments:
             - %messed_up.camel_case_parameter_name.allow_consecutive_uppercase%
             - %messed_up.camel_case_parameter_name.allow_underscore_prefix%
+    -
+        factory: Orrison\MessedUpPhpstan\Rules\CamelCaseVariableName\Config
+        arguments:
+            - %messed_up.camel_case_variable_name.allow_consecutive_uppercase%
+            - %messed_up.camel_case_variable_name.allow_underscore_prefix%

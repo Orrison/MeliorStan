@@ -1,0 +1,7 @@
+includes:
+    - configured_rule.neon
+
+parameters:
+    messed_up:
+        camel_case_variable_name:
+            allow_underscore_prefix: true
