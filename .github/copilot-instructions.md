@@ -2,7 +2,7 @@
 
 ## Project Overview
 This is a PHPStan extension that provides different custom PHPstan rules with configurable options. Each rule has its own namespace under `src/Rules/` and follows a consistent architecture pattern.
-Though many of the rules are focused on providing similiar functionality to PHP Mess Detector. (https://phpmd.org/) There will also be some rules that are unique to this extension.
+Though many of the rules are focused on providing similar functionality to PHP Mess Detector. (https://phpmd.org/) There will also be some rules that are unique to this extension.
 
 ## Architecture Pattern
 Each rule follows a 3-component structure:
