@@ -12,6 +12,26 @@ Not every rule in this extention is inspired by PHPMD. Additional rules beyond t
 
 ## Rules
 
+### [CamelCase Method Name](docs/CamelCaseMethodName.md)
+
+Enforces that method names should follow camelCase naming convention.
+
+### [CamelCase Parameter Name](docs/CamelCaseParameterName.md)
+
+Enforces that function and method parameter names should follow camelCase naming convention.
+
+### [CamelCase Property Name](docs/CamelCasePropertyName.md)
+
+Enforces that class property names should follow camelCase naming convention.
+
+### [CamelCase Variable Name](docs/CamelCaseVariableName.md)
+
+Enforces that local variable names should follow camelCase naming convention.
+
+### [PascalCase Class Name](docs/PascalCaseClassName.md)
+
+Enforces that class names should follow PascalCase naming convention.
+
 ### [Superglobals](docs/Superglobals.md)
 
 Enforces that PHP superglobals should not be used.
