@@ -12,7 +12,7 @@ Not every rule in this extention is inspired by PHPMD. Additional rules beyond t
 
 ## Rules
 
-### Superglobals Rule
+### Superglobals
 
 Enforces that PHP superglobals should not be used.
 
@@ -53,7 +53,7 @@ class BadExample
     public function getData()
     {
         // This will trigger a violation
-        $data = $_POST['user_input']; // Error: Superglobal "$_POST" should not be used in userland code.
+        $data = $_POST['user_input']; // Error: Superglobal "$_POST" should not be used.
         
         return $data;
     }
