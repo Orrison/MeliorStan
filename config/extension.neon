@@ -20,6 +20,10 @@ parametersSchema:
             allow_consecutive_uppercase: bool(),
             allow_underscore_prefix: bool(),
         ]),
+        short_variable: structure([
+            minimum_length: int(),
+            exceptions: arrayOf(string()),
+        ]),
     ])
 
 # default parameters
@@ -40,6 +44,9 @@ parameters:
         camel_case_variable_name:
             allow_consecutive_uppercase: false
             allow_underscore_prefix: false
+        short_variable:
+            minimum_length: 3
+            exceptions: []
 
 services:
     -
@@ -67,3 +74,8 @@ services:
         arguments:
             - %messed_up.camel_case_variable_name.allow_consecutive_uppercase%
             - %messed_up.camel_case_variable_name.allow_underscore_prefix%
+    -
+        factory: Orrison\MessedUpPhpstan\Rules\ShortVariable\Config
+        arguments:
+            - %messed_up.short_variable.minimum_length%
+            - %messed_up.short_variable.exceptions%
