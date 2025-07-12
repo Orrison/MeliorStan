@@ -120,3 +120,105 @@ Config methods use descriptive names with `get` prefix and follow camelCase:
 - When adding new rules, ensure to add appropriate test cases covering all configuration permutations.
 - When updating existing rules, ensure backward compatibility unless a breaking change is explicitly intended and documented.
 - When done with changes, ensure that you MUST run formatting and static analysis, then run all tests. You must keep doing this till all three pass and it MUST be done in this order as formatting may change line numbers in tests.
+
+## Documentation Standards
+
+### Documentation Requirements
+- **MANDATORY**: All rules MUST have comprehensive documentation in `docs/{RuleName}.md`
+- **README Updates**: The main `README.md` must be updated to link to new rule documentation
+- Documentation must be created/updated whenever:
+  - Adding new rules
+  - Modifying existing rule behavior
+  - Adding or changing configuration options
+  - Changing rule names or namespaces
+
+### Documentation Structure
+Each rule documentation file must follow this exact structure:
+
+```markdown
+# {Rule Display Name}
+
+{Brief description of what the rule enforces}
+
+{Detailed description explaining the rule's purpose and scope}
+
+## Configuration
+
+This rule supports the following configuration options:
+
+### `config_option_name`
+- **Type**: `bool` (or appropriate type)
+- **Default**: `false` (or appropriate default)
+- **Description**: {Clear description of what this option enables/disables with example}
+
+## Usage
+
+Add the rule to your PHPStan configuration:
+
+```neon
+includes:
+    - vendor/orrison/messed-up-phpstan/config/extension.neon
+
+rules:
+    - Orrison\MessedUpPhpstan\Rules\{Namespace}\{RuleName}Rule
+
+parameters:
+    messed_up:
+        {config_namespace}:
+            config_option: false
+```
+
+## Examples
+
+### Default Configuration
+
+```php
+<?php
+
+{Combined valid and invalid examples with comments indicating which are valid/invalid}
+```
+
+### Configuration Examples
+
+#### {Config Option Display Name}
+
+```neon
+parameters:
+    messed_up:
+        {config_namespace}:
+            config_option: true
+```
+
+```php
+{Minimal focused examples showing what becomes valid with this configuration}
+```
+
+## Important Notes (if applicable)
+
+{Any important behavioral notes, scope limitations, or edge cases}
+```
+
+### Documentation Writing Guidelines
+
+1. **Combined Examples**: Use single code blocks with inline comments to show valid (`// ✓ Valid`) and invalid (`// ✗ Error: {message}`) examples
+2. **Minimal Configuration Examples**: Each configuration option should have ONE focused example showing its effect
+3. **No Redundant Examples**: Avoid multiple examples that demonstrate the same concept with different variable names
+4. **Clean Comments**: Use `// ✓ Now valid` (no explanatory notes) for configuration examples
+5. **Accurate Examples**: Ensure configuration examples actually require the configuration change (e.g., `httpURL` for consecutive uppercase, not `xmlData`)
+6. **Consistent Formatting**: Follow the exact structure and formatting of existing documentation files
+
+### README Integration
+When adding new rules, update `README.md` in the Rules section:
+```markdown
+### [Rule Display Name](docs/{RuleName}.md)
+
+{Brief one-line description matching the rule documentation}
+```
+
+### Documentation Validation
+Before completing rule implementation:
+1. Verify all examples are accurate and require their respective configurations
+2. Ensure README.md links are functional and descriptions match
+3. Check that configuration parameter names match `extension.neon`
+4. Validate that error messages in examples match actual rule output
+5. Ensure documentation is done for all possible configurable properties of the rule. If a rule does not have any configurable properties, it must notate that in the documentation like in `Superglobals.md`.
