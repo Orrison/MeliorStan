@@ -44,13 +44,14 @@ parameters:
 
 ## Examples
 
-### Valid Method Names (Default Configuration)
+### Default Configuration
 
 ```php
 <?php
 
 class Example
 {
+    // Valid method names
     public function doSomething() {} // ✓ Valid camelCase
     public function getHttpResponse() {} // ✓ Valid camelCase
     public function testMethod() {} // ✓ Valid camelCase
@@ -58,20 +59,12 @@ class Example
     // Magic methods are always ignored
     public function __construct() {} // ✓ Always valid
     public function __destruct() {} // ✓ Always valid
-}
-```
-
-### Invalid Method Names (Default Configuration)
-
-```php
-<?php
-
-class Example
-{
+    
+    // Invalid method names
     public function do_something_invalid() {} // ✗ Error: Method name "do_something_invalid" is not in camelCase.
     public function DoSomethingInvalid() {} // ✗ Error: Method name "DoSomethingInvalid" is not in camelCase.
     public function getHTTPResponseInvalid() {} // ✗ Error: Method name "getHTTPResponseInvalid" is not in camelCase.
-    public function test_with_underscores_invalid() {} // ✗ Error: Method name "test_with_underscores_invalid" is not in camelCase.
+    public function test_with_underscores() {} // ✗ Error: Method name "test_with_underscores" is not in camelCase.
 }
 ```
 
@@ -86,10 +79,9 @@ parameters:
             allow_consecutive_uppercase: true
 ```
 
-With this configuration:
 ```php
 public function getHTTPResponse() {} // ✓ Now valid
-public function getXMLData() {} // ✓ Now valid
+public function parseXMLAPI() {} // ✓ Now valid
 ```
 
 #### Allow Underscores in Tests
@@ -101,10 +93,8 @@ parameters:
             allow_underscore_in_tests: true
 ```
 
-With this configuration:
 ```php
-public function test_with_underscores() {} // ✓ Now valid (starts with "test")
-public function testAnotherMethod() {} // ✓ Still valid
+public function test_with_underscores() {} // ✓ Now valid
 ```
 
 #### Allow Underscore Prefix
@@ -116,8 +106,6 @@ parameters:
             allow_underscore_prefix: true
 ```
 
-With this configuration:
 ```php
 public function _privateMethod() {} // ✓ Now valid
-public function _getData() {} // ✓ Now valid
 ```

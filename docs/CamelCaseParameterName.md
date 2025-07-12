@@ -38,7 +38,7 @@ parameters:
 
 ## Examples
 
-### Valid Parameter Names (Default Configuration)
+### Default Configuration
 
 ```php
 <?php
@@ -47,40 +47,20 @@ class Example
 {
     public function process($userData, $httpResponse, $isValid) 
     {
-        // All parameters follow camelCase
+        // ✓ Valid camelCase parameters
     }
     
-    public function calculate($firstNumber, $secondNumber) 
+    public function calculate($user_data, $HttpResponse, $SECOND_NUMBER) 
     {
-        // Valid camelCase parameters
+        // ✗ Error: Parameter name "user_data" is not in camelCase.
+        // ✗ Error: Parameter name "HttpResponse" is not in camelCase.
+        // ✗ Error: Parameter name "SECOND_NUMBER" is not in camelCase.
     }
 }
 
 function processData($inputData, $outputFormat) 
 {
-    // Valid camelCase parameters
-}
-```
-
-### Invalid Parameter Names (Default Configuration)
-
-```php
-<?php
-
-class Example
-{
-    public function process($user_data, $HttpResponse, $is_valid) 
-    {
-        // ✗ Error: Parameter name "user_data" is not in camelCase.
-        // ✗ Error: Parameter name "HttpResponse" is not in camelCase.
-        // ✗ Error: Parameter name "is_valid" is not in camelCase.
-    }
-    
-    public function calculate($first_number, $SECOND_NUMBER) 
-    {
-        // ✗ Error: Parameter name "first_number" is not in camelCase.
-        // ✗ Error: Parameter name "SECOND_NUMBER" is not in camelCase.
-    }
+    // ✓ Valid camelCase parameters
 }
 ```
 
@@ -95,10 +75,8 @@ parameters:
             allow_consecutive_uppercase: true
 ```
 
-With this configuration:
 ```php
-public function process($httpURL, $xmlData) {} // ✓ Now valid
-public function handle($apiHTTPResponse) {} // ✓ Now valid
+public function process($httpURL, $xmlAPI) {} // ✓ Now valid
 ```
 
 #### Allow Underscore Prefix
@@ -110,8 +88,6 @@ parameters:
             allow_underscore_prefix: true
 ```
 
-With this configuration:
 ```php
 public function process($_privateParam, $_internalData) {} // ✓ Now valid
-public function handle($_tempValue) {} // ✓ Now valid
 ```
