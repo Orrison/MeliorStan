@@ -1,4 +1,4 @@
-# PascalCase Class Name Rule
+# PascalCaseClassName
 
 Enforces that class names should follow PascalCase naming convention.
 

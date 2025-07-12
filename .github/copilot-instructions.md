@@ -136,7 +136,7 @@ Config methods use descriptive names with `get` prefix and follow camelCase:
 Each rule documentation file must follow this exact structure:
 
 ```markdown
-# {Rule Display Name}
+# {Rule name without the "Rule" suffix, e.g. CamelCaseVariableName}
 
 {Brief description of what the rule enforces}
 
@@ -150,6 +150,8 @@ This rule supports the following configuration options:
 - **Type**: `bool` (or appropriate type)
 - **Default**: `false` (or appropriate default)
 - **Description**: {Clear description of what this option enables/disables with example}
+
+{If a rule does not have any configurable options, include a note here stating "This rule has no configuration options."}
 
 ## Usage
 

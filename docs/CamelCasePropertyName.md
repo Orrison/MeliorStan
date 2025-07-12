@@ -1,4 +1,4 @@
-# CamelCase Property Name Rule
+# CamelCasePropertyName
 
 Enforces that class property names should follow camelCase naming convention.
 

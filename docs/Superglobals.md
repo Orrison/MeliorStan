@@ -1,4 +1,4 @@
-# Superglobals Rule
+# Superglobals
 
 Enforces that PHP superglobals should not be used.
 

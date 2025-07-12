@@ -1,4 +1,4 @@
-# CamelCase Parameter Name Rule
+# CamelCaseParameterName
 
 Enforces that function and method parameter names should follow camelCase naming convention.
 
