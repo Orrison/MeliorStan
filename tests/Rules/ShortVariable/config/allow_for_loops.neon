@@ -1,0 +1,13 @@
+includes:
+    - ../../../../config/extension.neon
+
+parameters:
+    messed_up:
+        short_variable:
+            allow_in_for_loops: true
+
+services:
+    -
+        class: Orrison\MessedUpPhpstan\Rules\ShortVariable\ShortVariableRule
+        tags:
+            - phpstan.rules.rule
