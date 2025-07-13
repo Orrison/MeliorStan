@@ -21,6 +21,9 @@ final class ShortVariableRule implements Rule
 {
     /** @var array<string, int> Track variables processed in special contexts by name and line */
     private array $specialContextVariables = [];
+    
+    /** @var string|null Track current file being processed */
+    private ?string $currentFile = null;
 
     public function __construct(
         protected Config $config,
@@ -40,8 +43,19 @@ final class ShortVariableRule implements Rule
      */
     public function processNode(Node $node, Scope $scope): array
     {
-        // Reset tracking at the start of each file/class
-        if ($node instanceof \PhpParser\Node\Stmt\Class_) {
+        // Reset tracking when we detect a new file
+        $currentFileName = $scope->getFile();
+        if ($this->currentFile !== $currentFileName) {
+            $this->currentFile = $currentFileName;
+            $this->specialContextVariables = [];
+        }
+
+        // Reset tracking at the start of each file/class/namespace/function  
+        if ($node instanceof \PhpParser\Node\Stmt\Class_ || 
+            $node instanceof \PhpParser\Node\Stmt\Namespace_ ||
+            $node instanceof \PhpParser\Node\Stmt\Function_ ||
+            $node instanceof \PhpParser\Node\Stmt\Interface_ ||
+            $node instanceof \PhpParser\Node\Stmt\Trait_) {
             $this->specialContextVariables = [];
         }
 
