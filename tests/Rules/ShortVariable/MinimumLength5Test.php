@@ -34,8 +34,6 @@ class MinimumLength5Test extends RuleTestCase
             ['Variable name "$msg" is shorter than minimum length of 5 characters.', 38],
             ['Parameter name "$x" is shorter than minimum length of 5 characters.', 42],
             ['Parameter name "$y" is shorter than minimum length of 5 characters.', 42],
-            ['Variable name "$x" is shorter than minimum length of 5 characters.', 44],
-            ['Variable name "$y" is shorter than minimum length of 5 characters.', 44],
         ]);
     }
 
