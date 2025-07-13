@@ -18,9 +18,9 @@ class PureProceduralFileTest extends RuleTestCase
         $this->analyse([
             __DIR__ . '/Fixture/PureProceduralFile.php',
         ], [
-            ['Variable name "$i" is shorter than minimum length of 3 characters.', 5], // Before for loop
-            ['Variable name "$i" is shorter than minimum length of 3 characters.', 11], // After for loop
-            ['Variable name "$x" is shorter than minimum length of 3 characters.', 13], // Regular variable
+            ['Variable name "$i" is shorter than minimum length of 3 characters.', 3],
+            ['Variable name "$i" is shorter than minimum length of 3 characters.', 9],
+            ['Variable name "$x" is shorter than minimum length of 3 characters.', 11],
         ]);
     }
 

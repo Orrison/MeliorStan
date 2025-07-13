@@ -18,11 +18,10 @@ class SameNameAfterContextTest extends RuleTestCase
         $this->analyse([
             __DIR__ . '/Fixture/SameNameAfterContext.php',
         ], [
-            // These should be violations since they're defined AFTER the allowed contexts
-            ['Variable name "$i" is shorter than minimum length of 3 characters.', 13],
-            ['Variable name "$k" is shorter than minimum length of 3 characters.', 23],
-            ['Variable name "$v" is shorter than minimum length of 3 characters.', 24],
-            ['Variable name "$e" is shorter than minimum length of 3 characters.', 34],
+            ['Variable name "$i" is shorter than minimum length of 3 characters.', 11],
+            ['Variable name "$k" is shorter than minimum length of 3 characters.', 19],
+            ['Variable name "$v" is shorter than minimum length of 3 characters.', 20],
+            ['Variable name "$e" is shorter than minimum length of 3 characters.', 28],
         ]);
     }
 
