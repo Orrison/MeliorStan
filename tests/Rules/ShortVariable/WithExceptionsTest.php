@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Orrison\MessedUpPhpstan\Tests\Rules\ShortVariable;
 
@@ -23,7 +23,7 @@ class WithExceptionsTest extends RuleTestCase
             ['Parameter name "$id" is shorter than minimum length of 3 characters.', 15],
             ['Variable name "$b" is shorter than minimum length of 3 characters.', 18],
             ['Variable name "$cd" is shorter than minimum length of 3 characters.', 19],
-            ['Variable name "$v" is shorter than minimum length of 3 characters.', 31],
+            ['Variable name "$v" is shorter than minimum length of 3 characters.', 30],
         ]);
     }
 

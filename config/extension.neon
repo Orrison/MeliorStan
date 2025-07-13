@@ -23,6 +23,9 @@ parametersSchema:
         short_variable: structure([
             minimum_length: int(),
             exceptions: arrayOf(string()),
+            allow_in_for_loops: bool(),
+            allow_in_foreach: bool(),
+            allow_in_catch: bool(),
         ]),
     ])
 
@@ -47,6 +50,9 @@ parameters:
         short_variable:
             minimum_length: 3
             exceptions: []
+            allow_in_for_loops: false
+            allow_in_foreach: false
+            allow_in_catch: false
 
 services:
     -
@@ -79,3 +85,6 @@ services:
         arguments:
             - %messed_up.short_variable.minimum_length%
             - %messed_up.short_variable.exceptions%
+            - %messed_up.short_variable.allow_in_for_loops%
+            - %messed_up.short_variable.allow_in_foreach%
+            - %messed_up.short_variable.allow_in_catch%

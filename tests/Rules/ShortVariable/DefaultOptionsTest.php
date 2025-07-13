@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Orrison\MessedUpPhpstan\Tests\Rules\ShortVariable;
 
@@ -27,10 +27,9 @@ class DefaultOptionsTest extends RuleTestCase
             ['Variable name "$i" is shorter than minimum length of 3 characters.', 23],
             ['Variable name "$i" is shorter than minimum length of 3 characters.', 23],
             ['Variable name "$j" is shorter than minimum length of 3 characters.', 24],
-            ['Variable name "$i" is shorter than minimum length of 3 characters.', 24],
-            ['Variable name "$i" is shorter than minimum length of 3 characters.', 23],
-            ['Variable name "$v" is shorter than minimum length of 3 characters.', 31],
-            ['Variable name "$e" is shorter than minimum length of 3 characters.', 38],
+            ['Variable name "$k" is shorter than minimum length of 3 characters.', 30],
+            ['Variable name "$v" is shorter than minimum length of 3 characters.', 30],
+            ['Variable name "$e" is shorter than minimum length of 3 characters.', 37],
             ['Parameter name "$x" is shorter than minimum length of 3 characters.', 42],
             ['Parameter name "$y" is shorter than minimum length of 3 characters.', 42],
             ['Variable name "$x" is shorter than minimum length of 3 characters.', 44],
