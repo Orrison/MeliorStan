@@ -35,9 +35,30 @@ final class ShortVariableRule implements Rule
     /** @var string|null Track current file being processed */
     private ?string $currentFile = null;
 
+    /** @var array<string, int|string> Cached exceptions list as a set for O(1) lookups */
+    private array $exceptionsSet = [];
+
+    /** @var bool Cached config values */
+    private bool $allowInForLoops;
+
+    private bool $allowInForeach;
+
+    private bool $allowInCatch;
+
+    private int $minimumLength;
+
     public function __construct(
         protected Config $config,
-    ) {}
+    ) {
+        // Cache config values for efficiency
+        $this->allowInForLoops = $this->config->getAllowInForLoops();
+        $this->allowInForeach = $this->config->getAllowInForeach();
+        $this->allowInCatch = $this->config->getAllowInCatch();
+        $this->minimumLength = $this->config->getMinimumLength();
+
+        // Convert exceptions array to set for O(1) lookups
+        $this->exceptionsSet = array_flip($this->config->getExceptions());
+    }
 
     /**
      * @return class-string<Node>
@@ -114,10 +135,9 @@ final class ShortVariableRule implements Rule
 
         if ($var instanceof Variable && is_string($var->name)) {
             // Check if this variable was already processed in a special context
-            $line = $var->getLine();
-            $key = $var->name . '_' . $line;
+            $trackingKey = $var->name . '_' . $var->getLine();
 
-            if (isset($this->specialContextVariables[$key])) {
+            if (isset($this->specialContextVariables[$trackingKey])) {
                 // Already processed by special context processor
                 return [];
             }
@@ -142,12 +162,16 @@ final class ShortVariableRule implements Rule
 
                 if ($var instanceof Variable && is_string($var->name)) {
                     // Track this variable as processed in special context
-                    $line = $var->getLine();
-                    $this->specialContextVariables[$var->name . '_' . $line] = $line;
+                    $trackingKey = $var->name . '_' . $var->getLine();
+                    $this->specialContextVariables[$trackingKey] = $var->getLine();
 
-                    // Only report if allow_in_for_loops is false
-                    if (! $this->config->getAllowInForLoops()) {
-                        $errors = array_merge($errors, $this->checkVariableLength($var));
+                    // Only report errors if exemption is not enabled
+                    if (! $this->allowInForLoops) {
+                        $variableErrors = $this->checkVariableLength($var);
+
+                        foreach ($variableErrors as $error) {
+                            $errors[] = $error;
+                        }
                     }
                 }
             }
@@ -161,12 +185,16 @@ final class ShortVariableRule implements Rule
 
                 if ($var instanceof Variable && is_string($var->name)) {
                     // Track this variable as processed in special context
-                    $line = $var->getLine();
-                    $this->specialContextVariables[$var->name . '_' . $line] = $line;
+                    $trackingKey = $var->name . '_' . $var->getLine();
+                    $this->specialContextVariables[$trackingKey] = $var->getLine();
 
-                    // Only report if allow_in_for_loops is false
-                    if (! $this->config->getAllowInForLoops()) {
-                        $errors = array_merge($errors, $this->checkVariableLength($var));
+                    // Only report errors if exemption is not enabled
+                    if (! $this->allowInForLoops) {
+                        $variableErrors = $this->checkVariableLength($var);
+
+                        foreach ($variableErrors as $error) {
+                            $errors[] = $error;
+                        }
                     }
                 }
             }
@@ -185,12 +213,16 @@ final class ShortVariableRule implements Rule
         // Check key variable if present
         if ($node->keyVar instanceof Variable && is_string($node->keyVar->name)) {
             // Track this variable as processed in special context
-            $line = $node->keyVar->getLine();
-            $this->specialContextVariables[$node->keyVar->name . '_' . $line] = $line;
+            $trackingKey = $node->keyVar->name . '_' . $node->keyVar->getLine();
+            $this->specialContextVariables[$trackingKey] = $node->keyVar->getLine();
 
-            // Only report if allow_in_foreach is false
-            if (! $this->config->getAllowInForeach()) {
-                $errors = array_merge($errors, $this->checkVariableLength($node->keyVar));
+            // Only report errors if exemption is not enabled
+            if (! $this->allowInForeach) {
+                $variableErrors = $this->checkVariableLength($node->keyVar);
+
+                foreach ($variableErrors as $error) {
+                    $errors[] = $error;
+                }
             }
         }
 
@@ -199,12 +231,16 @@ final class ShortVariableRule implements Rule
 
         if ($valueVar instanceof Variable && is_string($valueVar->name)) {
             // Track this variable as processed in special context
-            $line = $valueVar->getLine();
-            $this->specialContextVariables[$valueVar->name . '_' . $line] = $line;
+            $trackingKey = $valueVar->name . '_' . $valueVar->getLine();
+            $this->specialContextVariables[$trackingKey] = $valueVar->getLine();
 
-            // Only report if allow_in_foreach is false
-            if (! $this->config->getAllowInForeach()) {
-                $errors = array_merge($errors, $this->checkVariableLength($valueVar));
+            // Only report errors if exemption is not enabled
+            if (! $this->allowInForeach) {
+                $variableErrors = $this->checkVariableLength($valueVar);
+
+                foreach ($variableErrors as $error) {
+                    $errors[] = $error;
+                }
             }
         }
 
@@ -223,12 +259,16 @@ final class ShortVariableRule implements Rule
 
         if ($catchVar instanceof Variable && is_string($catchVar->name)) {
             // Track this variable as processed in special context
-            $line = $catchVar->getLine();
-            $this->specialContextVariables[$catchVar->name . '_' . $line] = $line;
+            $trackingKey = $catchVar->name . '_' . $catchVar->getLine();
+            $this->specialContextVariables[$trackingKey] = $catchVar->getLine();
 
-            // Only report if allow_in_catch is false
-            if (! $this->config->getAllowInCatch()) {
-                $errors = array_merge($errors, $this->checkVariableLength($catchVar));
+            // Only report errors if exemption is not enabled
+            if (! $this->allowInCatch) {
+                $variableErrors = $this->checkVariableLength($catchVar);
+
+                foreach ($variableErrors as $error) {
+                    $errors[] = $error;
+                }
             }
         }
 
@@ -246,15 +286,15 @@ final class ShortVariableRule implements Rule
 
         $name = $node->var->name;
 
-        // Check if parameter is in exceptions list
-        if (in_array($name, $this->config->getExceptions(), true)) {
+        // Check if parameter is in exceptions list using O(1) lookup
+        if (isset($this->exceptionsSet[$name])) {
             return [];
         }
 
-        if (strlen($name) < $this->config->getMinimumLength()) {
+        if (strlen($name) < $this->minimumLength) {
             return [
                 RuleErrorBuilder::message(
-                    sprintf('Parameter name "$%s" is shorter than minimum length of %d characters.', $name, $this->config->getMinimumLength())
+                    sprintf('Parameter name "$%s" is shorter than minimum length of %d characters.', $name, $this->minimumLength)
                 )->identifier('MessedUpPhpstan.shortVariable')
                     ->build(),
             ];
@@ -273,14 +313,14 @@ final class ShortVariableRule implements Rule
         foreach ($node->props as $prop) {
             $name = $prop->name->name;
 
-            // Check if property is in exceptions list
-            if (in_array($name, $this->config->getExceptions(), true)) {
+            // Check if property is in exceptions list using O(1) lookup
+            if (isset($this->exceptionsSet[$name])) {
                 continue;
             }
 
-            if (strlen($name) < $this->config->getMinimumLength()) {
+            if (strlen($name) < $this->minimumLength) {
                 $errors[] = RuleErrorBuilder::message(
-                    sprintf('Property name "$%s" is shorter than minimum length of %d characters.', $name, $this->config->getMinimumLength())
+                    sprintf('Property name "$%s" is shorter than minimum length of %d characters.', $name, $this->minimumLength)
                 )->identifier('MessedUpPhpstan.shortVariable')
                     ->build();
             }
@@ -301,15 +341,15 @@ final class ShortVariableRule implements Rule
 
         $name = $node->name;
 
-        // Check if variable is in exceptions list
-        if (in_array($name, $this->config->getExceptions(), true)) {
+        // Check if variable is in exceptions list using O(1) lookup
+        if (isset($this->exceptionsSet[$name])) {
             return [];
         }
 
-        if (strlen($name) < $this->config->getMinimumLength()) {
+        if (strlen($name) < $this->minimumLength) {
             return [
                 RuleErrorBuilder::message(
-                    sprintf('Variable name "$%s" is shorter than minimum length of %d characters.', $name, $this->config->getMinimumLength())
+                    sprintf('Variable name "$%s" is shorter than minimum length of %d characters.', $name, $this->minimumLength)
                 )->identifier('MessedUpPhpstan.shortVariable')
                     ->build(),
             ];
