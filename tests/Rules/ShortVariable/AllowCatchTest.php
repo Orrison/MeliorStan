@@ -20,15 +20,12 @@ class AllowCatchTest extends RuleTestCase
         ], [
             ['Property name "$x" is shorter than minimum length of 3 characters.', 9],
             ['Parameter name "$a" is shorter than minimum length of 3 characters.', 11],
-            ['Variable name "$b" is shorter than minimum length of 3 characters.', 14],
-            // for loop variables should still be flagged when only allow_in_catch is true
-            ['Variable name "$i" is shorter than minimum length of 3 characters.', 17],
-            ['Variable name "$i" is shorter than minimum length of 3 characters.', 17],
-            ['Variable name "$j" is shorter than minimum length of 3 characters.', 18],
-            // foreach variables should still be flagged when only allow_in_catch is true
-            ['Variable name "$k" is shorter than minimum length of 3 characters.', 24],
-            ['Variable name "$v" is shorter than minimum length of 3 characters.', 24],
-            // $e should NOT be flagged in catch when allow_in_catch is true
+            ['Variable name "$b" is shorter than minimum length of 3 characters.', 13],
+            ['Variable name "$i" is shorter than minimum length of 3 characters.', 15],
+            ['Variable name "$i" is shorter than minimum length of 3 characters.', 15],
+            ['Variable name "$j" is shorter than minimum length of 3 characters.', 16],
+            ['Variable name "$k" is shorter than minimum length of 3 characters.', 21],
+            ['Variable name "$v" is shorter than minimum length of 3 characters.', 21],
         ]);
     }
 

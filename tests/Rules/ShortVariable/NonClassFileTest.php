@@ -18,13 +18,12 @@ class NonClassFileTest extends RuleTestCase
         $this->analyse([
             __DIR__ . '/Fixture/NonClassFile.php',
         ], [
-            // Variables after allowed contexts should be violations
-            ['Variable name "$i" is shorter than minimum length of 3 characters.', 13],
-            ['Variable name "$k" is shorter than minimum length of 3 characters.', 23],
-            ['Variable name "$v" is shorter than minimum length of 3 characters.', 24],
-            ['Variable name "$e" is shorter than minimum length of 3 characters.', 36],
-            ['Variable name "$x" is shorter than minimum length of 3 characters.', 40],
-            ['Variable name "$j" is shorter than minimum length of 3 characters.', 41],
+            ['Variable name "$i" is shorter than minimum length of 3 characters.', 9],
+            ['Variable name "$k" is shorter than minimum length of 3 characters.', 17],
+            ['Variable name "$v" is shorter than minimum length of 3 characters.', 18],
+            ['Variable name "$e" is shorter than minimum length of 3 characters.', 29],
+            ['Variable name "$x" is shorter than minimum length of 3 characters.', 32],
+            ['Variable name "$j" is shorter than minimum length of 3 characters.', 33],
         ]);
     }
 

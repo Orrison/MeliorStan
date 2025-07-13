@@ -20,14 +20,11 @@ class AllowForLoopsTest extends RuleTestCase
         ], [
             ['Property name "$x" is shorter than minimum length of 3 characters.', 9],
             ['Parameter name "$a" is shorter than minimum length of 3 characters.', 11],
-            ['Variable name "$b" is shorter than minimum length of 3 characters.', 14],
-            // $i should NOT be flagged in for loop when allow_in_for_loops is true
-            ['Variable name "$j" is shorter than minimum length of 3 characters.', 18],
-            // foreach variables should still be flagged when only allow_in_for_loops is true
-            ['Variable name "$k" is shorter than minimum length of 3 characters.', 24],
-            ['Variable name "$v" is shorter than minimum length of 3 characters.', 24],
-            // catch variables should still be flagged when only allow_in_for_loops is true
-            ['Variable name "$e" is shorter than minimum length of 3 characters.', 31],
+            ['Variable name "$b" is shorter than minimum length of 3 characters.', 13],
+            ['Variable name "$j" is shorter than minimum length of 3 characters.', 16],
+            ['Variable name "$k" is shorter than minimum length of 3 characters.', 21],
+            ['Variable name "$v" is shorter than minimum length of 3 characters.', 21],
+            ['Variable name "$e" is shorter than minimum length of 3 characters.', 27],
         ]);
     }
 

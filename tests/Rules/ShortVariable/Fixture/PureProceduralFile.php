@@ -1,13 +1,11 @@
 <?php
 
-// Pure procedural file - no classes, functions, namespaces, etc.
-
-$i = 'before for loop'; // Should be violation
+$i = 'before for loop';
 
 for ($i = 0; $i < 10; $i++) {
-    // Loop body - $i should be exempt if allowed
+    // Loop body
 }
 
-$i = 'after for loop'; // Should be violation
+$i = 'after for loop';
 
-$x = 'short var'; // Should be violation
+$x = 'short var';
