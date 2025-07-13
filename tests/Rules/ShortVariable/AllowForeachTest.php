@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Orrison\MessedUpPhpstan\Tests\Rules\ShortVariable;
 
@@ -27,7 +27,7 @@ class AllowForeachTest extends RuleTestCase
             ['Variable name "$j" is shorter than minimum length of 3 characters.', 18],
             // $k and $v should NOT be flagged in foreach when allow_in_foreach is true
             // catch variables should still be flagged when only allow_in_foreach is true
-            ['Variable name "$e" is shorter than minimum length of 3 characters.', 30],
+            ['Variable name "$e" is shorter than minimum length of 3 characters.', 31],
         ]);
     }
 

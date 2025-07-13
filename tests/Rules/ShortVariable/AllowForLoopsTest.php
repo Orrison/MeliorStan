@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Orrison\MessedUpPhpstan\Tests\Rules\ShortVariable;
 
@@ -24,10 +24,10 @@ class AllowForLoopsTest extends RuleTestCase
             // $i should NOT be flagged in for loop when allow_in_for_loops is true
             ['Variable name "$j" is shorter than minimum length of 3 characters.', 18],
             // foreach variables should still be flagged when only allow_in_for_loops is true
-            ['Variable name "$k" is shorter than minimum length of 3 characters.', 23],
-            ['Variable name "$v" is shorter than minimum length of 3 characters.', 23],
+            ['Variable name "$k" is shorter than minimum length of 3 characters.', 24],
+            ['Variable name "$v" is shorter than minimum length of 3 characters.', 24],
             // catch variables should still be flagged when only allow_in_for_loops is true
-            ['Variable name "$e" is shorter than minimum length of 3 characters.', 30],
+            ['Variable name "$e" is shorter than minimum length of 3 characters.', 31],
         ]);
     }
 

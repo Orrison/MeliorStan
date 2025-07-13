@@ -20,6 +20,7 @@ class ExampleClassCatchAllowed
 
         // Foreach loop variables - should still be flagged when only allow_in_catch is true
         $items = [1, 2, 3];
+
         foreach ($items as $k => $v) {
             $temp = $v; // Regular variable in foreach - should still be flagged
         }

@@ -19,7 +19,7 @@ class MultipleProceduralFilesTest extends RuleTestCase
             __DIR__ . '/Fixture/FirstProceduralFile.php',
             __DIR__ . '/Fixture/SecondProceduralFile.php',
         ], [
-            ['Variable name "$i" is shorter than minimum length of 3 characters.', 5], // First file after for
+            ['Variable name "$i" is shorter than minimum length of 3 characters.', 6], // First file after for
             ['Variable name "$i" is shorter than minimum length of 3 characters.', 5], // Second file - might be missing without reset
         ]);
     }

@@ -20,6 +20,7 @@ class ExampleClassForLoopsAllowed
 
         // Foreach loop variables - should still be flagged when only allow_in_for_loops is true
         $items = [1, 2, 3];
+
         foreach ($items as $k => $v) {
             $temp = $v; // Short variable in foreach - should still be flagged
         }

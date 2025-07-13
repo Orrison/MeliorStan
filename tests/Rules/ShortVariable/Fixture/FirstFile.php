@@ -8,7 +8,7 @@ class FirstFile
         for ($i = 0; $i < 10; $i++) {
             // Loop body
         }
-        
+
         // This should NOT be exempt since it's after the for loop
         $i = 'should be violation';
     }

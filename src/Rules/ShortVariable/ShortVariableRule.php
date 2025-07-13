@@ -3,12 +3,22 @@
 namespace Orrison\MessedUpPhpstan\Rules\ShortVariable;
 
 use PhpParser\Node;
+use PhpParser\Node\Expr\Assign;
+use PhpParser\Node\Expr\PostDec;
+use PhpParser\Node\Expr\PostInc;
+use PhpParser\Node\Expr\PreDec;
+use PhpParser\Node\Expr\PreInc;
 use PhpParser\Node\Expr\Variable;
 use PhpParser\Node\Param;
 use PhpParser\Node\Stmt\Catch_;
+use PhpParser\Node\Stmt\Class_;
 use PhpParser\Node\Stmt\For_;
 use PhpParser\Node\Stmt\Foreach_;
+use PhpParser\Node\Stmt\Function_;
+use PhpParser\Node\Stmt\Interface_;
+use PhpParser\Node\Stmt\Namespace_;
 use PhpParser\Node\Stmt\Property;
+use PhpParser\Node\Stmt\Trait_;
 use PHPStan\Analyser\Scope;
 use PHPStan\Rules\Rule;
 use PHPStan\Rules\RuleError;
@@ -21,14 +31,13 @@ final class ShortVariableRule implements Rule
 {
     /** @var array<string, int> Track variables processed in special contexts by name and line */
     private array $specialContextVariables = [];
-    
+
     /** @var string|null Track current file being processed */
     private ?string $currentFile = null;
 
     public function __construct(
         protected Config $config,
-    ) {
-    }
+    ) {}
 
     /**
      * @return class-string<Node>
@@ -45,17 +54,18 @@ final class ShortVariableRule implements Rule
     {
         // Reset tracking when we detect a new file
         $currentFileName = $scope->getFile();
+
         if ($this->currentFile !== $currentFileName) {
             $this->currentFile = $currentFileName;
             $this->specialContextVariables = [];
         }
 
-        // Reset tracking at the start of each file/class/namespace/function  
-        if ($node instanceof \PhpParser\Node\Stmt\Class_ || 
-            $node instanceof \PhpParser\Node\Stmt\Namespace_ ||
-            $node instanceof \PhpParser\Node\Stmt\Function_ ||
-            $node instanceof \PhpParser\Node\Stmt\Interface_ ||
-            $node instanceof \PhpParser\Node\Stmt\Trait_) {
+        // Reset tracking at the start of each file/class/namespace/function
+        if ($node instanceof Class_ ||
+            $node instanceof Namespace_ ||
+            $node instanceof Function_ ||
+            $node instanceof Interface_ ||
+            $node instanceof Trait_) {
             $this->specialContextVariables = [];
         }
 
@@ -85,7 +95,7 @@ final class ShortVariableRule implements Rule
         }
 
         // Process assignment expressions that contain variables
-        if ($node instanceof \PhpParser\Node\Expr\Assign) {
+        if ($node instanceof Assign) {
             return $this->processAssignment($node);
         }
 
@@ -94,12 +104,14 @@ final class ShortVariableRule implements Rule
 
     /**
      * Process assignment expressions to check for short variable names
+     *
      * @return RuleError[]
      */
-    private function processAssignment(\PhpParser\Node\Expr\Assign $node): array
+    private function processAssignment(Assign $node): array
     {
         // Only check the left side (the variable being assigned to)
         $var = $node->var;
+
         if ($var instanceof Variable && is_string($var->name)) {
             // Check if this variable was already processed in a special context
             $line = $var->getLine();
@@ -125,15 +137,16 @@ final class ShortVariableRule implements Rule
 
         // Check variables defined in for loop init expressions
         foreach ($node->init as $expr) {
-            if ($expr instanceof \PhpParser\Node\Expr\Assign) {
+            if ($expr instanceof Assign) {
                 $var = $expr->var;
+
                 if ($var instanceof Variable && is_string($var->name)) {
                     // Track this variable as processed in special context
                     $line = $var->getLine();
                     $this->specialContextVariables[$var->name . '_' . $line] = $line;
 
                     // Only report if allow_in_for_loops is false
-                    if (!$this->config->getAllowInForLoops()) {
+                    if (! $this->config->getAllowInForLoops()) {
                         $errors = array_merge($errors, $this->checkVariableLength($var));
                     }
                 }
@@ -142,16 +155,17 @@ final class ShortVariableRule implements Rule
 
         // Check variables in for loop increment expressions
         foreach ($node->loop as $expr) {
-            if ($expr instanceof \PhpParser\Node\Expr\PostInc || $expr instanceof \PhpParser\Node\Expr\PreInc ||
-                $expr instanceof \PhpParser\Node\Expr\PostDec || $expr instanceof \PhpParser\Node\Expr\PreDec) {
+            if ($expr instanceof PostInc || $expr instanceof PreInc ||
+                $expr instanceof PostDec || $expr instanceof PreDec) {
                 $var = $expr->var;
+
                 if ($var instanceof Variable && is_string($var->name)) {
                     // Track this variable as processed in special context
                     $line = $var->getLine();
                     $this->specialContextVariables[$var->name . '_' . $line] = $line;
 
                     // Only report if allow_in_for_loops is false
-                    if (!$this->config->getAllowInForLoops()) {
+                    if (! $this->config->getAllowInForLoops()) {
                         $errors = array_merge($errors, $this->checkVariableLength($var));
                     }
                 }
@@ -175,20 +189,21 @@ final class ShortVariableRule implements Rule
             $this->specialContextVariables[$node->keyVar->name . '_' . $line] = $line;
 
             // Only report if allow_in_foreach is false
-            if (!$this->config->getAllowInForeach()) {
+            if (! $this->config->getAllowInForeach()) {
                 $errors = array_merge($errors, $this->checkVariableLength($node->keyVar));
             }
         }
 
         // Check value variable
         $valueVar = $node->valueVar;
+
         if ($valueVar instanceof Variable && is_string($valueVar->name)) {
             // Track this variable as processed in special context
             $line = $valueVar->getLine();
             $this->specialContextVariables[$valueVar->name . '_' . $line] = $line;
 
             // Only report if allow_in_foreach is false
-            if (!$this->config->getAllowInForeach()) {
+            if (! $this->config->getAllowInForeach()) {
                 $errors = array_merge($errors, $this->checkVariableLength($valueVar));
             }
         }
@@ -205,13 +220,14 @@ final class ShortVariableRule implements Rule
 
         // Check catch variable
         $catchVar = $node->var;
+
         if ($catchVar instanceof Variable && is_string($catchVar->name)) {
             // Track this variable as processed in special context
             $line = $catchVar->getLine();
             $this->specialContextVariables[$catchVar->name . '_' . $line] = $line;
 
             // Only report if allow_in_catch is false
-            if (!$this->config->getAllowInCatch()) {
+            if (! $this->config->getAllowInCatch()) {
                 $errors = array_merge($errors, $this->checkVariableLength($catchVar));
             }
         }
