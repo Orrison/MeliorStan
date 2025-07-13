@@ -14,6 +14,7 @@ class SameNameAfterContext
 
         // Foreach with short variables $k and $v
         $items = [1, 2, 3];
+
         foreach ($items as $k => $v) {
             // Loop body
         }

@@ -11,8 +11,7 @@ class Config
         private bool $allowInForLoops = false,
         private bool $allowInForeach = false,
         private bool $allowInCatch = false,
-    ) {
-    }
+    ) {}
 
     public function getMinimumLength(): int
     {

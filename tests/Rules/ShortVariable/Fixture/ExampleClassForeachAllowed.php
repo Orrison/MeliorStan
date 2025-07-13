@@ -20,6 +20,7 @@ class ExampleClassForeachAllowed
 
         // Foreach loop variables - should NOT be flagged when allow_in_foreach is true
         $items = [1, 2, 3];
+
         foreach ($items as $k => $v) {
             $temp = $v; // Regular variable in foreach - should still be flagged
         }

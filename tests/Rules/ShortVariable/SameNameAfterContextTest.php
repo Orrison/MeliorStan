@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Orrison\MessedUpPhpstan\Tests\Rules\ShortVariable;
 
@@ -20,9 +20,9 @@ class SameNameAfterContextTest extends RuleTestCase
         ], [
             // These should be violations since they're defined AFTER the allowed contexts
             ['Variable name "$i" is shorter than minimum length of 3 characters.', 13],
-            ['Variable name "$k" is shorter than minimum length of 3 characters.', 22],
-            ['Variable name "$v" is shorter than minimum length of 3 characters.', 23],
-            ['Variable name "$e" is shorter than minimum length of 3 characters.', 33],
+            ['Variable name "$k" is shorter than minimum length of 3 characters.', 23],
+            ['Variable name "$v" is shorter than minimum length of 3 characters.', 24],
+            ['Variable name "$e" is shorter than minimum length of 3 characters.', 34],
         ]);
     }
 
