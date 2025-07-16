@@ -6,7 +6,7 @@ Provides custom PHPStan rules for different enforcements throughout your codebas
 
 Originally inspired by <a href="https://phpmd.org/" target="_blank">PHPMD - PHP Mess Detector</a>, this project attempts to provide equivalent rules with modern interpretation and maintenance.
 
-Note that all rules inspired by PHPMD are simply that, inspired. They are often similiar in their enforcements. But they are not complete 1-to-1 replications, in that they provided different or additional customization via different parameters.
+Note that all rules inspired by PHPMD are simply that, inspired. They are often similar in their enforcements. But they are not complete 1-to-1 replications, in that they provided different or additional customization via different parameters.
 
 Not every rule in this extention is inspired by PHPMD. Additional rules beyond those that replicate PHPMD enforcements are also provided.
 
