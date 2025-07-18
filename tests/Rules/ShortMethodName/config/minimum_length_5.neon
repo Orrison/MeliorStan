@@ -1,0 +1,11 @@
+includes:
+    - ../../../../config/extension.neon
+
+rules:
+    - Orrison\MessedUpPhpstan\Rules\ShortMethodName\ShortMethodNameRule
+
+parameters:
+    messed_up:
+        short_method_name:
+            minimum_length: 5
+            exceptions: []
