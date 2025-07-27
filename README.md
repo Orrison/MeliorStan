@@ -28,6 +28,10 @@ Enforces that class property names should follow camelCase naming convention.
 
 Enforces that local variable names should follow camelCase naming convention.
 
+### [ConstantNamingConventions](docs/ConstantNamingConventions.md)
+
+Enforces that constant names should be in UPPERCASE.
+
 ### [PascalCase Class Name](docs/PascalCaseClassName.md)
 
 Enforces that class names should follow PascalCase naming convention.
