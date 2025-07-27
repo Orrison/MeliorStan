@@ -20,6 +20,8 @@ final class ConstantNamingConventionsRule implements Rule
      */
     public function getNodeType(): string
     {
+        // TODO: Break this rule into two different rules, one for classes/interfaces/enums and another for traits.
+        // This will allow for more specific handling of constant naming conventions.
         return Node::class;
     }
 
