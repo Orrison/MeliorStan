@@ -32,6 +32,10 @@ Enforces that local variable names should follow camelCase naming convention.
 
 Enforces that constant names should be in UPPERCASE.
 
+### [TraitConstantNamingConventions](docs/TraitConstantNamingConventions.md)
+
+Enforces that all trait constants use UPPERCASE naming convention.
+
 ### [PascalCase Class Name](docs/PascalCaseClassName.md)
 
 Enforces that class names should follow PascalCase naming convention.
