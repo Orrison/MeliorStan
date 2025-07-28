@@ -4,25 +4,22 @@ namespace Orrison\MessedUpPhpstan\Rules\ConstantNamingConventions;
 
 use PhpParser\Node;
 use PhpParser\Node\Stmt\ClassConst;
-use PhpParser\Node\Stmt\Trait_;
 use PHPStan\Analyser\Scope;
 use PHPStan\Rules\Rule;
 use PHPStan\Rules\RuleError;
 use PHPStan\Rules\RuleErrorBuilder;
 
 /**
- * @implements Rule<Node>
+ * @implements Rule<ClassConst>
  */
 final class ConstantNamingConventionsRule implements Rule
 {
     /**
-     * @return class-string<Node>
+     * @return class-string<ClassConst>
      */
     public function getNodeType(): string
     {
-        // TODO: Break this rule into two different rules, one for classes/interfaces/enums and another for traits.
-        // This will allow for more specific handling of constant naming conventions.
-        return Node::class;
+        return ClassConst::class;
     }
 
     /**
@@ -32,38 +29,15 @@ final class ConstantNamingConventionsRule implements Rule
     {
         $messages = [];
 
-        // Handle ClassConst nodes (for classes, interfaces, enums)
-        if ($node instanceof ClassConst) {
-            foreach ($node->consts as $const) {
-                $name = $const->name->name;
+        foreach ($node->consts as $const) {
+            $name = $const->name->name;
 
-                // Check if constant name is all uppercase
-                if ($name !== strtoupper($name)) {
-                    $messages[] = RuleErrorBuilder::message(
-                        sprintf('Constant name "%s" is not in UPPERCASE.', $name)
-                    )->identifier('MessedUpPhpstan.constantNamingConventions')
-                        ->build();
-                }
-            }
-        }
-
-        // Handle Trait_ nodes separately (for trait constants)
-        if ($node instanceof Trait_) {
-            foreach ($node->stmts as $stmt) {
-                if ($stmt instanceof ClassConst) {
-                    foreach ($stmt->consts as $const) {
-                        $name = $const->name->name;
-
-                        // Check if constant name is all uppercase
-                        if ($name !== strtoupper($name)) {
-                            $messages[] = RuleErrorBuilder::message(
-                                sprintf('Constant name "%s" is not in UPPERCASE.', $name)
-                            )->identifier('MessedUpPhpstan.constantNamingConventions')
-                                ->line($const->getLine())
-                                ->build();
-                        }
-                    }
-                }
+            // Check if constant name is all uppercase
+            if ($name !== strtoupper($name)) {
+                $messages[] = RuleErrorBuilder::message(
+                    sprintf('Constant name "%s" is not in UPPERCASE.', $name)
+                )->identifier('MessedUpPhpstan.constantNamingConventions')
+                    ->build();
             }
         }
 

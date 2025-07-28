@@ -2,7 +2,7 @@
 
 Enforces that constant names should be in UPPERCASE.
 
-This rule validates that all class constant names follow the uppercase naming convention, where all letters are uppercase and words are separated by underscores. This applies to constants in classes, interfaces, traits, and enums.
+This rule validates that all class constant names follow the uppercase naming convention, where all letters are uppercase and words are separated by underscores. This applies to constants in classes, interfaces, and enums.
 
 ## Configuration
 
@@ -48,12 +48,6 @@ interface ApiInterface
     public const apiVersion = '2.0'; // ✗ Error: Constant name "apiVersion" is not in UPPERCASE.
 }
 
-trait ExampleTrait
-{
-    public const TRAIT_CONSTANT = 'valid'; // ✓ Valid uppercase
-    public const traitConstant = 'invalid'; // ✗ Error: Constant name "traitConstant" is not in UPPERCASE.
-}
-
 enum Status
 {
     case ACTIVE;
@@ -66,9 +60,10 @@ enum Status
 
 ## Important Notes
 
-- This rule applies to constants in classes, interfaces, traits, and enums
+- This rule applies to constants in classes, interfaces, and enums
+- For trait constants, use the TraitConstantNamingConventions rule instead
 - Constants are checked regardless of their visibility (public, protected, private)
 - The rule enforces the traditional PHP constant naming convention where all letters must be uppercase
 - Underscores are allowed and encouraged for separating words in constant names
-- This rule only validates class/interface/trait/enum constants, not global constants defined with `define()`
+- This rule only validates class/interface/enum constants, not global constants defined with `define()`
 - Enum cases are not validated by this rule, only enum constants
