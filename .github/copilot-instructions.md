@@ -7,8 +7,8 @@ Though many of the rules are focused on providing similar functionality to PHP M
 ## Architecture Pattern
 Each rule follows a 3-component structure:
 - `{RuleName}Rule.php` - The main rule implementing `Rule<NodeType>`
-- `Config.php` - Configuration class with boolean flags for rule options
-- Test files in `tests/Rules/{RuleName}/` with multiple configuration scenarios
+- `Config.php` - Configuration class with boolean flags for rule options. This class is used to define the configuration options for the rule. Not all rules have configuration options, but those that do will have a `Config` class this that do not will not.
+- Test files in `tests/Rules/{RuleName}/` with multiple configuration scenarios if applicable.
 - Unlike most other PHPStan extensions, this one does not use a single monolithic rule class. Each rule is its own class with its own config. And a User would enable/disable each rule individually in their PHPStan config. We do not register all rules for the user in our extension.neon.
 
 ### Key Files
@@ -30,6 +30,9 @@ composer test              # Run all tests with paratest
 composer format            # Auto-fix code style with PHP-CS-Fixer
 composer analyze           # Run PHPStan analysis
 ```
+
+### Running Final Checks
+Before finalizing changes, you need to ensure that formatting has been applied, static analysis is passing, and all tests are successful. It is important to run these checks in order. First check formatting, then static analysis, and finally run all tests. This is because formatting may change line numbers in tests, which can cause test failures if not done first.
 
 ## Configuration Architecture
 The extension uses Neon dependency injection with a hierarchical configuration system:
@@ -68,9 +71,6 @@ $pattern .= $this->config->getAllowConsecutiveUppercase()
 $pattern .= '$/';
 ```
 
-### Magic Method Exclusion
-Method rules exclude PHP magic methods via `$ignoredMethods` array check.
-
 ## Test Conventions
 
 ### Test Structure
@@ -92,6 +92,12 @@ Tests use exact line numbers from fixture files. When fixture formatting changes
 - **Config mismatch**: Verify test config file parameters match the rule being tested
 
 ## Project-Specific Patterns
+
+### Class Extensibility
+- No classes should be marked as `final` unless absolutely necessary. This allows for easier extension and customization in the future.
+- No methods or properties should be marked as `private` unless absolutely necessary. Use `protected` or `public` to allow for subclass overrides.
+    - Use `protected` for methods that are intended to be overridden in subclasses, and `public` for methods that are part of the public API of the rule.
+- It is okay to use `final` on classes or `private` on methods in tests if the intent is to prove that the rule works as expected in a specific scenario or if the rule is doing something specific with final classes and private methods/properties, but this should be avoided in the source code of our rules
 
 ### Namespace Convention
 All classes use `Orrison\MessedUpPhpstan\` prefix with rule-specific sub-namespaces.
