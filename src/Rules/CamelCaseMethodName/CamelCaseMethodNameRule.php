@@ -37,8 +37,7 @@ class CamelCaseMethodNameRule implements Rule
 
     public function __construct(
         private Config $config,
-    ) {
-    }
+    ) {}
 
     /**
      * @return class-string<Node>

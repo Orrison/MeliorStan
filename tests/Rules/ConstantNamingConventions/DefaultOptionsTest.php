@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types = 1);
-
 namespace Orrison\MessedUpPhpstan\Tests\Rules\ConstantNamingConventions;
 
 use Orrison\MessedUpPhpstan\Rules\ConstantNamingConventions\ConstantNamingConventionsRule;
