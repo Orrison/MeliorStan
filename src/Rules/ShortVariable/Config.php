@@ -5,12 +5,12 @@ namespace Orrison\MessedUpPhpstan\Rules\ShortVariable;
 class Config
 {
     public function __construct(
-        private int $minimumLength = 3,
+        protected int $minimumLength = 3,
         /** @var string[] */
-        private array $exceptions = [],
-        private bool $allowInForLoops = false,
-        private bool $allowInForeach = false,
-        private bool $allowInCatch = false,
+        protected array $exceptions = [],
+        protected bool $allowInForLoops = false,
+        protected bool $allowInForeach = false,
+        protected bool $allowInCatch = false,
     ) {}
 
     public function getMinimumLength(): int

@@ -17,7 +17,7 @@ class CamelCaseVariableNameRule implements Rule
     protected string $pattern;
 
     /** @var string[] */
-    private array $ignoredVariables = [
+    protected array $ignoredVariables = [
         'php_errormsg',
         'http_response_header',
         'GLOBALS',

@@ -15,7 +15,7 @@ use PHPStan\Rules\RuleErrorBuilder;
 class ShortMethodNameRule implements Rule
 {
     public function __construct(
-        private Config $config,
+        protected Config $config,
     ) {}
 
     /**
