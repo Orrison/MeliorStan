@@ -102,6 +102,9 @@ Tests use exact line numbers from fixture files. When fixture formatting changes
 ### Namespace Convention
 All classes use `Orrison\MessedUpPhpstan\` prefix with rule-specific sub-namespaces.
 
+### Declare Strict Types
+Do NOT add `declare(strict_types=1);` to the top of files. This is not a requirement for this project and we do not want it. Unless the rule specifically has to do with this strict type declaration, then it is not needed. This is to keep the codebase consistent and avoid unnecessary complexity.
+
 ### Error Identifiers
 Use consistent identifiers for rule errors:
 ```php
