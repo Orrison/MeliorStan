@@ -12,7 +12,7 @@ use PHPStan\Rules\RuleErrorBuilder;
 /**
  * @implements Rule<ClassMethod>
  */
-final class ShortMethodNameRule implements Rule
+class ShortMethodNameRule implements Rule
 {
     public function __construct(
         private Config $config,

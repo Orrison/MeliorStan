@@ -13,7 +13,7 @@ use PHPStan\Rules\RuleErrorBuilder;
 /**
  * @implements Rule<Trait_>
  */
-final class TraitConstantNamingConventionsRule implements Rule
+class TraitConstantNamingConventionsRule implements Rule
 {
     /**
      * @return class-string<Trait_>

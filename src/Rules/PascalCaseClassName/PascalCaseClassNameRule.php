@@ -12,7 +12,7 @@ use PHPStan\Rules\RuleErrorBuilder;
 /**
  * @implements Rule<Class_>
  */
-final class PascalCaseClassNameRule implements Rule
+class PascalCaseClassNameRule implements Rule
 {
     public function __construct(
         private Config $config,
