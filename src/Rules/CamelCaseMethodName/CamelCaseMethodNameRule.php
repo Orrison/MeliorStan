@@ -15,7 +15,7 @@ use PHPStan\Rules\RuleErrorBuilder;
 class CamelCaseMethodNameRule implements Rule
 {
     /** @var array<string> */
-    private array $ignoredMethods = [
+    protected array $ignoredMethods = [
         '__construct',
         '__destruct',
         '__set',
@@ -36,7 +36,7 @@ class CamelCaseMethodNameRule implements Rule
     ];
 
     public function __construct(
-        private Config $config,
+        protected Config $config,
     ) {}
 
     /**

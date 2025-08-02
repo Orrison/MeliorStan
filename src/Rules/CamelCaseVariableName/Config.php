@@ -5,8 +5,8 @@ namespace Orrison\MessedUpPhpstan\Rules\CamelCaseVariableName;
 class Config
 {
     public function __construct(
-        private bool $allowConsecutiveUppercase = false,
-        private bool $allowUnderscorePrefix = false,
+        protected bool $allowConsecutiveUppercase = false,
+        protected bool $allowUnderscorePrefix = false,
     ) {}
 
     public function getAllowConsecutiveUppercase(): bool

@@ -5,9 +5,9 @@ namespace Orrison\MessedUpPhpstan\Rules\CamelCaseMethodName;
 class Config
 {
     public function __construct(
-        private bool $allowConsecutiveUppercase = false,
-        private bool $allowUnderscoreInTests = false,
-        private bool $allowUnderscorePrefix = false,
+        protected bool $allowConsecutiveUppercase = false,
+        protected bool $allowUnderscoreInTests = false,
+        protected bool $allowUnderscorePrefix = false,
     ) {}
 
     public function getAllowConsecutiveUppercase(): bool

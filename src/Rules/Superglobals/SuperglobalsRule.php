@@ -15,7 +15,7 @@ use PHPStan\Rules\RuleErrorBuilder;
 class SuperglobalsRule implements Rule
 {
     /** @var string[] */
-    private array $superglobals = [
+    protected array $superglobals = [
         'GLOBALS',
         '_SERVER',
         '_GET',

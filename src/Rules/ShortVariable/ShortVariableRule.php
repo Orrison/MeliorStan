@@ -30,22 +30,22 @@ use PHPStan\Rules\RuleErrorBuilder;
 class ShortVariableRule implements Rule
 {
     /** @var array<string, int> Track variables processed in special contexts by name and line */
-    private array $specialContextVariables = [];
+    protected array $specialContextVariables = [];
 
     /** @var string|null Track current file being processed */
-    private ?string $currentFile = null;
+    protected ?string $currentFile = null;
 
     /** @var array<string, int|string> Cached exceptions list as a set for O(1) lookups */
-    private array $exceptionsSet = [];
+    protected array $exceptionsSet = [];
 
     /** @var bool Cached config values */
-    private bool $allowInForLoops;
+    protected bool $allowInForLoops;
 
-    private bool $allowInForeach;
+    protected bool $allowInForeach;
 
-    private bool $allowInCatch;
+    protected bool $allowInCatch;
 
-    private int $minimumLength;
+    protected int $minimumLength;
 
     public function __construct(
         protected Config $config,
@@ -128,7 +128,7 @@ class ShortVariableRule implements Rule
      *
      * @return RuleError[]
      */
-    private function processAssignment(Assign $node): array
+    protected function processAssignment(Assign $node): array
     {
         // Only check the left side (the variable being assigned to)
         $var = $node->var;
@@ -151,7 +151,7 @@ class ShortVariableRule implements Rule
     /**
      * @return RuleError[]
      */
-    private function processForLoop(For_ $node): array
+    protected function processForLoop(For_ $node): array
     {
         $errors = [];
 
@@ -206,7 +206,7 @@ class ShortVariableRule implements Rule
     /**
      * @return RuleError[]
      */
-    private function processForeach(Foreach_ $node): array
+    protected function processForeach(Foreach_ $node): array
     {
         $errors = [];
 
@@ -250,7 +250,7 @@ class ShortVariableRule implements Rule
     /**
      * @return RuleError[]
      */
-    private function processCatch(Catch_ $node): array
+    protected function processCatch(Catch_ $node): array
     {
         $errors = [];
 
@@ -278,7 +278,7 @@ class ShortVariableRule implements Rule
     /**
      * @return RuleError[]
      */
-    private function processParameter(Param $node): array
+    protected function processParameter(Param $node): array
     {
         if (! $node->var instanceof Variable || ! is_string($node->var->name)) {
             return [];
@@ -306,7 +306,7 @@ class ShortVariableRule implements Rule
     /**
      * @return RuleError[]
      */
-    private function processProperty(Property $node): array
+    protected function processProperty(Property $node): array
     {
         $errors = [];
 
@@ -332,7 +332,7 @@ class ShortVariableRule implements Rule
     /**
      * @return RuleError[]
      */
-    private function checkVariableLength(Variable $node): array
+    protected function checkVariableLength(Variable $node): array
     {
         // Skip variables with non-string names (dynamic variables like $$var)
         if (! is_string($node->name)) {

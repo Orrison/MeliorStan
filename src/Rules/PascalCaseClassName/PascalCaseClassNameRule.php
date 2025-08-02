@@ -15,7 +15,7 @@ use PHPStan\Rules\RuleErrorBuilder;
 class PascalCaseClassNameRule implements Rule
 {
     public function __construct(
-        private Config $config,
+        protected Config $config,
     ) {}
 
     /**
