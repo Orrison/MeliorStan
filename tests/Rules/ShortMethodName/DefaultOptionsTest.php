@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types = 1);
-
 namespace Orrison\MessedUpPhpstan\Tests\Rules\ShortMethodName;
 
 use Orrison\MessedUpPhpstan\Rules\ShortMethodName\ShortMethodNameRule;
@@ -18,13 +16,13 @@ class DefaultOptionsTest extends RuleTestCase
         $this->analyse([
             __DIR__ . '/Fixture/ExampleClass.php',
         ], [
-            ['Method name "a" is shorter than minimum length of 3 characters.', 9],
-            ['Method name "ab" is shorter than minimum length of 3 characters.', 12],
-            ['Method name "x" is shorter than minimum length of 3 characters.', 21],
-            ['Method name "is" is shorter than minimum length of 3 characters.', 24],
-            ['Method name "z" is shorter than minimum length of 3 characters.', 33],
-            ['Method name "cd" is shorter than minimum length of 3 characters.', 39],
-            ['Method name "b" is shorter than minimum length of 3 characters.', 45],
+            ['Method name "a" is shorter than minimum length of 3 characters.', 7],
+            ['Method name "ab" is shorter than minimum length of 3 characters.', 10],
+            ['Method name "x" is shorter than minimum length of 3 characters.', 19],
+            ['Method name "is" is shorter than minimum length of 3 characters.', 22],
+            ['Method name "z" is shorter than minimum length of 3 characters.', 31],
+            ['Method name "cd" is shorter than minimum length of 3 characters.', 37],
+            ['Method name "b" is shorter than minimum length of 3 characters.', 43],
         ]);
     }
 
