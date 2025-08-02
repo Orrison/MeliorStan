@@ -13,7 +13,7 @@ use PHPStan\Rules\RuleErrorBuilder;
 /**
  * @implements Rule<Param>
  */
-final class CamelCaseParameterNameRule implements Rule
+class CamelCaseParameterNameRule implements Rule
 {
     protected string $pattern;
 

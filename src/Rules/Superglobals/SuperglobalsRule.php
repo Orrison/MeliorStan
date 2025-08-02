@@ -12,7 +12,7 @@ use PHPStan\Rules\RuleErrorBuilder;
 /**
  * @implements Rule<Variable>
  */
-final class SuperglobalsRule implements Rule
+class SuperglobalsRule implements Rule
 {
     /** @var string[] */
     private array $superglobals = [

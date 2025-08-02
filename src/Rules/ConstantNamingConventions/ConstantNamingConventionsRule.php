@@ -12,7 +12,7 @@ use PHPStan\Rules\RuleErrorBuilder;
 /**
  * @implements Rule<ClassConst>
  */
-final class ConstantNamingConventionsRule implements Rule
+class ConstantNamingConventionsRule implements Rule
 {
     /**
      * @return class-string<ClassConst>

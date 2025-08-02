@@ -12,7 +12,7 @@ use PHPStan\Rules\RuleErrorBuilder;
 /**
  * @implements Rule<ClassMethod>
  */
-final class CamelCaseMethodNameRule implements Rule
+class CamelCaseMethodNameRule implements Rule
 {
     /** @var array<string> */
     private array $ignoredMethods = [
@@ -37,7 +37,8 @@ final class CamelCaseMethodNameRule implements Rule
 
     public function __construct(
         private Config $config,
-    ) {}
+    ) {
+    }
 
     /**
      * @return class-string<Node>

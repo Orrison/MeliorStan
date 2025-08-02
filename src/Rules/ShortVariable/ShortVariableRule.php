@@ -27,7 +27,7 @@ use PHPStan\Rules\RuleErrorBuilder;
 /**
  * @implements Rule<Node>
  */
-final class ShortVariableRule implements Rule
+class ShortVariableRule implements Rule
 {
     /** @var array<string, int> Track variables processed in special contexts by name and line */
     private array $specialContextVariables = [];

@@ -12,7 +12,7 @@ use PHPStan\Rules\RuleErrorBuilder;
 /**
  * @implements Rule<Property>
  */
-final class CamelCasePropertyNameRule implements Rule
+class CamelCasePropertyNameRule implements Rule
 {
     protected string $pattern;
 
