@@ -36,6 +36,10 @@ Enforces that local variable names should follow camelCase naming convention.
 
 Enforces that constant names should be in UPPERCASE.
 
+### [MissingClosureParameterTypehint](docs/MissingClosureParameterTypehint.md)
+
+Enforces that all parameters in anonymous functions (closures) have type declarations.
+
 ### [PascalCase Class Name](docs/PascalCaseClassName.md)
 
 Enforces that class names should follow PascalCase naming convention.
