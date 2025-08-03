@@ -31,6 +31,9 @@ parametersSchema:
             minimum_length: int(),
             exceptions: arrayOf(string()),
         ]),
+        boolean_get_method_name: structure([
+            check_parameterized_methods: bool(),
+        ]),
     ])
 
 # default parameters
@@ -60,6 +63,8 @@ parameters:
         short_method_name:
             minimum_length: 3
             exceptions: []
+        boolean_get_method_name:
+            check_parameterized_methods: false
 
 services:
     -
@@ -100,3 +105,7 @@ services:
         arguments:
             - %messed_up.short_method_name.minimum_length%
             - %messed_up.short_method_name.exceptions%
+    -
+        factory: Orrison\MessedUpPhpstan\Rules\BooleanGetMethodName\Config
+        arguments:
+            - %messed_up.boolean_get_method_name.check_parameterized_methods%
