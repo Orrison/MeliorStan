@@ -12,6 +12,10 @@ Not every rule in this extention is inspired by PHPMD. Additional rules beyond t
 
 ## Rules
 
+### [BooleanGetMethodName](docs/BooleanGetMethodName.md)
+
+Enforces that methods with boolean return types should not start with "get".
+
 ### [CamelCase Method Name](docs/CamelCaseMethodName.md)
 
 Enforces that method names should follow camelCase naming convention.
@@ -32,14 +36,22 @@ Enforces that local variable names should follow camelCase naming convention.
 
 Enforces that constant names should be in UPPERCASE.
 
-### [TraitConstantNamingConventions](docs/TraitConstantNamingConventions.md)
-
-Enforces that all trait constants use UPPERCASE naming convention.
-
 ### [PascalCase Class Name](docs/PascalCaseClassName.md)
 
 Enforces that class names should follow PascalCase naming convention.
 
+### [ShortMethodName](docs/ShortMethodName.md)
+
+Enforces that method names must be of a minimum length.
+
+### [ShortVariable](docs/ShortVariable.md)
+
+Enforces that variable names must be of a minimum length.
+
 ### [Superglobals](docs/Superglobals.md)
 
 Enforces that PHP superglobals should not be used.
+
+### [TraitConstantNamingConventions](docs/TraitConstantNamingConventions.md)
+
+Enforces that all trait constants use UPPERCASE naming convention.
