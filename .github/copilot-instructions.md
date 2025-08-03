@@ -50,6 +50,81 @@ In `config/extension.neon`, ensure Config service arguments match the correct pa
     - %messed_up.camel_case_parameter_name.allow_underscore_prefix%
 ```
 
+### Rule Registration for New Rules
+When creating a new rule, you must add BOTH schema definition AND service registration to `config/extension.neon`:
+
+1. **Add parameter schema** (in `parametersSchema` section):
+```neon
+parametersSchema:
+    messed_up: structure([
+        # ... existing rules
+        new_rule_name: structure([
+            config_option: bool(),
+        ]),
+    ])
+```
+
+2. **Add default parameters** (in `parameters` section):
+```neon
+parameters:
+    messed_up:
+        # ... existing rules
+        new_rule_name:
+            config_option: false
+```
+
+3. **Add service registration** (in `services` section):
+```neon
+services:
+    # ... existing services
+    -
+        factory: Orrison\MessedUpPhpstan\Rules\NewRuleName\Config
+        arguments:
+            - %messed_up.new_rule_name.config_option%
+```
+
+**IMPORTANT**: The main rule class itself is NOT registered in extension.neon. Users must register the rule in their own PHPStan configuration.
+
+### Test Configuration Files
+Test config files must include BOTH the extension config AND rule registration:
+
+```neon
+includes:
+    - ../../../../config/extension.neon
+
+rules:
+    - Orrison\MessedUpPhpstan\Rules\NewRuleName\NewRuleNameRule
+
+parameters:
+    messed_up:
+        new_rule_name:
+            config_option: true  # Override for this test
+```
+
+**Critical**: Without the `rules:` section, tests will fail with "Service of type ... not found" error.
+
+### Config Parameter Naming Conventions
+When adding new rules to `config/extension.neon`, follow these naming patterns:
+
+1. **Schema keys**: Use snake_case matching the rule directory name:
+   ```neon
+   boolean_get_method_name: structure([    # Directory: BooleanGetMethodName
+       check_parameterized_methods: bool(),
+   ])
+   ```
+
+2. **Parameter references**: Must match the schema key exactly:
+   ```neon
+   - factory: Orrison\MessedUpPhpstan\Rules\BooleanGetMethodName\Config
+     arguments:
+       - %messed_up.boolean_get_method_name.check_parameterized_methods%
+   ```
+
+3. **Config method names**: Use camelCase with "get" prefix:
+   ```php
+   public function getCheckParameterizedMethods(): bool
+   ```
+
 ## Rule Implementation Patterns
 
 ### Node Type Selection
@@ -90,6 +165,26 @@ Tests use exact line numbers from fixture files. When fixture formatting changes
 - **Wrong line numbers**: Update after code formatting changes
 - **Wrong error messages**: Ensure "Parameter name" vs "Property name" vs "Method name" matches rule type
 - **Config mismatch**: Verify test config file parameters match the rule being tested
+
+### Critical: Line Number Management After Formatting
+**ALWAYS run `composer format` BEFORE finalizing test line numbers!**
+
+1. Write initial tests with approximate line numbers
+2. Run `composer format` to apply code style fixes
+3. Run the specific test to see actual vs expected line numbers
+4. Update test assertions with correct line numbers from the failing test output
+5. Re-run tests to verify they pass
+
+**Example workflow:**
+```bash
+# After creating fixture and test files
+composer format                    # Format all code first
+./vendor/bin/phpunit tests/Rules/NewRule/DefaultTest.php  # See line number errors
+# Update test with correct line numbers from failure output
+./vendor/bin/phpunit tests/Rules/NewRule/DefaultTest.php  # Verify passes
+```
+
+The formatter often adds PHPDoc annotations and adjusts spacing, which changes line numbers. Doing this early prevents having to fix line numbers multiple times.
 
 ## Project-Specific Patterns
 
