@@ -1,0 +1,10 @@
+includes:
+    - ../../../../config/extension.neon
+
+rules:
+    - Orrison\MessedUpPhpstan\Rules\LongClassName\LongClassNameRule
+
+parameters:
+    messed_up:
+        long_class_name:
+            maximum: 20

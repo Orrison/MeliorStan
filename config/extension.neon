@@ -34,6 +34,11 @@ parametersSchema:
         boolean_get_method_name: structure([
             check_parameterized_methods: bool(),
         ]),
+        long_class_name: structure([
+            maximum: int(),
+            subtract_prefixes: arrayOf(string()),
+            subtract_suffixes: arrayOf(string()),
+        ]),
     ])
 
 # default parameters
@@ -65,6 +70,10 @@ parameters:
             exceptions: []
         boolean_get_method_name:
             check_parameterized_methods: false
+        long_class_name:
+            maximum: 40
+            subtract_prefixes: []
+            subtract_suffixes: []
 
 services:
     -
@@ -109,3 +118,9 @@ services:
         factory: Orrison\MessedUpPhpstan\Rules\BooleanGetMethodName\Config
         arguments:
             - %messed_up.boolean_get_method_name.check_parameterized_methods%
+    -
+        factory: Orrison\MessedUpPhpstan\Rules\LongClassName\Config
+        arguments:
+            - %messed_up.long_class_name.maximum%
+            - %messed_up.long_class_name.subtract_prefixes%
+            - %messed_up.long_class_name.subtract_suffixes%
