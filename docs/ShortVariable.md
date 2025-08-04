@@ -1,10 +1,12 @@
 # Short Variable
 
-This rule enforces a minimum length for variable names, including local variables, parameters, and properties. It supports configurable exemptions for variables defined in specific contexts like for loops, foreach loops, and catch blocks.
+This rule enforces a minimum length for variable names, including local variables. It supports configurable exemptions for variables defined in specific contexts like for loops, foreach loops, and catch blocks.
 
 ## Rule Details
 
 The rule checks that all variable names meet the configured minimum length requirement. This helps ensure code readability by discouraging overly abbreviated variable names.
+
+**Note:** This rule only checks variables. For parameters and properties, use the [ShortParameter](ShortParameter.md) and [ShortProperty](ShortProperty.md) rules respectively.
 
 ### Examples
 
@@ -14,10 +16,8 @@ The rule checks that all variable names meet the configured minimum length requi
 <?php
 
 class Example
-{
-    public $x;  // ✗ Error: Property too short
-    
-    public function method($a, $id) // ✗ Error: Parameters too short  
+{    
+    public function method($validParam, $anotherParam) 
     {
         $b = 1;      // ✗ Error: Variable too short
         $cd = 2;     // ✗ Error: Variable too short
@@ -221,8 +221,12 @@ You can exempt variables in specific contexts:
 
 ## Error Messages
 
-The rule produces different error messages depending on the type of variable:
+The rule produces the following error message:
 
 - **Variables:** `Variable name "$x" is shorter than minimum length of 3 characters.`
-- **Parameters:** `Parameter name "$a" is shorter than minimum length of 3 characters.`
-- **Properties:** `Property name "$id" is shorter than minimum length of 3 characters.`
+
+## Related Rules
+
+- [ShortParameter](ShortParameter.md) - Checks parameter names
+- [ShortProperty](ShortProperty.md) - Checks property names
+- [ShortMethodName](ShortMethodName.md) - Checks method names

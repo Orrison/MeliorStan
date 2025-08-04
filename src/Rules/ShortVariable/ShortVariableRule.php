@@ -9,7 +9,6 @@ use PhpParser\Node\Expr\PostInc;
 use PhpParser\Node\Expr\PreDec;
 use PhpParser\Node\Expr\PreInc;
 use PhpParser\Node\Expr\Variable;
-use PhpParser\Node\Param;
 use PhpParser\Node\Stmt\Catch_;
 use PhpParser\Node\Stmt\Class_;
 use PhpParser\Node\Stmt\For_;
@@ -17,7 +16,6 @@ use PhpParser\Node\Stmt\Foreach_;
 use PhpParser\Node\Stmt\Function_;
 use PhpParser\Node\Stmt\Interface_;
 use PhpParser\Node\Stmt\Namespace_;
-use PhpParser\Node\Stmt\Property;
 use PhpParser\Node\Stmt\Trait_;
 use PHPStan\Analyser\Scope;
 use PHPStan\Rules\Rule;
@@ -103,16 +101,6 @@ class ShortVariableRule implements Rule
         // Process catch variable declarations
         if ($node instanceof Catch_) {
             return $this->processCatch($node);
-        }
-
-        // Process parameters
-        if ($node instanceof Param) {
-            return $this->processParameter($node);
-        }
-
-        // Process properties
-        if ($node instanceof Property) {
-            return $this->processProperty($node);
         }
 
         // Process assignment expressions that contain variables
@@ -269,60 +257,6 @@ class ShortVariableRule implements Rule
                 foreach ($variableErrors as $error) {
                     $errors[] = $error;
                 }
-            }
-        }
-
-        return $errors;
-    }
-
-    /**
-     * @return RuleError[]
-     */
-    protected function processParameter(Param $node): array
-    {
-        if (! $node->var instanceof Variable || ! is_string($node->var->name)) {
-            return [];
-        }
-
-        $name = $node->var->name;
-
-        // Check if parameter is in exceptions list using O(1) lookup
-        if (isset($this->exceptionsSet[$name])) {
-            return [];
-        }
-
-        if (strlen($name) < $this->minimumLength) {
-            return [
-                RuleErrorBuilder::message(
-                    sprintf('Parameter name "$%s" is shorter than minimum length of %d characters.', $name, $this->minimumLength)
-                )->identifier('MessedUpPhpstan.shortVariable')
-                    ->build(),
-            ];
-        }
-
-        return [];
-    }
-
-    /**
-     * @return RuleError[]
-     */
-    protected function processProperty(Property $node): array
-    {
-        $errors = [];
-
-        foreach ($node->props as $prop) {
-            $name = $prop->name->name;
-
-            // Check if property is in exceptions list using O(1) lookup
-            if (isset($this->exceptionsSet[$name])) {
-                continue;
-            }
-
-            if (strlen($name) < $this->minimumLength) {
-                $errors[] = RuleErrorBuilder::message(
-                    sprintf('Property name "$%s" is shorter than minimum length of %d characters.', $name, $this->minimumLength)
-                )->identifier('MessedUpPhpstan.shortVariable')
-                    ->build();
             }
         }
 
