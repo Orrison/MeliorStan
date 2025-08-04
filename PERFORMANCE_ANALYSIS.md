@@ -40,3 +40,23 @@ For a typical PHP file with ~1000 AST nodes:
 - ✅ Same configuration options
 - ✅ Same error messages and behavior
 - ✅ All existing tests should pass unchanged
+
+## Future Enhancement Opportunities
+
+### Option 1: Split into Multiple Focused Rules (Advanced)
+For maximum performance and granular control, the rule could be split into:
+- `ShortPropertyRule` (uses `Property::class`)
+- `ShortParameterRule` (uses `Param::class`) 
+- `ShortAssignmentVariableRule` (uses `Assign::class`)
+- `ShortForVariableRule` (uses `For_::class`)
+- `ShortForeachVariableRule` (uses `Foreach_::class`)
+- `ShortCatchVariableRule` (uses `Catch_::class`)
+
+This would provide even better performance and allow users to selectively enable/disable specific types of variable checking.
+
+### Option 2: Custom AST Visitors (Expert)
+As mentioned in the PHPStan blog post on preprocessing AST, custom visitors could be used to collect all variable-related nodes in a single pass, then process them efficiently. This would be the ultimate performance optimization but requires more complex implementation.
+
+## Current Status
+
+The current optimization provides significant performance improvements (95%+ reduction in processing) while maintaining full backward compatibility. Further optimizations can be considered in future versions if needed.
