@@ -4,10 +4,6 @@ namespace Orrison\MessedUpPhpstan\Rules\ShortVariable;
 
 use PhpParser\Node;
 use PhpParser\Node\Expr\Assign;
-use PhpParser\Node\Expr\PostDec;
-use PhpParser\Node\Expr\PostInc;
-use PhpParser\Node\Expr\PreDec;
-use PhpParser\Node\Expr\PreInc;
 use PhpParser\Node\Expr\Variable;
 use PhpParser\Node\Stmt\Catch_;
 use PhpParser\Node\Stmt\Foreach_;
@@ -74,12 +70,6 @@ class ShortVariableRule implements Rule
             return $this->processCatch($node);
         }
 
-        // Process for loop increment/decrement operations
-        if ($node instanceof PostInc || $node instanceof PreInc ||
-            $node instanceof PostDec || $node instanceof PreDec) {
-            return $this->processIncrementDecrement($node);
-        }
-
         return [];
     }
 
@@ -134,20 +124,6 @@ class ShortVariableRule implements Rule
     protected function processCatch(Catch_ $node): array
     {
         // Check catch variable
-        if ($node->var instanceof Variable && is_string($node->var->name)) {
-            return $this->checkVariableLength($node->var);
-        }
-
-        return [];
-    }
-
-    /**
-     * @param PostInc|PreInc|PostDec|PreDec $node
-     *
-     * @return RuleError[]
-     */
-    protected function processIncrementDecrement($node): array
-    {
         if ($node->var instanceof Variable && is_string($node->var->name)) {
             return $this->checkVariableLength($node->var);
         }

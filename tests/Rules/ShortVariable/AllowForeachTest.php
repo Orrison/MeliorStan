@@ -19,7 +19,6 @@ class AllowForeachTest extends RuleTestCase
             ['Variable name "$b" is shorter than minimum length of 3 characters.', 13],
             ['Variable name "$i" is shorter than minimum length of 3 characters.', 15],
             ['Variable name "$j" is shorter than minimum length of 3 characters.', 16],
-            ['Variable name "$i" is shorter than minimum length of 3 characters.', 15],
             ['Variable name "$e" is shorter than minimum length of 3 characters.', 27],
         ]);
     }

@@ -20,7 +20,6 @@ class DefaultOptionsTest extends RuleTestCase
             ['Variable name "$cd" is shorter than minimum length of 3 characters.', 18],
             ['Variable name "$i" is shorter than minimum length of 3 characters.', 21],
             ['Variable name "$j" is shorter than minimum length of 3 characters.', 22],
-            ['Variable name "$i" is shorter than minimum length of 3 characters.', 21],
             ['Variable name "$k" is shorter than minimum length of 3 characters.', 27],
             ['Variable name "$v" is shorter than minimum length of 3 characters.', 27],
             ['Variable name "$e" is shorter than minimum length of 3 characters.', 33],
