@@ -133,3 +133,8 @@ services:
         factory: Orrison\MessedUpPhpstan\Rules\BooleanGetMethodName\Config
         arguments:
             - %messed_up.boolean_get_method_name.check_parameterized_methods%
+    -
+        # Custom node visitor for preprocessing AST to track variable context
+        class: Orrison\MessedUpPhpstan\Rules\ShortVariable\VariableContextVisitor
+        tags:
+            - phpstan.parser.richParserNodeVisitor
