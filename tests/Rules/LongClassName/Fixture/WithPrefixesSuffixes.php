@@ -20,4 +20,4 @@ class VeryLongClassNameHere {}
 
 // Should pass - both prefix and suffix, but only first matching is subtracted
 // "Abstract" prefix subtracted (28 - 8 = 20 = maximum)
-class AbstractVeryLongClassInterface {}
+class AbstractExactlyTwentyLengthX {}
