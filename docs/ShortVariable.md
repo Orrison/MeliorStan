@@ -122,7 +122,7 @@ With this configuration, variables named `$i`, `$j`, `$k`, `$x`, `$y`, and `$e` 
 **Type:** `bool`  
 **Default:** `false`
 
-Allows short variable names in for loop initialization and increment expressions.
+Allows short variable names in for loop initialization expressions.
 
 **Example:**
 ```neon
@@ -213,7 +213,7 @@ This rule checks:
 
 You can exempt variables in specific contexts:
 
-- **`allow_in_for_loops: true`** - Exempts variables declared in `for ($i = 0; ...)` and increment expressions
+- **`allow_in_for_loops: true`** - Exempts variables declared in `for ($i = 0; ...)` initialization expressions
 - **`allow_in_foreach: true`** - Exempts key and value variables in `foreach ($items as $key => $value)`
 - **`allow_in_catch: true`** - Exempts exception variables in `catch (Exception $e)`
 

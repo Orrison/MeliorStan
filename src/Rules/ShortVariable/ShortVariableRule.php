@@ -4,10 +4,6 @@ namespace Orrison\MessedUpPhpstan\Rules\ShortVariable;
 
 use PhpParser\Node;
 use PhpParser\Node\Expr\Assign;
-use PhpParser\Node\Expr\PostDec;
-use PhpParser\Node\Expr\PostInc;
-use PhpParser\Node\Expr\PreDec;
-use PhpParser\Node\Expr\PreInc;
 use PhpParser\Node\Expr\Variable;
 use PhpParser\Node\Param;
 use PhpParser\Node\Stmt\Catch_;
@@ -158,29 +154,6 @@ class ShortVariableRule implements Rule
         // Check variables defined in for loop init expressions
         foreach ($node->init as $expr) {
             if ($expr instanceof Assign) {
-                $var = $expr->var;
-
-                if ($var instanceof Variable && is_string($var->name)) {
-                    // Track this variable as processed in special context
-                    $trackingKey = $var->name . '_' . $var->getLine();
-                    $this->specialContextVariables[$trackingKey] = $var->getLine();
-
-                    // Only report errors if exemption is not enabled
-                    if (! $this->allowInForLoops) {
-                        $variableErrors = $this->checkVariableLength($var);
-
-                        foreach ($variableErrors as $error) {
-                            $errors[] = $error;
-                        }
-                    }
-                }
-            }
-        }
-
-        // Check variables in for loop increment expressions
-        foreach ($node->loop as $expr) {
-            if ($expr instanceof PostInc || $expr instanceof PreInc ||
-                $expr instanceof PostDec || $expr instanceof PreDec) {
                 $var = $expr->var;
 
                 if ($var instanceof Variable && is_string($var->name)) {

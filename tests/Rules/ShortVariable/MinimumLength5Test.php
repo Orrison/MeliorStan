@@ -23,7 +23,6 @@ class MinimumLength5Test extends RuleTestCase
             ['Variable name "$b" is shorter than minimum length of 5 characters.', 17],
             ['Variable name "$cd" is shorter than minimum length of 5 characters.', 18],
             ['Variable name "$i" is shorter than minimum length of 5 characters.', 21],
-            ['Variable name "$i" is shorter than minimum length of 5 characters.', 21],
             ['Variable name "$j" is shorter than minimum length of 5 characters.', 22],
             ['Variable name "$k" is shorter than minimum length of 5 characters.', 27],
             ['Variable name "$v" is shorter than minimum length of 5 characters.', 27],
