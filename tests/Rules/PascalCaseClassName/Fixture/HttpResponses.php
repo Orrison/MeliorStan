@@ -1,5 +1,5 @@
 <?php
 
-namespace Orrison\MessStan\Tests\Rules\PascalCaseClassName\Fixture;
+namespace Orrison\MeliorStan\Tests\Rules\PascalCaseClassName\Fixture;
 
 class HttpResponses {}

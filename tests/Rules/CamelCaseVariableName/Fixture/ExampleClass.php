@@ -1,6 +1,6 @@
 <?php
 
-namespace Orrison\MessStan\Tests\Rules\CamelCaseVariableName\Fixture;
+namespace Orrison\MeliorStan\Tests\Rules\CamelCaseVariableName\Fixture;
 
 class ExampleClass
 {

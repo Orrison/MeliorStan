@@ -19,13 +19,13 @@ Add the rule to your PHPStan configuration:
 
 ```neon
 includes:
-    - vendor/orrison/mess-stan/config/extension.neon
+    - vendor/orrison/meliorstan/config/extension.neon
 
 rules:
-    - Orrison\MessStan\Rules\BooleanGetMethodName\BooleanGetMethodNameRule
+    - Orrison\MeliorStan\Rules\BooleanGetMethodName\BooleanGetMethodNameRule
 
 parameters:
-    mess_stan:
+    meliorstan:
         boolean_get_method_name:
             check_parameterized_methods: false
 ```
@@ -68,7 +68,7 @@ class Example
 
 ```neon
 parameters:
-    mess_stan:
+    meliorstan:
         boolean_get_method_name:
             check_parameterized_methods: true
 ```

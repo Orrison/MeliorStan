@@ -2,12 +2,12 @@ includes:
     - ../../../../config/extension.neon
 
 parameters:
-    mess_stan:
+    meliorstan:
         short_variable:
             allow_in_catch: true
 
 services:
     -
-        class: Orrison\MessStan\Rules\ShortVariable\ShortVariableRule
+        class: Orrison\MeliorStan\Rules\ShortVariable\ShortVariableRule
         tags:
             - phpstan.rules.rule

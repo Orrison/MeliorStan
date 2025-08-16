@@ -1,6 +1,6 @@
 <?php
 
-namespace Orrison\MessStan\Tests\Rules\ConstantNamingConventions\Fixture;
+namespace Orrison\MeliorStan\Tests\Rules\ConstantNamingConventions\Fixture;
 
 class ExampleClass
 {

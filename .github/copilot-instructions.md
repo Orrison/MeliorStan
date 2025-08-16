@@ -1,4 +1,4 @@
-# MessStan - AI Coding Instructions
+# MeliorStan - AI Coding Instructions
 
 ## Project Overview
 This is a PHPStan extension that provides different custom PHPstan rules with configurable options. Each rule has its own namespace under `src/Rules/` and follows a consistent architecture pattern.
@@ -44,10 +44,10 @@ The extension uses Neon dependency injection with a hierarchical configuration s
 ### Critical Pattern: Config Parameter Mapping
 In `config/extension.neon`, ensure Config service arguments match the correct parameter namespace:
 ```neon
-- factory: Orrison\MessStan\Rules\CamelCaseParameterName\Config
+- factory: Orrison\MeliorStan\Rules\CamelCaseParameterName\Config
   arguments:
-    - %mess_stan.camel_case_parameter_name.allow_consecutive_uppercase%  # Not property_name!
-    - %mess_stan.camel_case_parameter_name.allow_underscore_prefix%
+    - %meliorstan.camel_case_parameter_name.allow_consecutive_uppercase%  # Not property_name!
+    - %meliorstan.camel_case_parameter_name.allow_underscore_prefix%
 ```
 
 ### Rule Registration for New Rules
@@ -56,7 +56,7 @@ When creating a new rule, you must add BOTH schema definition AND service regist
 1. **Add parameter schema** (in `parametersSchema` section):
 ```neon
 parametersSchema:
-    mess_stan: structure([
+    meliorstan: structure([
         # ... existing rules
         new_rule_name: structure([
             config_option: bool(),
@@ -67,7 +67,7 @@ parametersSchema:
 2. **Add default parameters** (in `parameters` section):
 ```neon
 parameters:
-    mess_stan:
+    meliorstan:
         # ... existing rules
         new_rule_name:
             config_option: false
@@ -78,9 +78,9 @@ parameters:
 services:
     # ... existing services
     -
-        factory: Orrison\MessStan\Rules\NewRuleName\Config
+        factory: Orrison\MeliorStan\Rules\NewRuleName\Config
         arguments:
-            - %mess_stan.new_rule_name.config_option%
+            - %meliorstan.new_rule_name.config_option%
 ```
 
 **IMPORTANT**: The main rule class itself is NOT registered in extension.neon. Users must register the rule in their own PHPStan configuration.
@@ -93,10 +93,10 @@ includes:
     - ../../../../config/extension.neon
 
 rules:
-    - Orrison\MessStan\Rules\NewRuleName\NewRuleNameRule
+    - Orrison\MeliorStan\Rules\NewRuleName\NewRuleNameRule
 
 parameters:
-    mess_stan:
+    meliorstan:
         new_rule_name:
             config_option: true  # Override for this test
 ```
@@ -115,9 +115,9 @@ When adding new rules to `config/extension.neon`, follow these naming patterns:
 
 2. **Parameter references**: Must match the schema key exactly:
    ```neon
-   - factory: Orrison\MessStan\Rules\BooleanGetMethodName\Config
+   - factory: Orrison\MeliorStan\Rules\BooleanGetMethodName\Config
      arguments:
-       - %mess_stan.boolean_get_method_name.check_parameterized_methods%
+       - %meliorstan.boolean_get_method_name.check_parameterized_methods%
    ```
 
 3. **Config method names**: Use camelCase with "get" prefix:
@@ -195,7 +195,7 @@ The formatter often adds PHPDoc annotations and adjusts spacing, which changes l
 - It is okay to use `final` on classes or `private` on methods in tests if the intent is to prove that the rule works as expected in a specific scenario or if the rule is doing something specific with final classes and private methods/properties, but this should be avoided in the source code of our rules
 
 ### Namespace Convention
-All classes use `Orrison\MessStan\` prefix with rule-specific sub-namespaces.
+All classes use `Orrison\MeliorStan\` prefix with rule-specific sub-namespaces.
 
 ### Declare Strict Types
 Do NOT add `declare(strict_types=1);` to the top of files. This is not a requirement for this project and we do not want it. Unless the rule specifically has to do with this strict type declaration, then it is not needed. This is to keep the codebase consistent and avoid unnecessary complexity.
@@ -203,7 +203,7 @@ Do NOT add `declare(strict_types=1);` to the top of files. This is not a require
 ### Error Identifiers
 Use consistent identifiers for rule errors:
 ```php
-->identifier('MessStan.methodNameNotCamelCase')
+->identifier('MeliorStan.methodNameNotCamelCase')
 ```
 
 ### Config Naming
@@ -263,13 +263,13 @@ Add the rule to your PHPStan configuration:
 
 ```neon
 includes:
-    - vendor/orrison/mess-stan/config/extension.neon
+    - vendor/orrison/meliorstan/config/extension.neon
 
 rules:
-    - Orrison\MessStan\Rules\{Namespace}\{RuleName}Rule
+    - Orrison\MeliorStan\Rules\{Namespace}\{RuleName}Rule
 
 parameters:
-    mess_stan:
+    meliorstan:
         {config_namespace}:
             config_option: false
 ```
@@ -290,7 +290,7 @@ parameters:
 
 ```neon
 parameters:
-    mess_stan:
+    meliorstan:
         {config_namespace}:
             config_option: true
 ```

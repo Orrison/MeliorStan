@@ -2,10 +2,10 @@ includes:
     - ../../../../config/extension.neon
 
 parameters:
-    mess_stan:
+    meliorstan:
         pascal_case_class_name:
             allow_consecutive_uppercase: true
 
 
 rules:
-    - Orrison\MessStan\Rules\PascalCaseClassName\PascalCaseClassNameRule
+    - Orrison\MeliorStan\Rules\PascalCaseClassName\PascalCaseClassNameRule

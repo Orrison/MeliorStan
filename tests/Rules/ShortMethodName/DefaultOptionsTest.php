@@ -1,8 +1,8 @@
 <?php
 
-namespace Orrison\MessStan\Tests\Rules\ShortMethodName;
+namespace Orrison\MeliorStan\Tests\Rules\ShortMethodName;
 
-use Orrison\MessStan\Rules\ShortMethodName\ShortMethodNameRule;
+use Orrison\MeliorStan\Rules\ShortMethodName\ShortMethodNameRule;
 use PHPStan\Rules\Rule;
 use PHPStan\Testing\RuleTestCase;
 

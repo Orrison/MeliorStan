@@ -1,6 +1,6 @@
 <?php
 
-namespace Orrison\MessStan\Rules\ShortMethodName;
+namespace Orrison\MeliorStan\Rules\ShortMethodName;
 
 class Config
 {

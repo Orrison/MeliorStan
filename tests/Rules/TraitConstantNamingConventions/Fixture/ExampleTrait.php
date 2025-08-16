@@ -1,6 +1,6 @@
 <?php
 
-namespace Orrison\MessStan\Tests\Rules\TraitConstantNamingConventions\Fixture;
+namespace Orrison\MeliorStan\Tests\Rules\TraitConstantNamingConventions\Fixture;
 
 trait ExampleTrait
 {

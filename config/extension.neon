@@ -1,5 +1,5 @@
 parametersSchema:
-    mess_stan: structure([
+    meliorstan: structure([
         pascal_case_class_name: structure([
             allow_consecutive_uppercase: bool(),
         ]),
@@ -38,7 +38,7 @@ parametersSchema:
 
 # default parameters
 parameters:
-    mess_stan:
+    meliorstan:
         pascal_case_class_name:
             allow_consecutive_uppercase: false
         camel_case_method_name:
@@ -68,44 +68,44 @@ parameters:
 
 services:
     -
-        factory: Orrison\MessStan\Rules\PascalCaseClassName\Config
+        factory: Orrison\MeliorStan\Rules\PascalCaseClassName\Config
         arguments:
-            - %mess_stan.pascal_case_class_name.allow_consecutive_uppercase%
+            - %meliorstan.pascal_case_class_name.allow_consecutive_uppercase%
     -
-        factory: Orrison\MessStan\Rules\CamelCaseMethodName\Config
+        factory: Orrison\MeliorStan\Rules\CamelCaseMethodName\Config
         arguments:
-            - %mess_stan.camel_case_method_name.allow_consecutive_uppercase%
-            - %mess_stan.camel_case_method_name.allow_underscore_in_tests%
-            - %mess_stan.camel_case_method_name.allow_underscore_prefix%
+            - %meliorstan.camel_case_method_name.allow_consecutive_uppercase%
+            - %meliorstan.camel_case_method_name.allow_underscore_in_tests%
+            - %meliorstan.camel_case_method_name.allow_underscore_prefix%
     -
-        factory: Orrison\MessStan\Rules\CamelCasePropertyName\Config
+        factory: Orrison\MeliorStan\Rules\CamelCasePropertyName\Config
         arguments:
-            - %mess_stan.camel_case_property_name.allow_consecutive_uppercase%
-            - %mess_stan.camel_case_property_name.allow_underscore_prefix%
+            - %meliorstan.camel_case_property_name.allow_consecutive_uppercase%
+            - %meliorstan.camel_case_property_name.allow_underscore_prefix%
     -
-        factory: Orrison\MessStan\Rules\CamelCaseParameterName\Config
+        factory: Orrison\MeliorStan\Rules\CamelCaseParameterName\Config
         arguments:
-            - %mess_stan.camel_case_parameter_name.allow_consecutive_uppercase%
-            - %mess_stan.camel_case_parameter_name.allow_underscore_prefix%
+            - %meliorstan.camel_case_parameter_name.allow_consecutive_uppercase%
+            - %meliorstan.camel_case_parameter_name.allow_underscore_prefix%
     -
-        factory: Orrison\MessStan\Rules\CamelCaseVariableName\Config
+        factory: Orrison\MeliorStan\Rules\CamelCaseVariableName\Config
         arguments:
-            - %mess_stan.camel_case_variable_name.allow_consecutive_uppercase%
-            - %mess_stan.camel_case_variable_name.allow_underscore_prefix%
+            - %meliorstan.camel_case_variable_name.allow_consecutive_uppercase%
+            - %meliorstan.camel_case_variable_name.allow_underscore_prefix%
     -
-        factory: Orrison\MessStan\Rules\ShortVariable\Config
+        factory: Orrison\MeliorStan\Rules\ShortVariable\Config
         arguments:
-            - %mess_stan.short_variable.minimum_length%
-            - %mess_stan.short_variable.exceptions%
-            - %mess_stan.short_variable.allow_in_for_loops%
-            - %mess_stan.short_variable.allow_in_foreach%
-            - %mess_stan.short_variable.allow_in_catch%
+            - %meliorstan.short_variable.minimum_length%
+            - %meliorstan.short_variable.exceptions%
+            - %meliorstan.short_variable.allow_in_for_loops%
+            - %meliorstan.short_variable.allow_in_foreach%
+            - %meliorstan.short_variable.allow_in_catch%
     -
-        factory: Orrison\MessStan\Rules\ShortMethodName\Config
+        factory: Orrison\MeliorStan\Rules\ShortMethodName\Config
         arguments:
-            - %mess_stan.short_method_name.minimum_length%
-            - %mess_stan.short_method_name.exceptions%
+            - %meliorstan.short_method_name.minimum_length%
+            - %meliorstan.short_method_name.exceptions%
     -
-        factory: Orrison\MessStan\Rules\BooleanGetMethodName\Config
+        factory: Orrison\MeliorStan\Rules\BooleanGetMethodName\Config
         arguments:
-            - %mess_stan.boolean_get_method_name.check_parameterized_methods%
+            - %meliorstan.boolean_get_method_name.check_parameterized_methods%

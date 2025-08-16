@@ -1,6 +1,6 @@
 <?php
 
-namespace Orrison\MessStan\Rules\BooleanGetMethodName;
+namespace Orrison\MeliorStan\Rules\BooleanGetMethodName;
 
 class Config
 {

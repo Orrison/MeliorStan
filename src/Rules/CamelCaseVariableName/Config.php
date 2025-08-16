@@ -1,6 +1,6 @@
 <?php
 
-namespace Orrison\MessStan\Rules\CamelCaseVariableName;
+namespace Orrison\MeliorStan\Rules\CamelCaseVariableName;
 
 class Config
 {

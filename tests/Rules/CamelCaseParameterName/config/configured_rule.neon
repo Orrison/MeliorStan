@@ -2,4 +2,4 @@ includes:
     - ../../../../config/extension.neon
 
 rules:
-    - Orrison\MessStan\Rules\CamelCaseParameterName\CamelCaseParameterNameRule
+    - Orrison\MeliorStan\Rules\CamelCaseParameterName\CamelCaseParameterNameRule

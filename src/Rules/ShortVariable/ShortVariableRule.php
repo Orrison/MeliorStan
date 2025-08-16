@@ -1,6 +1,6 @@
 <?php
 
-namespace Orrison\MessStan\Rules\ShortVariable;
+namespace Orrison\MeliorStan\Rules\ShortVariable;
 
 use PhpParser\Node;
 use PhpParser\Node\Expr\Assign;
@@ -268,7 +268,7 @@ class ShortVariableRule implements Rule
             return [
                 RuleErrorBuilder::message(
                     sprintf('Parameter name "$%s" is shorter than minimum length of %d characters.', $name, $this->minimumLength)
-                )->identifier('MessStan.shortVariable')
+                )->identifier('MeliorStan.shortVariable')
                     ->build(),
             ];
         }
@@ -294,7 +294,7 @@ class ShortVariableRule implements Rule
             if (strlen($name) < $this->minimumLength) {
                 $errors[] = RuleErrorBuilder::message(
                     sprintf('Property name "$%s" is shorter than minimum length of %d characters.', $name, $this->minimumLength)
-                )->identifier('MessStan.shortVariable')
+                )->identifier('MeliorStan.shortVariable')
                     ->build();
             }
         }
@@ -323,7 +323,7 @@ class ShortVariableRule implements Rule
             return [
                 RuleErrorBuilder::message(
                     sprintf('Variable name "$%s" is shorter than minimum length of %d characters.', $name, $this->minimumLength)
-                )->identifier('MessStan.shortVariable')
+                )->identifier('MeliorStan.shortVariable')
                     ->build(),
             ];
         }

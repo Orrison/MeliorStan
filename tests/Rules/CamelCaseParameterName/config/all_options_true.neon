@@ -2,10 +2,10 @@ includes:
     - ../../../../config/extension.neon
 
 parameters:
-    mess_stan:
+    meliorstan:
         camel_case_parameter_name:
             allow_consecutive_uppercase: true
             allow_underscore_prefix: true
 
 rules:
-    - Orrison\MessStan\Rules\CamelCaseParameterName\CamelCaseParameterNameRule
+    - Orrison\MeliorStan\Rules\CamelCaseParameterName\CamelCaseParameterNameRule

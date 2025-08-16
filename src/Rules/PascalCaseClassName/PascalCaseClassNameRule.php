@@ -1,6 +1,6 @@
 <?php
 
-namespace Orrison\MessStan\Rules\PascalCaseClassName;
+namespace Orrison\MeliorStan\Rules\PascalCaseClassName;
 
 use PhpParser\Node;
 use PhpParser\Node\Stmt\Class_;
@@ -48,7 +48,7 @@ class PascalCaseClassNameRule implements Rule
 
         if (! preg_match($pattern, $node->name->name)) {
             $messages[] = RuleErrorBuilder::message(sprintf('Class name "%s" is not in PascalCase.', $node->name->name))
-                ->identifier('MessStan.classNameNotPascalCase')
+                ->identifier('MeliorStan.classNameNotPascalCase')
                 ->build();
         }
 
