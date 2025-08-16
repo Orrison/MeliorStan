@@ -14,10 +14,10 @@ Add the rule to your PHPStan configuration:
 
 ```neon
 includes:
-    - vendor/orrison/mess-stan/config/extension.neon
+    - vendor/orrison/meliorstan/config/extension.neon
 
 rules:
-    - Orrison\MessStan\Rules\TraitConstantNamingConventions\TraitConstantNamingConventionsRule
+    - Orrison\MeliorStan\Rules\TraitConstantNamingConventions\TraitConstantNamingConventionsRule
 ```
 
 ## Examples

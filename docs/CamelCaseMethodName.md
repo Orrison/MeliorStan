@@ -29,13 +29,13 @@ Add the rule to your PHPStan configuration:
 
 ```neon
 includes:
-    - vendor/orrison/mess-stan/config/extension.neon
+    - vendor/orrison/meliorstan/config/extension.neon
 
 rules:
-    - Orrison\MessStan\Rules\CamelCaseMethodName\CamelCaseMethodNameRule
+    - Orrison\MeliorStan\Rules\CamelCaseMethodName\CamelCaseMethodNameRule
 
 parameters:
-    mess_stan:
+    meliorstan:
         camel_case_method_name:
             allow_consecutive_uppercase: false
             allow_underscore_in_tests: false
@@ -74,7 +74,7 @@ class Example
 
 ```neon
 parameters:
-    mess_stan:
+    meliorstan:
         camel_case_method_name:
             allow_consecutive_uppercase: true
 ```
@@ -88,7 +88,7 @@ public function parseXMLAPI() {} // ✓ Now valid
 
 ```neon
 parameters:
-    mess_stan:
+    meliorstan:
         camel_case_method_name:
             allow_underscore_in_tests: true
 ```
@@ -101,7 +101,7 @@ public function test_with_underscores() {} // ✓ Now valid
 
 ```neon
 parameters:
-    mess_stan:
+    meliorstan:
         camel_case_method_name:
             allow_underscore_prefix: true
 ```

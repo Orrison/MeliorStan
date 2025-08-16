@@ -1,8 +1,8 @@
 <?php
 
-namespace Orrison\MessStan\Tests\Rules\BooleanGetMethodName;
+namespace Orrison\MeliorStan\Tests\Rules\BooleanGetMethodName;
 
-use Orrison\MessStan\Rules\BooleanGetMethodName\BooleanGetMethodNameRule;
+use Orrison\MeliorStan\Rules\BooleanGetMethodName\BooleanGetMethodNameRule;
 use PHPStan\Rules\Rule;
 use PHPStan\Testing\RuleTestCase;
 

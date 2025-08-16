@@ -19,13 +19,13 @@ Add the rule to your PHPStan configuration:
 
 ```neon
 includes:
-    - vendor/orrison/mess-stan/config/extension.neon
+    - vendor/orrison/meliorstan/config/extension.neon
 
 rules:
-    - Orrison\MessStan\Rules\PascalCaseClassName\PascalCaseClassNameRule
+    - Orrison\MeliorStan\Rules\PascalCaseClassName\PascalCaseClassNameRule
 
 parameters:
-    mess_stan:
+    meliorstan:
         pascal_case_class_name:
             allow_consecutive_uppercase: false
 ```
@@ -56,7 +56,7 @@ trait logging_trait {} // ✗ Error: Trait name "logging_trait" is not in Pascal
 
 ```neon
 parameters:
-    mess_stan:
+    meliorstan:
         pascal_case_class_name:
             allow_consecutive_uppercase: true
 ```

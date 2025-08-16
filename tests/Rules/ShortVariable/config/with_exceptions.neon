@@ -2,9 +2,9 @@ includes:
     - ../../../../config/extension.neon
 
 rules:
-    - Orrison\MessStan\Rules\ShortVariable\ShortVariableRule
+    - Orrison\MeliorStan\Rules\ShortVariable\ShortVariableRule
 
 parameters:
-    mess_stan:
+    meliorstan:
         short_variable:
             exceptions: ['i', 'j', 'k', 'x', 'y', 'e']

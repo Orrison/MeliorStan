@@ -1,4 +1,4 @@
-# MessStan
+# MeliorStan Rules
 
 Provides custom PHPStan rules for different enforcements throughout your codebase to look for potential problems and enforce particular programmatic or naming style.
 

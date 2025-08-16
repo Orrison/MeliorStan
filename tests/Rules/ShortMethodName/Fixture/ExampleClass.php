@@ -1,6 +1,6 @@
 <?php
 
-namespace Orrison\MessStan\Tests\Rules\ShortMethodName\Fixture;
+namespace Orrison\MeliorStan\Tests\Rules\ShortMethodName\Fixture;
 
 class ExampleClass
 {

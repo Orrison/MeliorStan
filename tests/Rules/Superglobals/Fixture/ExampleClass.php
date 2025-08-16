@@ -1,6 +1,6 @@
 <?php
 
-namespace Orrison\MessStan\Tests\Rules\Superglobals\Fixture;
+namespace Orrison\MeliorStan\Tests\Rules\Superglobals\Fixture;
 
 class ExampleClass
 {

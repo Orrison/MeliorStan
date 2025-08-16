@@ -2,4 +2,4 @@ includes:
     - ../../../../config/extension.neon
 
 rules:
-    - Orrison\MessStan\Rules\ConstantNamingConventions\ConstantNamingConventionsRule
+    - Orrison\MeliorStan\Rules\ConstantNamingConventions\ConstantNamingConventionsRule

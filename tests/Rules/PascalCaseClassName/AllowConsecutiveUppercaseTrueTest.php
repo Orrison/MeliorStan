@@ -1,8 +1,8 @@
 <?php
 
-namespace Orrison\MessStan\Tests\Rules;
+namespace Orrison\MeliorStan\Tests\Rules;
 
-use Orrison\MessStan\Rules\PascalCaseClassName\PascalCaseClassNameRule;
+use Orrison\MeliorStan\Rules\PascalCaseClassName\PascalCaseClassNameRule;
 use PHPStan\Rules\Rule;
 use PHPStan\Testing\RuleTestCase;
 

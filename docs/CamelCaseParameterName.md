@@ -24,13 +24,13 @@ Add the rule to your PHPStan configuration:
 
 ```neon
 includes:
-    - vendor/orrison/mess-stan/config/extension.neon
+    - vendor/orrison/meliorstan/config/extension.neon
 
 rules:
-    - Orrison\MessStan\Rules\CamelCaseParameterName\CamelCaseParameterNameRule
+    - Orrison\MeliorStan\Rules\CamelCaseParameterName\CamelCaseParameterNameRule
 
 parameters:
-    mess_stan:
+    meliorstan:
         camel_case_parameter_name:
             allow_consecutive_uppercase: false
             allow_underscore_prefix: false
@@ -70,7 +70,7 @@ function processData($inputData, $outputFormat)
 
 ```neon
 parameters:
-    mess_stan:
+    meliorstan:
         camel_case_parameter_name:
             allow_consecutive_uppercase: true
 ```
@@ -83,7 +83,7 @@ public function process($httpURL, $xmlAPI) {} // ✓ Now valid
 
 ```neon
 parameters:
-    mess_stan:
+    meliorstan:
         camel_case_parameter_name:
             allow_underscore_prefix: true
 ```

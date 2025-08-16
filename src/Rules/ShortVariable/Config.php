@@ -1,6 +1,6 @@
 <?php
 
-namespace Orrison\MessStan\Rules\ShortVariable;
+namespace Orrison\MeliorStan\Rules\ShortVariable;
 
 class Config
 {

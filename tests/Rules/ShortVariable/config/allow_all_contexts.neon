@@ -2,10 +2,10 @@ includes:
     - ../../../../config/extension.neon
 
 rules:
-    - Orrison\MessStan\Rules\ShortVariable\ShortVariableRule
+    - Orrison\MeliorStan\Rules\ShortVariable\ShortVariableRule
 
 parameters:
-    mess_stan:
+    meliorstan:
         short_variable:
             allow_in_for_loops: true
             allow_in_foreach: true

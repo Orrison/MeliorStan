@@ -1,6 +1,6 @@
 <?php
 
-namespace Orrison\MessStan\Tests\Rules\BooleanGetMethodName\Fixture;
+namespace Orrison\MeliorStan\Tests\Rules\BooleanGetMethodName\Fixture;
 
 class ExampleClass
 {

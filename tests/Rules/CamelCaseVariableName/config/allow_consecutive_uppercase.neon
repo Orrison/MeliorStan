@@ -2,6 +2,6 @@ includes:
     - configured_rule.neon
 
 parameters:
-    mess_stan:
+    meliorstan:
         camel_case_variable_name:
             allow_consecutive_uppercase: true

@@ -1,6 +1,6 @@
 <?php
 
-namespace Orrison\MessStan\Rules\MissingClosureParameterTypehint;
+namespace Orrison\MeliorStan\Rules\MissingClosureParameterTypehint;
 
 use PhpParser\Node;
 use PhpParser\Node\Expr\Closure;
@@ -36,7 +36,7 @@ class MissingClosureParameterTypehintRule implements Rule
             }
 
             $messages[] = RuleErrorBuilder::message(sprintf('Parameter #%d $%s of anonymous function has no typehint.', 1 + $index, $param->var->name))
-                ->identifier('MessStan.closureParameterMissingTypehint')
+                ->identifier('MeliorStan.closureParameterMissingTypehint')
                 ->build();
         }
 

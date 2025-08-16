@@ -1,6 +1,6 @@
 <?php
 
-namespace Orrison\MessStan\Tests\Rules\ShortVariable\Fixture;
+namespace Orrison\MeliorStan\Tests\Rules\ShortVariable\Fixture;
 
 use Exception;
 

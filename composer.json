@@ -1,17 +1,17 @@
 {
-    "name": "orrison/mess-stan",
+    "name": "orrison/meliorstan",
     "description": "Provides PHPStan rules based on PHPMD rules.",
     "keywords": [
         "phpstan",
         "phpstan-rules"
     ],
-    "homepage": "https://github.com/Orrison/mess-stan",
+    "homepage": "https://github.com/Orrison/meliorstan",
     "type": "phpstan-extension",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Orrison\\MessStan\\": "src/",
-            "Orrison\\MessStan\\Tests\\": "tests/"
+            "Orrison\\MeliorStan\\": "src/",
+            "Orrison\\MeliorStan\\Tests\\": "tests/"
         }
     },
     "authors": [

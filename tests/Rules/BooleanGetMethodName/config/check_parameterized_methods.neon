@@ -2,9 +2,9 @@ includes:
     - ../../../../config/extension.neon
 
 rules:
-    - Orrison\MessStan\Rules\BooleanGetMethodName\BooleanGetMethodNameRule
+    - Orrison\MeliorStan\Rules\BooleanGetMethodName\BooleanGetMethodNameRule
 
 parameters:
-    mess_stan:
+    meliorstan:
         boolean_get_method_name:
             check_parameterized_methods: true
