@@ -27,7 +27,7 @@ includes:
     - vendor/orrison/messed-up-phpstan/config/extension.neon
 
 rules:
-    - Orrison\MessedUpPhpstan\Rules\CamelCaseParameterName\CamelCaseParameterNameRule
+    - Orrison\MessStan\Rules\CamelCaseParameterName\CamelCaseParameterNameRule
 
 parameters:
     messed_up:

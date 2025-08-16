@@ -1,6 +1,6 @@
 <?php
 
-namespace Orrison\MessedUpPhpstan\Rules\ShortMethodName;
+namespace Orrison\MessStan\Rules\ShortMethodName;
 
 use PhpParser\Node;
 use PhpParser\Node\Stmt\ClassMethod;
@@ -43,7 +43,7 @@ class ShortMethodNameRule implements Rule
         // Check if method name is shorter than minimum length
         if (strlen($name) < $this->config->getMinimumLength()) {
             $messages[] = RuleErrorBuilder::message(sprintf('Method name "%s" is shorter than minimum length of %d characters.', $name, $this->config->getMinimumLength()))
-                ->identifier('MessedUpPhpstan.methodNameTooShort')
+                ->identifier('MessStan.methodNameTooShort')
                 ->build();
         }
 

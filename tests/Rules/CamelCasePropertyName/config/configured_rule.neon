@@ -2,4 +2,4 @@ includes:
     - ../../../../config/extension.neon
 
 rules:
-    - Orrison\MessedUpPhpstan\Rules\CamelCasePropertyName\CamelCasePropertyNameRule
+    - Orrison\MessStan\Rules\CamelCasePropertyName\CamelCasePropertyNameRule

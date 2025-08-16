@@ -1,6 +1,6 @@
 <?php
 
-namespace Orrison\MessedUpPhpstan\Rules\CamelCaseParameterName;
+namespace Orrison\MessStan\Rules\CamelCaseParameterName;
 
 use PhpParser\Node;
 use PhpParser\Node\Expr\Variable;

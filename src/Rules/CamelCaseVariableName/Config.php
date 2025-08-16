@@ -1,13 +1,14 @@
 <?php
 
-namespace Orrison\MessedUpPhpstan\Rules\CamelCaseVariableName;
+namespace Orrison\MessStan\Rules\CamelCaseVariableName;
 
 class Config
 {
     public function __construct(
         protected bool $allowConsecutiveUppercase = false,
         protected bool $allowUnderscorePrefix = false,
-    ) {}
+    ) {
+    }
 
     public function getAllowConsecutiveUppercase(): bool
     {

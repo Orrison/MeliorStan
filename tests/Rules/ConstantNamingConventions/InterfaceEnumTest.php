@@ -1,8 +1,8 @@
 <?php
 
-namespace Orrison\MessedUpPhpstan\Tests\Rules\ConstantNamingConventions;
+namespace Orrison\MessStan\Tests\Rules\ConstantNamingConventions;
 
-use Orrison\MessedUpPhpstan\Rules\ConstantNamingConventions\ConstantNamingConventionsRule;
+use Orrison\MessStan\Rules\ConstantNamingConventions\ConstantNamingConventionsRule;
 use PHPStan\Rules\Rule;
 use PHPStan\Testing\RuleTestCase;
 

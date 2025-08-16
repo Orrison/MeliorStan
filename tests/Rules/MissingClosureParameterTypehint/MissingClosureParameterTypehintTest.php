@@ -1,8 +1,8 @@
 <?php
 
-namespace Orrison\MessedUpPhpstan\Tests\Rules\MissingClosureParameterTypehint;
+namespace Orrison\MessStan\Tests\Rules\MissingClosureParameterTypehint;
 
-use Orrison\MessedUpPhpstan\Rules\MissingClosureParameterTypehint\MissingClosureParameterTypehintRule;
+use Orrison\MessStan\Rules\MissingClosureParameterTypehint\MissingClosureParameterTypehintRule;
 use PHPStan\Rules\Rule;
 use PHPStan\Testing\RuleTestCase;
 

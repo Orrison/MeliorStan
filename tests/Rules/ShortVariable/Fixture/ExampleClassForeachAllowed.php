@@ -1,6 +1,6 @@
 <?php
 
-namespace Orrison\MessedUpPhpstan\Tests\Rules\ShortVariable\Fixture;
+namespace Orrison\MessStan\Tests\Rules\ShortVariable\Fixture;
 
 use Exception;
 

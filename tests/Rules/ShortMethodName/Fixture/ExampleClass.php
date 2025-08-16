@@ -1,6 +1,6 @@
 <?php
 
-namespace Orrison\MessedUpPhpstan\Tests\Rules\ShortMethodName\Fixture;
+namespace Orrison\MessStan\Tests\Rules\ShortMethodName\Fixture;
 
 class ExampleClass
 {

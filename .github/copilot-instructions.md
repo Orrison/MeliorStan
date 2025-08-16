@@ -44,7 +44,7 @@ The extension uses Neon dependency injection with a hierarchical configuration s
 ### Critical Pattern: Config Parameter Mapping
 In `config/extension.neon`, ensure Config service arguments match the correct parameter namespace:
 ```neon
-- factory: Orrison\MessedUpPhpstan\Rules\CamelCaseParameterName\Config
+- factory: Orrison\MessStan\Rules\CamelCaseParameterName\Config
   arguments:
     - %messed_up.camel_case_parameter_name.allow_consecutive_uppercase%  # Not property_name!
     - %messed_up.camel_case_parameter_name.allow_underscore_prefix%
@@ -78,7 +78,7 @@ parameters:
 services:
     # ... existing services
     -
-        factory: Orrison\MessedUpPhpstan\Rules\NewRuleName\Config
+        factory: Orrison\MessStan\Rules\NewRuleName\Config
         arguments:
             - %messed_up.new_rule_name.config_option%
 ```
@@ -93,7 +93,7 @@ includes:
     - ../../../../config/extension.neon
 
 rules:
-    - Orrison\MessedUpPhpstan\Rules\NewRuleName\NewRuleNameRule
+    - Orrison\MessStan\Rules\NewRuleName\NewRuleNameRule
 
 parameters:
     messed_up:
@@ -115,7 +115,7 @@ When adding new rules to `config/extension.neon`, follow these naming patterns:
 
 2. **Parameter references**: Must match the schema key exactly:
    ```neon
-   - factory: Orrison\MessedUpPhpstan\Rules\BooleanGetMethodName\Config
+   - factory: Orrison\MessStan\Rules\BooleanGetMethodName\Config
      arguments:
        - %messed_up.boolean_get_method_name.check_parameterized_methods%
    ```
@@ -195,7 +195,7 @@ The formatter often adds PHPDoc annotations and adjusts spacing, which changes l
 - It is okay to use `final` on classes or `private` on methods in tests if the intent is to prove that the rule works as expected in a specific scenario or if the rule is doing something specific with final classes and private methods/properties, but this should be avoided in the source code of our rules
 
 ### Namespace Convention
-All classes use `Orrison\MessedUpPhpstan\` prefix with rule-specific sub-namespaces.
+All classes use `Orrison\MessStan\` prefix with rule-specific sub-namespaces.
 
 ### Declare Strict Types
 Do NOT add `declare(strict_types=1);` to the top of files. This is not a requirement for this project and we do not want it. Unless the rule specifically has to do with this strict type declaration, then it is not needed. This is to keep the codebase consistent and avoid unnecessary complexity.
@@ -203,7 +203,7 @@ Do NOT add `declare(strict_types=1);` to the top of files. This is not a require
 ### Error Identifiers
 Use consistent identifiers for rule errors:
 ```php
-->identifier('MessedUpPhpstan.methodNameNotCamelCase')
+->identifier('MessStan.methodNameNotCamelCase')
 ```
 
 ### Config Naming
@@ -266,7 +266,7 @@ includes:
     - vendor/orrison/messed-up-phpstan/config/extension.neon
 
 rules:
-    - Orrison\MessedUpPhpstan\Rules\{Namespace}\{RuleName}Rule
+    - Orrison\MessStan\Rules\{Namespace}\{RuleName}Rule
 
 parameters:
     messed_up:

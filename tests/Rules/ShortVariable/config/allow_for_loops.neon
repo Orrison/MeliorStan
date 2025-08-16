@@ -8,6 +8,6 @@ parameters:
 
 services:
     -
-        class: Orrison\MessedUpPhpstan\Rules\ShortVariable\ShortVariableRule
+        class: Orrison\MessStan\Rules\ShortVariable\ShortVariableRule
         tags:
             - phpstan.rules.rule

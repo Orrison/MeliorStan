@@ -17,7 +17,7 @@ includes:
     - vendor/orrison/messed-up-phpstan/config/extension.neon
 
 rules:
-    - Orrison\MessedUpPhpstan\Rules\MissingClosureParameterTypehint\MissingClosureParameterTypehintRule
+    - Orrison\MessStan\Rules\MissingClosureParameterTypehint\MissingClosureParameterTypehintRule
 ```
 
 ## Examples

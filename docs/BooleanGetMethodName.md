@@ -22,7 +22,7 @@ includes:
     - vendor/orrison/messed-up-phpstan/config/extension.neon
 
 rules:
-    - Orrison\MessedUpPhpstan\Rules\BooleanGetMethodName\BooleanGetMethodNameRule
+    - Orrison\MessStan\Rules\BooleanGetMethodName\BooleanGetMethodNameRule
 
 parameters:
     messed_up:

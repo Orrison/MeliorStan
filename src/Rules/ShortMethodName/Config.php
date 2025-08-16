@@ -1,6 +1,6 @@
 <?php
 
-namespace Orrison\MessedUpPhpstan\Rules\ShortMethodName;
+namespace Orrison\MessStan\Rules\ShortMethodName;
 
 class Config
 {

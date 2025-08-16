@@ -1,6 +1,6 @@
 <?php
 
-namespace Orrison\MessedUpPhpstan\Tests\Rules\BooleanGetMethodName\Fixture;
+namespace Orrison\MessStan\Tests\Rules\BooleanGetMethodName\Fixture;
 
 class ExampleClass
 {

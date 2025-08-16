@@ -22,7 +22,7 @@ includes:
     - vendor/orrison/messed-up-phpstan/config/extension.neon
 
 rules:
-    - Orrison\MessedUpPhpstan\Rules\PascalCaseClassName\PascalCaseClassNameRule
+    - Orrison\MessStan\Rules\PascalCaseClassName\PascalCaseClassNameRule
 
 parameters:
     messed_up:

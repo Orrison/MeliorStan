@@ -7,4 +7,4 @@ parameters:
             allow_underscore_prefix: true
 
 rules:
-    - Orrison\MessedUpPhpstan\Rules\CamelCaseParameterName\CamelCaseParameterNameRule
+    - Orrison\MessStan\Rules\CamelCaseParameterName\CamelCaseParameterNameRule

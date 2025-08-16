@@ -1,6 +1,6 @@
 <?php
 
-namespace Orrison\MessedUpPhpstan\Rules\PascalCaseClassName;
+namespace Orrison\MessStan\Rules\PascalCaseClassName;
 
 class Config
 {

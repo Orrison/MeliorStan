@@ -1,8 +1,8 @@
 <?php
 
-namespace Orrison\MessedUpPhpstan\Tests\Rules\Superglobals;
+namespace Orrison\MessStan\Tests\Rules\Superglobals;
 
-use Orrison\MessedUpPhpstan\Rules\Superglobals\SuperglobalsRule;
+use Orrison\MessStan\Rules\Superglobals\SuperglobalsRule;
 use PHPStan\Rules\Rule;
 use PHPStan\Testing\RuleTestCase;
 

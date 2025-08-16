@@ -1,6 +1,6 @@
 <?php
 
-namespace Orrison\MessedUpPhpstan\Tests\Rules\ConstantNamingConventions\Fixture;
+namespace Orrison\MessStan\Tests\Rules\ConstantNamingConventions\Fixture;
 
 interface ExampleInterface
 {

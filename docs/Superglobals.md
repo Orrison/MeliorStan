@@ -26,7 +26,7 @@ includes:
     - vendor/orrison/messed-up-phpstan/config/extension.neon
 
 rules:
-    - Orrison\MessedUpPhpstan\Rules\Superglobals\SuperglobalsRule
+    - Orrison\MessStan\Rules\Superglobals\SuperglobalsRule
 ```
 
 ## Example
