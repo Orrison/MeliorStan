@@ -263,7 +263,7 @@ Add the rule to your PHPStan configuration:
 
 ```neon
 includes:
-    - vendor/orrison/messstan/config/extension.neon
+    - vendor/orrison/mess-stan/config/extension.neon
 
 rules:
     - Orrison\MessStan\Rules\{Namespace}\{RuleName}Rule
