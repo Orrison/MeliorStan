@@ -5,6 +5,6 @@ rules:
     - Orrison\MessStan\Rules\BooleanGetMethodName\BooleanGetMethodNameRule
 
 parameters:
-    messed_up:
+    mess_stan:
         boolean_get_method_name:
             check_parameterized_methods: false

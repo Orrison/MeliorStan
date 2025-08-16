@@ -2,7 +2,7 @@ includes:
     - ../../../../config/extension.neon
 
 parameters:
-    messed_up:
+    mess_stan:
         camel_case_property_name:
             allow_consecutive_uppercase: true
 

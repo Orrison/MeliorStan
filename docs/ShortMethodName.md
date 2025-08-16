@@ -6,7 +6,7 @@ This rule enforces that method names must be of a minimum length.
 
 ```yaml
 parameters:
-    messed_up:
+    mess_stan:
         short_method_name:
             minimum_length: 3
             exceptions: []
@@ -57,7 +57,7 @@ class Example
 
 ```yaml
 parameters:
-    messed_up:
+    mess_stan:
         short_method_name:
             minimum_length: 3
             exceptions: ['a', 'is']

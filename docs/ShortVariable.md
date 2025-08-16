@@ -76,7 +76,7 @@ You can configure this rule using the following parameters:
 
 ```neon
 parameters:
-    messed_up:
+    mess_stan:
         short_variable:
             minimum_length: 3        # Minimum required length (default: 3)
             exceptions: []           # Array of variable names to ignore (default: [])
@@ -95,7 +95,7 @@ Sets the minimum required length for variable names.
 **Example:**
 ```neon
 parameters:
-    messed_up:
+    mess_stan:
         short_variable:
             minimum_length: 5
 ```
@@ -110,7 +110,7 @@ An array of variable names that should be excluded from the minimum length check
 **Example:**
 ```neon
 parameters:
-    messed_up:
+    mess_stan:
         short_variable:
             exceptions: ['i', 'j', 'k', 'x', 'y', 'e']
 ```
@@ -127,7 +127,7 @@ Allows short variable names in for loop initialization expressions.
 **Example:**
 ```neon
 parameters:
-    messed_up:
+    mess_stan:
         short_variable:
             allow_in_for_loops: true
 ```
@@ -154,7 +154,7 @@ Allows short variable names in foreach key and value declarations.
 **Example:**
 ```neon
 parameters:
-    messed_up:
+    mess_stan:
         short_variable:
             allow_in_foreach: true
 ```
@@ -182,7 +182,7 @@ Allows short variable names in catch block exception declarations.
 **Example:**
 ```neon
 parameters:
-    messed_up:
+    mess_stan:
         short_variable:
             allow_in_catch: true
 ```

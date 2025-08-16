@@ -5,7 +5,7 @@ rules:
     - Orrison\MessStan\Rules\ShortVariable\ShortVariableRule
 
 parameters:
-    messed_up:
+    mess_stan:
         short_variable:
             allow_in_for_loops: true
             allow_in_foreach: true

@@ -24,13 +24,13 @@ Add the rule to your PHPStan configuration:
 
 ```neon
 includes:
-    - vendor/orrison/messed-up-phpstan/config/extension.neon
+    - vendor/orrison/messstan/config/extension.neon
 
 rules:
     - Orrison\MessStan\Rules\CamelCasePropertyName\CamelCasePropertyNameRule
 
 parameters:
-    messed_up:
+    mess_stan:
         camel_case_property_name:
             allow_consecutive_uppercase: false
             allow_underscore_prefix: false
@@ -64,7 +64,7 @@ class Example
 
 ```neon
 parameters:
-    messed_up:
+    mess_stan:
         camel_case_property_name:
             allow_consecutive_uppercase: true
 ```
@@ -81,7 +81,7 @@ class Example
 
 ```neon
 parameters:
-    messed_up:
+    mess_stan:
         camel_case_property_name:
             allow_underscore_prefix: true
 ```

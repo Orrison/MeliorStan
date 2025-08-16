@@ -5,7 +5,7 @@ rules:
     - Orrison\MessStan\Rules\ShortMethodName\ShortMethodNameRule
 
 parameters:
-    messed_up:
+    mess_stan:
         short_method_name:
             minimum_length: 3
             exceptions: []
