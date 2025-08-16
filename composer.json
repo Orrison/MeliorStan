@@ -1,6 +1,6 @@
 {
     "name": "orrison/meliorstan",
-    "description": "Provides PHPStan rules based on PHPMD rules.",
+    "description": "Provides PHPStan rules for improved code quality by detecting code smells and possible issues. In addition to enforcing particular naming and code style conventions to reduce bike-shedding.",
     "keywords": [
         "phpstan",
         "phpstan-rules"
