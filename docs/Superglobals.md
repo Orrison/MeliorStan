@@ -23,7 +23,7 @@ Add the rule to your PHPStan configuration:
 
 ```neon
 includes:
-    - vendor/orrison/messed-up-phpstan/config/extension.neon
+    - vendor/orrison/messstan/config/extension.neon
 
 rules:
     - Orrison\MessStan\Rules\Superglobals\SuperglobalsRule

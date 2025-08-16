@@ -2,7 +2,7 @@ includes:
     - ../../../../config/extension.neon
 
 parameters:
-    messed_up:
+    mess_stan:
         short_variable:
             allow_in_foreach: true
 

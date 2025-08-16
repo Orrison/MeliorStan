@@ -1,11 +1,11 @@
 {
-    "name": "orrison/messed-up-phpstan",
+    "name": "orrison/messstan",
     "description": "Provides PHPStan rules based on PHPMD rules.",
     "keywords": [
         "phpstan",
         "phpstan-rules"
     ],
-    "homepage": "https://github.com/Orrison/messed-up-phpstan",
+    "homepage": "https://github.com/Orrison/messstan",
     "type": "phpstan-extension",
     "license": "MIT",
     "autoload": {

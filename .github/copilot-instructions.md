@@ -1,4 +1,4 @@
-# Messed Up PHPStan - AI Coding Instructions
+# MessStan - AI Coding Instructions
 
 ## Project Overview
 This is a PHPStan extension that provides different custom PHPstan rules with configurable options. Each rule has its own namespace under `src/Rules/` and follows a consistent architecture pattern.
@@ -46,8 +46,8 @@ In `config/extension.neon`, ensure Config service arguments match the correct pa
 ```neon
 - factory: Orrison\MessStan\Rules\CamelCaseParameterName\Config
   arguments:
-    - %messed_up.camel_case_parameter_name.allow_consecutive_uppercase%  # Not property_name!
-    - %messed_up.camel_case_parameter_name.allow_underscore_prefix%
+    - %mess_stan.camel_case_parameter_name.allow_consecutive_uppercase%  # Not property_name!
+    - %mess_stan.camel_case_parameter_name.allow_underscore_prefix%
 ```
 
 ### Rule Registration for New Rules
@@ -56,7 +56,7 @@ When creating a new rule, you must add BOTH schema definition AND service regist
 1. **Add parameter schema** (in `parametersSchema` section):
 ```neon
 parametersSchema:
-    messed_up: structure([
+    mess_stan: structure([
         # ... existing rules
         new_rule_name: structure([
             config_option: bool(),
@@ -67,7 +67,7 @@ parametersSchema:
 2. **Add default parameters** (in `parameters` section):
 ```neon
 parameters:
-    messed_up:
+    mess_stan:
         # ... existing rules
         new_rule_name:
             config_option: false
@@ -80,7 +80,7 @@ services:
     -
         factory: Orrison\MessStan\Rules\NewRuleName\Config
         arguments:
-            - %messed_up.new_rule_name.config_option%
+            - %mess_stan.new_rule_name.config_option%
 ```
 
 **IMPORTANT**: The main rule class itself is NOT registered in extension.neon. Users must register the rule in their own PHPStan configuration.
@@ -96,7 +96,7 @@ rules:
     - Orrison\MessStan\Rules\NewRuleName\NewRuleNameRule
 
 parameters:
-    messed_up:
+    mess_stan:
         new_rule_name:
             config_option: true  # Override for this test
 ```
@@ -117,7 +117,7 @@ When adding new rules to `config/extension.neon`, follow these naming patterns:
    ```neon
    - factory: Orrison\MessStan\Rules\BooleanGetMethodName\Config
      arguments:
-       - %messed_up.boolean_get_method_name.check_parameterized_methods%
+       - %mess_stan.boolean_get_method_name.check_parameterized_methods%
    ```
 
 3. **Config method names**: Use camelCase with "get" prefix:
@@ -263,13 +263,13 @@ Add the rule to your PHPStan configuration:
 
 ```neon
 includes:
-    - vendor/orrison/messed-up-phpstan/config/extension.neon
+    - vendor/orrison/messstan/config/extension.neon
 
 rules:
     - Orrison\MessStan\Rules\{Namespace}\{RuleName}Rule
 
 parameters:
-    messed_up:
+    mess_stan:
         {config_namespace}:
             config_option: false
 ```
@@ -290,7 +290,7 @@ parameters:
 
 ```neon
 parameters:
-    messed_up:
+    mess_stan:
         {config_namespace}:
             config_option: true
 ```

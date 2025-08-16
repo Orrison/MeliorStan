@@ -2,6 +2,6 @@ includes:
     - configured_rule.neon
 
 parameters:
-    messed_up:
+    mess_stan:
         camel_case_variable_name:
             allow_underscore_prefix: true
