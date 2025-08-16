@@ -5,7 +5,7 @@
         "phpstan",
         "phpstan-rules"
     ],
-    "homepage": "https://github.com/Orrison/meliorstan",
+    "homepage": "https://github.com/Orrison/MeliorStan",
     "type": "phpstan-extension",
     "license": "MIT",
     "autoload": {
