@@ -17,7 +17,7 @@ includes:
     - vendor/orrison/messed-up-phpstan/config/extension.neon
 
 rules:
-    - Orrison\MessedUpPhpstan\Rules\TraitConstantNamingConventions\TraitConstantNamingConventionsRule
+    - Orrison\MessStan\Rules\TraitConstantNamingConventions\TraitConstantNamingConventionsRule
 ```
 
 ## Examples

@@ -1,8 +1,8 @@
 <?php
 
-namespace Orrison\MessedUpPhpstan\Tests\Rules\CamelCaseVariableName;
+namespace Orrison\MessStan\Tests\Rules\CamelCaseVariableName;
 
-use Orrison\MessedUpPhpstan\Rules\CamelCaseVariableName\CamelCaseVariableNameRule;
+use Orrison\MessStan\Rules\CamelCaseVariableName\CamelCaseVariableNameRule;
 use PHPStan\Rules\Rule;
 use PHPStan\Testing\RuleTestCase;
 

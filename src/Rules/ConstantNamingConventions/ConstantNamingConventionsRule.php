@@ -1,6 +1,6 @@
 <?php
 
-namespace Orrison\MessedUpPhpstan\Rules\ConstantNamingConventions;
+namespace Orrison\MessStan\Rules\ConstantNamingConventions;
 
 use PhpParser\Node;
 use PhpParser\Node\Stmt\ClassConst;
@@ -36,7 +36,7 @@ class ConstantNamingConventionsRule implements Rule
             if ($name !== strtoupper($name)) {
                 $messages[] = RuleErrorBuilder::message(
                     sprintf('Constant name "%s" is not in UPPERCASE.', $name)
-                )->identifier('MessedUpPhpstan.constantNamingConventions')
+                )->identifier('MessStan.constantNamingConventions')
                     ->build();
             }
         }

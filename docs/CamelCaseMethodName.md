@@ -32,7 +32,7 @@ includes:
     - vendor/orrison/messed-up-phpstan/config/extension.neon
 
 rules:
-    - Orrison\MessedUpPhpstan\Rules\CamelCaseMethodName\CamelCaseMethodNameRule
+    - Orrison\MessStan\Rules\CamelCaseMethodName\CamelCaseMethodNameRule
 
 parameters:
     messed_up:

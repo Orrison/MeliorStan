@@ -1,5 +1,5 @@
 <?php
 
-namespace Orrison\MessedUpPhpstan\Tests\Rules\PascalCaseClassName\Fixture;
+namespace Orrison\MessStan\Tests\Rules\PascalCaseClassName\Fixture;
 
 class camelCaseClass {}

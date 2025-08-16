@@ -1,6 +1,6 @@
 <?php
 
-namespace Orrison\MessedUpPhpstan\Rules\Superglobals;
+namespace Orrison\MessStan\Rules\Superglobals;
 
 use PhpParser\Node;
 use PhpParser\Node\Expr\Variable;
@@ -52,7 +52,7 @@ class SuperglobalsRule implements Rule
             return [
                 RuleErrorBuilder::message(
                     sprintf('Superglobal "$%s" should not be used.', $name)
-                )->identifier('MessedUpPhpstan.superglobalUsage')
+                )->identifier('MessStan.superglobalUsage')
                     ->build(),
             ];
         }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Orrison\MessedUpPhpstan\Rules\CamelCaseVariableName;
+namespace Orrison\MessStan\Rules\CamelCaseVariableName;
 
 use PhpParser\Node;
 use PhpParser\Node\Expr\Variable;
@@ -66,7 +66,7 @@ class CamelCaseVariableNameRule implements Rule
             return [
                 RuleErrorBuilder::message(
                     sprintf('Variable name "$%s" is not in camelCase.', $name)
-                )->identifier('MessedUpPhpstan.variableNameNotCamelCase')
+                )->identifier('MessStan.variableNameNotCamelCase')
                     ->build(),
             ];
         }

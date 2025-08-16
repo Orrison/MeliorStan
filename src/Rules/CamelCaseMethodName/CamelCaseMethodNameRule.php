@@ -1,6 +1,6 @@
 <?php
 
-namespace Orrison\MessedUpPhpstan\Rules\CamelCaseMethodName;
+namespace Orrison\MessStan\Rules\CamelCaseMethodName;
 
 use PhpParser\Node;
 use PhpParser\Node\Stmt\ClassMethod;
@@ -80,7 +80,7 @@ class CamelCaseMethodNameRule implements Rule
 
         if (! preg_match($pattern, $name)) {
             $messages[] = RuleErrorBuilder::message(sprintf('Method name "%s" is not in camelCase.', $name))
-                ->identifier('MessedUpPhpstan.methodNameNotCamelCase')
+                ->identifier('MessStan.methodNameNotCamelCase')
                 ->build();
         }
 

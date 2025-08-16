@@ -1,8 +1,8 @@
 <?php
 
-namespace Orrison\MessedUpPhpstan\Tests\Rules\TraitConstantNamingConventions;
+namespace Orrison\MessStan\Tests\Rules\TraitConstantNamingConventions;
 
-use Orrison\MessedUpPhpstan\Rules\TraitConstantNamingConventions\TraitConstantNamingConventionsRule;
+use Orrison\MessStan\Rules\TraitConstantNamingConventions\TraitConstantNamingConventionsRule;
 use PHPStan\Rules\Rule;
 use PHPStan\Testing\RuleTestCase;
 

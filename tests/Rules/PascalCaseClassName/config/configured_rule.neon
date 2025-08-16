@@ -2,4 +2,4 @@ includes:
     - ../../../../config/extension.neon
 
 rules:
-    - Orrison\MessedUpPhpstan\Rules\PascalCaseClassName\PascalCaseClassNameRule
+    - Orrison\MessStan\Rules\PascalCaseClassName\PascalCaseClassNameRule

@@ -2,4 +2,4 @@ includes:
     - ../../../../config/extension.neon
 
 rules:
-    - Orrison\MessedUpPhpstan\Rules\Superglobals\SuperglobalsRule
+    - Orrison\MessStan\Rules\Superglobals\SuperglobalsRule

@@ -1,8 +1,8 @@
 <?php
 
-namespace Orrison\MessedUpPhpstan\Tests\Rules\ShortVariable;
+namespace Orrison\MessStan\Tests\Rules\ShortVariable;
 
-use Orrison\MessedUpPhpstan\Rules\ShortVariable\ShortVariableRule;
+use Orrison\MessStan\Rules\ShortVariable\ShortVariableRule;
 use PHPStan\Rules\Rule;
 use PHPStan\Testing\RuleTestCase;
 

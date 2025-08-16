@@ -1,6 +1,6 @@
 <?php
 
-namespace Orrison\MessedUpPhpstan\Tests\Rules\Superglobals\Fixture;
+namespace Orrison\MessStan\Tests\Rules\Superglobals\Fixture;
 
 class ExampleClass
 {

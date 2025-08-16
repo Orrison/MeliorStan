@@ -2,7 +2,7 @@ includes:
     - ../../../../config/extension.neon
 
 rules:
-    - Orrison\MessedUpPhpstan\Rules\ShortMethodName\ShortMethodNameRule
+    - Orrison\MessStan\Rules\ShortMethodName\ShortMethodNameRule
 
 parameters:
     messed_up:

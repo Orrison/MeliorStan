@@ -68,32 +68,32 @@ parameters:
 
 services:
     -
-        factory: Orrison\MessedUpPhpstan\Rules\PascalCaseClassName\Config
+        factory: Orrison\MessStan\Rules\PascalCaseClassName\Config
         arguments:
             - %messed_up.pascal_case_class_name.allow_consecutive_uppercase%
     -
-        factory: Orrison\MessedUpPhpstan\Rules\CamelCaseMethodName\Config
+        factory: Orrison\MessStan\Rules\CamelCaseMethodName\Config
         arguments:
             - %messed_up.camel_case_method_name.allow_consecutive_uppercase%
             - %messed_up.camel_case_method_name.allow_underscore_in_tests%
             - %messed_up.camel_case_method_name.allow_underscore_prefix%
     -
-        factory: Orrison\MessedUpPhpstan\Rules\CamelCasePropertyName\Config
+        factory: Orrison\MessStan\Rules\CamelCasePropertyName\Config
         arguments:
             - %messed_up.camel_case_property_name.allow_consecutive_uppercase%
             - %messed_up.camel_case_property_name.allow_underscore_prefix%
     -
-        factory: Orrison\MessedUpPhpstan\Rules\CamelCaseParameterName\Config
+        factory: Orrison\MessStan\Rules\CamelCaseParameterName\Config
         arguments:
             - %messed_up.camel_case_parameter_name.allow_consecutive_uppercase%
             - %messed_up.camel_case_parameter_name.allow_underscore_prefix%
     -
-        factory: Orrison\MessedUpPhpstan\Rules\CamelCaseVariableName\Config
+        factory: Orrison\MessStan\Rules\CamelCaseVariableName\Config
         arguments:
             - %messed_up.camel_case_variable_name.allow_consecutive_uppercase%
             - %messed_up.camel_case_variable_name.allow_underscore_prefix%
     -
-        factory: Orrison\MessedUpPhpstan\Rules\ShortVariable\Config
+        factory: Orrison\MessStan\Rules\ShortVariable\Config
         arguments:
             - %messed_up.short_variable.minimum_length%
             - %messed_up.short_variable.exceptions%
@@ -101,11 +101,11 @@ services:
             - %messed_up.short_variable.allow_in_foreach%
             - %messed_up.short_variable.allow_in_catch%
     -
-        factory: Orrison\MessedUpPhpstan\Rules\ShortMethodName\Config
+        factory: Orrison\MessStan\Rules\ShortMethodName\Config
         arguments:
             - %messed_up.short_method_name.minimum_length%
             - %messed_up.short_method_name.exceptions%
     -
-        factory: Orrison\MessedUpPhpstan\Rules\BooleanGetMethodName\Config
+        factory: Orrison\MessStan\Rules\BooleanGetMethodName\Config
         arguments:
             - %messed_up.boolean_get_method_name.check_parameterized_methods%

@@ -1,6 +1,6 @@
 <?php
 
-namespace Orrison\MessedUpPhpstan\Rules\BooleanGetMethodName;
+namespace Orrison\MessStan\Rules\BooleanGetMethodName;
 
 use PhpParser\Node;
 use PhpParser\Node\Identifier;
@@ -39,7 +39,7 @@ class BooleanGetMethodNameRule implements Rule
             $methodName = $node->name->name;
             $messages[] = RuleErrorBuilder::message(
                 sprintf('Method "%s" starts with "get" and returns boolean, consider using "is" or "has" instead.', $methodName)
-            )->identifier('MessedUpPhpstan.booleanGetMethodName')
+            )->identifier('MessStan.booleanGetMethodName')
                 ->build();
         }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Orrison\MessedUpPhpstan\Rules\CamelCasePropertyName;
+namespace Orrison\MessStan\Rules\CamelCasePropertyName;
 
 use PhpParser\Node;
 use PhpParser\Node\Stmt\Property;

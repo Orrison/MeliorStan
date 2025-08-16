@@ -10,8 +10,8 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Orrison\\MessedUpPhpstan\\": "src/",
-            "Orrison\\MessedUpPhpstan\\Tests\\": "tests/"
+            "Orrison\\MessStan\\": "src/",
+            "Orrison\\MessStan\\Tests\\": "tests/"
         }
     },
     "authors": [
