@@ -66,7 +66,8 @@ class CamelCaseVariableNameRule implements Rule
             return [
                 RuleErrorBuilder::message(
                     sprintf('Variable name "$%s" is not in camelCase.', $name)
-                )->identifier('MeliorStan.variableNameNotCamelCase')
+                )
+                    ->identifier('MeliorStan.variableNameNotCamelCase')
                     ->build(),
             ];
         }
