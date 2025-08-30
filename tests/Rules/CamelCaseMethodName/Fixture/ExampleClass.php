@@ -64,4 +64,9 @@ class ExampleClass
     public function test_with_underscores_invalid() {}
 
     public function getXMLDataInvalid() {}
+
+    // Valid examples that should not be flagged
+    public function isA() {}
+
+    public function isvalid() {}
 }
