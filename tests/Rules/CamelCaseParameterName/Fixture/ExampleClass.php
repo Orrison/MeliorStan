@@ -10,6 +10,7 @@ function testFunctionName(
     string $_isHttpResponse,
     string $_isHTTPResponse,
     string $isA,
+    string $isvalid,
 ): void {}
 
 $testAnonFunction = function (
@@ -22,6 +23,7 @@ $testAnonFunction = function (
     string $_isHttpResponse,
     string $_isHTTPResponse,
     string $isA,
+    string $isvalid,
 ): void {};
 
 class ExampleClass
@@ -36,6 +38,7 @@ class ExampleClass
         string $_isHttpResponse,
         string $_isHTTPResponse,
         string $isA,
+        string $isvalid,
     ): void {}
 
     protected function protectedTestMethodName(
@@ -48,6 +51,7 @@ class ExampleClass
         string $_isHttpResponse,
         string $_isHTTPResponse,
         string $isA,
+        string $isvalid,
     ): void {}
 
     private function privateTestMethodName(
@@ -60,5 +64,6 @@ class ExampleClass
         string $_isHttpResponse,
         string $_isHTTPResponse,
         string $isA,
+        string $isvalid,
     ): void {}
 }
