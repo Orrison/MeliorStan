@@ -22,6 +22,10 @@ class ExampleClass
 
         $_isHTTPResponse = false;
 
+        $isA = true;
+
+        $isvalid = false;
+
         // PHP superglobals should be ignored
         $value = $_SERVER['HTTP_HOST'] ?? null;
         $data = $_POST['data'] ?? null;
