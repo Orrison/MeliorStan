@@ -19,4 +19,8 @@ class ExampleClass
     public $_isHttpResponse;
 
     public $_isHTTPResponse;
+
+    public $isA;
+
+    public $isvalid;
 }
