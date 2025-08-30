@@ -21,25 +21,25 @@ class AllOptionsTrueTest extends RuleTestCase
             ['Parameter name "IsHTTPResponse" is not in camelCase.', 8],
             ['Parameter name "ISHTTPRESPONSE" is not in camelCase.', 9],
 
-            ['Parameter name "is_http_response" is not in camelCase.', 18],
-            ['Parameter name "IsHttpResponse" is not in camelCase.', 19],
-            ['Parameter name "IsHTTPResponse" is not in camelCase.', 21],
-            ['Parameter name "ISHTTPRESPONSE" is not in camelCase.', 22],
+            ['Parameter name "is_http_response" is not in camelCase.', 17],
+            ['Parameter name "IsHttpResponse" is not in camelCase.', 18],
+            ['Parameter name "IsHTTPResponse" is not in camelCase.', 20],
+            ['Parameter name "ISHTTPRESPONSE" is not in camelCase.', 21],
 
-            ['Parameter name "is_http_response" is not in camelCase.', 32],
-            ['Parameter name "IsHttpResponse" is not in camelCase.', 33],
-            ['Parameter name "IsHTTPResponse" is not in camelCase.', 35],
-            ['Parameter name "ISHTTPRESPONSE" is not in camelCase.', 36],
+            ['Parameter name "is_http_response" is not in camelCase.', 31],
+            ['Parameter name "IsHttpResponse" is not in camelCase.', 32],
+            ['Parameter name "IsHTTPResponse" is not in camelCase.', 34],
+            ['Parameter name "ISHTTPRESPONSE" is not in camelCase.', 35],
 
-            ['Parameter name "is_http_response" is not in camelCase.', 45],
-            ['Parameter name "IsHttpResponse" is not in camelCase.', 46],
-            ['Parameter name "IsHTTPResponse" is not in camelCase.', 48],
-            ['Parameter name "ISHTTPRESPONSE" is not in camelCase.', 49],
+            ['Parameter name "is_http_response" is not in camelCase.', 43],
+            ['Parameter name "IsHttpResponse" is not in camelCase.', 44],
+            ['Parameter name "IsHTTPResponse" is not in camelCase.', 46],
+            ['Parameter name "ISHTTPRESPONSE" is not in camelCase.', 47],
 
-            ['Parameter name "is_http_response" is not in camelCase.', 58],
-            ['Parameter name "IsHttpResponse" is not in camelCase.', 59],
-            ['Parameter name "IsHTTPResponse" is not in camelCase.', 61],
-            ['Parameter name "ISHTTPRESPONSE" is not in camelCase.', 62],
+            ['Parameter name "is_http_response" is not in camelCase.', 55],
+            ['Parameter name "IsHttpResponse" is not in camelCase.', 56],
+            ['Parameter name "IsHTTPResponse" is not in camelCase.', 58],
+            ['Parameter name "ISHTTPRESPONSE" is not in camelCase.', 59],
         ]);
     }
 
