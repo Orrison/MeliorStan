@@ -43,7 +43,9 @@ class CamelCasePropertyNameRule implements Rule
             if (! preg_match($this->pattern, $name)) {
                 $messages[] = RuleErrorBuilder::message(
                     sprintf('Property name "%s" is not in camelCase.', $prop->name->name)
-                )->build();
+                )
+                    ->identifier('MeliorStan.propertyNameNotCamelCase')
+                    ->build();
             }
         }
 

@@ -49,7 +49,9 @@ class CamelCaseParameterNameRule implements Rule
         if ($name !== null && ! preg_match($this->pattern, $name)) {
             $messages[] = RuleErrorBuilder::message(
                 sprintf('Parameter name "%s" is not in camelCase.', $name)
-            )->build();
+            )
+                ->identifier('MeliorStan.parameterNameNotCamelCase')
+                ->build();
         }
 
         return $messages;
