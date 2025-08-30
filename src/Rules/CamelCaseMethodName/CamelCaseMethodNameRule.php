@@ -64,7 +64,7 @@ class CamelCaseMethodNameRule implements Rule
         // Build the base pattern for camelCase
         $basePattern = $this->config->getAllowConsecutiveUppercase()
             ? '[a-z][a-zA-Z0-9]*'
-            : '[a-z](?:[a-z0-9]+|[a-z0-9]*[A-Z](?![A-Z])[a-z0-9]*)*';
+            : '[a-z](?:[a-z0-9]+(?:[A-Z](?![A-Z])[a-z0-9]*)*)?';
 
         // Allow optional single underscore prefix
         $prefix = $this->config->getAllowUnderscorePrefix() ? '_?' : '';
