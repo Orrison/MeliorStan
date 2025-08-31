@@ -59,3 +59,7 @@ Enforces that PHP superglobals should not be used.
 ### [TraitConstantNamingConventions](docs/TraitConstantNamingConventions.md)
 
 Enforces that all trait constants use UPPERCASE naming convention.
+
+### [ElseExpression](docs/ElseExpression.md)
+
+Enforces avoidance of `else` expressions, with optional `elseif` flagging.

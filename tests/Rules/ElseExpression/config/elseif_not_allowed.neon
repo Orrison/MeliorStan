@@ -1,0 +1,10 @@
+includes:
+    - ../../../../config/extension.neon
+
+rules:
+    - Orrison\MeliorStan\Rules\ElseExpression\ElseExpressionRule
+
+parameters:
+    meliorstan:
+        else_expression:
+            elseif_allowed: false

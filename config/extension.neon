@@ -36,6 +36,9 @@ parametersSchema:
         boolean_get_method_name: structure([
             check_parameterized_methods: bool(),
         ]),
+        else_expression: structure([
+            elseif_allowed: bool(),
+        ]),
     ])
 
 # default parameters
@@ -69,6 +72,8 @@ parameters:
             exceptions: []
         boolean_get_method_name:
             check_parameterized_methods: false
+        else_expression:
+            elseif_allowed: true
 
 services:
     -
@@ -123,3 +128,11 @@ services:
         factory: Orrison\MeliorStan\Rules\BooleanGetMethodName\Config
         arguments:
             - %meliorstan.boolean_get_method_name.check_parameterized_methods%
+    -
+        factory: Orrison\MeliorStan\Rules\ElseExpression\Config
+        arguments:
+            - %meliorstan.else_expression.elseif_allowed%
+    -
+        factory: Orrison\MeliorStan\Rules\ElseExpression\ElseExpressionRule
+        arguments:
+            - @Orrison\MeliorStan\Rules\ElseExpression\Config
