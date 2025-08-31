@@ -7,3 +7,6 @@ parameters:
 
     excludePaths:
         - tests/Rules/*/Fixture/*
+
+services:
+    - PhpParser\NodeVisitor\NodeConnectingVisitor
