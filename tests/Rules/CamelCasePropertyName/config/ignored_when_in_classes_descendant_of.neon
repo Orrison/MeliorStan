@@ -1,0 +1,11 @@
+includes:
+    - ../../../../config/extension.neon
+
+parameters:
+    meliorstan:
+        camel_case_property_name:
+            ignored_when_in_classes_descendant_of:
+                - Orrison\MeliorStan\Tests\Rules\CamelCasePropertyName\Fixture\IgnoredParentClass
+
+rules:
+    - Orrison\MeliorStan\Rules\CamelCasePropertyName\CamelCasePropertyNameRule

@@ -37,6 +37,27 @@ class CamelCasePropertyNameRule implements Rule
     {
         $messages = [];
 
+        // Check if the current class should be ignored
+        $classReflection = $scope->getClassReflection();
+
+        if ($classReflection === null) {
+            return $messages; // Skip if no class context
+        }
+
+        $className = $classReflection->getName();
+
+        // Ignore if class is in the ignored classes list
+        if (in_array($className, $this->config->getIgnoredWhenInClasses(), true)) {
+            return $messages;
+        }
+
+        // Ignore if class extends any ignored parent class
+        foreach ($this->config->getIgnoredWhenInClassesDescendantOf() as $ignoredParent) {
+            if ($classReflection->isSubclassOf((string) $ignoredParent) || $className === (string) $ignoredParent) {
+                return $messages;
+            }
+        }
+
         foreach ($node->props as $prop) {
             $name = $prop->name->name;
 
