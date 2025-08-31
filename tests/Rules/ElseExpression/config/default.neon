@@ -1,0 +1,6 @@
+includes:
+    - ../../../../config/extension.neon
+
+rules:
+    - Orrison\MeliorStan\Rules\ElseExpression\ElseExpressionRule
+
