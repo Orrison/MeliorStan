@@ -38,10 +38,6 @@ parametersSchema:
         ]),
     ])
 
-conditionalTags:
-    PhpParser\NodeVisitor\NodeConnectingVisitor:
-        phpstan.parser.richParserNodeVisitor: true
-
 # default parameters
 parameters:
     meliorstan:
@@ -75,7 +71,10 @@ parameters:
             check_parameterized_methods: false
 
 services:
-    - PhpParser\NodeVisitor\NodeConnectingVisitor
+    -
+        class: PhpParser\NodeVisitor\NodeConnectingVisitor
+        tags:
+            - phpstan.parser.richParserNodeVisitor
     -
         class: Orrison\MeliorStan\Rules\CamelCaseVariableName\VariableDefinitionVisitor
         tags:
