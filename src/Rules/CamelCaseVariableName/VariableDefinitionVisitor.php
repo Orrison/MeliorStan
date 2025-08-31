@@ -34,6 +34,11 @@ final class VariableDefinitionVisitor extends NodeVisitorAbstract
     {
         $parent = $node->getAttribute('parent');
 
+        // Early return if parent attribute is not set (e.g., if NodeConnectingVisitor is misconfigured)
+        if ($parent === null) {
+            return false;
+        }
+
         // Check for assignment: $var = ...
         if ($parent instanceof Assign && $parent->var === $node) {
             return true;
