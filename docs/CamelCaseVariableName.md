@@ -50,6 +50,7 @@ function processData($inputData)
     $httpResponse = null;
     $isValid = true;
     $firstName = 'John';
+    $i = 0; // ✓ Valid: Single-letter variables are allowed
     
     // Invalid variable names
     $user_data = []; // ✗ Error: Variable name "user_data" is not in camelCase.
