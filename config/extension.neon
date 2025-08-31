@@ -132,7 +132,3 @@ services:
         factory: Orrison\MeliorStan\Rules\ElseExpression\Config
         arguments:
             - %meliorstan.else_expression.elseif_allowed%
-    -
-        factory: Orrison\MeliorStan\Rules\ElseExpression\ElseExpressionRule
-        arguments:
-            - @Orrison\MeliorStan\Rules\ElseExpression\Config
