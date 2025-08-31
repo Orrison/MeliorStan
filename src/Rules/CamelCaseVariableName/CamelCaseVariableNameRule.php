@@ -62,6 +62,11 @@ class CamelCaseVariableNameRule implements Rule
             return [];
         }
 
+        // Only check variable definitions
+        if ($node->getAttribute(VariableDefinitionVisitor::ATTRIBUTE_NAME) !== true) {
+            return [];
+        }
+
         if (! preg_match($this->pattern, $name)) {
             return [
                 RuleErrorBuilder::message(
