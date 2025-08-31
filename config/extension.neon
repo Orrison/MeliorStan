@@ -11,6 +11,8 @@ parametersSchema:
         camel_case_property_name: structure([
             allow_consecutive_uppercase: bool(),
             allow_underscore_prefix: bool(),
+            ignored_when_in_classes: arrayOf(string()),
+            ignored_when_in_classes_descendant_of: arrayOf(string()),
         ]),
         camel_case_parameter_name: structure([
             allow_consecutive_uppercase: bool(),
@@ -48,6 +50,8 @@ parameters:
         camel_case_property_name:
             allow_consecutive_uppercase: false
             allow_underscore_prefix: false
+            ignored_when_in_classes: []
+            ignored_when_in_classes_descendant_of: []
         camel_case_parameter_name:
             allow_consecutive_uppercase: false
             allow_underscore_prefix: false
@@ -82,6 +86,8 @@ services:
         arguments:
             - %meliorstan.camel_case_property_name.allow_consecutive_uppercase%
             - %meliorstan.camel_case_property_name.allow_underscore_prefix%
+            - %meliorstan.camel_case_property_name.ignored_when_in_classes%
+            - %meliorstan.camel_case_property_name.ignored_when_in_classes_descendant_of%
     -
         factory: Orrison\MeliorStan\Rules\CamelCaseParameterName\Config
         arguments:
