@@ -10,8 +10,7 @@ class Config
         protected array $subtractPrefixes,
         /** @var string[] */
         protected array $subtractSuffixes
-    ) {
-    }
+    ) {}
 
     public function getMaximum(): int
     {

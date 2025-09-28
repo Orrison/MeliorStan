@@ -16,8 +16,7 @@ class LongClassNameRule implements Rule
 {
     public function __construct(
         protected Config $config,
-    ) {
-    }
+    ) {}
 
     /**
      * @return class-string<Node>
