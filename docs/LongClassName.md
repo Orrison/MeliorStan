@@ -47,7 +47,7 @@ parameters:
 ```php
 <?php
 
-class VeryLongClassNameThatExceedsTheDefaultMaximumLength {} // ✗ Error: Class name "VeryLongClassNameThatExceedsTheDefaultMaximumLength" is too long (55 chars). Maximum allowed length is 40 characters.
+class VeryLongClassNameThatExceedsTheDefaultMaximumLength {} // ✗ Error: Class name "VeryLongClassNameThatExceedsTheDefaultMaximumLength" is too long (51 chars). Maximum allowed length is 40 characters.
 
 class ShortClass {} // ✓ Valid
 ```
