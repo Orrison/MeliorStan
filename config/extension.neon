@@ -22,6 +22,11 @@ parametersSchema:
             allow_consecutive_uppercase: bool(),
             allow_underscore_prefix: bool(),
         ]),
+        long_class_name: structure([
+            maximum: int(),
+            subtract_prefixes: arrayOf(string()),
+            subtract_suffixes: arrayOf(string()),
+        ]),
         short_variable: structure([
             minimum_length: int(),
             exceptions: arrayOf(string()),
@@ -61,6 +66,10 @@ parameters:
         camel_case_variable_name:
             allow_consecutive_uppercase: false
             allow_underscore_prefix: false
+        long_class_name:
+            maximum: 40
+            subtract_prefixes: []
+            subtract_suffixes: []
         short_variable:
             minimum_length: 3
             exceptions: []
@@ -111,6 +120,12 @@ services:
         arguments:
             - %meliorstan.camel_case_variable_name.allow_consecutive_uppercase%
             - %meliorstan.camel_case_variable_name.allow_underscore_prefix%
+    -
+        factory: Orrison\MeliorStan\Rules\LongClassName\Config
+        arguments:
+            - %meliorstan.long_class_name.maximum%
+            - %meliorstan.long_class_name.subtract_prefixes%
+            - %meliorstan.long_class_name.subtract_suffixes%
     -
         factory: Orrison\MeliorStan\Rules\ShortVariable\Config
         arguments:

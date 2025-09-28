@@ -10,7 +10,11 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Orrison\\MeliorStan\\": "src/",
+            "Orrison\\MeliorStan\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
             "Orrison\\MeliorStan\\Tests\\": "tests/"
         }
     },
