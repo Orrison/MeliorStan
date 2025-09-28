@@ -1,0 +1,10 @@
+includes:
+    - ../../../../config/extension.neon
+
+rules:
+    - Orrison\MeliorStan\Rules\LongClassName\LongClassNameRule
+
+parameters:
+    meliorstan:
+        long_class_name:
+            subtract_prefixes: ["VeryLong"]

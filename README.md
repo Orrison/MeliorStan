@@ -36,6 +36,10 @@ Enforces that local variable names should follow camelCase naming convention.
 
 Enforces that constant names should be in UPPERCASE.
 
+### [LongClassName](docs/LongClassName.md)
+
+Enforces that class, interface, trait, and enum names should not exceed a maximum length.
+
 ### [MissingClosureParameterTypehint](docs/MissingClosureParameterTypehint.md)
 
 Enforces that all parameters in anonymous functions (closures) have type declarations.
