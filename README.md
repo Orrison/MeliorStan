@@ -6,8 +6,8 @@
 
 *Enhance your PHP codebase with intelligent static analysis rules that detect code smells, enforce naming conventions, and promote best practices.*
 
-[![Latest Stable Version](https://poser.pugx.org/Orrison/MeliorStan/v/stable)](https://packagist.org/packages/Orrison/MeliorStan)
-[![Total Downloads](https://poser.pugx.org/Orrison/MeliorStan/downloads)](https://packagist.org/packages/Orrison/MeliorStan/stats)
+[![Latest Stable Version](https://poser.pugx.org/orrison/meliorstan/v/stable)](https://packagist.org/packages/orrison/meliorstan)
+[![Total Downloads](https://poser.pugx.org/orrison/meliorstan/downloads)](https://packagist.org/packages/orrison/meliorstan/stats)
 [![License](https://poser.pugx.org/Orrison/MeliorStan/license)](https://choosealicense.com/licenses/mit/)
 [![PHP Version](https://img.shields.io/badge/PHP-8.3+-blue.svg)](https://php.net/)
 [![PHPStan](https://img.shields.io/badge/PHPStan-2.1+-orange.svg)](https://phpstan.org/)
