@@ -85,6 +85,7 @@ parameters:
 | **[ConstantNamingConventions](docs/ConstantNamingConventions.md)** | Enforces UPPERCASE for constants | Constants |
 | **[LongClassName](docs/LongClassName.md)** | Limits class/interface/trait/enum name length | Classes, Interfaces, Traits, Enums |
 | **[PascalCase Class Name](docs/PascalCaseClassName.md)** | Enforces PascalCase for class names | Classes |
+| **[ShortClassName](docs/ShortClassName.md)** | Ensures class names meet minimum character length | Classes, Interfaces, Traits, Enums |
 | **[TraitConstantNamingConventions](docs/TraitConstantNamingConventions.md)** | Enforces UPPERCASE for trait constants | Trait Constants |
 
 ### Code Quality
