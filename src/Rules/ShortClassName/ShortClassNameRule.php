@@ -37,7 +37,7 @@ class ShortClassNameRule implements Rule
 
         $className = $node->name->toString();
 
-        // Check if class name is in exceptions list
+        // Check if class name is in exceptions list first for efficiency
         if (in_array($className, $this->config->getExceptions(), true)) {
             return [];
         }
