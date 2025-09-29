@@ -183,6 +183,6 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 **Made with ❤️ for the PHP community**
 
-[📖 Documentation](docs/) • [🐛 Report Issues](https://github.com/Orrison/MeliorStan/issues) • [💡 Request Features](https://github.com/Orrison/MeliorStan/discussions)
+[📖 Documentation](docs/) • [🐛 Report Issues](https://github.com/orrison/meliorstan/issues) • [💡 Request Features](https://github.com/orrison/meliorstan/discussions)
 
 </div>
