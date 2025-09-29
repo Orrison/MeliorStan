@@ -1,6 +1,20 @@
-# MeliorStan Rules
+<h1 align="center">MeliorStan Rules</h1>
 
 Provides custom PHPStan rules for different enforcements throughout your codebase to look for potential problems and enforce particular programmatic or naming style.
+
+<p align="center">
+	<a href="https://packagist.org/packages/Orrison/MeliorStan"><img src="https://poser.pugx.org/Orrison/MeliorStan/v/stable" alt="Latest Stable Version"></a>
+	<a href="https://packagist.org/packages/Orrison/MeliorStan/stats"><img src="https://poser.pugx.org/Orrison/MeliorStan/downloads" alt="Total Downloads"></a>
+	<a href="https://choosealicense.com/licenses/mit/"><img src="https://poser.pugx.org/Orrison/MeliorStan/license" alt="License"></a>
+</p>
+
+### Install:
+
+```bash
+composer require orrison/meliorstan
+```
+
+Instructions for rule setup in individual rules documentation.
 
 ## Inspiration
 
