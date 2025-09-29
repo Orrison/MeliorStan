@@ -38,6 +38,15 @@ parametersSchema:
             allow_in_foreach: bool(),
             allow_in_catch: bool(),
         ]),
+        long_variable: structure([
+            maximum: int(),
+            subtract_prefixes: arrayOf(string()),
+            subtract_suffixes: arrayOf(string()),
+            allow_in_for_loops: bool(),
+            allow_in_foreach: bool(),
+            allow_in_catch: bool(),
+            exceptions: arrayOf(string()),
+        ]),
         short_method_name: structure([
             minimum_length: int(),
             exceptions: arrayOf(string()),
@@ -83,6 +92,14 @@ parameters:
             allow_in_for_loops: false
             allow_in_foreach: false
             allow_in_catch: false
+        long_variable:
+            maximum: 20
+            subtract_prefixes: []
+            subtract_suffixes: []
+            allow_in_for_loops: false
+            allow_in_foreach: false
+            allow_in_catch: false
+            exceptions: []
         short_method_name:
             minimum_length: 3
             exceptions: []
@@ -146,6 +163,16 @@ services:
             - %meliorstan.short_variable.allow_in_for_loops%
             - %meliorstan.short_variable.allow_in_foreach%
             - %meliorstan.short_variable.allow_in_catch%
+    -
+        factory: Orrison\MeliorStan\Rules\LongVariable\Config
+        arguments:
+            - %meliorstan.long_variable.maximum%
+            - %meliorstan.long_variable.subtract_prefixes%
+            - %meliorstan.long_variable.subtract_suffixes%
+            - %meliorstan.long_variable.allow_in_for_loops%
+            - %meliorstan.long_variable.allow_in_foreach%
+            - %meliorstan.long_variable.allow_in_catch%
+            - %meliorstan.long_variable.exceptions%
     -
         factory: Orrison\MeliorStan\Rules\ShortMethodName\Config
         arguments:

@@ -1,0 +1,5 @@
+parameters:
+    meliorstan:
+        long_variable:
+            subtract_prefixes: ["veryLong"]
+            subtract_suffixes: ["ThatExceedsTheMaximumLength"]

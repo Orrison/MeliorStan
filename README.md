@@ -92,6 +92,7 @@ parameters:
 
 | Rule | Description | Target |
 |------|-------------|---------|
+| **[LongVariable](docs/LongVariable.md)** | Limits variable name length | Variables |
 | **[MissingClosureParameterTypehint](docs/MissingClosureParameterTypehint.md)** | Requires type hints on closure parameters | Closures |
 | **[ShortMethodName](docs/ShortMethodName.md)** | Enforces minimum method name length | Methods |
 | **[ShortVariable](docs/ShortVariable.md)** | Enforces minimum variable name length | Variables |
