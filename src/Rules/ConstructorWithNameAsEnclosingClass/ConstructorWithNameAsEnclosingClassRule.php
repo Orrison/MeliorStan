@@ -68,6 +68,6 @@ class ConstructorWithNameAsEnclosingClassRule implements Rule
     {
         $parts = explode('\\', $fullClassName);
 
-        return end($parts);
+        return $parts[count($parts) - 1];
     }
 }
