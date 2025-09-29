@@ -200,6 +200,23 @@ All classes use `Orrison\MeliorStan\` prefix with rule-specific sub-namespaces.
 ### Declare Strict Types
 Do NOT add `declare(strict_types=1);` to the top of files. This is not a requirement for this project and we do not want it. Unless the rule specifically has to do with this strict type declaration, then it is not needed. This is to keep the codebase consistent and avoid unnecessary complexity.
 
+### Import Statements
+Always use full imports for all classes and interfaces used in the file. Do not use fully qualified class names in the code - import them explicitly at the top of the file instead. This includes:
+- PHPStan classes (`PHPStan\Analyser\Scope`, `PHPStan\Rules\Rule`, etc.)
+- PhpParser node classes (`PhpParser\Node`, `PhpParser\Node\Stmt\Class_`, `PhpParser\Node\Identifier`, etc.)
+- All other external dependencies
+
+Example:
+```php
+use PhpParser\Node;
+use PhpParser\Node\Identifier;
+use PhpParser\Node\Stmt\Class_;
+use PhpParser\Node\Stmt\ClassLike;
+use PHPStan\Analyser\Scope;
+use PHPStan\Rules\Rule;
+use PHPStan\Rules\RuleErrorBuilder;
+```
+
 ### Error Identifiers
 Use consistent identifiers for rule errors:
 ```php

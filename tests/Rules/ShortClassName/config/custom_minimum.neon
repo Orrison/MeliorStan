@@ -1,0 +1,10 @@
+includes:
+    - ../../../../config/extension.neon
+
+rules:
+    - Orrison\MeliorStan\Rules\ShortClassName\ShortClassNameRule
+
+parameters:
+    meliorstan:
+        short_class_name:
+            minimum: 2
