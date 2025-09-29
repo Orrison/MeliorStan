@@ -83,6 +83,7 @@ parameters:
 | **[CamelCase Property Name](docs/CamelCasePropertyName.md)** | Enforces camelCase for property names | Properties |
 | **[CamelCase Variable Name](docs/CamelCaseVariableName.md)** | Enforces camelCase for variable names | Variables |
 | **[ConstantNamingConventions](docs/ConstantNamingConventions.md)** | Enforces UPPERCASE for constants | Constants |
+| **[ConstructorWithNameAsEnclosingClass](docs/ConstructorWithNameAsEnclosingClass.md)** | Prevents methods with same name as their class | Methods |
 | **[LongClassName](docs/LongClassName.md)** | Limits class/interface/trait/enum name length | Classes, Interfaces, Traits, Enums |
 | **[PascalCase Class Name](docs/PascalCaseClassName.md)** | Enforces PascalCase for class names | Classes |
 | **[ShortClassName](docs/ShortClassName.md)** | Enforces minimum class/interface/trait/enum name length | Classes, Interfaces, Traits, Enums |
