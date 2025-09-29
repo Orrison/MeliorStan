@@ -1,0 +1,4 @@
+parameters:
+    meliorstan:
+        long_variable:
+            allow_in_for_loops: true
