@@ -217,6 +217,118 @@ use PHPStan\Rules\Rule;
 use PHPStan\Rules\RuleErrorBuilder;
 ```
 
+### Error Message Constants
+**CRITICAL**: All rule error messages MUST be defined as public constants in the rule class. This improves maintainability, consistency, and makes error messages the single source of truth.
+
+#### Static Error Messages
+For rules with a single, unchanging error message, use a simple constant:
+
+```php
+class EmptyCatchBlockRule implements Rule
+{
+    public const ERROR_MESSAGE = 'Empty catch block is not allowed.';
+
+    public function processNode(Node $node, Scope $scope): array
+    {
+        // ... validation logic ...
+        
+        return [
+            RuleErrorBuilder::message(self::ERROR_MESSAGE)
+                ->identifier('MeliorStan.emptyCatchBlock')
+                ->build(),
+        ];
+    }
+}
+```
+
+#### Dynamic Error Messages (Single Template)
+For rules where the error message includes dynamic data (e.g., variable names, lengths), use a template constant with placeholders for `sprintf()`:
+
+```php
+class ShortMethodNameRule implements Rule
+{
+    public const ERROR_MESSAGE_TEMPLATE = 'Method name "%s" is shorter than minimum length of %d characters.';
+
+    public function processNode(Node $node, Scope $scope): array
+    {
+        // ... validation logic ...
+        
+        return [
+            RuleErrorBuilder::message(
+                sprintf(self::ERROR_MESSAGE_TEMPLATE, $methodName, $minimumLength)
+            )
+                ->identifier('MeliorStan.methodNameTooShort')
+                ->build(),
+        ];
+    }
+}
+```
+
+#### Multiple Error Message Templates
+For rules that validate different contexts (e.g., properties, parameters, and variables), use separate template constants for each context:
+
+```php
+class ShortVariableRule implements Rule
+{
+    public const ERROR_MESSAGE_TEMPLATE_PROPERTY = 'Property name "$%s" is shorter than minimum length of %d characters.';
+    public const ERROR_MESSAGE_TEMPLATE_PARAMETER = 'Parameter name "$%s" is shorter than minimum length of %d characters.';
+    public const ERROR_MESSAGE_TEMPLATE_VARIABLE = 'Variable name "$%s" is shorter than minimum length of %d characters.';
+
+    public function processNode(Node $node, Scope $scope): array
+    {
+        // ... determine context (property, parameter, or variable) ...
+        
+        if ($isProperty) {
+            $message = sprintf(self::ERROR_MESSAGE_TEMPLATE_PROPERTY, $name, $minLength);
+        } elseif ($isParameter) {
+            $message = sprintf(self::ERROR_MESSAGE_TEMPLATE_PARAMETER, $name, $minLength);
+        } else {
+            $message = sprintf(self::ERROR_MESSAGE_TEMPLATE_VARIABLE, $name, $minLength);
+        }
+        
+        return [
+            RuleErrorBuilder::message($message)
+                ->identifier('MeliorStan.variableNameTooShort')
+                ->build(),
+        ];
+    }
+}
+```
+
+#### Test Implementation
+Tests MUST use the constants instead of hardcoded strings:
+
+**Static messages:**
+```php
+$this->analyse([__DIR__ . '/Fixture/Example.php'], [
+    [EmptyCatchBlockRule::ERROR_MESSAGE, 14],
+    [EmptyCatchBlockRule::ERROR_MESSAGE, 23],
+]);
+```
+
+**Dynamic messages with single template:**
+```php
+$this->analyse([__DIR__ . '/Fixture/Example.php'], [
+    [sprintf(ShortMethodNameRule::ERROR_MESSAGE_TEMPLATE, 'a', 3), 7],
+    [sprintf(ShortMethodNameRule::ERROR_MESSAGE_TEMPLATE, 'ab', 3), 10],
+]);
+```
+
+**Dynamic messages with multiple templates:**
+```php
+$this->analyse([__DIR__ . '/Fixture/Example.php'], [
+    [sprintf(ShortVariableRule::ERROR_MESSAGE_TEMPLATE_PROPERTY, 'x', 3), 9],
+    [sprintf(ShortVariableRule::ERROR_MESSAGE_TEMPLATE_PARAMETER, 'a', 3), 15],
+    [sprintf(ShortVariableRule::ERROR_MESSAGE_TEMPLATE_VARIABLE, 'b', 3), 17],
+]);
+```
+
+**IMPORTANT**: 
+- Never use hardcoded error message strings in tests
+- Variable names in sprintf should NOT include the `$` prefix (the template handles that)
+- Constants should be `public` for test access
+- Use descriptive constant names that indicate the message type
+
 ### Error Identifiers
 Use consistent identifiers for rule errors:
 ```php
@@ -234,10 +346,13 @@ Config methods use descriptive names with `get` prefix and follow camelCase:
 2. **Test Line Numbers**: Always verify line numbers match fixture file after formatting
 3. **Node Type Confusion**: Use correct node type for the syntax element being validated
 4. **Missing Magic Method Exclusion**: Don't forget to exclude PHP magic methods in method rules
+5. **Hardcoded Error Messages**: Always use public constants for error messages in rule classes, never hardcode strings in tests or multiple places in the rule
 
 ## Contribution Guidelines
 - Follow the coding standards of the project, styling defined by PHP-CS-Fixer configuration. `php-cs-fixer.php` is the config file. And `composer format` will auto-fix code style. And linting/static analysis can be run with `composer analyze` and is configured with our PHPStan configuration `phpstan.neon.dist`.
 - All new rules should follow the established 3-component structure (Rule, Config, Tests) unless there's a compelling reason or asked to deviate.
+- **All error messages must be defined as public constants** in the rule class (ERROR_MESSAGE, ERROR_MESSAGE_TEMPLATE, or ERROR_MESSAGE_TEMPLATE_[CONTEXT])
+- **Tests must use these constants** instead of hardcoded error message strings
 - When adding new rules, ensure to add appropriate test cases covering all configuration permutations.
 - When updating existing rules, ensure backward compatibility unless a breaking change is explicitly intended and documented.
 - When done with changes, ensure that you MUST run formatting and static analysis, then run all tests. You must keep doing this till all three pass and it MUST be done in this order as formatting may change line numbers in tests.
