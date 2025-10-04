@@ -30,7 +30,7 @@ class ExampleClass
     {
         eval('echo "First";');
 
-        if (condition()) {
+        if (true) {
             eval('echo "Second";');
         }
     }
