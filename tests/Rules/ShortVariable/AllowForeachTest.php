@@ -16,12 +16,12 @@ class AllowForeachTest extends RuleTestCase
         $this->analyse([
             __DIR__ . '/Fixture/ExampleClassForeachAllowed.php',
         ], [
-            ['Property name "$x" is shorter than minimum length of 3 characters.', 9],
-            ['Parameter name "$a" is shorter than minimum length of 3 characters.', 11],
-            ['Variable name "$b" is shorter than minimum length of 3 characters.', 13],
-            ['Variable name "$i" is shorter than minimum length of 3 characters.', 15],
-            ['Variable name "$j" is shorter than minimum length of 3 characters.', 16],
-            ['Variable name "$e" is shorter than minimum length of 3 characters.', 27],
+            [sprintf(ShortVariableRule::ERROR_MESSAGE_TEMPLATE_PROPERTY, 'x', 3), 9],
+            [sprintf(ShortVariableRule::ERROR_MESSAGE_TEMPLATE_PARAMETER, 'a', 3), 11],
+            [sprintf(ShortVariableRule::ERROR_MESSAGE_TEMPLATE_VARIABLE, 'b', 3), 13],
+            [sprintf(ShortVariableRule::ERROR_MESSAGE_TEMPLATE_VARIABLE, 'i', 3), 15],
+            [sprintf(ShortVariableRule::ERROR_MESSAGE_TEMPLATE_VARIABLE, 'j', 3), 16],
+            [sprintf(ShortVariableRule::ERROR_MESSAGE_TEMPLATE_VARIABLE, 'e', 3), 27],
         ]);
     }
 

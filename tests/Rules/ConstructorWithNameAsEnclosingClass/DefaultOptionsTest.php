@@ -16,8 +16,8 @@ class DefaultOptionsTest extends RuleTestCase
         $this->analyse([
             __DIR__ . '/Fixture/ExampleClass.php',
         ], [
-            ['Method name "ExampleClass" is the same as the enclosing class "ExampleClass". This creates confusion as it resembles a PHP4-style constructor.', 14],
-            ['Method name "AnotherExample" is the same as the enclosing class "AnotherExample". This creates confusion as it resembles a PHP4-style constructor.', 23],
+            [sprintf(ConstructorWithNameAsEnclosingClassRule::ERROR_MESSAGE_TEMPLATE, 'ExampleClass', 'ExampleClass'), 14],
+            [sprintf(ConstructorWithNameAsEnclosingClassRule::ERROR_MESSAGE_TEMPLATE, 'AnotherExample', 'AnotherExample'), 23],
         ]);
     }
 

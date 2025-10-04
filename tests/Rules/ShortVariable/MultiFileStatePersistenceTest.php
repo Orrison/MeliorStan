@@ -18,13 +18,13 @@ class MultiFileStatePersistenceTest extends RuleTestCase
             __DIR__ . '/Fixture/SecondFile.php',
             __DIR__ . '/Fixture/ThirdFile.php',
         ], [
-            ['Variable name "$i" is shorter than minimum length of 3 characters.', 11],
-            ['Variable name "$i" is shorter than minimum length of 3 characters.', 7],
-            ['Variable name "$x" is shorter than minimum length of 3 characters.', 9],
-            ['Variable name "$i" is shorter than minimum length of 3 characters.', 7],
-            ['Variable name "$x" is shorter than minimum length of 3 characters.', 8],
-            ['Variable name "$k" is shorter than minimum length of 3 characters.', 16],
-            ['Variable name "$v" is shorter than minimum length of 3 characters.', 17],
+            [sprintf(ShortVariableRule::ERROR_MESSAGE_TEMPLATE_VARIABLE, 'i', 3), 11],
+            [sprintf(ShortVariableRule::ERROR_MESSAGE_TEMPLATE_VARIABLE, 'i', 3), 7],
+            [sprintf(ShortVariableRule::ERROR_MESSAGE_TEMPLATE_VARIABLE, 'x', 3), 9],
+            [sprintf(ShortVariableRule::ERROR_MESSAGE_TEMPLATE_VARIABLE, 'i', 3), 7],
+            [sprintf(ShortVariableRule::ERROR_MESSAGE_TEMPLATE_VARIABLE, 'x', 3), 8],
+            [sprintf(ShortVariableRule::ERROR_MESSAGE_TEMPLATE_VARIABLE, 'k', 3), 16],
+            [sprintf(ShortVariableRule::ERROR_MESSAGE_TEMPLATE_VARIABLE, 'v', 3), 17],
         ]);
     }
 

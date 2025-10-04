@@ -16,19 +16,19 @@ class DefaultOptionsTest extends RuleTestCase
         $this->analyse([
             __DIR__ . '/Fixture/ExampleClass.php',
         ], [
-            ['Property name "$x" is shorter than minimum length of 3 characters.', 9],
-            ['Property name "$id" is shorter than minimum length of 3 characters.', 11],
-            ['Parameter name "$a" is shorter than minimum length of 3 characters.', 15],
-            ['Parameter name "$id" is shorter than minimum length of 3 characters.', 15],
-            ['Variable name "$b" is shorter than minimum length of 3 characters.', 17],
-            ['Variable name "$cd" is shorter than minimum length of 3 characters.', 18],
-            ['Variable name "$i" is shorter than minimum length of 3 characters.', 21],
-            ['Variable name "$j" is shorter than minimum length of 3 characters.', 22],
-            ['Variable name "$k" is shorter than minimum length of 3 characters.', 27],
-            ['Variable name "$v" is shorter than minimum length of 3 characters.', 27],
-            ['Variable name "$e" is shorter than minimum length of 3 characters.', 33],
-            ['Parameter name "$x" is shorter than minimum length of 3 characters.', 38],
-            ['Parameter name "$y" is shorter than minimum length of 3 characters.', 38],
+            [sprintf(ShortVariableRule::ERROR_MESSAGE_TEMPLATE_PROPERTY, 'x', 3), 9],
+            [sprintf(ShortVariableRule::ERROR_MESSAGE_TEMPLATE_PROPERTY, 'id', 3), 11],
+            [sprintf(ShortVariableRule::ERROR_MESSAGE_TEMPLATE_PARAMETER, 'a', 3), 15],
+            [sprintf(ShortVariableRule::ERROR_MESSAGE_TEMPLATE_PARAMETER, 'id', 3), 15],
+            [sprintf(ShortVariableRule::ERROR_MESSAGE_TEMPLATE_VARIABLE, 'b', 3), 17],
+            [sprintf(ShortVariableRule::ERROR_MESSAGE_TEMPLATE_VARIABLE, 'cd', 3), 18],
+            [sprintf(ShortVariableRule::ERROR_MESSAGE_TEMPLATE_VARIABLE, 'i', 3), 21],
+            [sprintf(ShortVariableRule::ERROR_MESSAGE_TEMPLATE_VARIABLE, 'j', 3), 22],
+            [sprintf(ShortVariableRule::ERROR_MESSAGE_TEMPLATE_VARIABLE, 'k', 3), 27],
+            [sprintf(ShortVariableRule::ERROR_MESSAGE_TEMPLATE_VARIABLE, 'v', 3), 27],
+            [sprintf(ShortVariableRule::ERROR_MESSAGE_TEMPLATE_VARIABLE, 'e', 3), 33],
+            [sprintf(ShortVariableRule::ERROR_MESSAGE_TEMPLATE_PARAMETER, 'x', 3), 38],
+            [sprintf(ShortVariableRule::ERROR_MESSAGE_TEMPLATE_PARAMETER, 'y', 3), 38],
         ]);
     }
 

@@ -16,13 +16,13 @@ class AllowForLoopsTest extends RuleTestCase
         $this->analyse([
             __DIR__ . '/Fixture/ExampleClassForLoopsAllowed.php',
         ], [
-            ['Property name "$x" is shorter than minimum length of 3 characters.', 9],
-            ['Parameter name "$a" is shorter than minimum length of 3 characters.', 11],
-            ['Variable name "$b" is shorter than minimum length of 3 characters.', 13],
-            ['Variable name "$j" is shorter than minimum length of 3 characters.', 16],
-            ['Variable name "$k" is shorter than minimum length of 3 characters.', 21],
-            ['Variable name "$v" is shorter than minimum length of 3 characters.', 21],
-            ['Variable name "$e" is shorter than minimum length of 3 characters.', 27],
+            [sprintf(ShortVariableRule::ERROR_MESSAGE_TEMPLATE_PROPERTY, 'x', 3), 9],
+            [sprintf(ShortVariableRule::ERROR_MESSAGE_TEMPLATE_PARAMETER, 'a', 3), 11],
+            [sprintf(ShortVariableRule::ERROR_MESSAGE_TEMPLATE_VARIABLE, 'b', 3), 13],
+            [sprintf(ShortVariableRule::ERROR_MESSAGE_TEMPLATE_VARIABLE, 'j', 3), 16],
+            [sprintf(ShortVariableRule::ERROR_MESSAGE_TEMPLATE_VARIABLE, 'k', 3), 21],
+            [sprintf(ShortVariableRule::ERROR_MESSAGE_TEMPLATE_VARIABLE, 'v', 3), 21],
+            [sprintf(ShortVariableRule::ERROR_MESSAGE_TEMPLATE_VARIABLE, 'e', 3), 27],
         ]);
     }
 

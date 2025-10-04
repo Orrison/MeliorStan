@@ -16,10 +16,10 @@ class SameNameAfterContextTest extends RuleTestCase
         $this->analyse([
             __DIR__ . '/Fixture/SameNameAfterContext.php',
         ], [
-            ['Variable name "$i" is shorter than minimum length of 3 characters.', 11],
-            ['Variable name "$k" is shorter than minimum length of 3 characters.', 19],
-            ['Variable name "$v" is shorter than minimum length of 3 characters.', 20],
-            ['Variable name "$e" is shorter than minimum length of 3 characters.', 28],
+            [sprintf(ShortVariableRule::ERROR_MESSAGE_TEMPLATE_VARIABLE, 'i', 3), 11],
+            [sprintf(ShortVariableRule::ERROR_MESSAGE_TEMPLATE_VARIABLE, 'k', 3), 19],
+            [sprintf(ShortVariableRule::ERROR_MESSAGE_TEMPLATE_VARIABLE, 'v', 3), 20],
+            [sprintf(ShortVariableRule::ERROR_MESSAGE_TEMPLATE_VARIABLE, 'e', 3), 28],
         ]);
     }
 

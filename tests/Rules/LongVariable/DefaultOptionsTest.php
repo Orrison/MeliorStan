@@ -16,17 +16,17 @@ class DefaultOptionsTest extends RuleTestCase
         $this->analyse([
             __DIR__ . '/Fixture/ExampleClass.php',
         ], [
-            ['Property name "$veryLongPropertyNameThatExceedsTheMaximumLength" is 47 characters long, which exceeds the maximum of 20 characters.', 9],
-            ['Property name "$anotherVeryLongPropertyNameThatIsAlsoTooLong" is 44 characters long, which exceeds the maximum of 20 characters.', 11],
-            ['Parameter name "$veryLongParameterNameThatExceedsTheMaximumLength" is 48 characters long, which exceeds the maximum of 20 characters.', 15],
-            ['Parameter name "$anotherVeryLongParameterNameThatIsAlsoTooLong" is 45 characters long, which exceeds the maximum of 20 characters.', 15],
-            ['Variable name "$veryLongVariableNameThatExceedsTheMaximumLength" is 47 characters long, which exceeds the maximum of 20 characters.', 17],
-            ['Variable name "$anotherVeryLongVariableNameThatIsAlsoTooLong" is 44 characters long, which exceeds the maximum of 20 characters.', 18],
-            ['Variable name "$veryLongLoopVariableNameThatExceedsTheMaximumLength" is 51 characters long, which exceeds the maximum of 20 characters.', 21],
-            ['Variable name "$anotherVeryLongLoopVariableNameThatIsAlsoTooLong" is 48 characters long, which exceeds the maximum of 20 characters.', 22],
-            ['Variable name "$veryLongKeyVariableNameThatExceedsTheMaximumLength" is 50 characters long, which exceeds the maximum of 20 characters.', 27],
-            ['Variable name "$veryLongValueVariableNameThatExceedsTheMaximumLength" is 52 characters long, which exceeds the maximum of 20 characters.', 27],
-            ['Variable name "$veryLongExceptionVariableNameThatExceedsTheMaximumLength" is 56 characters long, which exceeds the maximum of 20 characters.', 33],
+            [sprintf(LongVariableRule::ERROR_MESSAGE_TEMPLATE_PROPERTY, 'veryLongPropertyNameThatExceedsTheMaximumLength', 47, 20), 9],
+            [sprintf(LongVariableRule::ERROR_MESSAGE_TEMPLATE_PROPERTY, 'anotherVeryLongPropertyNameThatIsAlsoTooLong', 44, 20), 11],
+            [sprintf(LongVariableRule::ERROR_MESSAGE_TEMPLATE_PARAMETER, 'veryLongParameterNameThatExceedsTheMaximumLength', 48, 20), 15],
+            [sprintf(LongVariableRule::ERROR_MESSAGE_TEMPLATE_PARAMETER, 'anotherVeryLongParameterNameThatIsAlsoTooLong', 45, 20), 15],
+            [sprintf(LongVariableRule::ERROR_MESSAGE_TEMPLATE_VARIABLE, 'veryLongVariableNameThatExceedsTheMaximumLength', 47, 20), 17],
+            [sprintf(LongVariableRule::ERROR_MESSAGE_TEMPLATE_VARIABLE, 'anotherVeryLongVariableNameThatIsAlsoTooLong', 44, 20), 18],
+            [sprintf(LongVariableRule::ERROR_MESSAGE_TEMPLATE_VARIABLE, 'veryLongLoopVariableNameThatExceedsTheMaximumLength', 51, 20), 21],
+            [sprintf(LongVariableRule::ERROR_MESSAGE_TEMPLATE_VARIABLE, 'anotherVeryLongLoopVariableNameThatIsAlsoTooLong', 48, 20), 22],
+            [sprintf(LongVariableRule::ERROR_MESSAGE_TEMPLATE_VARIABLE, 'veryLongKeyVariableNameThatExceedsTheMaximumLength', 50, 20), 27],
+            [sprintf(LongVariableRule::ERROR_MESSAGE_TEMPLATE_VARIABLE, 'veryLongValueVariableNameThatExceedsTheMaximumLength', 52, 20), 27],
+            [sprintf(LongVariableRule::ERROR_MESSAGE_TEMPLATE_VARIABLE, 'veryLongExceptionVariableNameThatExceedsTheMaximumLength', 56, 20), 33],
         ]);
     }
 

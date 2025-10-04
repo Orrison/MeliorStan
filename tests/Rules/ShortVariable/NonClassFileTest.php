@@ -16,12 +16,12 @@ class NonClassFileTest extends RuleTestCase
         $this->analyse([
             __DIR__ . '/Fixture/NonClassFile.php',
         ], [
-            ['Variable name "$i" is shorter than minimum length of 3 characters.', 9],
-            ['Variable name "$k" is shorter than minimum length of 3 characters.', 17],
-            ['Variable name "$v" is shorter than minimum length of 3 characters.', 18],
-            ['Variable name "$e" is shorter than minimum length of 3 characters.', 29],
-            ['Variable name "$x" is shorter than minimum length of 3 characters.', 32],
-            ['Variable name "$j" is shorter than minimum length of 3 characters.', 33],
+            [sprintf(ShortVariableRule::ERROR_MESSAGE_TEMPLATE_VARIABLE, 'i', 3), 9],
+            [sprintf(ShortVariableRule::ERROR_MESSAGE_TEMPLATE_VARIABLE, 'k', 3), 17],
+            [sprintf(ShortVariableRule::ERROR_MESSAGE_TEMPLATE_VARIABLE, 'v', 3), 18],
+            [sprintf(ShortVariableRule::ERROR_MESSAGE_TEMPLATE_VARIABLE, 'e', 3), 29],
+            [sprintf(ShortVariableRule::ERROR_MESSAGE_TEMPLATE_VARIABLE, 'x', 3), 32],
+            [sprintf(ShortVariableRule::ERROR_MESSAGE_TEMPLATE_VARIABLE, 'j', 3), 33],
         ]);
     }
 
