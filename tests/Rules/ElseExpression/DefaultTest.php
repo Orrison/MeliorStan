@@ -15,8 +15,8 @@ class DefaultTest extends RuleTestCase
     public function testRule(): void
     {
         $this->analyse([__DIR__ . '/Fixture/ExampleClass.php'], [
-            ['Avoid using else expressions.', 29],
-            ['Avoid using else expressions.', 38],
+            [ElseExpressionRule::ERROR_MESSAGE, 29],
+            [ElseExpressionRule::ERROR_MESSAGE, 38],
         ]);
     }
 

@@ -15,7 +15,7 @@ class AllowConsecutiveUppercaseTrueTest extends RuleTestCase
     {
         $this->analyse([__DIR__ . '/Fixture/camelCaseClass.php'], [
             [
-                'Class name "camelCaseClass" is not in PascalCase.',
+                sprintf(PascalCaseClassNameRule::ERROR_MESSAGE_TEMPLATE, 'camelCaseClass'),
                 5,
             ],
         ]);

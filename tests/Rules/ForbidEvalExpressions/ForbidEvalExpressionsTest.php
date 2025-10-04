@@ -21,11 +21,11 @@ class ForbidEvalExpressionsTest extends RuleTestCase
     public function testRule(): void
     {
         $this->analyse([__DIR__ . '/Fixture/ExampleClass.php'], [
-            ['Eval expressions should not be used.', 10],
-            ['Eval expressions should not be used.', 15],
-            ['Eval expressions should not be used.', 21],
-            ['Eval expressions should not be used.', 31],
-            ['Eval expressions should not be used.', 34],
+            [ForbidEvalExpressionsRule::ERROR_MESSAGE, 10],
+            [ForbidEvalExpressionsRule::ERROR_MESSAGE, 15],
+            [ForbidEvalExpressionsRule::ERROR_MESSAGE, 21],
+            [ForbidEvalExpressionsRule::ERROR_MESSAGE, 31],
+            [ForbidEvalExpressionsRule::ERROR_MESSAGE, 34],
         ]);
     }
 

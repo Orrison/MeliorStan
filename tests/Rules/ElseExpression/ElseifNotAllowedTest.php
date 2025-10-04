@@ -15,10 +15,10 @@ class ElseifNotAllowedTest extends RuleTestCase
     public function testRule(): void
     {
         $this->analyse([__DIR__ . '/Fixture/ExampleClass.php'], [
-            ['Avoid using else expressions.', 18],
-            ['Avoid using else expressions.', 27],
-            ['Avoid using else expressions.', 29],
-            ['Avoid using else expressions.', 38],
+            [ElseExpressionRule::ERROR_MESSAGE, 18],
+            [ElseExpressionRule::ERROR_MESSAGE, 27],
+            [ElseExpressionRule::ERROR_MESSAGE, 29],
+            [ElseExpressionRule::ERROR_MESSAGE, 38],
         ]);
     }
 

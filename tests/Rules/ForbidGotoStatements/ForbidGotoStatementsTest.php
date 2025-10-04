@@ -21,10 +21,10 @@ class ForbidGotoStatementsTest extends RuleTestCase
     public function testRule(): void
     {
         $this->analyse([__DIR__ . '/Fixture/ExampleClass.php'], [
-            ['Goto statements should not be used.', 16],
-            ['Goto statements should not be used.', 22],
-            ['Goto statements should not be used.', 25],
-            ['Goto statements should not be used.', 40],
+            [ForbidGotoStatementsRule::ERROR_MESSAGE, 16],
+            [ForbidGotoStatementsRule::ERROR_MESSAGE, 22],
+            [ForbidGotoStatementsRule::ERROR_MESSAGE, 25],
+            [ForbidGotoStatementsRule::ERROR_MESSAGE, 40],
         ]);
     }
 

@@ -16,13 +16,13 @@ class DefaultOptionsTest extends RuleTestCase
         $this->analyse([
             __DIR__ . '/Fixture/ExampleClass.php',
         ], [
-            ['Variable name "$is_http_response" is not in camelCase.', 11],
-            ['Variable name "$IsHttpResponse" is not in camelCase.', 13],
-            ['Variable name "$isHTTPResponse" is not in camelCase.', 15],
-            ['Variable name "$IsHTTPResponse" is not in camelCase.', 17],
-            ['Variable name "$ISHTTPRESPONSE" is not in camelCase.', 19],
-            ['Variable name "$_isHttpResponse" is not in camelCase.', 21],
-            ['Variable name "$_isHTTPResponse" is not in camelCase.', 23],
+            [sprintf(CamelCaseVariableNameRule::ERROR_MESSAGE_TEMPLATE, 'is_http_response'), 11],
+            [sprintf(CamelCaseVariableNameRule::ERROR_MESSAGE_TEMPLATE, 'IsHttpResponse'), 13],
+            [sprintf(CamelCaseVariableNameRule::ERROR_MESSAGE_TEMPLATE, 'isHTTPResponse'), 15],
+            [sprintf(CamelCaseVariableNameRule::ERROR_MESSAGE_TEMPLATE, 'IsHTTPResponse'), 17],
+            [sprintf(CamelCaseVariableNameRule::ERROR_MESSAGE_TEMPLATE, 'ISHTTPRESPONSE'), 19],
+            [sprintf(CamelCaseVariableNameRule::ERROR_MESSAGE_TEMPLATE, '_isHttpResponse'), 21],
+            [sprintf(CamelCaseVariableNameRule::ERROR_MESSAGE_TEMPLATE, '_isHTTPResponse'), 23],
         ]);
     }
 
