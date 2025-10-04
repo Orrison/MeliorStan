@@ -17,7 +17,7 @@ class IgnoredWhenInClassesTest extends RuleTestCase
         $this->analyse([
             __DIR__ . '/Fixture/IgnoredParentClass.php',
         ], [
-            ['Property name "some_property" is not in camelCase.', 7],
+            [sprintf(CamelCasePropertyNameRule::ERROR_MESSAGE_TEMPLATE, 'some_property'), 7],
         ]);
 
         // Test IgnoredClass - should produce no error (ignored)
@@ -31,7 +31,7 @@ class IgnoredWhenInClassesTest extends RuleTestCase
         $this->analyse([
             __DIR__ . '/Fixture/NotIgnoredClass.php',
         ], [
-            ['Property name "yet_another_property" is not in camelCase.', 7],
+            [sprintf(CamelCasePropertyNameRule::ERROR_MESSAGE_TEMPLATE, 'yet_another_property'), 7],
         ]);
     }
 

@@ -16,9 +16,9 @@ class DefaultOptionsTest extends RuleTestCase
         $this->analyse([
             __DIR__ . '/Fixture/ExampleTrait.php',
         ], [
-            ['Constant name "traitConstant" is not in UPPERCASE.', 15],
-            ['Constant name "maxRetries" is not in UPPERCASE.', 17],
-            ['Constant name "mixedCase" is not in UPPERCASE.', 19],
+            [sprintf(TraitConstantNamingConventionsRule::ERROR_MESSAGE_TEMPLATE, 'traitConstant'), 15],
+            [sprintf(TraitConstantNamingConventionsRule::ERROR_MESSAGE_TEMPLATE, 'maxRetries'), 17],
+            [sprintf(TraitConstantNamingConventionsRule::ERROR_MESSAGE_TEMPLATE, 'mixedCase'), 19],
         ]);
     }
 

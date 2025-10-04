@@ -16,13 +16,13 @@ class DefaultOptionsTest extends RuleTestCase
         $this->analyse([
             __DIR__ . '/Fixture/ExampleClass.php',
         ], [
-            ['Constant name "maxConnections" is not in UPPERCASE.', 19],
-            ['Constant name "Default_Timeout" is not in UPPERCASE.', 21],
-            ['Constant name "api_version" is not in UPPERCASE.', 23],
-            ['Constant name "InternalFlag" is not in UPPERCASE.', 25],
-            ['Constant name "bufferSize" is not in UPPERCASE.', 27],
-            ['Constant name "MIXED_case" is not in UPPERCASE.', 29],
-            ['Constant name "lowercase" is not in UPPERCASE.', 31],
+            [sprintf(ConstantNamingConventionsRule::ERROR_MESSAGE_TEMPLATE, 'maxConnections'), 19],
+            [sprintf(ConstantNamingConventionsRule::ERROR_MESSAGE_TEMPLATE, 'Default_Timeout'), 21],
+            [sprintf(ConstantNamingConventionsRule::ERROR_MESSAGE_TEMPLATE, 'api_version'), 23],
+            [sprintf(ConstantNamingConventionsRule::ERROR_MESSAGE_TEMPLATE, 'InternalFlag'), 25],
+            [sprintf(ConstantNamingConventionsRule::ERROR_MESSAGE_TEMPLATE, 'bufferSize'), 27],
+            [sprintf(ConstantNamingConventionsRule::ERROR_MESSAGE_TEMPLATE, 'MIXED_case'), 29],
+            [sprintf(ConstantNamingConventionsRule::ERROR_MESSAGE_TEMPLATE, 'lowercase'), 31],
         ]);
     }
 

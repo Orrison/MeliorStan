@@ -21,11 +21,11 @@ class EmptyCatchBlockTest extends RuleTestCase
     public function testRule(): void
     {
         $this->analyse([__DIR__ . '/Fixture/ExampleClass.php'], [
-            ['Empty catch block detected. Catch blocks should contain error handling logic.', 14],
-            ['Empty catch block detected. Catch blocks should contain error handling logic.', 23],
-            ['Empty catch block detected. Catch blocks should contain error handling logic.', 31],
-            ['Empty catch block detected. Catch blocks should contain error handling logic.', 32],
-            ['Empty catch block detected. Catch blocks should contain error handling logic.', 67],
+            [EmptyCatchBlockRule::ERROR_MESSAGE, 14],
+            [EmptyCatchBlockRule::ERROR_MESSAGE, 23],
+            [EmptyCatchBlockRule::ERROR_MESSAGE, 31],
+            [EmptyCatchBlockRule::ERROR_MESSAGE, 32],
+            [EmptyCatchBlockRule::ERROR_MESSAGE, 67],
         ]);
     }
 

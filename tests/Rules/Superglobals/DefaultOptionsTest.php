@@ -16,18 +16,18 @@ class DefaultOptionsTest extends RuleTestCase
         $this->analyse([
             __DIR__ . '/Fixture/ExampleClass.php',
         ], [
-            ['Superglobal "$_SERVER" should not be used.', 10],
-            ['Superglobal "$_GET" should not be used.', 11],
-            ['Superglobal "$_POST" should not be used.', 12],
-            ['Superglobal "$_FILES" should not be used.', 13],
-            ['Superglobal "$_COOKIE" should not be used.', 14],
-            ['Superglobal "$_SESSION" should not be used.', 15],
-            ['Superglobal "$_REQUEST" should not be used.', 16],
-            ['Superglobal "$_ENV" should not be used.', 17],
-            ['Superglobal "$GLOBALS" should not be used.', 18],
-            ['Superglobal "$_GET" should not be used.', 33],
-            ['Superglobal "$_POST" should not be used.', 34],
-            ['Superglobal "$_COOKIE" should not be used.', 37],
+            [sprintf(SuperglobalsRule::ERROR_MESSAGE_TEMPLATE, '_SERVER'), 10],
+            [sprintf(SuperglobalsRule::ERROR_MESSAGE_TEMPLATE, '_GET'), 11],
+            [sprintf(SuperglobalsRule::ERROR_MESSAGE_TEMPLATE, '_POST'), 12],
+            [sprintf(SuperglobalsRule::ERROR_MESSAGE_TEMPLATE, '_FILES'), 13],
+            [sprintf(SuperglobalsRule::ERROR_MESSAGE_TEMPLATE, '_COOKIE'), 14],
+            [sprintf(SuperglobalsRule::ERROR_MESSAGE_TEMPLATE, '_SESSION'), 15],
+            [sprintf(SuperglobalsRule::ERROR_MESSAGE_TEMPLATE, '_REQUEST'), 16],
+            [sprintf(SuperglobalsRule::ERROR_MESSAGE_TEMPLATE, '_ENV'), 17],
+            [sprintf(SuperglobalsRule::ERROR_MESSAGE_TEMPLATE, 'GLOBALS'), 18],
+            [sprintf(SuperglobalsRule::ERROR_MESSAGE_TEMPLATE, '_GET'), 33],
+            [sprintf(SuperglobalsRule::ERROR_MESSAGE_TEMPLATE, '_POST'), 34],
+            [sprintf(SuperglobalsRule::ERROR_MESSAGE_TEMPLATE, '_COOKIE'), 37],
         ]);
     }
 

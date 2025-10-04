@@ -16,10 +16,10 @@ class AllOptionsTrueTest extends RuleTestCase
         $this->analyse([
             __DIR__ . '/Fixture/ExampleClass.php',
         ], [
-            ['Property name "is_http_response" is not in camelCase.', 9],
-            ['Property name "IsHttpResponse" is not in camelCase.', 11],
-            ['Property name "IsHTTPResponse" is not in camelCase.', 15],
-            ['Property name "ISHTTPRESPONSE" is not in camelCase.', 17],
+            [sprintf(CamelCasePropertyNameRule::ERROR_MESSAGE_TEMPLATE, 'is_http_response'), 9],
+            [sprintf(CamelCasePropertyNameRule::ERROR_MESSAGE_TEMPLATE, 'IsHttpResponse'), 11],
+            [sprintf(CamelCasePropertyNameRule::ERROR_MESSAGE_TEMPLATE, 'IsHTTPResponse'), 15],
+            [sprintf(CamelCasePropertyNameRule::ERROR_MESSAGE_TEMPLATE, 'ISHTTPRESPONSE'), 17],
         ]);
     }
 

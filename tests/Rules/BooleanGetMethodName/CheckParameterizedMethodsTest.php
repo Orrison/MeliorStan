@@ -16,17 +16,17 @@ class CheckParameterizedMethodsTest extends RuleTestCase
         $this->analyse([
             __DIR__ . '/Fixture/ExampleClass.php',
         ], [
-            ['Method "getBooleanValue" starts with "get" and returns boolean, consider using "is" or "has" instead.', 8],
-            ['Method "getIsValid" starts with "get" and returns boolean, consider using "is" or "has" instead.', 13],
-            ['Method "getFlag" starts with "get" and returns boolean, consider using "is" or "has" instead.', 21],
-            ['Method "getEnabled" starts with "get" and returns boolean, consider using "is" or "has" instead.', 29],
-            ['Method "getActiveFlag" starts with "get" and returns boolean, consider using "is" or "has" instead.', 70],
-            ['Method "getValidated" starts with "get" and returns boolean, consider using "is" or "has" instead.', 75],
-            ['Method "getProcessed" starts with "get" and returns boolean, consider using "is" or "has" instead.', 85],
-            ['Method "_getPrivateBoolean" starts with "get" and returns boolean, consider using "is" or "has" instead.', 91],
-            ['Method "GetCamelCase" starts with "get" and returns boolean, consider using "is" or "has" instead.', 96],
-            ['Method "getTrue" starts with "get" and returns boolean, consider using "is" or "has" instead.', 111],
-            ['Method "getFalse" starts with "get" and returns boolean, consider using "is" or "has" instead.', 116],
+            [sprintf(BooleanGetMethodNameRule::ERROR_MESSAGE_TEMPLATE, 'getBooleanValue'), 8],
+            [sprintf(BooleanGetMethodNameRule::ERROR_MESSAGE_TEMPLATE, 'getIsValid'), 13],
+            [sprintf(BooleanGetMethodNameRule::ERROR_MESSAGE_TEMPLATE, 'getFlag'), 21],
+            [sprintf(BooleanGetMethodNameRule::ERROR_MESSAGE_TEMPLATE, 'getEnabled'), 29],
+            [sprintf(BooleanGetMethodNameRule::ERROR_MESSAGE_TEMPLATE, 'getActiveFlag'), 70],
+            [sprintf(BooleanGetMethodNameRule::ERROR_MESSAGE_TEMPLATE, 'getValidated'), 75],
+            [sprintf(BooleanGetMethodNameRule::ERROR_MESSAGE_TEMPLATE, 'getProcessed'), 85],
+            [sprintf(BooleanGetMethodNameRule::ERROR_MESSAGE_TEMPLATE, '_getPrivateBoolean'), 91],
+            [sprintf(BooleanGetMethodNameRule::ERROR_MESSAGE_TEMPLATE, 'GetCamelCase'), 96],
+            [sprintf(BooleanGetMethodNameRule::ERROR_MESSAGE_TEMPLATE, 'getTrue'), 111],
+            [sprintf(BooleanGetMethodNameRule::ERROR_MESSAGE_TEMPLATE, 'getFalse'), 116],
         ]);
     }
 

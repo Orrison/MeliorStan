@@ -15,14 +15,14 @@ class PascalCaseClassNameRuleTest extends RuleTestCase
     {
         $this->analyse([__DIR__ . '/Fixture/camelCaseClass.php'], [
             [
-                'Class name "camelCaseClass" is not in PascalCase.',
+                sprintf(PascalCaseClassNameRule::ERROR_MESSAGE_TEMPLATE, 'camelCaseClass'),
                 5,
             ],
         ]);
 
         $this->analyse([__DIR__ . '/Fixture/HTTPResponse.php'], [
             [
-                'Class name "HTTPResponse" is not in PascalCase.',
+                sprintf(PascalCaseClassNameRule::ERROR_MESSAGE_TEMPLATE, 'HTTPResponse'),
                 5,
             ],
         ]);

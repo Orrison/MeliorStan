@@ -21,13 +21,13 @@ class ForbidExitExpressionsTest extends RuleTestCase
     public function testRule(): void
     {
         $this->analyse([__DIR__ . '/Fixture/ExampleClass.php'], [
-            ['Exit expressions should not be used.', 10],
-            ['Exit expressions should not be used.', 16],
-            ['Exit expressions should not be used.', 21],
-            ['Exit expressions should not be used.', 26],
-            ['Exit expressions should not be used.', 31],
-            ['Exit expressions should not be used.', 42],
-            ['Exit expressions should not be used.', 46],
+            [ForbidExitExpressionsRule::ERROR_MESSAGE, 10],
+            [ForbidExitExpressionsRule::ERROR_MESSAGE, 16],
+            [ForbidExitExpressionsRule::ERROR_MESSAGE, 21],
+            [ForbidExitExpressionsRule::ERROR_MESSAGE, 26],
+            [ForbidExitExpressionsRule::ERROR_MESSAGE, 31],
+            [ForbidExitExpressionsRule::ERROR_MESSAGE, 42],
+            [ForbidExitExpressionsRule::ERROR_MESSAGE, 46],
         ]);
     }
 

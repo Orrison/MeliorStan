@@ -16,8 +16,8 @@ class InterfaceEnumTest extends RuleTestCase
         $this->analyse([
             __DIR__ . '/Fixture/InterfaceEnum.php',
         ], [
-            ['Constant name "interfaceConstant" is not in UPPERCASE.', 9],
-            ['Constant name "enumConstant" is not in UPPERCASE.', 16],
+            [sprintf(ConstantNamingConventionsRule::ERROR_MESSAGE_TEMPLATE, 'interfaceConstant'), 9],
+            [sprintf(ConstantNamingConventionsRule::ERROR_MESSAGE_TEMPLATE, 'enumConstant'), 16],
         ]);
     }
 

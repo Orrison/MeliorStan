@@ -16,8 +16,8 @@ class AllOptionsTrueTest extends RuleTestCase
         $this->analyse([
             __DIR__ . '/Fixture/ExampleClass.php',
         ], [
-            ['Method name "do_something_invalid" is not in camelCase.', 56],
-            ['Method name "DoSomethingInvalid" is not in camelCase.', 58],
+            [sprintf(CamelCaseMethodNameRule::ERROR_MESSAGE_TEMPLATE, 'do_something_invalid'), 56],
+            [sprintf(CamelCaseMethodNameRule::ERROR_MESSAGE_TEMPLATE, 'DoSomethingInvalid'), 58],
         ]);
     }
 

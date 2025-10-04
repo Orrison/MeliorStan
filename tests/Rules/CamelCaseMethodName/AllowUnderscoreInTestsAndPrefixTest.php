@@ -16,10 +16,10 @@ class AllowUnderscoreInTestsAndPrefixTest extends RuleTestCase
         $this->analyse([
             __DIR__ . '/Fixture/ExampleClass.php',
         ], [
-            ['Method name "do_something_invalid" is not in camelCase.', 56],
-            ['Method name "DoSomethingInvalid" is not in camelCase.', 58],
-            ['Method name "getHTTPResponseInvalid" is not in camelCase.', 60],
-            ['Method name "getXMLDataInvalid" is not in camelCase.', 66],
+            [sprintf(CamelCaseMethodNameRule::ERROR_MESSAGE_TEMPLATE, 'do_something_invalid'), 56],
+            [sprintf(CamelCaseMethodNameRule::ERROR_MESSAGE_TEMPLATE, 'DoSomethingInvalid'), 58],
+            [sprintf(CamelCaseMethodNameRule::ERROR_MESSAGE_TEMPLATE, 'getHTTPResponseInvalid'), 60],
+            [sprintf(CamelCaseMethodNameRule::ERROR_MESSAGE_TEMPLATE, 'getXMLDataInvalid'), 66],
         ]);
     }
 

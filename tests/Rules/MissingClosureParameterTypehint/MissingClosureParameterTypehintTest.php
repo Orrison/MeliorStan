@@ -16,14 +16,14 @@ class MissingClosureParameterTypehintTest extends RuleTestCase
         $this->analyse(
             [__DIR__ . '/Fixture/ExampleClass.php'],
             [
-                ['Parameter #1 $name of anonymous function has no typehint.', 13],
-                ['Parameter #2 $age of anonymous function has no typehint.', 13],
-                ['Parameter #2 $age of anonymous function has no typehint.', 18],
-                ['Parameter #1 $first of anonymous function has no typehint.', 28],
-                ['Parameter #2 $second of anonymous function has no typehint.', 28],
-                ['Parameter #3 $third of anonymous function has no typehint.', 28],
-                ['Parameter #1 $n of anonymous function has no typehint.', 39],
-                ['Parameter #1 $value of anonymous function has no typehint.', 49],
+                [sprintf(MissingClosureParameterTypehintRule::ERROR_MESSAGE_TEMPLATE, '1', 'name'), 13],
+                [sprintf(MissingClosureParameterTypehintRule::ERROR_MESSAGE_TEMPLATE, '2', 'age'), 13],
+                [sprintf(MissingClosureParameterTypehintRule::ERROR_MESSAGE_TEMPLATE, '2', 'age'), 18],
+                [sprintf(MissingClosureParameterTypehintRule::ERROR_MESSAGE_TEMPLATE, '1', 'first'), 28],
+                [sprintf(MissingClosureParameterTypehintRule::ERROR_MESSAGE_TEMPLATE, '2', 'second'), 28],
+                [sprintf(MissingClosureParameterTypehintRule::ERROR_MESSAGE_TEMPLATE, '3', 'third'), 28],
+                [sprintf(MissingClosureParameterTypehintRule::ERROR_MESSAGE_TEMPLATE, '1', 'n'), 39],
+                [sprintf(MissingClosureParameterTypehintRule::ERROR_MESSAGE_TEMPLATE, '1', 'value'), 49],
             ]
         );
     }

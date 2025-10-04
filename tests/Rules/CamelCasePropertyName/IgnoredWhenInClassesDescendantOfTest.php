@@ -31,7 +31,7 @@ class IgnoredWhenInClassesDescendantOfTest extends RuleTestCase
         $this->analyse([
             __DIR__ . '/Fixture/NotIgnoredClass.php',
         ], [
-            ['Property name "yet_another_property" is not in camelCase.', 7],
+            [sprintf(CamelCasePropertyNameRule::ERROR_MESSAGE_TEMPLATE, 'yet_another_property'), 7],
         ]);
     }
 
