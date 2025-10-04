@@ -20,6 +20,8 @@ use PHPStan\Rules\RuleErrorBuilder;
  */
 class ForbidCountInLoopExpressionsRule implements Rule
 {
+    public const ERROR_MESSAGE = 'Using count() or sizeof() in loop conditions can cause performance issues or hard to trace bugs.';
+
     public function getNodeType(): string
     {
         return Stmt::class;
@@ -49,9 +51,7 @@ class ForbidCountInLoopExpressionsRule implements Rule
             $countCall = $this->findFirstCountCall($condition);
 
             if ($countCall !== null) {
-                $errors[] = RuleErrorBuilder::message(
-                    'Using count() or sizeof() in loop conditions can cause performance issues or hard to trace bugs.'
-                )
+                $errors[] = RuleErrorBuilder::message(self::ERROR_MESSAGE)
                     ->identifier('MeliorStan.countInLoopExpression')
                     ->line($countCall->getLine())
                     ->build();

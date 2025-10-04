@@ -20,7 +20,7 @@ class ForbidCountInLoopExpressionsTest extends RuleTestCase
 
     public function testRule(): void
     {
-        $errorMessage = 'Using count() or sizeof() in loop conditions can cause performance issues or hard to trace bugs.';
+        $errorMessage = ForbidCountInLoopExpressionsRule::ERROR_MESSAGE;
 
         $this->analyse([__DIR__ . '/Fixture/ExampleClass.php'], [
             [$errorMessage, 28],
