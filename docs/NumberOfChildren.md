@@ -76,7 +76,7 @@ parameters:
 ```php
 <?php
 
-// ✗ Now valid: class with 6 children (exceeds maximum of 5)
+// ✗ Now invalid: class with 6 children (exceeds maximum of 5)
 class PopularParent
 {
 }
