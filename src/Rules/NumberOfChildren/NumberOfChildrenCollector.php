@@ -9,7 +9,7 @@ use PHPStan\Analyser\Scope;
 use PHPStan\Collectors\Collector;
 
 /**
- * @implements Collector<Class_, array<string, int>>
+ * @implements Collector<Class_, array{parent: string|null, className: string, file: string, line: int}>
  */
 class NumberOfChildrenCollector implements Collector
 {
@@ -24,26 +24,43 @@ class NumberOfChildrenCollector implements Collector
             return null;
         }
 
-        if ($node->extends === null) {
+        // Get current class name
+        $namespacedName = $node->namespacedName;
+        $className = $namespacedName instanceof Name ? $namespacedName->toString() : '';
+
+        if ($className === '') {
             return null;
         }
 
-        // Get parent class name from the AST
-        $namespacedName = $node->extends->getAttribute('namespacedName');
+        // Get file and line info
+        $file = $scope->getFile();
+        $line = $node->getStartLine();
 
-        if ($namespacedName instanceof Name) {
-            $parentName = $namespacedName->toString();
-        } else {
-            // Fallback to resolving with current namespace
-            $namespace = $scope->getNamespace();
+        // Get parent class name if exists
+        $parentName = null;
 
-            if ($namespace !== null && ! $node->extends instanceof Name\FullyQualified) {
-                $parentName = $namespace . '\\' . $node->extends->toString();
+        if ($node->extends !== null) {
+            $parentNamespacedName = $node->extends->getAttribute('namespacedName');
+
+            if ($parentNamespacedName instanceof Name) {
+                $parentName = $parentNamespacedName->toString();
             } else {
-                $parentName = $node->extends->toString();
+                // Fallback to resolving with current namespace
+                $namespace = $scope->getNamespace();
+
+                if ($namespace !== null && ! $node->extends instanceof Name\FullyQualified) {
+                    $parentName = $namespace . '\\' . $node->extends->toString();
+                } else {
+                    $parentName = $node->extends->toString();
+                }
             }
         }
 
-        return [$parentName => 1];
+        return [
+            'parent' => $parentName,
+            'className' => $className,
+            'file' => $file,
+            'line' => $line,
+        ];
     }
 }
