@@ -20,16 +20,18 @@ class ForbidCountInLoopExpressionsTest extends RuleTestCase
 
     public function testRule(): void
     {
+        $errorMessage = 'Using count() or sizeof() in loop conditions can cause performance issues or hard to trace bugs.';
+
         $this->analyse([__DIR__ . '/Fixture/ExampleClass.php'], [
-            ['Using count() or sizeof() in loop conditions can cause performance issues or hard to trace bugs.', 28],
-            ['Using count() or sizeof() in loop conditions can cause performance issues or hard to trace bugs.', 38],
-            ['Using count() or sizeof() in loop conditions can cause performance issues or hard to trace bugs.', 50],
-            ['Using count() or sizeof() in loop conditions can cause performance issues or hard to trace bugs.', 57],
-            ['Using count() or sizeof() in loop conditions can cause performance issues or hard to trace bugs.', 67],
-            ['Using count() or sizeof() in loop conditions can cause performance issues or hard to trace bugs.', 76],
-            ['Using count() or sizeof() in loop conditions can cause performance issues or hard to trace bugs.', 77],
-            ['Using count() or sizeof() in loop conditions can cause performance issues or hard to trace bugs.', 97],
-            ['Using count() or sizeof() in loop conditions can cause performance issues or hard to trace bugs.', 107],
+            [$errorMessage, 28],
+            [$errorMessage, 38],
+            [$errorMessage, 50],
+            [$errorMessage, 57],
+            [$errorMessage, 67],
+            [$errorMessage, 76],
+            [$errorMessage, 77],
+            [$errorMessage, 97],
+            [$errorMessage, 107],
         ]);
     }
 
