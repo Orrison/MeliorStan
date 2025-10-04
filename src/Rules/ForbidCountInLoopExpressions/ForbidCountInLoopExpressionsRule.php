@@ -56,7 +56,7 @@ class ForbidCountInLoopExpressionsRule implements Rule
                     ->line($countCall->getLine())
                     ->build();
 
-                // Only report the first occurrence per loop as per requirements
+                // Only report the first occurrence per loop
                 break;
             }
         }
