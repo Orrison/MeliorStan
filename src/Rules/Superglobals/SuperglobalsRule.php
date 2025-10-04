@@ -14,6 +14,8 @@ use PHPStan\Rules\RuleErrorBuilder;
  */
 class SuperglobalsRule implements Rule
 {
+    public const ERROR_MESSAGE_TEMPLATE = 'Superglobal "$%s" should not be used.';
+
     /** @var string[] */
     protected array $superglobals = [
         'GLOBALS',
@@ -51,7 +53,7 @@ class SuperglobalsRule implements Rule
         if (in_array($name, $this->superglobals, true)) {
             return [
                 RuleErrorBuilder::message(
-                    sprintf('Superglobal "$%s" should not be used.', $name)
+                    sprintf(self::ERROR_MESSAGE_TEMPLATE, $name)
                 )->identifier('MeliorStan.superglobalUsage')
                     ->build(),
             ];

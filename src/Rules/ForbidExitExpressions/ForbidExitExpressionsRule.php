@@ -13,6 +13,8 @@ use PHPStan\Rules\RuleErrorBuilder;
  */
 class ForbidExitExpressionsRule implements Rule
 {
+    public const ERROR_MESSAGE = 'Exit expressions should not be used.';
+
     public function getNodeType(): string
     {
         return Exit_::class;
@@ -21,7 +23,7 @@ class ForbidExitExpressionsRule implements Rule
     public function processNode(Node $node, Scope $scope): array
     {
         return [
-            RuleErrorBuilder::message('Exit expressions should not be used.')
+            RuleErrorBuilder::message(self::ERROR_MESSAGE)
                 ->identifier('MeliorStan.exitExpressionsForbidden')
                 ->build(),
         ];

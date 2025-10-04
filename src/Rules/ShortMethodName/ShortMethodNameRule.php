@@ -14,6 +14,8 @@ use PHPStan\Rules\RuleErrorBuilder;
  */
 class ShortMethodNameRule implements Rule
 {
+    public const ERROR_MESSAGE_TEMPLATE = 'Method name "%s" is shorter than minimum length of %d characters.';
+
     public function __construct(
         protected Config $config,
     ) {}
@@ -42,7 +44,7 @@ class ShortMethodNameRule implements Rule
 
         // Check if method name is shorter than minimum length
         if (strlen($name) < $this->config->getMinimumLength()) {
-            $messages[] = RuleErrorBuilder::message(sprintf('Method name "%s" is shorter than minimum length of %d characters.', $name, $this->config->getMinimumLength()))
+            $messages[] = RuleErrorBuilder::message(sprintf(self::ERROR_MESSAGE_TEMPLATE, $name, $this->config->getMinimumLength()))
                 ->identifier('MeliorStan.methodNameTooShort')
                 ->build();
         }

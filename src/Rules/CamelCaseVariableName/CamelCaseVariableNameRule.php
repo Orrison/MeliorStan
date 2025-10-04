@@ -14,6 +14,8 @@ use PHPStan\Rules\RuleErrorBuilder;
  */
 class CamelCaseVariableNameRule implements Rule
 {
+    public const ERROR_MESSAGE_TEMPLATE = 'Variable name "$%s" is not in camelCase.';
+
     protected string $pattern;
 
     /** @var string[] */
@@ -70,7 +72,7 @@ class CamelCaseVariableNameRule implements Rule
         if (! preg_match($this->pattern, $name)) {
             return [
                 RuleErrorBuilder::message(
-                    sprintf('Variable name "$%s" is not in camelCase.', $name)
+                    sprintf(self::ERROR_MESSAGE_TEMPLATE, $name)
                 )
                     ->identifier('MeliorStan.variableNameNotCamelCase')
                     ->build(),

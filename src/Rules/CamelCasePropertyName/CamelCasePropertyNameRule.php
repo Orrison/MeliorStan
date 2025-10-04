@@ -14,6 +14,8 @@ use PHPStan\Rules\RuleErrorBuilder;
  */
 class CamelCasePropertyNameRule implements Rule
 {
+    public const ERROR_MESSAGE_TEMPLATE = 'Property name "%s" is not in camelCase.';
+
     protected string $pattern;
 
     public function __construct(
@@ -63,7 +65,7 @@ class CamelCasePropertyNameRule implements Rule
 
             if (! preg_match($this->pattern, $name)) {
                 $messages[] = RuleErrorBuilder::message(
-                    sprintf('Property name "%s" is not in camelCase.', $prop->name->name)
+                    sprintf(self::ERROR_MESSAGE_TEMPLATE, $prop->name->name)
                 )
                     ->identifier('MeliorStan.propertyNameNotCamelCase')
                     ->build();

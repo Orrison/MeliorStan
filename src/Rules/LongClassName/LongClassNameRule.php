@@ -14,6 +14,8 @@ use PHPStan\Rules\RuleErrorBuilder;
  */
 class LongClassNameRule implements Rule
 {
+    public const ERROR_MESSAGE_TEMPLATE = '%s name "%s" is too long (%d chars). Maximum allowed length is %d characters.';
+
     public function __construct(
         protected Config $config,
     ) {}
@@ -44,7 +46,7 @@ class LongClassNameRule implements Rule
             return [
                 RuleErrorBuilder::message(
                     sprintf(
-                        '%s name "%s" is too long (%d chars). Maximum allowed length is %d characters.',
+                        self::ERROR_MESSAGE_TEMPLATE,
                         $nodeType,
                         $className,
                         $effectiveLength,
