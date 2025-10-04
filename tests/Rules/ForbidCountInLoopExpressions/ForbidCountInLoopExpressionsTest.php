@@ -20,18 +20,16 @@ class ForbidCountInLoopExpressionsTest extends RuleTestCase
 
     public function testRule(): void
     {
-        $errorMessage = ForbidCountInLoopExpressionsRule::ERROR_MESSAGE;
-
         $this->analyse([__DIR__ . '/Fixture/ExampleClass.php'], [
-            [$errorMessage, 28],
-            [$errorMessage, 38],
-            [$errorMessage, 50],
-            [$errorMessage, 57],
-            [$errorMessage, 67],
-            [$errorMessage, 76],
-            [$errorMessage, 77],
-            [$errorMessage, 97],
-            [$errorMessage, 107],
+            [ForbidCountInLoopExpressionsRule::ERROR_MESSAGE, 28],
+            [ForbidCountInLoopExpressionsRule::ERROR_MESSAGE, 38],
+            [ForbidCountInLoopExpressionsRule::ERROR_MESSAGE, 50],
+            [ForbidCountInLoopExpressionsRule::ERROR_MESSAGE, 57],
+            [ForbidCountInLoopExpressionsRule::ERROR_MESSAGE, 67],
+            [ForbidCountInLoopExpressionsRule::ERROR_MESSAGE, 76],
+            [ForbidCountInLoopExpressionsRule::ERROR_MESSAGE, 77],
+            [ForbidCountInLoopExpressionsRule::ERROR_MESSAGE, 97],
+            [ForbidCountInLoopExpressionsRule::ERROR_MESSAGE, 107],
         ]);
     }
 
