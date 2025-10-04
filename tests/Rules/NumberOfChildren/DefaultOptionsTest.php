@@ -2,7 +2,6 @@
 
 namespace Orrison\MeliorStan\Tests\Rules\NumberOfChildren;
 
-use Orrison\MeliorStan\Rules\NumberOfChildren\ClassDeclarationCollector;
 use Orrison\MeliorStan\Rules\NumberOfChildren\NumberOfChildrenCollector;
 use Orrison\MeliorStan\Rules\NumberOfChildren\NumberOfChildrenRule;
 use PHPStan\Rules\Rule;
@@ -16,7 +15,18 @@ class DefaultOptionsTest extends RuleTestCase
     public function testRuleWithDefaultMaximum(): void
     {
         $this->analyse([
-            __DIR__ . '/Fixture/AllClasses.php',
+            __DIR__ . '/Fixture/ParentWithThreeChildren.php',
+            __DIR__ . '/Fixture/ChildOne.php',
+            __DIR__ . '/Fixture/ChildTwo.php',
+            __DIR__ . '/Fixture/ChildThree.php',
+            __DIR__ . '/Fixture/ParentWithOneChild.php',
+            __DIR__ . '/Fixture/OnlyChild.php',
+            __DIR__ . '/Fixture/ParentWithNoChildren.php',
+            __DIR__ . '/Fixture/GrandParent.php',
+            __DIR__ . '/Fixture/Parent1.php',
+            __DIR__ . '/Fixture/Parent2.php',
+            __DIR__ . '/Fixture/GrandChild1.php',
+            __DIR__ . '/Fixture/GrandChild2.php',
         ], [
             // With default maximum of 15, none should trigger
         ]);
@@ -33,7 +43,6 @@ class DefaultOptionsTest extends RuleTestCase
     {
         return [
             self::getContainer()->getByType(NumberOfChildrenCollector::class),
-            self::getContainer()->getByType(ClassDeclarationCollector::class),
         ];
     }
 

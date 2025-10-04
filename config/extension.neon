@@ -199,7 +199,3 @@ services:
         class: Orrison\MeliorStan\Rules\NumberOfChildren\NumberOfChildrenCollector
         tags:
             - phpstan.collector
-    -
-        class: Orrison\MeliorStan\Rules\NumberOfChildren\ClassDeclarationCollector
-        tags:
-            - phpstan.collector

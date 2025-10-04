@@ -26,52 +26,50 @@ class NumberOfChildrenRule implements Rule
 
     public function processNode(Node $node, Scope $scope): array
     {
-        $childrenData = $node->get(NumberOfChildrenCollector::class);
-        $declarationData = $node->get(ClassDeclarationCollector::class);
+        $collectedData = $node->get(NumberOfChildrenCollector::class);
 
-        // Build a map of class names to their file/line
+        // First pass: Build a map of class names to their file/line
         $classLocations = [];
 
-        foreach ($declarationData as $fileDeclarations) {
-            foreach ($fileDeclarations as [$className, $fileName, $line]) {
-                $classLocations[$className] = [$fileName, $line];
+        foreach ($collectedData as $fileData) {
+            foreach ($fileData as $data) {
+                $classLocations[$data['className']] = [
+                    'file' => $data['file'],
+                    'line' => $data['line'],
+                ];
             }
         }
 
-        // Count children per parent
-        $childrenCounts = [];
+        // Second pass: Count children per parent
+        $parentChildCounts = [];
 
-        foreach ($childrenData as $fileData) {
-            foreach ($fileData as $childData) {
-                foreach ($childData as $parentClassName => $count) {
-                    if (! isset($childrenCounts[$parentClassName])) {
-                        $childrenCounts[$parentClassName] = 0;
+        foreach ($collectedData as $fileData) {
+            foreach ($fileData as $data) {
+                if ($data['parent'] !== null) {
+                    if (! isset($parentChildCounts[$data['parent']])) {
+                        $parentChildCounts[$data['parent']] = 0;
                     }
 
-                    $childrenCounts[$parentClassName] += $count;
+                    $parentChildCounts[$data['parent']]++;
                 }
             }
         }
 
-        $maximum = $this->config->getMaximum();
+        // Check for violations
         $errors = [];
+        $maximum = $this->config->getMaximum();
 
-        foreach ($childrenCounts as $className => $count) {
+        foreach ($parentChildCounts as $parentClassName => $count) {
             if ($count > $maximum) {
                 $errorBuilder = RuleErrorBuilder::message(
-                    sprintf(
-                        self::ERROR_MESSAGE_TEMPLATE,
-                        $className,
-                        $count,
-                        $maximum
-                    )
-                )
-                    ->identifier('MeliorStan.tooManyChildren');
+                    sprintf(self::ERROR_MESSAGE_TEMPLATE, $parentClassName, $count, $maximum)
+                )->identifier('MeliorStan.tooManyChildren');
 
                 // Add file and line information if available
-                if (isset($classLocations[$className])) {
-                    [$fileName, $line] = $classLocations[$className];
-                    $errorBuilder = $errorBuilder->file($fileName)->line($line);
+                if (isset($classLocations[$parentClassName])) {
+                    $errorBuilder = $errorBuilder
+                        ->file($classLocations[$parentClassName]['file'])
+                        ->line($classLocations[$parentClassName]['line']);
                 }
 
                 $errors[] = $errorBuilder->build();
