@@ -105,6 +105,12 @@ parameters:
 |------|-------------|---------|
 | **[ElseExpression](docs/ElseExpression.md)** | Discourages `else` expressions | Control Flow |
 
+### Design
+
+| Rule | Description | Target |
+|------|-------------|---------|
+| **[ForbidGotoStatements](docs/ForbidGotoStatements.md)** | Detects and reports usage of goto statements | Goto Statements |
+
 ## 🔧 Configuration
 
 Each rule supports extensive configuration options. Refer to individual rule documentation for detailed configuration parameters.
