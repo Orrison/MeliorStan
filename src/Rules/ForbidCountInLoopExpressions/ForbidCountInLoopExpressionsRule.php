@@ -50,7 +50,7 @@ class ForbidCountInLoopExpressionsRule implements Rule
 
             if ($countCall !== null) {
                 $errors[] = RuleErrorBuilder::message(
-                    'Using count() or sizeof() in loop conditions can causes performance issues or hard to trace bugs.'
+                    'Using count() or sizeof() in loop conditions can cause performance issues or hard to trace bugs.'
                 )
                     ->identifier('MeliorStan.countInLoopExpression')
                     ->line($countCall->getLine())

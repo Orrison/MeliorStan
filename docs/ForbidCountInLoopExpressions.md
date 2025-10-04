@@ -2,7 +2,7 @@
 
 Detects usage of `count()` or `sizeof()` functions in loop condition expressions.
 
-Using `count()` or `sizeof()` in loop conditions causes performance issues or hard to trace bugs. This rule helps identify such cases.
+Using `count()` or `sizeof()` in loop conditions can cause performance issues or hard to trace bugs. This rule helps identify such cases.
 
 ## Configuration
 
@@ -43,7 +43,7 @@ class Example
     {
         $items = [1, 2, 3];
         
-        for ($i = 0; $i < count($items); $i++) { // ✗ Error: Using count() or sizeof() in loop conditions can causes performance issues or hard to trace bugs.
+        for ($i = 0; $i < count($items); $i++) { // ✗ Error: Using count() or sizeof() in loop conditions can cause performance issues or hard to trace bugs.
             echo $items[$i];
         }
     }
@@ -53,7 +53,7 @@ class Example
         $items = [1, 2, 3];
         $i = 0;
         
-        while ($i < count($items)) { // ✗ Error: Using count() or sizeof() in loop conditions can causes performance issues or hard to trace bugs.
+        while ($i < count($items)) { // ✗ Error: Using count() or sizeof() in loop conditions can cause performance issues or hard to trace bugs.
             echo $items[$i++];
         }
     }
@@ -65,14 +65,14 @@ class Example
         
         do {
             echo $items[$i++];
-        } while ($i < sizeof($items)); // ✗ Error: Using count() or sizeof() in loop conditions can causes performance issues or hard to trace bugs.
+        } while ($i < sizeof($items)); // ✗ Error: Using count() or sizeof() in loop conditions can cause performance issues or hard to trace bugs.
     }
     
     public function complexCondition(): void
     {
         $items = [1, 2, 3];
         
-        for ($i = 0; $i < count($items) - 1; $i++) { // ✗ Error: Using count() or sizeof() in loop conditions can causes performance issues or hard to trace bugs.
+        for ($i = 0; $i < count($items) - 1; $i++) { // ✗ Error: Using count() or sizeof() in loop conditions can cause performance issues or hard to trace bugs.
             echo $items[$i];
         }
     }

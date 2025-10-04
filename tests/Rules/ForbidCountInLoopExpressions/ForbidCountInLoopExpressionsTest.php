@@ -21,15 +21,15 @@ class ForbidCountInLoopExpressionsTest extends RuleTestCase
     public function testRule(): void
     {
         $this->analyse([__DIR__ . '/Fixture/ExampleClass.php'], [
-            ['Using count() or sizeof() in loop conditions can causes performance issues or hard to trace bugs.', 28],
-            ['Using count() or sizeof() in loop conditions can causes performance issues or hard to trace bugs.', 38],
-            ['Using count() or sizeof() in loop conditions can causes performance issues or hard to trace bugs.', 50],
-            ['Using count() or sizeof() in loop conditions can causes performance issues or hard to trace bugs.', 57],
-            ['Using count() or sizeof() in loop conditions can causes performance issues or hard to trace bugs.', 67],
-            ['Using count() or sizeof() in loop conditions can causes performance issues or hard to trace bugs.', 76],
-            ['Using count() or sizeof() in loop conditions can causes performance issues or hard to trace bugs.', 77],
-            ['Using count() or sizeof() in loop conditions can causes performance issues or hard to trace bugs.', 97],
-            ['Using count() or sizeof() in loop conditions can causes performance issues or hard to trace bugs.', 107],
+            ['Using count() or sizeof() in loop conditions can cause performance issues or hard to trace bugs.', 28],
+            ['Using count() or sizeof() in loop conditions can cause performance issues or hard to trace bugs.', 38],
+            ['Using count() or sizeof() in loop conditions can cause performance issues or hard to trace bugs.', 50],
+            ['Using count() or sizeof() in loop conditions can cause performance issues or hard to trace bugs.', 57],
+            ['Using count() or sizeof() in loop conditions can cause performance issues or hard to trace bugs.', 67],
+            ['Using count() or sizeof() in loop conditions can cause performance issues or hard to trace bugs.', 76],
+            ['Using count() or sizeof() in loop conditions can cause performance issues or hard to trace bugs.', 77],
+            ['Using count() or sizeof() in loop conditions can cause performance issues or hard to trace bugs.', 97],
+            ['Using count() or sizeof() in loop conditions can cause performance issues or hard to trace bugs.', 107],
         ]);
     }
 
