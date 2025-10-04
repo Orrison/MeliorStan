@@ -16,11 +16,11 @@ class WithExceptionsTest extends RuleTestCase
         $this->analyse([
             __DIR__ . '/Fixture/ExampleClass.php',
         ], [
-            ['Method name "ab" is shorter than minimum length of 3 characters.', 10],
-            ['Method name "x" is shorter than minimum length of 3 characters.', 19],
-            ['Method name "z" is shorter than minimum length of 3 characters.', 31],
-            ['Method name "cd" is shorter than minimum length of 3 characters.', 37],
-            ['Method name "b" is shorter than minimum length of 3 characters.', 43],
+            [sprintf(ShortMethodNameRule::ERROR_MESSAGE_TEMPLATE, 'ab', 3), 10],
+            [sprintf(ShortMethodNameRule::ERROR_MESSAGE_TEMPLATE, 'x', 3), 19],
+            [sprintf(ShortMethodNameRule::ERROR_MESSAGE_TEMPLATE, 'z', 3), 31],
+            [sprintf(ShortMethodNameRule::ERROR_MESSAGE_TEMPLATE, 'cd', 3), 37],
+            [sprintf(ShortMethodNameRule::ERROR_MESSAGE_TEMPLATE, 'b', 3), 43],
         ]);
     }
 

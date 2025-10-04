@@ -16,12 +16,12 @@ class WithExceptionsTest extends RuleTestCase
         $this->analyse([
             __DIR__ . '/Fixture/ExampleClass.php',
         ], [
-            ['Property name "$id" is shorter than minimum length of 3 characters.', 11],
-            ['Parameter name "$a" is shorter than minimum length of 3 characters.', 15],
-            ['Parameter name "$id" is shorter than minimum length of 3 characters.', 15],
-            ['Variable name "$b" is shorter than minimum length of 3 characters.', 17],
-            ['Variable name "$cd" is shorter than minimum length of 3 characters.', 18],
-            ['Variable name "$v" is shorter than minimum length of 3 characters.', 27],
+            [sprintf(ShortVariableRule::ERROR_MESSAGE_TEMPLATE_PROPERTY, 'id', 3), 11],
+            [sprintf(ShortVariableRule::ERROR_MESSAGE_TEMPLATE_PARAMETER, 'a', 3), 15],
+            [sprintf(ShortVariableRule::ERROR_MESSAGE_TEMPLATE_PARAMETER, 'id', 3), 15],
+            [sprintf(ShortVariableRule::ERROR_MESSAGE_TEMPLATE_VARIABLE, 'b', 3), 17],
+            [sprintf(ShortVariableRule::ERROR_MESSAGE_TEMPLATE_VARIABLE, 'cd', 3), 18],
+            [sprintf(ShortVariableRule::ERROR_MESSAGE_TEMPLATE_VARIABLE, 'v', 3), 27],
         ]);
     }
 

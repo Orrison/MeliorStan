@@ -16,18 +16,18 @@ class MinimumLength5Test extends RuleTestCase
         $this->analyse([
             __DIR__ . '/Fixture/ExampleClass.php',
         ], [
-            ['Method name "a" is shorter than minimum length of 5 characters.', 7],
-            ['Method name "ab" is shorter than minimum length of 5 characters.', 10],
-            ['Method name "abc" is shorter than minimum length of 5 characters.', 13],
-            ['Method name "abcd" is shorter than minimum length of 5 characters.', 16],
-            ['Method name "x" is shorter than minimum length of 5 characters.', 19],
-            ['Method name "is" is shorter than minimum length of 5 characters.', 22],
-            ['Method name "get" is shorter than minimum length of 5 characters.', 25],
-            ['Method name "z" is shorter than minimum length of 5 characters.', 31],
-            ['Method name "xyz" is shorter than minimum length of 5 characters.', 34],
-            ['Method name "cd" is shorter than minimum length of 5 characters.', 37],
-            ['Method name "efg" is shorter than minimum length of 5 characters.', 40],
-            ['Method name "b" is shorter than minimum length of 5 characters.', 43],
+            [sprintf(ShortMethodNameRule::ERROR_MESSAGE_TEMPLATE, 'a', 5), 7],
+            [sprintf(ShortMethodNameRule::ERROR_MESSAGE_TEMPLATE, 'ab', 5), 10],
+            [sprintf(ShortMethodNameRule::ERROR_MESSAGE_TEMPLATE, 'abc', 5), 13],
+            [sprintf(ShortMethodNameRule::ERROR_MESSAGE_TEMPLATE, 'abcd', 5), 16],
+            [sprintf(ShortMethodNameRule::ERROR_MESSAGE_TEMPLATE, 'x', 5), 19],
+            [sprintf(ShortMethodNameRule::ERROR_MESSAGE_TEMPLATE, 'is', 5), 22],
+            [sprintf(ShortMethodNameRule::ERROR_MESSAGE_TEMPLATE, 'get', 5), 25],
+            [sprintf(ShortMethodNameRule::ERROR_MESSAGE_TEMPLATE, 'z', 5), 31],
+            [sprintf(ShortMethodNameRule::ERROR_MESSAGE_TEMPLATE, 'xyz', 5), 34],
+            [sprintf(ShortMethodNameRule::ERROR_MESSAGE_TEMPLATE, 'cd', 5), 37],
+            [sprintf(ShortMethodNameRule::ERROR_MESSAGE_TEMPLATE, 'efg', 5), 40],
+            [sprintf(ShortMethodNameRule::ERROR_MESSAGE_TEMPLATE, 'b', 5), 43],
         ]);
     }
 
