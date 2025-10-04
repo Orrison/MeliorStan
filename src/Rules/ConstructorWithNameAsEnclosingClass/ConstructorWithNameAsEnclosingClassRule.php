@@ -14,6 +14,8 @@ use PHPStan\Rules\RuleErrorBuilder;
  */
 class ConstructorWithNameAsEnclosingClassRule implements Rule
 {
+    public const ERROR_MESSAGE_TEMPLATE = 'Method name "%s" is the same as the enclosing class "%s". This creates confusion as it resembles a PHP4-style constructor.';
+
     /**
      * @return class-string<Node>
      */
@@ -55,7 +57,7 @@ class ConstructorWithNameAsEnclosingClassRule implements Rule
         // Check if method name matches class name (case-insensitive)
         if (strcasecmp($methodName, $shortClassName) === 0) {
             $messages[] = RuleErrorBuilder::message(
-                sprintf('Method name "%s" is the same as the enclosing class "%s". This creates confusion as it resembles a PHP4-style constructor.', $methodName, $shortClassName)
+                sprintf(self::ERROR_MESSAGE_TEMPLATE, $methodName, $shortClassName)
             )
                 ->identifier('MeliorStan.constructorWithNameAsEnclosingClass')
                 ->build();

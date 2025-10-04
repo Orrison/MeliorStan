@@ -13,6 +13,8 @@ use PHPStan\Rules\RuleErrorBuilder;
  */
 class ForbidGotoStatementsRule implements Rule
 {
+    public const ERROR_MESSAGE = 'Goto statements should not be used.';
+
     public function getNodeType(): string
     {
         return Goto_::class;
@@ -21,7 +23,7 @@ class ForbidGotoStatementsRule implements Rule
     public function processNode(Node $node, Scope $scope): array
     {
         return [
-            RuleErrorBuilder::message('Goto statements should not be used.')
+            RuleErrorBuilder::message(self::ERROR_MESSAGE)
                 ->identifier('MeliorStan.gotoStatementForbidden')
                 ->build(),
         ];

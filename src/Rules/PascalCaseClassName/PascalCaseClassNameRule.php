@@ -14,6 +14,8 @@ use PHPStan\Rules\RuleErrorBuilder;
  */
 class PascalCaseClassNameRule implements Rule
 {
+    public const ERROR_MESSAGE_TEMPLATE = 'Class name "%s" is not in PascalCase.';
+
     public function __construct(
         protected Config $config,
     ) {}
@@ -47,7 +49,7 @@ class PascalCaseClassNameRule implements Rule
         }
 
         if (! preg_match($pattern, $node->name->name)) {
-            $messages[] = RuleErrorBuilder::message(sprintf('Class name "%s" is not in PascalCase.', $node->name->name))
+            $messages[] = RuleErrorBuilder::message(sprintf(self::ERROR_MESSAGE_TEMPLATE, $node->name->name))
                 ->identifier('MeliorStan.classNameNotPascalCase')
                 ->build();
         }

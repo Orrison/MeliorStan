@@ -15,6 +15,8 @@ use PHPStan\Rules\RuleErrorBuilder;
  */
 class TraitConstantNamingConventionsRule implements Rule
 {
+    public const ERROR_MESSAGE_TEMPLATE = 'Constant name "%s" is not in UPPERCASE.';
+
     /**
      * @return class-string<Trait_>
      */
@@ -38,7 +40,7 @@ class TraitConstantNamingConventionsRule implements Rule
                     // Check if constant name is all uppercase
                     if ($name !== strtoupper($name)) {
                         $messages[] = RuleErrorBuilder::message(
-                            sprintf('Constant name "%s" is not in UPPERCASE.', $name)
+                            sprintf(self::ERROR_MESSAGE_TEMPLATE, $name)
                         )->identifier('MeliorStan.traitConstantNamingConventions')
                             ->line($const->getLine())
                             ->build();

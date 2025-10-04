@@ -15,6 +15,8 @@ use PHPStan\Rules\RuleErrorBuilder;
  */
 class CamelCaseParameterNameRule implements Rule
 {
+    public const ERROR_MESSAGE_TEMPLATE = 'Parameter name "%s" is not in camelCase.';
+
     protected string $pattern;
 
     public function __construct(
@@ -48,7 +50,7 @@ class CamelCaseParameterNameRule implements Rule
 
         if ($name !== null && ! preg_match($this->pattern, $name)) {
             $messages[] = RuleErrorBuilder::message(
-                sprintf('Parameter name "%s" is not in camelCase.', $name)
+                sprintf(self::ERROR_MESSAGE_TEMPLATE, $name)
             )
                 ->identifier('MeliorStan.parameterNameNotCamelCase')
                 ->build();

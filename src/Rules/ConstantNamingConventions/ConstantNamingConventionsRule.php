@@ -14,6 +14,8 @@ use PHPStan\Rules\RuleErrorBuilder;
  */
 class ConstantNamingConventionsRule implements Rule
 {
+    public const ERROR_MESSAGE_TEMPLATE = 'Constant name "%s" is not in UPPERCASE.';
+
     /**
      * @return class-string<ClassConst>
      */
@@ -35,7 +37,7 @@ class ConstantNamingConventionsRule implements Rule
             // Check if constant name is all uppercase
             if ($name !== strtoupper($name)) {
                 $messages[] = RuleErrorBuilder::message(
-                    sprintf('Constant name "%s" is not in UPPERCASE.', $name)
+                    sprintf(self::ERROR_MESSAGE_TEMPLATE, $name)
                 )->identifier('MeliorStan.constantNamingConventions')
                     ->build();
             }

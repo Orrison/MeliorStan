@@ -13,6 +13,8 @@ use PHPStan\Rules\RuleErrorBuilder;
  */
 class ForbidEvalExpressionsRule implements Rule
 {
+    public const ERROR_MESSAGE = 'Eval expressions should not be used.';
+
     public function getNodeType(): string
     {
         return Eval_::class;
@@ -21,7 +23,7 @@ class ForbidEvalExpressionsRule implements Rule
     public function processNode(Node $node, Scope $scope): array
     {
         return [
-            RuleErrorBuilder::message('Eval expressions should not be used.')
+            RuleErrorBuilder::message(self::ERROR_MESSAGE)
                 ->identifier('MeliorStan.evalExpressionsForbidden')
                 ->build(),
         ];

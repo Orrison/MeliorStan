@@ -13,6 +13,8 @@ use PHPStan\Rules\RuleErrorBuilder;
  */
 class ElseExpressionRule implements Rule
 {
+    public const ERROR_MESSAGE = 'Avoid using else expressions.';
+
     public function __construct(
         protected Config $config,
     ) {}
@@ -31,7 +33,7 @@ class ElseExpressionRule implements Rule
 
         if (! $this->config->getElseifAllowed()) {
             foreach ($node->elseifs as $elseif) {
-                $errors[] = RuleErrorBuilder::message('Avoid using else expressions.')
+                $errors[] = RuleErrorBuilder::message(self::ERROR_MESSAGE)
                     ->identifier('MeliorStan.unnecessaryElse')
                     ->line($elseif->getStartLine())
                     ->build();
@@ -39,7 +41,7 @@ class ElseExpressionRule implements Rule
         }
 
         if ($node->else !== null) {
-            $errors[] = RuleErrorBuilder::message('Avoid using else expressions.')
+            $errors[] = RuleErrorBuilder::message(self::ERROR_MESSAGE)
                 ->identifier('MeliorStan.unnecessaryElse')
                 ->line($node->else->getStartLine())
                 ->build();

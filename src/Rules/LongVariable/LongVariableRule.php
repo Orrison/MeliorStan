@@ -25,6 +25,12 @@ use PHPStan\Rules\RuleErrorBuilder;
  */
 class LongVariableRule implements Rule
 {
+    public const ERROR_MESSAGE_TEMPLATE_PARAMETER = 'Parameter name "$%s" is %d characters long, which exceeds the maximum of %d characters.';
+
+    public const ERROR_MESSAGE_TEMPLATE_PROPERTY = 'Property name "$%s" is %d characters long, which exceeds the maximum of %d characters.';
+
+    public const ERROR_MESSAGE_TEMPLATE_VARIABLE = 'Variable name "$%s" is %d characters long, which exceeds the maximum of %d characters.';
+
     /** @var array<string, int> Track variables processed in special contexts by name and line */
     protected array $specialContextVariables = [];
 
@@ -269,7 +275,7 @@ class LongVariableRule implements Rule
         if ($effectiveLength > $this->maximum) {
             return [
                 RuleErrorBuilder::message(
-                    sprintf('Parameter name "$%s" is %d characters long, which exceeds the maximum of %d characters.', $name, $effectiveLength, $this->maximum)
+                    sprintf(self::ERROR_MESSAGE_TEMPLATE_PARAMETER, $name, $effectiveLength, $this->maximum)
                 )->identifier('MeliorStan.longVariable')
                     ->build(),
             ];
@@ -297,7 +303,7 @@ class LongVariableRule implements Rule
 
             if ($effectiveLength > $this->maximum) {
                 $errors[] = RuleErrorBuilder::message(
-                    sprintf('Property name "$%s" is %d characters long, which exceeds the maximum of %d characters.', $name, $effectiveLength, $this->maximum)
+                    sprintf(self::ERROR_MESSAGE_TEMPLATE_PROPERTY, $name, $effectiveLength, $this->maximum)
                 )->identifier('MeliorStan.longVariable')
                     ->build();
             }
@@ -328,7 +334,7 @@ class LongVariableRule implements Rule
         if ($effectiveLength > $this->maximum) {
             return [
                 RuleErrorBuilder::message(
-                    sprintf('Variable name "$%s" is %d characters long, which exceeds the maximum of %d characters.', $name, $effectiveLength, $this->maximum)
+                    sprintf(self::ERROR_MESSAGE_TEMPLATE_VARIABLE, $name, $effectiveLength, $this->maximum)
                 )->identifier('MeliorStan.longVariable')
                     ->build(),
             ];

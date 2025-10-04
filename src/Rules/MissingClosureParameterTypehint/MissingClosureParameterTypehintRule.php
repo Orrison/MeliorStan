@@ -15,6 +15,8 @@ use PHPStan\Rules\RuleErrorBuilder;
  */
 class MissingClosureParameterTypehintRule implements Rule
 {
+    public const ERROR_MESSAGE_TEMPLATE = 'Parameter #%d $%s of anonymous function has no typehint.';
+
     /**
      * @return class-string<Node>
      */
@@ -35,7 +37,7 @@ class MissingClosureParameterTypehintRule implements Rule
                 continue;
             }
 
-            $messages[] = RuleErrorBuilder::message(sprintf('Parameter #%d $%s of anonymous function has no typehint.', 1 + $index, $param->var->name))
+            $messages[] = RuleErrorBuilder::message(sprintf(self::ERROR_MESSAGE_TEMPLATE, 1 + $index, $param->var->name))
                 ->identifier('MeliorStan.closureParameterMissingTypehint')
                 ->build();
         }

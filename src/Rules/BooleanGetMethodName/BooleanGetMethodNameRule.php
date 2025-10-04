@@ -16,6 +16,8 @@ use PHPStan\Rules\RuleErrorBuilder;
  */
 class BooleanGetMethodNameRule implements Rule
 {
+    public const ERROR_MESSAGE_TEMPLATE = 'Method "%s" starts with "get" and returns boolean, consider using "is" or "has" instead.';
+
     public function __construct(
         protected Config $config,
     ) {}
@@ -38,7 +40,7 @@ class BooleanGetMethodNameRule implements Rule
         if ($this->isBooleanGetMethod($node)) {
             $methodName = $node->name->name;
             $messages[] = RuleErrorBuilder::message(
-                sprintf('Method "%s" starts with "get" and returns boolean, consider using "is" or "has" instead.', $methodName)
+                sprintf(self::ERROR_MESSAGE_TEMPLATE, $methodName)
             )->identifier('MeliorStan.booleanGetMethodName')
                 ->build();
         }

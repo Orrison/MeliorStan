@@ -14,6 +14,8 @@ use PHPStan\Rules\RuleErrorBuilder;
  */
 class CamelCaseMethodNameRule implements Rule
 {
+    public const ERROR_MESSAGE_TEMPLATE = 'Method name "%s" is not in camelCase.';
+
     /** @var array<string> */
     protected array $ignoredMethods = [
         '__construct',
@@ -79,7 +81,7 @@ class CamelCaseMethodNameRule implements Rule
         $pattern = "/^{$prefix}{$basePattern}{$suffix}$/";
 
         if (! preg_match($pattern, $name)) {
-            $messages[] = RuleErrorBuilder::message(sprintf('Method name "%s" is not in camelCase.', $name))
+            $messages[] = RuleErrorBuilder::message(sprintf(self::ERROR_MESSAGE_TEMPLATE, $name))
                 ->identifier('MeliorStan.methodNameNotCamelCase')
                 ->build();
         }

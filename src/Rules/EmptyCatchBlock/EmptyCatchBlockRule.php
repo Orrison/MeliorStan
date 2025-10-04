@@ -15,6 +15,8 @@ use PHPStan\Rules\RuleErrorBuilder;
  */
 class EmptyCatchBlockRule implements Rule
 {
+    public const ERROR_MESSAGE = 'Empty catch block detected. Catch blocks should contain error handling logic.';
+
     public function getNodeType(): string
     {
         return Catch_::class;
@@ -24,7 +26,7 @@ class EmptyCatchBlockRule implements Rule
     {
         if ($this->isEmpty($node->stmts)) {
             return [
-                RuleErrorBuilder::message('Empty catch block detected. Catch blocks should contain error handling logic.')
+                RuleErrorBuilder::message(self::ERROR_MESSAGE)
                     ->identifier('MeliorStan.emptyCatchBlock')
                     ->build(),
             ];
