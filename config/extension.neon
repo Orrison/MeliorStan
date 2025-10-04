@@ -57,6 +57,9 @@ parametersSchema:
         else_expression: structure([
             elseif_allowed: bool(),
         ]),
+        number_of_children: structure([
+            maximum: int(),
+        ]),
     ])
 
 # default parameters
@@ -107,6 +110,8 @@ parameters:
             check_parameterized_methods: false
         else_expression:
             elseif_allowed: true
+        number_of_children:
+            maximum: 15
 
 services:
     -
@@ -186,3 +191,15 @@ services:
         factory: Orrison\MeliorStan\Rules\ElseExpression\Config
         arguments:
             - %meliorstan.else_expression.elseif_allowed%
+    -
+        factory: Orrison\MeliorStan\Rules\NumberOfChildren\Config
+        arguments:
+            - %meliorstan.number_of_children.maximum%
+    -
+        class: Orrison\MeliorStan\Rules\NumberOfChildren\NumberOfChildrenCollector
+        tags:
+            - phpstan.collector
+    -
+        class: Orrison\MeliorStan\Rules\NumberOfChildren\ClassDeclarationCollector
+        tags:
+            - phpstan.collector
