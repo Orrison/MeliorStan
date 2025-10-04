@@ -2,9 +2,9 @@
 
 namespace Orrison\MeliorStan\Rules\EmptyCatchBlock;
 
-use Node\Stmt;
 use PhpParser\Node;
 use PHPStan\Rules\Rule;
+use PhpParser\Node\Stmt;
 use PHPStan\Analyser\Scope;
 use PhpParser\Node\Stmt\Nop;
 use PhpParser\Node\Stmt\Catch_;
