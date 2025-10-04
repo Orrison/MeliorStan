@@ -109,6 +109,7 @@ parameters:
 
 | Rule | Description | Target |
 |------|-------------|---------|
+| **[ForbidEvalExpressions](docs/ForbidEvalExpressions.md)** | Detects and reports usage of eval expressions | Eval Expressions |
 | **[ForbidExitExpressions](docs/ForbidExitExpressions.md)** | Detects and reports usage of exit and die expressions | Exit Expressions |
 | **[ForbidGotoStatements](docs/ForbidGotoStatements.md)** | Detects and reports usage of goto statements | Goto Statements |
 
