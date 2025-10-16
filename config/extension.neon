@@ -115,10 +115,6 @@ parameters:
 
 services:
     -
-        class: PhpParser\NodeVisitor\NodeConnectingVisitor
-        tags:
-            - phpstan.parser.richParserNodeVisitor
-    -
         class: Orrison\MeliorStan\Rules\CamelCaseVariableName\VariableDefinitionVisitor
         tags:
             - phpstan.parser.richParserNodeVisitor
