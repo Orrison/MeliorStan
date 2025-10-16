@@ -3,8 +3,11 @@
 namespace Orrison\MeliorStan\Rules\ForbidPestPhpOnly;
 
 use PhpParser\Node;
+use PhpParser\Node\Expr;
+use PhpParser\Node\Expr\FuncCall;
 use PhpParser\Node\Expr\MethodCall;
 use PhpParser\Node\Identifier;
+use PhpParser\Node\Name;
 use PHPStan\Analyser\Scope;
 use PHPStan\Rules\Rule;
 use PHPStan\Rules\RuleError;
@@ -16,6 +19,11 @@ use PHPStan\Rules\RuleErrorBuilder;
 class ForbidPestPhpOnlyRule implements Rule
 {
     public const ERROR_MESSAGE = 'Pest\'s only() filter should not be used in committed tests.';
+
+    private const PEST_ENTRY_POINTS = [
+        'test',
+        'it',
+    ];
 
     /**
      * @return class-string<Node>
@@ -36,6 +44,10 @@ class ForbidPestPhpOnlyRule implements Rule
             return [];
         }
 
+        if (! $this->originatesFromPestEntry($node)) {
+            return [];
+        }
+
         $filePath = $scope->getFile();
 
         if ($filePath === '' || ! $this->isTestFile($filePath)) {
@@ -47,6 +59,30 @@ class ForbidPestPhpOnlyRule implements Rule
                 ->identifier('MeliorStan.forbidPestPhpOnly')
                 ->build(),
         ];
+    }
+
+    protected function originatesFromPestEntry(MethodCall $node): bool
+    {
+        /** @var Expr $expression */
+        $expression = $node->var;
+
+        while ($expression instanceof MethodCall) {
+            /** @var MethodCall $innerCall */
+            $innerCall = $expression;
+            $expression = $innerCall->var;
+        }
+
+        if (! $expression instanceof FuncCall) {
+            return false;
+        }
+
+        $name = $expression->name;
+
+        if (! $name instanceof Name) {
+            return false;
+        }
+
+        return in_array(strtolower($name->toString()), self::PEST_ENTRY_POINTS, true);
     }
 
     protected function isTestFile(string $filePath): bool
