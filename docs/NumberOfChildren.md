@@ -15,7 +15,7 @@ This rule supports the following configuration option:
 
 ## Usage
 
-Add the rule to your PHPStan configuration:
+This rule relies on a PHPStan collector to gather inheritance information, so you must register both the rule and the collector when enabling it. Add the following to your PHPStan configuration:
 
 ```neon
 includes:
@@ -23,6 +23,12 @@ includes:
 
 rules:
     - Orrison\MeliorStan\Rules\NumberOfChildren\NumberOfChildrenRule
+
+services:
+    -
+        class: Orrison\MeliorStan\Rules\NumberOfChildren\NumberOfChildrenCollector
+        tags:
+            - phpstan.collector
 
 parameters:
     meliorstan:
@@ -93,5 +99,6 @@ class Child6 extends PopularParent {} // ✗ This 6th child causes the violation
 
 - **Direct children only**: This rule counts only direct subclasses (classes that directly extend the parent), not grandchildren or deeper descendants.
 - **Cross-file analysis**: The rule uses PHPStan collectors to analyze class hierarchies across all files in your project.
+- **Collector registration required**: Remember to register `NumberOfChildrenCollector` in any PHPStan config where you enable this rule.
 - **Per-class violation**: The violation is reported on the parent class, not on its children.
 - **Design consideration**: A high number of direct children often suggests that the parent class may be too generic or that the hierarchy could benefit from intermediate abstract classes or interfaces.
