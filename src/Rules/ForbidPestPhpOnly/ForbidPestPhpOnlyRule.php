@@ -82,7 +82,7 @@ class ForbidPestPhpOnlyRule implements Rule
             return false;
         }
 
-        return in_array(strtolower($name->toString()), self::PEST_ENTRY_POINTS, true);
+        return in_array(strtolower($name->getLast()), self::PEST_ENTRY_POINTS, true);
     }
 
     protected function isTestFile(string $filePath): bool
