@@ -195,7 +195,3 @@ services:
         factory: Orrison\MeliorStan\Rules\NumberOfChildren\Config
         arguments:
             - %meliorstan.number_of_children.maximum%
-    -
-        class: Orrison\MeliorStan\Rules\NumberOfChildren\NumberOfChildrenCollector
-        tags:
-            - phpstan.collector

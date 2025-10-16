@@ -4,6 +4,12 @@ includes:
 rules:
     - Orrison\MeliorStan\Rules\NumberOfChildren\NumberOfChildrenRule
 
+services:
+    -
+        class: Orrison\MeliorStan\Rules\NumberOfChildren\NumberOfChildrenCollector
+        tags:
+            - phpstan.collector
+
 parameters:
     meliorstan:
         number_of_children:
