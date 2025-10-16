@@ -3,7 +3,6 @@
 namespace Orrison\MeliorStan\Rules\CamelCaseVariableName;
 
 use PhpParser\Node;
-use PhpParser\Node\Expr\Array_;
 use PhpParser\Node\Expr\ArrayItem;
 use PhpParser\Node\Expr\Assign;
 use PhpParser\Node\Expr\List_;
@@ -53,7 +52,7 @@ final class VariableDefinitionVisitor extends NodeVisitorAbstract
             return;
         }
 
-        if ($target instanceof List_ || $target instanceof Array_) {
+        if ($target instanceof List_) {
             foreach ($target->items as $item) {
                 if (! $item instanceof ArrayItem) {
                     continue;
