@@ -42,5 +42,6 @@ uses()->group('integration'); // ✓ Valid
 ## Important Notes
 
 - The rule considers a file to be a test when it resides inside a `tests/` directory, ends with `Test.php`, or is named `Pest.php`
+- Only `->only()` calls chained from Pest's `test()` or `it()` helpers are reported; other methods named `only` are ignored
 - `only()` is meant for temporary local debugging; remove the call before committing
 - Pest also provides other granular filters (`--filter`, `--group`, datasets). Prefer those when you need persistent targeting without modifying source files

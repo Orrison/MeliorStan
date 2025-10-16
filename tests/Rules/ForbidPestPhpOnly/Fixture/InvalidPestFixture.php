@@ -7,5 +7,3 @@ test('basic assertion', function () {
 it('can run another test', function () {
     expect(true)->toBeTrue();
 })->only();
-
-uses()->group('integration')->only();
