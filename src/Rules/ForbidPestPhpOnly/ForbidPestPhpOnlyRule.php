@@ -44,13 +44,13 @@ class ForbidPestPhpOnlyRule implements Rule
             return [];
         }
 
-        if (! $this->originatesFromPestEntry($node)) {
-            return [];
-        }
-
         $filePath = $scope->getFile();
 
         if ($filePath === '' || ! $this->isTestFile($filePath)) {
+            return [];
+        }
+
+        if (! $this->originatesFromPestEntry($node)) {
             return [];
         }
 
