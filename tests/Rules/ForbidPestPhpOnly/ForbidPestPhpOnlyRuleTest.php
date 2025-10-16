@@ -23,9 +23,9 @@ class ForbidPestPhpOnlyRuleTest extends RuleTestCase
         $this->analyse([
             __DIR__ . '/Fixture/InvalidPestFixture.php',
         ], [
-            [ForbidPestPhpOnlyRule::ERROR_MESSAGE, 4],
-            [ForbidPestPhpOnlyRule::ERROR_MESSAGE, 8],
-            [ForbidPestPhpOnlyRule::ERROR_MESSAGE, 12],
+            [ForbidPestPhpOnlyRule::ERROR_MESSAGE, 3],
+            [ForbidPestPhpOnlyRule::ERROR_MESSAGE, 7],
+            [ForbidPestPhpOnlyRule::ERROR_MESSAGE, 11],
         ]);
     }
 
