@@ -97,6 +97,7 @@ parameters:
 | **[MissingClosureParameterTypehint](docs/MissingClosureParameterTypehint.md)** | Requires type hints on closure parameters | Closures |
 | **[ShortMethodName](docs/ShortMethodName.md)** | Enforces minimum method name length | Methods |
 | **[ShortVariable](docs/ShortVariable.md)** | Enforces minimum variable name length | Variables |
+| **[ForbidPestPhpOnly](docs/ForbidPestPhpOnly.md)** | Prevents committed Pest tests from using the `only()` filter | Tests |
 | **[Superglobals](docs/Superglobals.md)** | Discourages use of PHP superglobals | Superglobal Usage |
 
 ### Control Flow
