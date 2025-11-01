@@ -88,9 +88,10 @@ class BooleanArgumentFlagRule implements Rule
             return false;
         }
 
-        $result = preg_match($pattern, $functionName);
+        $result = @preg_match($pattern, $functionName);
 
-        if ($result === false) {
+        // Check for both false return value and error codes
+        if ($result === false || preg_last_error() !== PREG_NO_ERROR) {
             $error = preg_last_error_msg();
 
             throw new InvalidArgumentException(
