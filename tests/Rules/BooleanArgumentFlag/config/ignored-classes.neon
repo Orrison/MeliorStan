@@ -1,0 +1,12 @@
+includes:
+    - ../../../../config/extension.neon
+
+rules:
+    - Orrison\MeliorStan\Rules\BooleanArgumentFlag\BooleanArgumentFlagRule
+
+parameters:
+    meliorstan:
+        boolean_argument_flag:
+            ignored_in_classes:
+                - 'Fixtures\BooleanArgumentFlag\IgnoredClass'
+            ignore_pattern: ''
