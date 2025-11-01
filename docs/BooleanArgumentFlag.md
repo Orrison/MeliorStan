@@ -20,7 +20,7 @@ This rule supports the following configuration options:
 ### `ignore_pattern`
 - **Type**: `string`
 - **Default**: `''`
-- **Description**: A regular expression pattern to match function or method names that should be ignored. This applies to class methods, functions, and closures with names. Common patterns include setter methods or boolean query methods.
+- **Description**: A regular expression pattern to match function or method names that should be ignored. This applies to class methods and named functions. Closures are not affected by this pattern. Common patterns include setter methods or boolean query methods.
 
 ```php
 // Example: '/^set/' to ignore all setter methods
