@@ -60,6 +60,10 @@ parametersSchema:
         number_of_children: structure([
             maximum: int(),
         ]),
+        boolean_argument_flag: structure([
+            ignored_in_classes: listOf(string()),
+            ignore_pattern: string(),
+        ]),
     ])
 
 # default parameters
@@ -112,6 +116,9 @@ parameters:
             elseif_allowed: true
         number_of_children:
             maximum: 15
+        boolean_argument_flag:
+            ignored_in_classes: []
+            ignore_pattern: ''
 
 services:
     -
@@ -191,3 +198,8 @@ services:
         factory: Orrison\MeliorStan\Rules\NumberOfChildren\Config
         arguments:
             - %meliorstan.number_of_children.maximum%
+    -
+        factory: Orrison\MeliorStan\Rules\BooleanArgumentFlag\Config
+        arguments:
+            - %meliorstan.boolean_argument_flag.ignored_in_classes%
+            - %meliorstan.boolean_argument_flag.ignore_pattern%

@@ -93,6 +93,7 @@ parameters:
 
 | Rule | Description | Target |
 |------|-------------|---------|
+| **[BooleanArgumentFlag](docs/BooleanArgumentFlag.md)** | Detects boolean parameters in functions and methods that may indicate multiple responsibilities | Methods, Functions, Closures |
 | **[LongVariable](docs/LongVariable.md)** | Limits variable name length | Variables |
 | **[MissingClosureParameterTypehint](docs/MissingClosureParameterTypehint.md)** | Requires type hints on closure parameters | Closures |
 | **[ShortMethodName](docs/ShortMethodName.md)** | Enforces minimum method name length | Methods |
