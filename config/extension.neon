@@ -61,7 +61,7 @@ parametersSchema:
             maximum: int(),
         ]),
         boolean_argument_flag: structure([
-            ignored_in_classes: listOf(string()),
+            ignored_in_classes: arrayOf(string()),
             ignore_pattern: string(),
         ]),
     ])
