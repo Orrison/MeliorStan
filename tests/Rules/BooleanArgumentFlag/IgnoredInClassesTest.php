@@ -16,9 +16,9 @@ class IgnoredInClassesTest extends RuleTestCase
         $this->analyse([
             __DIR__ . '/Fixture/IgnoredClasses.php',
         ], [
-            [sprintf(BooleanArgumentFlagRule::ERROR_MESSAGE_TEMPLATE_METHOD, 'Fixtures\BooleanArgumentFlag\NotIgnoredClass', 'methodWithBool', 'flag'), 22],
-            [sprintf(BooleanArgumentFlagRule::ERROR_MESSAGE_TEMPLATE_FUNCTION, 'functionWithBool', 'flag'), 31],
-            [sprintf(BooleanArgumentFlagRule::ERROR_MESSAGE_TEMPLATE_CLOSURE, 'flag'), 35],
+            [sprintf(BooleanArgumentFlagRule::ERROR_MESSAGE_TEMPLATE_METHOD, 'Fixtures\BooleanArgumentFlag\NotIgnoredClass', 'methodWithBool', 'flag'), 16],
+            [sprintf(BooleanArgumentFlagRule::ERROR_MESSAGE_TEMPLATE_FUNCTION, 'functionWithBool', 'flag'), 21],
+            [sprintf(BooleanArgumentFlagRule::ERROR_MESSAGE_TEMPLATE_CLOSURE, 'flag'), 23],
         ]);
     }
 

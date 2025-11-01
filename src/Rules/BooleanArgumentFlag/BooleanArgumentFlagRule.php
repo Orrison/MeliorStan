@@ -27,8 +27,7 @@ class BooleanArgumentFlagRule implements Rule
 
     public function __construct(
         protected Config $config,
-    ) {
-    }
+    ) {}
 
     public function getNodeType(): string
     {

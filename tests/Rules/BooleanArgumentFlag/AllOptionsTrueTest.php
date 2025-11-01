@@ -16,9 +16,9 @@ class AllOptionsTrueTest extends RuleTestCase
         $this->analyse([
             __DIR__ . '/Fixture/AllOptions.php',
         ], [
-            [sprintf(BooleanArgumentFlagRule::ERROR_MESSAGE_TEMPLATE_METHOD, 'Fixtures\BooleanArgumentFlag\AllOptionsNotIgnored', 'handle', 'flag'), 26],
-            [sprintf(BooleanArgumentFlagRule::ERROR_MESSAGE_TEMPLATE_METHOD, 'Fixtures\BooleanArgumentFlag\AllOptionsNotIgnored', 'processData', 'flag'), 30],
-            [sprintf(BooleanArgumentFlagRule::ERROR_MESSAGE_TEMPLATE_FUNCTION, 'processConfig', 'value'), 39],
+            [sprintf(BooleanArgumentFlagRule::ERROR_MESSAGE_TEMPLATE_METHOD, 'Fixtures\BooleanArgumentFlag\AllOptionsNotIgnored', 'handle', 'flag'), 18],
+            [sprintf(BooleanArgumentFlagRule::ERROR_MESSAGE_TEMPLATE_METHOD, 'Fixtures\BooleanArgumentFlag\AllOptionsNotIgnored', 'processData', 'flag'), 20],
+            [sprintf(BooleanArgumentFlagRule::ERROR_MESSAGE_TEMPLATE_FUNCTION, 'processConfig', 'value'), 25],
         ]);
     }
 
