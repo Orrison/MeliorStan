@@ -4,7 +4,6 @@ namespace Orrison\MeliorStan\Rules\BooleanArgumentFlag;
 
 use InvalidArgumentException;
 use PhpParser\Node;
-use PhpParser\Node\Expr\Closure;
 use PhpParser\Node\FunctionLike;
 use PhpParser\Node\Identifier;
 use PhpParser\Node\NullableType;
