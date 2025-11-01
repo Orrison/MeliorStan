@@ -2,6 +2,7 @@
 
 namespace Orrison\MeliorStan\Rules\BooleanArgumentFlag;
 
+use InvalidArgumentException;
 use PhpParser\Node;
 use PhpParser\Node\Expr\Closure;
 use PhpParser\Node\FunctionLike;
@@ -88,7 +89,17 @@ class BooleanArgumentFlagRule implements Rule
             return false;
         }
 
-        return @preg_match($pattern, $functionName) === 1;
+        $result = preg_match($pattern, $functionName);
+
+        if ($result === false) {
+            $error = preg_last_error_msg();
+
+            throw new InvalidArgumentException(
+                sprintf('Invalid regex pattern in ignore_pattern configuration: "%s". Error: %s', $pattern, $error)
+            );
+        }
+
+        return $result === 1;
     }
 
     protected function getFunctionName(FunctionLike $node): ?string
