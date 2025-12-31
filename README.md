@@ -116,6 +116,7 @@ parameters:
 | **[ForbidEvalExpressions](docs/ForbidEvalExpressions.md)** | Detects and reports usage of eval expressions | Eval Expressions |
 | **[ForbidExitExpressions](docs/ForbidExitExpressions.md)** | Detects and reports usage of exit and die expressions | Exit Expressions |
 | **[ForbidGotoStatements](docs/ForbidGotoStatements.md)** | Detects and reports usage of goto statements | Goto Statements |
+| **[CyclomaticComplexity](docs/CyclomaticComplexity.md)** | Detects methods with high cyclomatic complexity | Methods, Classes |
 | **[NumberOfChildren](docs/NumberOfChildren.md)** | Detects classes with too many direct child classes | Class Hierarchy |
 | **[TooManyMethods](docs/TooManyMethods.md)** | Detects classes with too many methods | Classes, Interfaces, Traits, Enums |
 
