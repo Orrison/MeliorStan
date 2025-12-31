@@ -164,9 +164,10 @@ Originally inspired by [**PHPMD - PHP Mess Detector**](https://phpmd.org/), this
 
 > **Note**: While inspired by PHPMD, these rules are not exact replicas. They offer additional customization options and are adapted for PHPStan's architecture and modern PHP practices.
 
-## 🤝 Contributing
+[//]: # (## 🤝 Contributing)
 
-We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
+[//]: # ()
+[//]: # (We welcome contributions! Please see our [Contributing Guide]&#40;CONTRIBUTING.md&#41; for details.)
 
 ### Development Setup
 
