@@ -22,7 +22,7 @@ class IgnoredInClassesTest extends RuleTestCase
         $this->analyse([
             __DIR__ . '/Fixture/NotIgnoredClass.php',
         ], [
-            [sprintf(BooleanArgumentFlagRule::ERROR_MESSAGE_TEMPLATE_METHOD, 'Fixtures\BooleanArgumentFlag\NotIgnoredClass', 'methodWithBool', 'flag'), 7],
+            [sprintf(BooleanArgumentFlagRule::ERROR_MESSAGE_TEMPLATE_METHOD, 'Orrison\MeliorStan\Tests\Rules\BooleanArgumentFlag\Fixture\NotIgnoredClass', 'methodWithBool', 'flag'), 7],
         ]);
 
         // Functions and closures should have errors as they are not in any class
