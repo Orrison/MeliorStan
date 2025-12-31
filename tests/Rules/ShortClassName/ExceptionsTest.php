@@ -1,6 +1,6 @@
 <?php
 
-namespace Orrison\MeliorStan\Tests\Rules;
+namespace Orrison\MeliorStan\Tests\Rules\ShortClassName;
 
 use Orrison\MeliorStan\Rules\ShortClassName\ShortClassNameRule;
 use PHPStan\Rules\Rule;
