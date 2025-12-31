@@ -38,7 +38,7 @@
             "paratest --configuration phpunit.xml"
         ],
         "cs-fix": [
-            "export PHP_CS_FIXER_IGNORE_ENV=1 ; ./vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix -v --config=./php-cs-fixer.php"
+            "./vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix -v --config=./php-cs-fixer.php"
         ],
         "format": [
             "@cs-fix"
