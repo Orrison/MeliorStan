@@ -18,7 +18,7 @@ class InvalidPatternTest extends RuleTestCase
         $this->expectExceptionMessage('Invalid regex pattern in ignore_pattern configuration');
 
         $this->analyse([
-            __DIR__ . '/Fixture/IgnorePattern.php',
+            __DIR__ . '/Fixture/IgnorePatternExample.php',
         ], []);
     }
 

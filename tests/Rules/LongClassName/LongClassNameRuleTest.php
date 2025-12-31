@@ -1,6 +1,6 @@
 <?php
 
-namespace Orrison\MeliorStan\Tests\Rules;
+namespace Orrison\MeliorStan\Tests\Rules\LongClassName;
 
 use Orrison\MeliorStan\Rules\LongClassName\LongClassNameRule;
 use PHPStan\Rules\Rule;

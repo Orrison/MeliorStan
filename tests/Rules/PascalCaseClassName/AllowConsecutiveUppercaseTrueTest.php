@@ -1,6 +1,6 @@
 <?php
 
-namespace Orrison\MeliorStan\Tests\Rules;
+namespace Orrison\MeliorStan\Tests\Rules\PascalCaseClassName;
 
 use Orrison\MeliorStan\Rules\PascalCaseClassName\PascalCaseClassNameRule;
 use PHPStan\Rules\Rule;

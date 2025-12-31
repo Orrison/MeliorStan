@@ -14,7 +14,7 @@ class IgnorePatternTest extends RuleTestCase
     public function testIgnorePattern(): void
     {
         $this->analyse([
-            __DIR__ . '/Fixture/IgnorePattern.php',
+            __DIR__ . '/Fixture/IgnorePatternExample.php',
         ], [
             [sprintf(BooleanArgumentFlagRule::ERROR_MESSAGE_TEMPLATE_METHOD, 'Orrison\MeliorStan\Tests\Rules\BooleanArgumentFlag\Fixture\IgnorePatternExample', 'processWithFlag', 'flag'), 13],
             [sprintf(BooleanArgumentFlagRule::ERROR_MESSAGE_TEMPLATE_METHOD, 'Orrison\MeliorStan\Tests\Rules\BooleanArgumentFlag\Fixture\IgnorePatternExample', 'handleBool', 'value'), 15],
