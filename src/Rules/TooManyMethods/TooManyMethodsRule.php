@@ -2,6 +2,7 @@
 
 namespace Orrison\MeliorStan\Rules\TooManyMethods;
 
+use InvalidArgumentException;
 use PhpParser\Node;
 use PhpParser\Node\Identifier;
 use PhpParser\Node\Stmt\Class_;
@@ -82,7 +83,18 @@ class TooManyMethodsRule implements Rule
         foreach ($node->getMethods() as $method) {
             $methodName = $method->name->toString();
 
-            if (preg_match($regex, $methodName) === 0) {
+            $result = @preg_match($regex, $methodName);
+
+            // Check for both false return value and error codes
+            if ($result === false || preg_last_error() !== PREG_NO_ERROR) {
+                $error = preg_last_error_msg();
+
+                throw new InvalidArgumentException(
+                    sprintf('Invalid regex pattern in ignore_pattern configuration: "%s". Error: %s', $ignorePattern, $error)
+                );
+            }
+
+            if ($result === 0) {
                 ++$count;
             }
         }
