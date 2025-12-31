@@ -23,7 +23,6 @@
 - [📚 Available Rules](#-available-rules)
 - [🔧 Configuration](#-configuration)
 - [🎯 Inspiration](#-inspiration)
-- [🤝 Contributing](#-contributing)
 - [📄 License](#-license)
 - [🙏 Acknowledgments](#-acknowledgments)
 
