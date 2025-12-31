@@ -15,7 +15,7 @@ use PHPStan\Rules\RuleErrorBuilder;
  */
 class TraitConstantNamingConventionsRule implements Rule
 {
-    public const ERROR_MESSAGE_TEMPLATE = 'Constant name "%s" is not in UPPERCASE.';
+    public const string ERROR_MESSAGE_TEMPLATE = 'Constant name "%s" is not in UPPERCASE.';
 
     /**
      * @return class-string<Trait_>

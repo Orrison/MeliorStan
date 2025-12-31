@@ -13,7 +13,7 @@ use PHPStan\Rules\RuleErrorBuilder;
  */
 class ForbidGotoStatementsRule implements Rule
 {
-    public const ERROR_MESSAGE = 'Goto statements should not be used.';
+    public const string ERROR_MESSAGE = 'Goto statements should not be used.';
 
     public function getNodeType(): string
     {

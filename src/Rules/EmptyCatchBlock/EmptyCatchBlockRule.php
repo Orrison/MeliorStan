@@ -15,7 +15,7 @@ use PHPStan\Rules\RuleErrorBuilder;
  */
 class EmptyCatchBlockRule implements Rule
 {
-    public const ERROR_MESSAGE = 'Empty catch block detected. Catch blocks should contain error handling logic.';
+    public const string ERROR_MESSAGE = 'Empty catch block detected. Catch blocks should contain error handling logic.';
 
     public function getNodeType(): string
     {

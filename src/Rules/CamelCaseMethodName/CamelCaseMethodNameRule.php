@@ -14,7 +14,7 @@ use PHPStan\Rules\RuleErrorBuilder;
  */
 class CamelCaseMethodNameRule implements Rule
 {
-    public const ERROR_MESSAGE_TEMPLATE = 'Method name "%s" is not in camelCase.';
+    public const string ERROR_MESSAGE_TEMPLATE = 'Method name "%s" is not in camelCase.';
 
     /** @var array<string> */
     protected array $ignoredMethods = [

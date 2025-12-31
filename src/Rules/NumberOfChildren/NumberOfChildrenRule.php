@@ -13,7 +13,7 @@ use PHPStan\Rules\RuleErrorBuilder;
  */
 class NumberOfChildrenRule implements Rule
 {
-    public const ERROR_MESSAGE_TEMPLATE = 'Class "%s" has %d direct children, exceeding the maximum of %d.';
+    public const string ERROR_MESSAGE_TEMPLATE = 'Class "%s" has %d direct children, exceeding the maximum of %d.';
 
     public function __construct(
         private Config $config

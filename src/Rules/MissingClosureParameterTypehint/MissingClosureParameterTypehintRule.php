@@ -15,7 +15,7 @@ use PHPStan\Rules\RuleErrorBuilder;
  */
 class MissingClosureParameterTypehintRule implements Rule
 {
-    public const ERROR_MESSAGE_TEMPLATE = 'Parameter #%d $%s of anonymous function has no typehint.';
+    public const string ERROR_MESSAGE_TEMPLATE = 'Parameter #%d $%s of anonymous function has no typehint.';
 
     /**
      * @return class-string<Node>

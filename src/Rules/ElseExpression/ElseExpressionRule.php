@@ -13,7 +13,7 @@ use PHPStan\Rules\RuleErrorBuilder;
  */
 class ElseExpressionRule implements Rule
 {
-    public const ERROR_MESSAGE = 'Avoid using else expressions.';
+    public const string ERROR_MESSAGE = 'Avoid using else expressions.';
 
     public function __construct(
         protected Config $config,

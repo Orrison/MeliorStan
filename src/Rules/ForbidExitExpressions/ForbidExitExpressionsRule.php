@@ -13,7 +13,7 @@ use PHPStan\Rules\RuleErrorBuilder;
  */
 class ForbidExitExpressionsRule implements Rule
 {
-    public const ERROR_MESSAGE = 'Exit expressions should not be used.';
+    public const string ERROR_MESSAGE = 'Exit expressions should not be used.';
 
     public function getNodeType(): string
     {

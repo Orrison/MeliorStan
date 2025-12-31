@@ -14,7 +14,7 @@ use PHPStan\Rules\RuleErrorBuilder;
  */
 class ConstructorWithNameAsEnclosingClassRule implements Rule
 {
-    public const ERROR_MESSAGE_TEMPLATE = 'Method name "%s" is the same as the enclosing class "%s". This creates confusion as it resembles a PHP4-style constructor.';
+    public const string ERROR_MESSAGE_TEMPLATE = 'Method name "%s" is the same as the enclosing class "%s". This creates confusion as it resembles a PHP4-style constructor.';
 
     /**
      * @return class-string<Node>

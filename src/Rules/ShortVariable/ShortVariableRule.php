@@ -25,11 +25,11 @@ use PHPStan\Rules\RuleErrorBuilder;
  */
 class ShortVariableRule implements Rule
 {
-    public const ERROR_MESSAGE_TEMPLATE_PARAMETER = 'Parameter name "$%s" is shorter than minimum length of %d characters.';
+    public const string ERROR_MESSAGE_TEMPLATE_PARAMETER = 'Parameter name "$%s" is shorter than minimum length of %d characters.';
 
-    public const ERROR_MESSAGE_TEMPLATE_PROPERTY = 'Property name "$%s" is shorter than minimum length of %d characters.';
+    public const string ERROR_MESSAGE_TEMPLATE_PROPERTY = 'Property name "$%s" is shorter than minimum length of %d characters.';
 
-    public const ERROR_MESSAGE_TEMPLATE_VARIABLE = 'Variable name "$%s" is shorter than minimum length of %d characters.';
+    public const string ERROR_MESSAGE_TEMPLATE_VARIABLE = 'Variable name "$%s" is shorter than minimum length of %d characters.';
 
     /** @var array<string, int> Track variables processed in special contexts by name and line */
     protected array $specialContextVariables = [];

@@ -14,7 +14,7 @@ use PHPStan\Rules\RuleErrorBuilder;
  */
 class SuperglobalsRule implements Rule
 {
-    public const ERROR_MESSAGE_TEMPLATE = 'Superglobal "$%s" should not be used.';
+    public const string ERROR_MESSAGE_TEMPLATE = 'Superglobal "$%s" should not be used.';
 
     /** @var string[] */
     protected array $superglobals = [

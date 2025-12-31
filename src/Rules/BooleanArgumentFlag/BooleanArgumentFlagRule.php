@@ -19,11 +19,11 @@ use PHPStan\Rules\RuleErrorBuilder;
  */
 class BooleanArgumentFlagRule implements Rule
 {
-    public const ERROR_MESSAGE_TEMPLATE_METHOD = 'Method "%s::%s()" has boolean parameter "$%s" which may indicate the method has multiple responsibilities.';
+    public const string ERROR_MESSAGE_TEMPLATE_METHOD = 'Method "%s::%s()" has boolean parameter "$%s" which may indicate the method has multiple responsibilities.';
 
-    public const ERROR_MESSAGE_TEMPLATE_FUNCTION = 'Function "%s()" has boolean parameter "$%s" which may indicate the function has multiple responsibilities.';
+    public const string ERROR_MESSAGE_TEMPLATE_FUNCTION = 'Function "%s()" has boolean parameter "$%s" which may indicate the function has multiple responsibilities.';
 
-    public const ERROR_MESSAGE_TEMPLATE_CLOSURE = 'Closure has boolean parameter "$%s" which may indicate the closure has multiple responsibilities.';
+    public const string ERROR_MESSAGE_TEMPLATE_CLOSURE = 'Closure has boolean parameter "$%s" which may indicate the closure has multiple responsibilities.';
 
     public function __construct(
         protected Config $config,
