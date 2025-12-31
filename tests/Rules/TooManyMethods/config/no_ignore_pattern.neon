@@ -1,0 +1,10 @@
+includes:
+    - ../../../../config/extension.neon
+
+rules:
+    - Orrison\MeliorStan\Rules\TooManyMethods\TooManyMethodsRule
+
+parameters:
+    meliorstan:
+        too_many_methods:
+            ignore_pattern: ''

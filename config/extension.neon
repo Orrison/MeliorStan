@@ -64,6 +64,10 @@ parametersSchema:
             ignored_in_classes: arrayOf(string()),
             ignore_pattern: string(),
         ]),
+        too_many_methods: structure([
+            max_methods: int(),
+            ignore_pattern: string(),
+        ]),
     ])
 
 # default parameters
@@ -119,6 +123,9 @@ parameters:
         boolean_argument_flag:
             ignored_in_classes: []
             ignore_pattern: ''
+        too_many_methods:
+            max_methods: 25
+            ignore_pattern: '^(get|set|is)'
 
 services:
     -
@@ -203,3 +210,8 @@ services:
         arguments:
             - %meliorstan.boolean_argument_flag.ignored_in_classes%
             - %meliorstan.boolean_argument_flag.ignore_pattern%
+    -
+        factory: Orrison\MeliorStan\Rules\TooManyMethods\Config
+        arguments:
+            - %meliorstan.too_many_methods.max_methods%
+            - %meliorstan.too_many_methods.ignore_pattern%
