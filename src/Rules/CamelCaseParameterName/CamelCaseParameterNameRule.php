@@ -15,7 +15,7 @@ use PHPStan\Rules\RuleErrorBuilder;
  */
 class CamelCaseParameterNameRule implements Rule
 {
-    public const ERROR_MESSAGE_TEMPLATE = 'Parameter name "%s" is not in camelCase.';
+    public const string ERROR_MESSAGE_TEMPLATE = 'Parameter name "%s" is not in camelCase.';
 
     protected string $pattern;
 

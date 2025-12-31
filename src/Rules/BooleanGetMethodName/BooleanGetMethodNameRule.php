@@ -16,7 +16,7 @@ use PHPStan\Rules\RuleErrorBuilder;
  */
 class BooleanGetMethodNameRule implements Rule
 {
-    public const ERROR_MESSAGE_TEMPLATE = 'Method "%s" starts with "get" and returns boolean, consider using "is" or "has" instead.';
+    public const string ERROR_MESSAGE_TEMPLATE = 'Method "%s" starts with "get" and returns boolean, consider using "is" or "has" instead.';
 
     public function __construct(
         protected Config $config,

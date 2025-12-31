@@ -18,7 +18,7 @@ use PHPStan\Rules\RuleErrorBuilder;
  */
 class ForbidPestPhpOnlyRule implements Rule
 {
-    public const ERROR_MESSAGE = 'Pest\'s only() filter should not be used in committed tests.';
+    public const string ERROR_MESSAGE = 'Pest\'s only() filter should not be used in committed tests.';
 
     private const PEST_ENTRY_POINTS = [
         'test',

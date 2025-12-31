@@ -14,7 +14,7 @@ use PHPStan\Rules\RuleErrorBuilder;
  */
 class ShortMethodNameRule implements Rule
 {
-    public const ERROR_MESSAGE_TEMPLATE = 'Method name "%s" is shorter than minimum length of %d characters.';
+    public const string ERROR_MESSAGE_TEMPLATE = 'Method name "%s" is shorter than minimum length of %d characters.';
 
     public function __construct(
         protected Config $config,

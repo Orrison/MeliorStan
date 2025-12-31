@@ -14,7 +14,7 @@ use PHPStan\Rules\RuleErrorBuilder;
  */
 class CamelCaseVariableNameRule implements Rule
 {
-    public const ERROR_MESSAGE_TEMPLATE = 'Variable name "$%s" is not in camelCase.';
+    public const string ERROR_MESSAGE_TEMPLATE = 'Variable name "$%s" is not in camelCase.';
 
     protected string $pattern;
 

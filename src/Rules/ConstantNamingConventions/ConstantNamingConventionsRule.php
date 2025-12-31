@@ -14,7 +14,7 @@ use PHPStan\Rules\RuleErrorBuilder;
  */
 class ConstantNamingConventionsRule implements Rule
 {
-    public const ERROR_MESSAGE_TEMPLATE = 'Constant name "%s" is not in UPPERCASE.';
+    public const string ERROR_MESSAGE_TEMPLATE = 'Constant name "%s" is not in UPPERCASE.';
 
     /**
      * @return class-string<ClassConst>

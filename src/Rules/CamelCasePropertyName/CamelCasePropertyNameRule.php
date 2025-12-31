@@ -14,7 +14,7 @@ use PHPStan\Rules\RuleErrorBuilder;
  */
 class CamelCasePropertyNameRule implements Rule
 {
-    public const ERROR_MESSAGE_TEMPLATE = 'Property name "%s" is not in camelCase.';
+    public const string ERROR_MESSAGE_TEMPLATE = 'Property name "%s" is not in camelCase.';
 
     protected string $pattern;
 

@@ -13,7 +13,7 @@ use PHPStan\Rules\RuleErrorBuilder;
  */
 class ForbidEvalExpressionsRule implements Rule
 {
-    public const ERROR_MESSAGE = 'Eval expressions should not be used.';
+    public const string ERROR_MESSAGE = 'Eval expressions should not be used.';
 
     public function getNodeType(): string
     {

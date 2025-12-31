@@ -14,7 +14,7 @@ use PHPStan\Rules\RuleErrorBuilder;
  */
 class PascalCaseClassNameRule implements Rule
 {
-    public const ERROR_MESSAGE_TEMPLATE = 'Class name "%s" is not in PascalCase.';
+    public const string ERROR_MESSAGE_TEMPLATE = 'Class name "%s" is not in PascalCase.';
 
     public function __construct(
         protected Config $config,

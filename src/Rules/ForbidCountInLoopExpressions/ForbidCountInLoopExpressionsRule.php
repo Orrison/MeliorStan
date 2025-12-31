@@ -20,7 +20,7 @@ use PHPStan\Rules\RuleErrorBuilder;
  */
 class ForbidCountInLoopExpressionsRule implements Rule
 {
-    public const ERROR_MESSAGE = 'Using count() or sizeof() in loop conditions can cause performance issues or hard to trace bugs.';
+    public const string ERROR_MESSAGE = 'Using count() or sizeof() in loop conditions can cause performance issues or hard to trace bugs.';
 
     public function getNodeType(): string
     {
