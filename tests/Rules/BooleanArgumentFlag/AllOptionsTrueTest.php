@@ -22,8 +22,8 @@ class AllOptionsTrueTest extends RuleTestCase
         $this->analyse([
             __DIR__ . '/Fixture/AllOptionsNotIgnored.php',
         ], [
-            [sprintf(BooleanArgumentFlagRule::ERROR_MESSAGE_TEMPLATE_METHOD, 'Fixtures\BooleanArgumentFlag\AllOptionsNotIgnored', 'handle', 'flag'), 9],
-            [sprintf(BooleanArgumentFlagRule::ERROR_MESSAGE_TEMPLATE_METHOD, 'Fixtures\BooleanArgumentFlag\AllOptionsNotIgnored', 'processData', 'flag'), 11],
+            [sprintf(BooleanArgumentFlagRule::ERROR_MESSAGE_TEMPLATE_METHOD, 'Orrison\MeliorStan\Tests\Rules\BooleanArgumentFlag\Fixture\AllOptionsNotIgnored', 'handle', 'flag'), 9],
+            [sprintf(BooleanArgumentFlagRule::ERROR_MESSAGE_TEMPLATE_METHOD, 'Orrison\MeliorStan\Tests\Rules\BooleanArgumentFlag\Fixture\AllOptionsNotIgnored', 'processData', 'flag'), 11],
         ]);
 
         // AllOptionsFunctions.php - setConfig is ignored by pattern, but processConfig should error

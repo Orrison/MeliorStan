@@ -8,5 +8,5 @@ parameters:
     meliorstan:
         boolean_argument_flag:
             ignored_in_classes:
-                - 'Fixtures\BooleanArgumentFlag\AllOptionsIgnoredClass'
+                - 'Orrison\MeliorStan\Tests\Rules\BooleanArgumentFlag\Fixture\AllOptionsIgnoredClass'
             ignore_pattern: '/^set/'

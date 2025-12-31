@@ -1,6 +1,6 @@
 <?php
 
-namespace Fixtures\BooleanArgumentFlag;
+namespace Orrison\MeliorStan\Tests\Rules\BooleanArgumentFlag\Fixture;
 
 function setConfig(bool $value) {}
 

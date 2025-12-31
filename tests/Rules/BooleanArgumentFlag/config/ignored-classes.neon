@@ -8,5 +8,5 @@ parameters:
     meliorstan:
         boolean_argument_flag:
             ignored_in_classes:
-                - 'Fixtures\BooleanArgumentFlag\IgnoredClass'
+                - 'Orrison\MeliorStan\Tests\Rules\BooleanArgumentFlag\Fixture\IgnoredClass'
             ignore_pattern: ''
