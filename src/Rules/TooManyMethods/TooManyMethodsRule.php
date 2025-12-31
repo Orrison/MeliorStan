@@ -35,6 +35,7 @@ class TooManyMethodsRule implements Rule
 
     /**
      * @param ClassLike $node
+     *
      * @return RuleError[]
      */
     public function processNode(Node $node, Scope $scope): array
