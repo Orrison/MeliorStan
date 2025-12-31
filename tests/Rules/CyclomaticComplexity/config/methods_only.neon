@@ -1,0 +1,10 @@
+includes:
+    - ../../../../config/extension.neon
+
+rules:
+    - Orrison\MeliorStan\Rules\CyclomaticComplexity\CyclomaticComplexityRule
+
+parameters:
+    meliorstan:
+        cyclomatic_complexity:
+            show_classes_complexity: false

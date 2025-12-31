@@ -68,6 +68,11 @@ parametersSchema:
             max_methods: int(),
             ignore_pattern: string(),
         ]),
+        cyclomatic_complexity: structure([
+            report_level: int(),
+            show_classes_complexity: bool(),
+            show_methods_complexity: bool(),
+        ]),
     ])
 
 # default parameters
@@ -126,6 +131,10 @@ parameters:
         too_many_methods:
             max_methods: 25
             ignore_pattern: '^(get|set|is)'
+        cyclomatic_complexity:
+            report_level: 10
+            show_classes_complexity: true
+            show_methods_complexity: true
 
 services:
     -
@@ -215,3 +224,9 @@ services:
         arguments:
             - %meliorstan.too_many_methods.max_methods%
             - %meliorstan.too_many_methods.ignore_pattern%
+    -
+        factory: Orrison\MeliorStan\Rules\CyclomaticComplexity\Config
+        arguments:
+            - %meliorstan.cyclomatic_complexity.report_level%
+            - %meliorstan.cyclomatic_complexity.show_classes_complexity%
+            - %meliorstan.cyclomatic_complexity.show_methods_complexity%
