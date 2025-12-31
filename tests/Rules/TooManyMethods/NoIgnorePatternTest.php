@@ -15,28 +15,39 @@ class NoIgnorePatternTest extends RuleTestCase
 {
     public function testRule(): void
     {
-        $this->analyse([__DIR__ . '/Fixture/ExampleClass.php'], [
+        $this->analyse(
             [
-                sprintf(TooManyMethodsRule::ERROR_MESSAGE_TEMPLATE, 'Class', 'ClassWithManyMethods', 30, 25),
-                15,
+                __DIR__ . '/Fixture/ClassWithManyMethods.php',
+                __DIR__ . '/Fixture/ClassExceedingLimit.php',
+                __DIR__ . '/Fixture/ClassWithFewMethods.php',
+                __DIR__ . '/Fixture/TraitExceedingLimit.php',
+                __DIR__ . '/Fixture/InterfaceExceedingLimit.php',
+                __DIR__ . '/Fixture/EnumExceedingLimit.php',
+                __DIR__ . '/Fixture/ClassWithSixMethods.php',
             ],
             [
-                sprintf(TooManyMethodsRule::ERROR_MESSAGE_TEMPLATE, 'Class', 'ClassExceedingLimit', 26, 25),
-                127,
-            ],
-            [
-                sprintf(TooManyMethodsRule::ERROR_MESSAGE_TEMPLATE, 'Trait', 'TraitExceedingLimit', 26, 25),
-                203,
-            ],
-            [
-                sprintf(TooManyMethodsRule::ERROR_MESSAGE_TEMPLATE, 'Interface', 'InterfaceExceedingLimit', 26, 25),
-                262,
-            ],
-            [
-                sprintf(TooManyMethodsRule::ERROR_MESSAGE_TEMPLATE, 'Enum', 'EnumExceedingLimit', 26, 25),
-                321,
-            ],
-        ]);
+                [
+                    sprintf(TooManyMethodsRule::ERROR_MESSAGE_TEMPLATE, 'Class', 'ClassWithManyMethods', 30, 25),
+                    15,
+                ],
+                [
+                    sprintf(TooManyMethodsRule::ERROR_MESSAGE_TEMPLATE, 'Class', 'ClassExceedingLimit', 26, 25),
+                    9,
+                ],
+                [
+                    sprintf(TooManyMethodsRule::ERROR_MESSAGE_TEMPLATE, 'Trait', 'TraitExceedingLimit', 26, 25),
+                    9,
+                ],
+                [
+                    sprintf(TooManyMethodsRule::ERROR_MESSAGE_TEMPLATE, 'Interface', 'InterfaceExceedingLimit', 26, 25),
+                    9,
+                ],
+                [
+                    sprintf(TooManyMethodsRule::ERROR_MESSAGE_TEMPLATE, 'Enum', 'EnumExceedingLimit', 26, 25),
+                    9,
+                ],
+            ]
+        );
     }
 
     /**

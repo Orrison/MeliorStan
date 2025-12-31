@@ -14,10 +14,15 @@ class InterfaceEnumTest extends RuleTestCase
     public function testInterfaceEnum(): void
     {
         $this->analyse([
-            __DIR__ . '/Fixture/InterfaceEnum.php',
+            __DIR__ . '/Fixture/ExampleInterface.php',
         ], [
             [sprintf(ConstantNamingConventionsRule::ERROR_MESSAGE_TEMPLATE, 'interfaceConstant'), 9],
-            [sprintf(ConstantNamingConventionsRule::ERROR_MESSAGE_TEMPLATE, 'enumConstant'), 16],
+        ]);
+
+        $this->analyse([
+            __DIR__ . '/Fixture/ExampleEnum.php',
+        ], [
+            [sprintf(ConstantNamingConventionsRule::ERROR_MESSAGE_TEMPLATE, 'enumConstant'), 9],
         ]);
     }
 

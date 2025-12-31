@@ -14,23 +14,32 @@ class ClassesOnlyTest extends RuleTestCase
     public function testRule(): void
     {
         // With show_methods_complexity: false, only class average errors should appear
-        $this->analyse([__DIR__ . '/Fixture/ExampleClass.php'], [
-            // HighComplexityClass class average (12.00)
+        $this->analyse(
             [
-                sprintf(CyclomaticComplexityRule::ERROR_MESSAGE_TEMPLATE_CLASS, 'class', 'HighComplexityClass', 12.00, 10),
-                43,
+                __DIR__ . '/Fixture/LowComplexityClass.php',
+                __DIR__ . '/Fixture/HighComplexityClass.php',
+                __DIR__ . '/Fixture/VeryHighAverageComplexity.php',
+                __DIR__ . '/Fixture/HighComplexityTrait.php',
+                __DIR__ . '/Fixture/CatchAndLogicalOperators.php',
             ],
-            // VeryHighAverageComplexity class average (12.00)
             [
-                sprintf(CyclomaticComplexityRule::ERROR_MESSAGE_TEMPLATE_CLASS, 'class', 'VeryHighAverageComplexity', 12.00, 10),
-                153,
-            ],
-            // HighComplexityTrait class average (11.00)
-            [
-                sprintf(CyclomaticComplexityRule::ERROR_MESSAGE_TEMPLATE_CLASS, 'trait', 'HighComplexityTrait', 11.00, 10),
-                221,
-            ],
-        ]);
+                // HighComplexityClass class average (12.00)
+                [
+                    sprintf(CyclomaticComplexityRule::ERROR_MESSAGE_TEMPLATE_CLASS, 'class', 'HighComplexityClass', 12.00, 10),
+                    5,
+                ],
+                // VeryHighAverageComplexity class average (12.00)
+                [
+                    sprintf(CyclomaticComplexityRule::ERROR_MESSAGE_TEMPLATE_CLASS, 'class', 'VeryHighAverageComplexity', 12.00, 10),
+                    6,
+                ],
+                // HighComplexityTrait class average (11.00)
+                [
+                    sprintf(CyclomaticComplexityRule::ERROR_MESSAGE_TEMPLATE_CLASS, 'trait', 'HighComplexityTrait', 11.00, 10),
+                    6,
+                ],
+            ]
+        );
     }
 
     /**

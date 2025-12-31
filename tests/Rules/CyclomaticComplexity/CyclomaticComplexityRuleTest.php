@@ -13,48 +13,57 @@ class CyclomaticComplexityRuleTest extends RuleTestCase
 {
     public function testRule(): void
     {
-        $this->analyse([__DIR__ . '/Fixture/ExampleClass.php'], [
-            // HighComplexityClass::methodWithComplexityEleven (complexity 11)
+        $this->analyse(
             [
-                sprintf(CyclomaticComplexityRule::ERROR_MESSAGE_TEMPLATE_METHOD, 'method', 'methodWithComplexityEleven', 11, 10),
-                74,
+                __DIR__ . '/Fixture/LowComplexityClass.php',
+                __DIR__ . '/Fixture/HighComplexityClass.php',
+                __DIR__ . '/Fixture/VeryHighAverageComplexity.php',
+                __DIR__ . '/Fixture/HighComplexityTrait.php',
+                __DIR__ . '/Fixture/CatchAndLogicalOperators.php',
             ],
-            // HighComplexityClass::veryComplexMethod (complexity 15)
             [
-                sprintf(CyclomaticComplexityRule::ERROR_MESSAGE_TEMPLATE_METHOD, 'method', 'veryComplexMethod', 15, 10),
-                106,
-            ],
-            // HighComplexityClass class average (12.00)
-            [
-                sprintf(CyclomaticComplexityRule::ERROR_MESSAGE_TEMPLATE_CLASS, 'class', 'HighComplexityClass', 12.00, 10),
-                43,
-            ],
-            // VeryHighAverageComplexity::complexMethodOne (complexity 12)
-            [
-                sprintf(CyclomaticComplexityRule::ERROR_MESSAGE_TEMPLATE_METHOD, 'method', 'complexMethodOne', 12, 10),
-                156,
-            ],
-            // VeryHighAverageComplexity::complexMethodTwo (complexity 12)
-            [
-                sprintf(CyclomaticComplexityRule::ERROR_MESSAGE_TEMPLATE_METHOD, 'method', 'complexMethodTwo', 12, 10),
-                188,
-            ],
-            // VeryHighAverageComplexity class average (12.00)
-            [
-                sprintf(CyclomaticComplexityRule::ERROR_MESSAGE_TEMPLATE_CLASS, 'class', 'VeryHighAverageComplexity', 12.00, 10),
-                153,
-            ],
-            // HighComplexityTrait::traitComplexMethod (complexity 11)
-            [
-                sprintf(CyclomaticComplexityRule::ERROR_MESSAGE_TEMPLATE_METHOD, 'method', 'traitComplexMethod', 11, 10),
-                224,
-            ],
-            // HighComplexityTrait class average (11.00)
-            [
-                sprintf(CyclomaticComplexityRule::ERROR_MESSAGE_TEMPLATE_CLASS, 'trait', 'HighComplexityTrait', 11.00, 10),
-                221,
-            ],
-        ]);
+                // HighComplexityClass::methodWithComplexityEleven (complexity 11)
+                [
+                    sprintf(CyclomaticComplexityRule::ERROR_MESSAGE_TEMPLATE_METHOD, 'method', 'methodWithComplexityEleven', 11, 10),
+                    36,
+                ],
+                // HighComplexityClass::veryComplexMethod (complexity 15)
+                [
+                    sprintf(CyclomaticComplexityRule::ERROR_MESSAGE_TEMPLATE_METHOD, 'method', 'veryComplexMethod', 15, 10),
+                    68,
+                ],
+                // HighComplexityClass class average (12.00)
+                [
+                    sprintf(CyclomaticComplexityRule::ERROR_MESSAGE_TEMPLATE_CLASS, 'class', 'HighComplexityClass', 12.00, 10),
+                    5,
+                ],
+                // VeryHighAverageComplexity::complexMethodOne (complexity 12)
+                [
+                    sprintf(CyclomaticComplexityRule::ERROR_MESSAGE_TEMPLATE_METHOD, 'method', 'complexMethodOne', 12, 10),
+                    9,
+                ],
+                // VeryHighAverageComplexity::complexMethodTwo (complexity 12)
+                [
+                    sprintf(CyclomaticComplexityRule::ERROR_MESSAGE_TEMPLATE_METHOD, 'method', 'complexMethodTwo', 12, 10),
+                    41,
+                ],
+                // VeryHighAverageComplexity class average (12.00)
+                [
+                    sprintf(CyclomaticComplexityRule::ERROR_MESSAGE_TEMPLATE_CLASS, 'class', 'VeryHighAverageComplexity', 12.00, 10),
+                    6,
+                ],
+                // HighComplexityTrait::traitComplexMethod (complexity 11)
+                [
+                    sprintf(CyclomaticComplexityRule::ERROR_MESSAGE_TEMPLATE_METHOD, 'method', 'traitComplexMethod', 11, 10),
+                    9,
+                ],
+                // HighComplexityTrait class average (11.00)
+                [
+                    sprintf(CyclomaticComplexityRule::ERROR_MESSAGE_TEMPLATE_CLASS, 'trait', 'HighComplexityTrait', 11.00, 10),
+                    6,
+                ],
+            ]
+        );
     }
 
     /**

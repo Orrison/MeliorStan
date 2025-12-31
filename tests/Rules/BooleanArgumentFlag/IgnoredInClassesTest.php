@@ -13,12 +13,24 @@ class IgnoredInClassesTest extends RuleTestCase
 {
     public function testIgnoredClasses(): void
     {
+        // IgnoredClass.php should have no errors as the class is in the ignored list
         $this->analyse([
-            __DIR__ . '/Fixture/IgnoredClasses.php',
+            __DIR__ . '/Fixture/IgnoredClass.php',
+        ], []);
+
+        // NotIgnoredClass.php should have errors as the class is not in the ignored list
+        $this->analyse([
+            __DIR__ . '/Fixture/NotIgnoredClass.php',
         ], [
-            [sprintf(BooleanArgumentFlagRule::ERROR_MESSAGE_TEMPLATE_METHOD, 'Fixtures\BooleanArgumentFlag\NotIgnoredClass', 'methodWithBool', 'flag'), 16],
-            [sprintf(BooleanArgumentFlagRule::ERROR_MESSAGE_TEMPLATE_FUNCTION, 'functionWithBool', 'flag'), 21],
-            [sprintf(BooleanArgumentFlagRule::ERROR_MESSAGE_TEMPLATE_CLOSURE, 'flag'), 23],
+            [sprintf(BooleanArgumentFlagRule::ERROR_MESSAGE_TEMPLATE_METHOD, 'Fixtures\BooleanArgumentFlag\NotIgnoredClass', 'methodWithBool', 'flag'), 7],
+        ]);
+
+        // Functions and closures should have errors as they are not in any class
+        $this->analyse([
+            __DIR__ . '/Fixture/IgnoredClassFunctions.php',
+        ], [
+            [sprintf(BooleanArgumentFlagRule::ERROR_MESSAGE_TEMPLATE_FUNCTION, 'functionWithBool', 'flag'), 5],
+            [sprintf(BooleanArgumentFlagRule::ERROR_MESSAGE_TEMPLATE_CLOSURE, 'flag'), 7],
         ]);
     }
 

@@ -14,8 +14,7 @@ Each rule follows a 3-component structure:
 ### Key Files
 - `config/extension.neon` - Central dependency injection & parameter schema definition
 - `tests/Rules/*/config/*.neon` - Per-test configuration files that override defaults
-- `tests/Rules/*/Fixture/ExampleClass.php` - Test fixtures with various naming patterns
-    - Though this is the primary fixture we have used so far, feel free to add more or different fixture files if needed for specific test cases.
+- `tests/Rules/*/Fixture/*.php` - Test fixtures with various naming patterns (one class/trait/interface/enum per file)
 
 ## Critical Development Workflows
 
@@ -147,6 +146,45 @@ $pattern .= '$/';
 ```
 
 ## Test Conventions
+
+### PSR-4 Fixture File Standards
+**CRITICAL**: All test fixture files MUST follow PSR-4 autoloading standards:
+
+1. **One class/trait/interface/enum per file**: Each PHP type must be in its own file
+2. **Filename matches type name**: A class `MyClass` must be in `MyClass.php`
+3. **No multi-type files**: Never put multiple classes, traits, interfaces, or enums in the same file
+
+**Example - CORRECT:**
+```
+tests/Rules/MyRule/Fixture/
+├── ExampleClass.php      # Contains only: class ExampleClass
+├── AnotherClass.php      # Contains only: class AnotherClass
+├── ExampleTrait.php      # Contains only: trait ExampleTrait
+├── ExampleInterface.php  # Contains only: interface ExampleInterface
+└── ExampleEnum.php       # Contains only: enum ExampleEnum
+```
+
+**Example - INCORRECT:**
+```php
+// ExampleClass.php - DON'T DO THIS
+class ExampleClass {}
+class AnotherClass {}  // Should be in AnotherClass.php
+trait ExampleTrait {}  // Should be in ExampleTrait.php
+```
+
+When tests need multiple fixture types, list them all in the `$this->analyse()` call:
+```php
+$this->analyse(
+    [
+        __DIR__ . '/Fixture/ExampleClass.php',
+        __DIR__ . '/Fixture/AnotherClass.php',
+        __DIR__ . '/Fixture/ExampleTrait.php',
+    ],
+    [
+        // expected errors with line numbers
+    ]
+);
+```
 
 ### Test Structure
 Each rule has multiple test classes covering all possible different configuration combinations, examples are:

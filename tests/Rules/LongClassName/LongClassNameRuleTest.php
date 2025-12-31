@@ -20,18 +20,24 @@ class LongClassNameRuleTest extends RuleTestCase
             ],
         ]);
 
-        $this->analyse([__DIR__ . '/Fixture/OtherTypes.php'], [
+        $this->analyse([__DIR__ . '/Fixture/VeryLongInterfaceNameThatExceedsTheDefaultMaximumLength.php'], [
             [
                 'Interface name "VeryLongInterfaceNameThatExceedsTheDefaultMaximumLength" is too long (55 chars). Maximum allowed length is 40 characters.',
                 5,
             ],
+        ]);
+
+        $this->analyse([__DIR__ . '/Fixture/VeryLongTraitNameThatExceedsTheDefaultMaximumLength.php'], [
             [
                 'Trait name "VeryLongTraitNameThatExceedsTheDefaultMaximumLength" is too long (51 chars). Maximum allowed length is 40 characters.',
-                6,
+                5,
             ],
+        ]);
+
+        $this->analyse([__DIR__ . '/Fixture/VeryLongEnumNameThatExceedsTheDefaultMaximumLength.php'], [
             [
                 'Enum name "VeryLongEnumNameThatExceedsTheDefaultMaximumLength" is too long (50 chars). Maximum allowed length is 40 characters.',
-                7,
+                5,
             ],
         ]);
     }

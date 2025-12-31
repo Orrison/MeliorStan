@@ -10,14 +10,3 @@ class IgnoredClass
 
     public static function staticWithBool(bool $flag) {}
 }
-
-class NotIgnoredClass
-{
-    public function methodWithBool(bool $flag) {}
-
-    public function validMethod(string $name) {}
-}
-
-function functionWithBool(bool $flag) {}
-
-$closureWithBool = function (bool $flag) {};
