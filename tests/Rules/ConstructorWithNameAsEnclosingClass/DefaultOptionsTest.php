@@ -13,12 +13,18 @@ class DefaultOptionsTest extends RuleTestCase
 {
     public function testExampleClass(): void
     {
-        $this->analyse([
-            __DIR__ . '/Fixture/ExampleClass.php',
-        ], [
-            [sprintf(ConstructorWithNameAsEnclosingClassRule::ERROR_MESSAGE_TEMPLATE, 'ExampleClass', 'ExampleClass'), 14],
-            [sprintf(ConstructorWithNameAsEnclosingClassRule::ERROR_MESSAGE_TEMPLATE, 'AnotherExample', 'AnotherExample'), 23],
-        ]);
+        $this->analyse(
+            [
+                __DIR__ . '/Fixture/ExampleClass.php',
+                __DIR__ . '/Fixture/AnotherExample.php',
+                __DIR__ . '/Fixture/ExampleTrait.php',
+                __DIR__ . '/Fixture/ExampleInterface.php',
+            ],
+            [
+                [sprintf(ConstructorWithNameAsEnclosingClassRule::ERROR_MESSAGE_TEMPLATE, 'ExampleClass', 'ExampleClass'), 14],
+                [sprintf(ConstructorWithNameAsEnclosingClassRule::ERROR_MESSAGE_TEMPLATE, 'AnotherExample', 'AnotherExample'), 8],
+            ]
+        );
     }
 
     public static function getAdditionalConfigFiles(): array

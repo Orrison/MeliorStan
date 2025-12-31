@@ -16,21 +16,3 @@ class ExampleClass
     // Valid: method in different class
     public function someOtherMethod() {}
 }
-
-class AnotherExample
-{
-    // Invalid: method with same name as this class
-    public function AnotherExample() {}
-}
-
-trait ExampleTrait
-{
-    // Valid: traits don't have constructors, so this is not flagged
-    public function ExampleTrait() {}
-}
-
-interface ExampleInterface
-{
-    // Valid: interfaces don't have implementations, so this is not flagged
-    public function ExampleInterface();
-}

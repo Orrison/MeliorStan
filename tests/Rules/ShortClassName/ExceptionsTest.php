@@ -13,12 +13,19 @@ class ExceptionsTest extends RuleTestCase
 {
     public function testRule(): void
     {
-        $this->analyse([__DIR__ . '/Fixture/ExampleClass.php'], [
+        // A.php is in exceptions list, so should have no errors
+        $this->analyse([__DIR__ . '/Fixture/A.php'], []);
+
+        // AB.php is not in exceptions list, so should have an error
+        $this->analyse([__DIR__ . '/Fixture/AB.php'], [
             [
                 'Class name "AB" is too short (2 chars). Minimum allowed length is 3 characters.',
-                6,
+                5,
             ],
         ]);
+
+        // ABC.php meets minimum length of 3, so should have no errors
+        $this->analyse([__DIR__ . '/Fixture/ABC.php'], []);
     }
 
     /**

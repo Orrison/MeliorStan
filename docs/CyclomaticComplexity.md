@@ -34,6 +34,7 @@ This rule supports the following configuration options:
 Add the rule to your PHPStan configuration:
 
 ```neon
+
 includes:
     - vendor/orrison/meliorstan/config/extension.neon
 

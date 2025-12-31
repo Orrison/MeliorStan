@@ -13,12 +13,19 @@ class CustomMinimumTest extends RuleTestCase
 {
     public function testRule(): void
     {
-        $this->analyse([__DIR__ . '/Fixture/ExampleClass.php'], [
+        // With minimum of 2, only A.php should trigger an error
+        $this->analyse([__DIR__ . '/Fixture/A.php'], [
             [
                 'Class name "A" is too short (1 chars). Minimum allowed length is 2 characters.',
                 5,
             ],
         ]);
+
+        // AB.php should have no errors with minimum of 2
+        $this->analyse([__DIR__ . '/Fixture/AB.php'], []);
+
+        // ABC.php should have no errors with minimum of 2
+        $this->analyse([__DIR__ . '/Fixture/ABC.php'], []);
     }
 
     /**

@@ -13,12 +13,24 @@ class AllOptionsTrueTest extends RuleTestCase
 {
     public function testAllOptions(): void
     {
+        // AllOptionsIgnoredClass.php should have no errors as the class is in the ignored list
         $this->analyse([
-            __DIR__ . '/Fixture/AllOptions.php',
+            __DIR__ . '/Fixture/AllOptionsIgnoredClass.php',
+        ], []);
+
+        // AllOptionsNotIgnored.php - setOption is ignored by pattern, but handle and processData should error
+        $this->analyse([
+            __DIR__ . '/Fixture/AllOptionsNotIgnored.php',
         ], [
-            [sprintf(BooleanArgumentFlagRule::ERROR_MESSAGE_TEMPLATE_METHOD, 'Fixtures\BooleanArgumentFlag\AllOptionsNotIgnored', 'handle', 'flag'), 18],
-            [sprintf(BooleanArgumentFlagRule::ERROR_MESSAGE_TEMPLATE_METHOD, 'Fixtures\BooleanArgumentFlag\AllOptionsNotIgnored', 'processData', 'flag'), 20],
-            [sprintf(BooleanArgumentFlagRule::ERROR_MESSAGE_TEMPLATE_FUNCTION, 'processConfig', 'value'), 25],
+            [sprintf(BooleanArgumentFlagRule::ERROR_MESSAGE_TEMPLATE_METHOD, 'Fixtures\BooleanArgumentFlag\AllOptionsNotIgnored', 'handle', 'flag'), 9],
+            [sprintf(BooleanArgumentFlagRule::ERROR_MESSAGE_TEMPLATE_METHOD, 'Fixtures\BooleanArgumentFlag\AllOptionsNotIgnored', 'processData', 'flag'), 11],
+        ]);
+
+        // AllOptionsFunctions.php - setConfig is ignored by pattern, but processConfig should error
+        $this->analyse([
+            __DIR__ . '/Fixture/AllOptionsFunctions.php',
+        ], [
+            [sprintf(BooleanArgumentFlagRule::ERROR_MESSAGE_TEMPLATE_FUNCTION, 'processConfig', 'value'), 7],
         ]);
     }
 

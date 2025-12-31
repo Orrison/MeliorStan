@@ -8,12 +8,3 @@ interface ExampleInterface
 
     public const interfaceConstant = 'invalid';
 }
-
-enum ExampleEnum
-{
-    public const ENUM_CONSTANT = 'valid';
-
-    public const enumConstant = 'invalid';
-    case ValidCase;
-    case invalid_case;
-}
