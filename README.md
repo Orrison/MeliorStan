@@ -1,6 +1,6 @@
 <div align="center">
 
-# MeliorStan 🛡️
+# MeliorStan
 
 **Advanced PHPStan Rules for Superior Code Quality**
 
