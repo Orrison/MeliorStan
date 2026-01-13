@@ -8,9 +8,6 @@ Thank you for your interest in contributing to MeliorStan! This document provide
 - [Project Architecture](#project-architecture)
 - [Adding New Rules](#adding-new-rules)
 - [Testing](#testing)
-- [Code Style](#code-style)
-- [Documentation](#documentation)
-- [Pull Request Process](#pull-request-process)
 
 ## Development Setup
 
@@ -101,25 +98,6 @@ $this->analyse([__DIR__ . '/Fixture/Example.php'], [
 $this->analyse([__DIR__ . '/Fixture/Example.php'], [
     ['Some hardcoded error message.', 14],
 ]);
-```
-
-### Critical: Line Number Management
-
-**Always run `composer format` BEFORE finalizing test line numbers!**
-
-1. Write initial tests with approximate line numbers
-2. Run `composer format` to apply code style fixes
-3. Run the specific test to see actual vs expected line numbers
-4. Update test assertions with correct line numbers
-5. Re-run tests to verify they pass
-
-## Code Style
-
-### Formatting
-
-```bash
-composer format    # Auto-fix code style
-composer analyze   # Run PHPStan analysis
 ```
 
 ## Questions?
