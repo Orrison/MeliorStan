@@ -163,26 +163,9 @@ Originally inspired by [**PHPMD - PHP Mess Detector**](https://phpmd.org/), this
 
 > **Note**: While inspired by PHPMD, these rules are not exact replicas. They offer additional customization options and are adapted for PHPStan's architecture and modern PHP practices.
 
-[//]: # (## 🤝 Contributing)
+## 🤝 Contributing
 
-[//]: # ()
-[//]: # (We welcome contributions! Please see our [Contributing Guide]&#40;CONTRIBUTING.md&#41; for details.)
-
-### Development Setup
-
-```bash
-git clone https://github.com/Orrison/MeliorStan.git
-cd MeliorStan
-composer install
-composer test
-```
-
-### Adding New Rules
-
-1. Follow the established architecture pattern
-2. Include comprehensive tests
-3. Update documentation
-4. Ensure all checks pass: `composer format && composer analyze && composer test`
+We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
 
 ## 📄 License
 
