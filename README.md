@@ -161,7 +161,7 @@ parameters:
 
 Originally inspired by [**PHPMD - PHP Mess Detector**](https://phpmd.org/), this project provides modern PHPStan equivalents with enhanced configurability and PHP 8+ features.
 
-> **Note**: While inspired by PHPMD, these rules are not exact replicas. They offer additional customization options and are adapted for PHPStan's architecture and modern PHP practices.
+> **Note**: While inspired by PHPMD, these rules are not exact replicas. They may offer additional or renamed customization options and are adapted for PHPStan's architecture and modern PHP practices.
 
 ## 🤝 Contributing
 
