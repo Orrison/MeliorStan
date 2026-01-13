@@ -192,8 +192,6 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 - [**PHPStan**](https://phpstan.org/) - The foundation of modern PHP static analysis
 - [**PHPMD**](https://phpmd.org/) - Original inspiration for code quality rules
-- [**PHP-Parser**](https://github.com/nikic/PHP-Parser) - AST parsing capabilities
-- **PHP Community** - For continuous improvement of PHP tooling
 
 ---
 
@@ -201,6 +199,6 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 **Made with ❤️ for the PHP community**
 
-[📖 Documentation](docs/) • [🐛 Report Issues](https://github.com/orrison/meliorstan/issues) • [💡 Request Features](https://github.com/orrison/meliorstan/discussions)
+[📖 Documentation](docs/) • [🐛 Report Issues](https://github.com/orrison/meliorstan/issues)
 
 </div>
