@@ -2,7 +2,7 @@
 
 # MeliorStan
 
-**Advanced PHPStan Rules for Superior Code Quality**
+**Advanced PHPStan Rules for Code Quality and Consistency**
 
 *Enhance your PHP codebase with intelligent static analysis rules that detect code smells, enforce naming conventions, and promote best practices.*
 
@@ -16,26 +16,26 @@
 
 ---
 
-## 📋 Table of Contents
+## Table of Contents
 
-- [✨ Features](#-features)
-- [🚀 Quick Start](#-quick-start)
-- [📚 Available Rules](#-available-rules)
-- [🔧 Configuration](#-configuration)
-- [🎯 Inspiration](#-inspiration)
-- [📄 License](#-license)
-- [🙏 Acknowledgments](#-acknowledgments)
+- [Features](#-features)
+- [Quick Start](#-quick-start)
+- [Available Rules](#-available-rules)
+- [Configuration](#-configuration)
+- [Inspiration](#-inspiration)
+- [License](#-license)
+- [Acknowledgments](#-acknowledgments)
 
-## ✨ Features
+## Features
 
-- **🔍 Comprehensive Code Analysis**: Detect code smells and potential issues
-- **📏 Naming Convention Enforcement**: Ensure consistent naming across your codebase
-- **⚙️ Highly Configurable**: Customize rules to match your project's standards
-- **🚀 Modern PHP Support**: Built for PHP 8.3+ with PHPStan 2.1+
-- **📖 Extensive Documentation**: Detailed guides for each rule
-- **🧪 Well Tested**: Comprehensive test suite ensuring reliability
+- **Comprehensive Code Analysis**: Detect code smells and potential issues
+- **Naming Convention Enforcement**: Ensure consistent naming across your codebase
+- **Highly Configurable**: Customize rules to match your project's standards
+- **Modern PHP Support**: Built for PHP 8.3+ with PHPStan 2.1+
+- **Extensive Documentation**: Detailed guides for each rule
+- **Well Tested**: Comprehensive test suite ensuring reliability
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Installation
 
@@ -70,7 +70,7 @@ parameters:
             allow_underscore_prefix: false
 ```
 
-## 📚 Available Rules
+## Available Rules
 
 ### Naming Conventions
 
@@ -119,7 +119,7 @@ parameters:
 | **[NumberOfChildren](docs/NumberOfChildren.md)** | Detects classes with too many direct child classes | Class Hierarchy |
 | **[TooManyMethods](docs/TooManyMethods.md)** | Detects classes with too many methods | Classes, Interfaces, Traits, Enums |
 
-## 🔧 Configuration
+## Configuration
 
 Each rule supports extensive configuration options. Refer to individual rule documentation for detailed configuration parameters.
 
@@ -157,21 +157,21 @@ parameters:
             subtract_suffixes: ["Interface", "Trait"]
 ```
 
-## 🎯 Inspiration
+## Inspiration
 
 Originally inspired by [**PHPMD - PHP Mess Detector**](https://phpmd.org/), this project provides modern PHPStan equivalents with enhanced configurability and PHP 8+ features.
 
 > **Note**: While inspired by PHPMD, these rules are not exact replicas. They may offer additional or renamed customization options and are adapted for PHPStan's architecture and modern PHP practices.
 
-## 🤝 Contributing
+## Contributing
 
 We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
 
-## 📄 License
+## License
 
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - [**PHPStan**](https://phpstan.org/) - The foundation of modern PHP static analysis
 - [**PHPMD**](https://phpmd.org/) - Original inspiration for code quality rules
@@ -182,6 +182,6 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 **Made with ❤️ for the PHP community**
 
-[📖 Documentation](docs/) • [🐛 Report Issues](https://github.com/orrison/meliorstan/issues)
+[Documentation](docs/) • [Report Issues](https://github.com/orrison/meliorstan/issues)
 
 </div>
