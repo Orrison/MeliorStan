@@ -180,8 +180,6 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 <div align="center">
 
-**Made with ❤️ for the PHP community**
-
 [Documentation](docs/) • [Report Issues](https://github.com/orrison/meliorstan/issues)
 
 </div>
