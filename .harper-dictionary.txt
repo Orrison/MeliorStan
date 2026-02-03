@@ -1,4 +1,6 @@
 MeliorStan
+PHPMD
 PHPStan
 PHPStan's
-PHPMD
+cyclomatic
+goto
