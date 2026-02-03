@@ -1,0 +1,4 @@
+MeliorStan
+PHPStan
+PHPStan's
+PHPMD

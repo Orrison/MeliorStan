@@ -77,10 +77,10 @@ parameters:
 | Rule | Description | Target |
 |------|-------------|---------|
 | **[BooleanGetMethodName](docs/BooleanGetMethodName.md)** | Prevents `get*` methods from returning boolean values | Methods |
-| **[CamelCase Method Name](docs/CamelCaseMethodName.md)** | Enforces camelCase for method names | Methods |
-| **[CamelCase Parameter Name](docs/CamelCaseParameterName.md)** | Enforces camelCase for parameter names | Parameters |
-| **[CamelCase Property Name](docs/CamelCasePropertyName.md)** | Enforces camelCase for property names | Properties |
-| **[CamelCase Variable Name](docs/CamelCaseVariableName.md)** | Enforces camelCase for variable names | Variables |
+| **[CamelCaseMethodName](docs/CamelCaseMethodName.md)** | Enforces camelCase for method names | Methods |
+| **[CamelCaseParameterName](docs/CamelCaseParameterName.md)** | Enforces camelCase for parameter names | Parameters |
+| **[CamelCasePropertyName](docs/CamelCasePropertyName.md)** | Enforces camelCase for property names | Properties |
+| **[CamelCaseVariableName](docs/CamelCaseVariableName.md)** | Enforces camelCase for variable names | Variables |
 | **[ConstantNamingConventions](docs/ConstantNamingConventions.md)** | Enforces UPPERCASE for constants | Constants |
 | **[ConstructorWithNameAsEnclosingClass](docs/ConstructorWithNameAsEnclosingClass.md)** | Prevents methods with same name as their class | Methods |
 | **[LongClassName](docs/LongClassName.md)** | Limits class/interface/trait/enum name length | Classes, Interfaces, Traits, Enums |
