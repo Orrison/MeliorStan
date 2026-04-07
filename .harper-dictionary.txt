@@ -4,3 +4,4 @@ PHPStan
 PHPStan's
 cyclomatic
 goto
+inheritdoc

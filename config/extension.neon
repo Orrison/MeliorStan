@@ -77,6 +77,11 @@ parametersSchema:
             allow_unused_foreach_variables: bool(),
             exceptions: arrayOf(string()),
         ]),
+        unused_formal_parameter: structure([
+            allow_unused_with_inheritdoc: bool(),
+            allow_overriding_methods: bool(),
+            exceptions: arrayOf(string()),
+        ]),
     ])
 
 # default parameters
@@ -141,6 +146,10 @@ parameters:
             show_methods_complexity: true
         unused_local_variable:
             allow_unused_foreach_variables: false
+            exceptions: []
+        unused_formal_parameter:
+            allow_unused_with_inheritdoc: true
+            allow_overriding_methods: true
             exceptions: []
 
 services:
@@ -242,3 +251,9 @@ services:
         arguments:
             - %meliorstan.unused_local_variable.allow_unused_foreach_variables%
             - %meliorstan.unused_local_variable.exceptions%
+    -
+        factory: Orrison\MeliorStan\Rules\UnusedFormalParameter\Config
+        arguments:
+            - %meliorstan.unused_formal_parameter.allow_unused_with_inheritdoc%
+            - %meliorstan.unused_formal_parameter.allow_overriding_methods%
+            - %meliorstan.unused_formal_parameter.exceptions%
