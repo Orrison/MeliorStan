@@ -99,6 +99,7 @@ parameters:
 | **[ShortVariable](docs/ShortVariable.md)** | Enforces minimum variable name length | Variables |
 | **[ForbidPestPhpOnly](docs/ForbidPestPhpOnly.md)** | Prevents committed Pest tests from using the `only()` filter | Tests |
 | **[Superglobals](docs/Superglobals.md)** | Discourages use of PHP superglobals | Superglobal Usage |
+| **[UnusedLocalVariable](docs/UnusedLocalVariable.md)** | Detects local variables assigned but never read inside a function/method/closure | Local Variables |
 
 ### Control Flow
 
