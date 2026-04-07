@@ -1,0 +1,10 @@
+includes:
+    - ../../../../config/extension.neon
+
+rules:
+    - Orrison\MeliorStan\Rules\UnusedFormalParameter\UnusedFormalParameterRule
+
+parameters:
+    meliorstan:
+        unused_formal_parameter:
+            allow_overriding_methods: false

@@ -99,6 +99,7 @@ parameters:
 | **[ShortVariable](docs/ShortVariable.md)** | Enforces minimum variable name length | Variables |
 | **[ForbidPestPhpOnly](docs/ForbidPestPhpOnly.md)** | Prevents committed Pest tests from using the `only()` filter | Tests |
 | **[Superglobals](docs/Superglobals.md)** | Discourages use of PHP superglobals | Superglobal Usage |
+| **[UnusedFormalParameter](docs/UnusedFormalParameter.md)** | Detects function/method/closure parameters that are declared but never used | Function/method/closure parameters |
 | **[UnusedLocalVariable](docs/UnusedLocalVariable.md)** | Detects local variables assigned but never read inside a function/method/closure | Local Variables |
 
 ### Control Flow
@@ -119,6 +120,15 @@ parameters:
 | **[CyclomaticComplexity](docs/CyclomaticComplexity.md)** | Detects methods with high cyclomatic complexity | Methods, Classes |
 | **[NumberOfChildren](docs/NumberOfChildren.md)** | Detects classes with too many direct child classes | Class Hierarchy |
 | **[TooManyMethods](docs/TooManyMethods.md)** | Detects classes with too many methods | Classes, Interfaces, Traits, Enums |
+
+### Already Covered by PHPStan
+
+These PHPMD rules are intentionally not reimplemented because PHPStan already provides equivalent (or better) detection out of the box. The linked documentation explains how to enable and configure them.
+
+| PHPMD Rule | PHPStan Equivalent | Enable At |
+|------------|--------------------|-----------|
+| **[UnusedPrivateMethod](docs/UnusedPrivateMethod.md)** | `PHPStan\Rules\DeadCode\UnusedPrivateMethodRule` | Rule level 4 |
+| **[UnusedPrivateField](docs/UnusedPrivateField.md)** | `PHPStan\Rules\DeadCode\UnusedPrivatePropertyRule` | Rule level 4 |
 
 ## Configuration
 
