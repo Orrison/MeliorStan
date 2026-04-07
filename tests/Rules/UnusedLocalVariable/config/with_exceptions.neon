@@ -1,0 +1,10 @@
+includes:
+    - ../../../../config/extension.neon
+
+rules:
+    - Orrison\MeliorStan\Rules\UnusedLocalVariable\UnusedLocalVariableRule
+
+parameters:
+    meliorstan:
+        unused_local_variable:
+            exceptions: ['unused', 'tmp']

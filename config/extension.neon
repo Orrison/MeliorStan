@@ -73,6 +73,10 @@ parametersSchema:
             show_classes_complexity: bool(),
             show_methods_complexity: bool(),
         ]),
+        unused_local_variable: structure([
+            allow_unused_foreach_variables: bool(),
+            exceptions: arrayOf(string()),
+        ]),
     ])
 
 # default parameters
@@ -135,6 +139,9 @@ parameters:
             report_level: 10
             show_classes_complexity: true
             show_methods_complexity: true
+        unused_local_variable:
+            allow_unused_foreach_variables: false
+            exceptions: []
 
 services:
     -
@@ -230,3 +237,8 @@ services:
             - %meliorstan.cyclomatic_complexity.report_level%
             - %meliorstan.cyclomatic_complexity.show_classes_complexity%
             - %meliorstan.cyclomatic_complexity.show_methods_complexity%
+    -
+        factory: Orrison\MeliorStan\Rules\UnusedLocalVariable\Config
+        arguments:
+            - %meliorstan.unused_local_variable.allow_unused_foreach_variables%
+            - %meliorstan.unused_local_variable.exceptions%
