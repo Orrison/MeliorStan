@@ -1,0 +1,10 @@
+includes:
+    - ../../../../config/extension.neon
+
+rules:
+    - Orrison\MeliorStan\Rules\CouplingBetweenObjects\CouplingBetweenObjectsRule
+
+parameters:
+    meliorstan:
+        coupling_between_objects:
+            maximum: 3
