@@ -112,6 +112,7 @@ parameters:
 
 | Rule | Description | Target |
 |------|-------------|---------|
+| **[DevelopmentCodeFragment](docs/DevelopmentCodeFragment.md)** | Detects calls to development/debug functions like var_dump, print_r, etc. | Function Calls |
 | **[EmptyCatchBlock](docs/EmptyCatchBlock.md)** | Detects and reports empty catch blocks in exception handling | Catch Blocks |
 | **[ForbidCountInLoopExpressions](docs/ForbidCountInLoopExpressions.md)** | Detects usage of count() or sizeof() in loop conditions | Loop Conditions |
 | **[ForbidEvalExpressions](docs/ForbidEvalExpressions.md)** | Detects and reports usage of eval expressions | Eval Expressions |

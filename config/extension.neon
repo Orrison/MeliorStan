@@ -82,6 +82,9 @@ parametersSchema:
             allow_overriding_methods: bool(),
             exceptions: arrayOf(string()),
         ]),
+        development_code_fragment: structure([
+            unwanted_functions: arrayOf(string()),
+        ]),
     ])
 
 # default parameters
@@ -151,6 +154,8 @@ parameters:
             allow_unused_with_inheritdoc: true
             allow_overriding_methods: true
             exceptions: []
+        development_code_fragment:
+            unwanted_functions: []
 
 services:
     -
@@ -257,3 +262,7 @@ services:
             - %meliorstan.unused_formal_parameter.allow_unused_with_inheritdoc%
             - %meliorstan.unused_formal_parameter.allow_overriding_methods%
             - %meliorstan.unused_formal_parameter.exceptions%
+    -
+        factory: Orrison\MeliorStan\Rules\DevelopmentCodeFragment\Config
+        arguments:
+            - %meliorstan.development_code_fragment.unwanted_functions%

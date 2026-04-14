@@ -1,0 +1,13 @@
+includes:
+    - ../../../../config/extension.neon
+
+rules:
+    - Orrison\MeliorStan\Rules\DevelopmentCodeFragment\DevelopmentCodeFragmentRule
+
+parameters:
+    meliorstan:
+        development_code_fragment:
+            unwanted_functions:
+                - dump
+                - dd
+                - my_custom_debug
