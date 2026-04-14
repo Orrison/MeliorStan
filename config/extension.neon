@@ -91,6 +91,11 @@ parametersSchema:
             excluded_types: arrayOf(string()),
             count_attributes: bool(),
         ]),
+        depth_of_inheritance: structure([
+            maximum: int(),
+            excluded_namespaces: arrayOf(string()),
+            ignored_classes: arrayOf(string()),
+        ]),
     ])
 
 # default parameters
@@ -167,6 +172,10 @@ parameters:
             excluded_namespaces: []
             excluded_types: []
             count_attributes: true
+        depth_of_inheritance:
+            maximum: 6
+            excluded_namespaces: []
+            ignored_classes: []
 
 services:
     -
@@ -284,3 +293,9 @@ services:
             - %meliorstan.coupling_between_objects.excluded_namespaces%
             - %meliorstan.coupling_between_objects.excluded_types%
             - %meliorstan.coupling_between_objects.count_attributes%
+    -
+        factory: Orrison\MeliorStan\Rules\DepthOfInheritance\Config
+        arguments:
+            - %meliorstan.depth_of_inheritance.maximum%
+            - %meliorstan.depth_of_inheritance.excluded_namespaces%
+            - %meliorstan.depth_of_inheritance.ignored_classes%
