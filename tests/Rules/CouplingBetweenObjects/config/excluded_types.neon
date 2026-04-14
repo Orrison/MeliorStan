@@ -1,0 +1,12 @@
+includes:
+    - ../../../../config/extension.neon
+
+rules:
+    - Orrison\MeliorStan\Rules\CouplingBetweenObjects\CouplingBetweenObjectsRule
+
+parameters:
+    meliorstan:
+        coupling_between_objects:
+            maximum: 3
+            excluded_types:
+                - 'Orrison\MeliorStan\Tests\Rules\CouplingBetweenObjects\Fixture\Deps\DepA'
