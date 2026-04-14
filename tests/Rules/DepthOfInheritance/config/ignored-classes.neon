@@ -1,0 +1,12 @@
+includes:
+    - ../../../../config/extension.neon
+
+rules:
+    - Orrison\MeliorStan\Rules\DepthOfInheritance\DepthOfInheritanceRule
+
+parameters:
+    meliorstan:
+        depth_of_inheritance:
+            maximum: 3
+            ignored_classes:
+                - Orrison\MeliorStan\Tests\Rules\DepthOfInheritance\Fixture\Level7
