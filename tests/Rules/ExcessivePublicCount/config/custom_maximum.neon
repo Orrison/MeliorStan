@@ -1,0 +1,10 @@
+includes:
+    - ../../../../config/extension.neon
+
+rules:
+    - Orrison\MeliorStan\Rules\ExcessivePublicCount\ExcessivePublicCountRule
+
+parameters:
+    meliorstan:
+        excessive_public_count:
+            maximum: 5
