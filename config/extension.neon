@@ -96,6 +96,10 @@ parametersSchema:
             excluded_namespaces: arrayOf(string()),
             ignored_classes: arrayOf(string()),
         ]),
+        excessive_public_count: structure([
+            maximum: int(),
+            ignore_pattern: string(),
+        ]),
     ])
 
 # default parameters
@@ -176,6 +180,9 @@ parameters:
             maximum: 6
             excluded_namespaces: []
             ignored_classes: []
+        excessive_public_count:
+            maximum: 45
+            ignore_pattern: '^(get|set|is)'
 
 services:
     -
@@ -299,3 +306,8 @@ services:
             - %meliorstan.depth_of_inheritance.maximum%
             - %meliorstan.depth_of_inheritance.excluded_namespaces%
             - %meliorstan.depth_of_inheritance.ignored_classes%
+    -
+        factory: Orrison\MeliorStan\Rules\ExcessivePublicCount\Config
+        arguments:
+            - %meliorstan.excessive_public_count.maximum%
+            - %meliorstan.excessive_public_count.ignore_pattern%
