@@ -2,7 +2,7 @@
 
 This rule reports classes, interfaces, traits, and enums that expose an excessively large public API surface — the sum of their public methods and public properties.
 
-Based on the [PHPMD ExcessivePublicCount](https://phpmd.org/rules/codesize.html#excessivepubliccount) rule, which measures the PHP_Depend **CIS** (Class Interface Size) metric. A large public surface often signals that a class has too many responsibilities and is difficult to test thoroughly.
+A large public surface often signals that a class has too many responsibilities and is difficult to test thoroughly. Keeping the count in check encourages smaller, more focused classes.
 
 ## Configuration
 
@@ -11,12 +11,12 @@ This rule supports the following configuration options:
 ### `maximum`
 - **Type**: `int`
 - **Default**: `45`
-- **Description**: The maximum allowed sum of public methods plus public properties in a class-like structure before triggering an error. Matches PHPMD's default CIS threshold.
+- **Description**: The maximum allowed sum of public methods plus public properties in a class-like structure before triggering an error.
 
 ### `ignore_pattern`
 - **Type**: `string`
 - **Default**: `^(get|set|is)`
-- **Description**: A regular expression pattern (without delimiters) used to match public method names that should be excluded from the count. By default, getter, setter, and boolean accessor methods are ignored, matching the convention used by the `TooManyMethods` rule. Set to an empty string `''` to count every public method (strict PHPMD parity).
+- **Description**: A regular expression pattern (without delimiters) used to match public method names that should be excluded from the count. By default, getter, setter, and boolean accessor methods are ignored, matching the convention used by the `TooManyMethods` rule. Set to an empty string `''` to count every public method.
 
 ## Usage
 
@@ -79,7 +79,7 @@ class ModestClass
 
 ### Configuration Examples
 
-#### Strict PHPMD Parity (No Ignore Pattern)
+#### Count Every Public Method (Empty Ignore Pattern)
 
 ```neon
 parameters:
