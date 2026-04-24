@@ -1,6 +1,6 @@
 # StaticAccess
 
-Static access causes unexchangeable dependencies to other classes and leads to hard to test code.
+Static access creates hard-to-replace dependencies on other classes and leads to hard-to-test code.
 
 This rule detects static method calls (e.g., `SomeClass::doSomething()`) and optionally static property access (e.g., `SomeClass::$value`). Static access creates tight coupling between classes, making it difficult to substitute dependencies during testing or when requirements change. The recommended approach is to inject dependencies through constructors instead.
 
@@ -95,6 +95,8 @@ parameters:
 
 ```php
 <?php
+
+use Illuminate\Support\Facades\Cache;
 
 class UserService
 {

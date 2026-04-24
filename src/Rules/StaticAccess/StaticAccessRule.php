@@ -76,7 +76,7 @@ class StaticAccessRule implements Rule
         if ($node->name instanceof Identifier) {
             $methodName = $node->name->toString();
 
-            if ($this->shouldIgnoreByPattern($methodName, $this->config->getMethodIgnorePattern())) {
+            if ($this->shouldIgnoreByPattern($methodName, $this->config->getMethodIgnorePattern(), 'method_ignore_pattern')) {
                 return [];
             }
 
@@ -114,7 +114,7 @@ class StaticAccessRule implements Rule
         if ($node->name instanceof Identifier) {
             $propertyName = $node->name->toString();
 
-            if ($this->shouldIgnoreByPattern($propertyName, $this->config->getPropertyIgnorePattern())) {
+            if ($this->shouldIgnoreByPattern($propertyName, $this->config->getPropertyIgnorePattern(), 'property_ignore_pattern')) {
                 return [];
             }
 
@@ -135,7 +135,7 @@ class StaticAccessRule implements Rule
         return isset(self::SELF_REFERENCES[strtolower($className)]);
     }
 
-    protected function shouldIgnoreByPattern(string $name, string $pattern): bool
+    protected function shouldIgnoreByPattern(string $name, string $pattern, string $configKey): bool
     {
         if ($pattern === '') {
             return false;
@@ -147,7 +147,7 @@ class StaticAccessRule implements Rule
             $error = preg_last_error_msg();
 
             throw new InvalidArgumentException(
-                sprintf('Invalid regex pattern in ignore_pattern configuration: "%s". Error: %s', $pattern, $error)
+                sprintf('Invalid regex pattern in %s configuration: "%s". Error: %s', $configKey, $pattern, $error)
             );
         }
 
