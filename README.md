@@ -135,6 +135,7 @@ These PHPMD rules are intentionally not reimplemented because PHPStan already pr
 | **[DuplicatedArrayKey](docs/DuplicatedArrayKey.md)** | `PHPStan\Rules\Arrays\DuplicateKeysInLiteralArraysRule` | Level 0 (default) |
 | **[UnusedPrivateMethod](docs/UnusedPrivateMethod.md)** | `PHPStan\Rules\DeadCode\UnusedPrivateMethodRule` | Rule level 4 |
 | **[UnusedPrivateField](docs/UnusedPrivateField.md)** | `PHPStan\Rules\DeadCode\UnusedPrivatePropertyRule` | Rule level 4 |
+| **[UndefinedVariable](docs/UndefinedVariable.md)** | `PHPStan\Rules\Variables\DefinedVariableRule` | Level 0 (always undefined) / Level 1 (possibly undefined) |
 
 ## Configuration
 
