@@ -6,9 +6,9 @@ class IgnorePatternExample
 {
     public function test(): void
     {
-        SomeService::createInstance();
-        SomeService::fromArray([]);
-        SomeService::make();
+        IgnorePatternExample::createInstance();
+        IgnorePatternExample::fromArray([]);
+        IgnorePatternExample::make();
         SomeService::process();
         AnotherService::handle();
     }
