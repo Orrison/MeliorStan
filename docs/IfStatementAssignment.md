@@ -47,12 +47,12 @@ if ($count += 1) {
     // ...
 }
 
-// ✗ Error: Detect assignments nested in compound conditions
+// ✗ Error: Avoid assignments inside if and elseif conditions.
 if (($baz = someFunction()) && $other) {
     // ...
 }
 
-// ✗ Error: Also flags assignments in elseif conditions
+// ✗ Error: Avoid assignments inside if and elseif conditions.
 if ($x > 1) {
     // ...
 } elseif ($result = otherFunction()) {
