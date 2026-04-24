@@ -107,6 +107,7 @@ parameters:
 | Rule | Description | Target |
 |------|-------------|---------|
 | **[ElseExpression](docs/ElseExpression.md)** | Discourages `else` expressions | Control Flow |
+| **[IfStatementAssignment](docs/IfStatementAssignment.md)** | Detects assignments inside `if` and `elseif` conditions | Control Flow |
 
 ### Design
 
