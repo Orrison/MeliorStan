@@ -100,6 +100,12 @@ parametersSchema:
             maximum: int(),
             ignore_pattern: string(),
         ]),
+        static_access: structure([
+            exceptions: arrayOf(string()),
+            method_ignore_pattern: string(),
+            property_ignore_pattern: string(),
+            check_static_property_access: bool(),
+        ]),
     ])
 
 # default parameters
@@ -183,6 +189,11 @@ parameters:
         excessive_public_count:
             maximum: 45
             ignore_pattern: '^(get|set|is)'
+        static_access:
+            exceptions: []
+            method_ignore_pattern: ''
+            property_ignore_pattern: ''
+            check_static_property_access: false
 
 services:
     -
@@ -311,3 +322,10 @@ services:
         arguments:
             - %meliorstan.excessive_public_count.maximum%
             - %meliorstan.excessive_public_count.ignore_pattern%
+    -
+        factory: Orrison\MeliorStan\Rules\StaticAccess\Config
+        arguments:
+            - %meliorstan.static_access.exceptions%
+            - %meliorstan.static_access.method_ignore_pattern%
+            - %meliorstan.static_access.property_ignore_pattern%
+            - %meliorstan.static_access.check_static_property_access%
