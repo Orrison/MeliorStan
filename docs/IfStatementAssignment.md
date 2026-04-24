@@ -2,7 +2,7 @@
 
 Detects assignments inside `if` and `elseif` conditions.
 
-Assignments in if conditions are a code smell. They can easily mask logic errors — particularly typos where `=` was written instead of `==` or `===`. Additionally, when the assigned value is falsy (e.g., `0`, `null`, `false`, or an empty string), the condition will silently always evaluate to false, leading to bugs that can be difficult to spot.
+Assignments in if conditions are a code smell. They can easily mask logic errors — particularly typos where `=` was written instead of `==` or `===`. Additionally, when the assigned value is falsy (e.g., `0`, `null`, `false`, or an empty string), the condition will silently always evaluate to false, leading to bugs that can be difficult to spot. All assignment forms are flagged: plain assignment (`=`), reference assignment (`=&`), and compound assignments (`+=`, `??=`, `.=`, etc.).
 
 ## Configuration
 
@@ -37,6 +37,16 @@ if ($bar = 0) {
     // ...
 }
 
+// ✗ Error: Avoid assignments inside if and elseif conditions.
+if ($ref = &$source) {
+    // ...
+}
+
+// ✗ Error: Avoid assignments inside if and elseif conditions.
+if ($count += 1) {
+    // ...
+}
+
 // ✗ Error: Detect assignments nested in compound conditions
 if (($baz = someFunction()) && $other) {
     // ...
@@ -68,6 +78,7 @@ if ($a && $b) {
 
 ## Important Notes
 
+- All assignment forms are detected: plain `=`, reference `=&`, and compound operators (`+=`, `??=`, `.=`, etc.).
 - Assignments are detected **recursively** throughout the condition expression, including those nested inside compound conditions with `&&`, `||`, and parentheses.
 - Both `if` and `elseif` conditions are checked.
 - `while` loop conditions are not checked by this rule.

@@ -4,6 +4,8 @@ namespace Orrison\MeliorStan\Rules\IfStatementAssignment;
 
 use PhpParser\Node;
 use PhpParser\Node\Expr\Assign;
+use PhpParser\Node\Expr\AssignOp;
+use PhpParser\Node\Expr\AssignRef;
 use PhpParser\Node\Stmt\If_;
 use PhpParser\NodeFinder;
 use PHPStan\Analyser\Scope;
@@ -52,10 +54,17 @@ class IfStatementAssignmentRule implements Rule
     }
 
     /**
-     * @return Assign[]
+     * @return array<Assign|AssignRef|AssignOp>
      */
     protected function findAssignments(Node $expr): array
     {
-        return (new NodeFinder())->findInstanceOf($expr, Assign::class);
+        /** @var array<Assign|AssignRef|AssignOp> $assignments */
+        $assignments = (new NodeFinder())->find($expr, function (Node $node): bool {
+            return $node instanceof Assign
+                || $node instanceof AssignRef
+                || $node instanceof AssignOp;
+        });
+
+        return $assignments;
     }
 }
