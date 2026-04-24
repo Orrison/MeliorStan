@@ -26,6 +26,8 @@ class IfStatementAssignmentTest extends RuleTestCase
                 __DIR__ . '/Fixture/AssignmentInElseIfCondition.php',
                 __DIR__ . '/Fixture/NestedAssignmentInCondition.php',
                 __DIR__ . '/Fixture/ValidIfConditions.php',
+                __DIR__ . '/Fixture/AssignOpInIfCondition.php',
+                __DIR__ . '/Fixture/AssignRefInIfCondition.php',
             ],
             [
                 [IfStatementAssignmentRule::ERROR_MESSAGE, 9],
@@ -36,6 +38,9 @@ class IfStatementAssignmentTest extends RuleTestCase
                 [IfStatementAssignmentRule::ERROR_MESSAGE, 18],
                 [IfStatementAssignmentRule::ERROR_MESSAGE, 9],
                 [IfStatementAssignmentRule::ERROR_MESSAGE, 15],
+                [IfStatementAssignmentRule::ERROR_MESSAGE, 11],
+                [IfStatementAssignmentRule::ERROR_MESSAGE, 19],
+                [IfStatementAssignmentRule::ERROR_MESSAGE, 11],
             ]
         );
     }
