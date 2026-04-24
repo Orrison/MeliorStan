@@ -1,0 +1,13 @@
+includes:
+    - ../../../../config/extension.neon
+
+rules:
+    - Orrison\MeliorStan\Rules\StaticAccess\StaticAccessRule
+
+parameters:
+    meliorstan:
+        static_access:
+            exceptions: []
+            method_ignore_pattern: ''
+            property_ignore_pattern: '/invalid[regex'  # Invalid regex - missing closing bracket
+            check_static_property_access: true
