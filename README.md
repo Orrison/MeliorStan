@@ -123,6 +123,7 @@ parameters:
 | **[ExcessivePublicCount](docs/ExcessivePublicCount.md)** | Detects classes with an excessive public API surface (public methods + properties) | Classes, Interfaces, Traits, Enums |
 | **[CyclomaticComplexity](docs/CyclomaticComplexity.md)** | Detects methods with high cyclomatic complexity | Methods, Classes |
 | **[NumberOfChildren](docs/NumberOfChildren.md)** | Detects classes with too many direct child classes | Class Hierarchy |
+| **[StaticAccess](docs/StaticAccess.md)** | Detects static method calls and optionally static property access that create tight coupling | Static Access |
 | **[TooManyMethods](docs/TooManyMethods.md)** | Detects classes with too many methods | Classes, Interfaces, Traits, Enums |
 
 ### Already Covered by PHPStan

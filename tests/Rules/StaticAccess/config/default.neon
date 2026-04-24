@@ -1,0 +1,13 @@
+includes:
+    - ../../../../config/extension.neon
+
+rules:
+    - Orrison\MeliorStan\Rules\StaticAccess\StaticAccessRule
+
+parameters:
+    meliorstan:
+        static_access:
+            exceptions: []
+            method_ignore_pattern: ''
+            property_ignore_pattern: ''
+            check_static_property_access: false
