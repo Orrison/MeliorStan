@@ -128,6 +128,7 @@ parameters:
 | **[NumberOfChildren](docs/NumberOfChildren.md)** | Detects classes with too many direct child classes | Class Hierarchy |
 | **[StaticAccess](docs/StaticAccess.md)** | Detects static method calls and optionally static property access that create tight coupling | Static Access |
 | **[TooManyMethods](docs/TooManyMethods.md)** | Detects classes with too many methods | Classes, Interfaces, Traits, Enums |
+| **[TooManyPublicMethods](docs/TooManyPublicMethods.md)** | Detects classes with too many public methods | Classes, Interfaces, Traits, Enums |
 
 ### Already Covered by PHPStan
 
