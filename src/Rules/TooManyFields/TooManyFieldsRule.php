@@ -5,6 +5,7 @@ namespace Orrison\MeliorStan\Rules\TooManyFields;
 use PhpParser\Node;
 use PhpParser\Node\Identifier;
 use PhpParser\Node\Stmt\ClassLike;
+use PhpParser\Node\Stmt\ClassMethod;
 use PhpParser\Node\Stmt\Enum_;
 use PhpParser\Node\Stmt\Interface_;
 use PhpParser\Node\Stmt\Property;
@@ -74,15 +75,23 @@ class TooManyFieldsRule implements Rule
         $count = 0;
 
         foreach ($node->stmts as $stmt) {
-            if (! $stmt instanceof Property) {
+            if ($stmt instanceof Property) {
+                if ($this->config->getIgnoreStaticProperties() && $stmt->isStatic()) {
+                    continue;
+                }
+
+                $count += count($stmt->props);
+
                 continue;
             }
 
-            if ($this->config->getIgnoreStaticProperties() && $stmt->isStatic()) {
-                continue;
+            if ($stmt instanceof ClassMethod && $stmt->name->toString() === '__construct') {
+                foreach ($stmt->params as $param) {
+                    if ($param->flags !== 0) {
+                        ++$count;
+                    }
+                }
             }
-
-            $count += count($stmt->props);
         }
 
         return $count;
