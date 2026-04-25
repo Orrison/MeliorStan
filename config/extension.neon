@@ -106,6 +106,10 @@ parametersSchema:
             property_ignore_pattern: string(),
             check_static_property_access: bool(),
         ]),
+        missing_import: structure([
+            ignore_global: bool(),
+            exceptions: arrayOf(string()),
+        ]),
     ])
 
 # default parameters
@@ -194,6 +198,9 @@ parameters:
             method_ignore_pattern: ''
             property_ignore_pattern: ''
             check_static_property_access: false
+        missing_import:
+            ignore_global: false
+            exceptions: []
 
 services:
     -
@@ -329,3 +336,8 @@ services:
             - %meliorstan.static_access.method_ignore_pattern%
             - %meliorstan.static_access.property_ignore_pattern%
             - %meliorstan.static_access.check_static_property_access%
+    -
+        factory: Orrison\MeliorStan\Rules\MissingImport\Config
+        arguments:
+            - %meliorstan.missing_import.ignore_global%
+            - %meliorstan.missing_import.exceptions%

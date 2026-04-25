@@ -137,6 +137,9 @@ $finder = Finder::create()
         [
             'vendor',
             'node_modules',
+            // MissingImport fixtures intentionally contain fully-qualified class names
+            // that should not be auto-imported by the fully_qualified_strict_types fixer.
+            'tests/Rules/MissingImport/Fixture',
         ]
     )
     ->name('*.php')
