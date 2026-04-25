@@ -76,7 +76,7 @@ class Example
         try {
             $this->riskyOperation();
         } catch (\Throwable $e) {
-            // Handle or log the exception
+            throw new \RuntimeException('Operation failed.', 0, $e);
         }
     }
 }
