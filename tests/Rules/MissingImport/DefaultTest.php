@@ -69,6 +69,42 @@ class DefaultTest extends RuleTestCase
         );
     }
 
+    public function testTypedClassConstFqcnUsages(): void
+    {
+        $this->analyse(
+            [__DIR__ . '/Fixture/ClassConstFqcnUsages.php'],
+            [
+                [sprintf(MissingImportRule::ERROR_MESSAGE_TEMPLATE, 'App\Models\User'), 7],
+            ]
+        );
+    }
+
+    public function testTypedClassConstImportedUsagesHaveNoViolations(): void
+    {
+        $this->analyse(
+            [__DIR__ . '/Fixture/ClassConstImportedUsages.php'],
+            []
+        );
+    }
+
+    public function testTraitUseFqcnUsages(): void
+    {
+        $this->analyse(
+            [__DIR__ . '/Fixture/TraitUseFqcnUsages.php'],
+            [
+                [sprintf(MissingImportRule::ERROR_MESSAGE_TEMPLATE, 'App\Traits\SomeTrait'), 7],
+            ]
+        );
+    }
+
+    public function testTraitUseImportedUsagesHaveNoViolations(): void
+    {
+        $this->analyse(
+            [__DIR__ . '/Fixture/TraitUseImportedUsages.php'],
+            []
+        );
+    }
+
     public static function getAdditionalConfigFiles(): array
     {
         return [__DIR__ . '/config/default.neon'];

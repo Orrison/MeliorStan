@@ -17,11 +17,13 @@ use PhpParser\Node\NullableType;
 use PhpParser\Node\Param;
 use PhpParser\Node\Stmt\Catch_;
 use PhpParser\Node\Stmt\Class_;
+use PhpParser\Node\Stmt\ClassConst;
 use PhpParser\Node\Stmt\ClassMethod;
 use PhpParser\Node\Stmt\Enum_;
 use PhpParser\Node\Stmt\Function_;
 use PhpParser\Node\Stmt\Interface_;
 use PhpParser\Node\Stmt\Property;
+use PhpParser\Node\Stmt\TraitUse;
 use PhpParser\Node\UnionType;
 use PHPStan\Analyser\Scope;
 use PHPStan\Node\InClassNode;
@@ -34,7 +36,7 @@ use PHPStan\Rules\RuleErrorBuilder;
  */
 class MissingImportRule implements Rule
 {
-    public const string ERROR_MESSAGE_TEMPLATE = 'Class "\\%s" should not be referenced by its fully qualified name. Import it with a "use" statement instead.';
+    public const string ERROR_MESSAGE_TEMPLATE = 'Type "\\%s" should not be referenced by its fully qualified name. Import it with a "use" statement instead.';
 
     public function __construct(
         protected Config $config,
@@ -59,6 +61,11 @@ class MissingImportRule implements Rule
 
         // Property types: private \Foo\Bar $prop;
         if ($node instanceof Property) {
+            return $this->buildErrors($this->extractFqcnsFromType($node->type));
+        }
+
+        // Typed class constants (PHP 8.3+): public const \Foo\Bar NAME = ...;
+        if ($node instanceof ClassConst) {
             return $this->buildErrors($this->extractFqcnsFromType($node->type));
         }
 
@@ -118,6 +125,19 @@ class MissingImportRule implements Rule
                     if ($interface instanceof FullyQualified && $this->isExplicitFqcn($interface)) {
                         $fqcns[] = $interface->toString();
                     }
+                }
+            }
+
+            return $this->buildErrors($fqcns);
+        }
+
+        // Trait use: use \Foo\Bar; (inside a class/trait body)
+        if ($node instanceof TraitUse) {
+            $fqcns = [];
+
+            foreach ($node->traits as $trait) {
+                if ($trait instanceof FullyQualified && $this->isExplicitFqcn($trait)) {
+                    $fqcns[] = $trait->toString();
                 }
             }
 
