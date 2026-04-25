@@ -51,10 +51,10 @@ parameters:
 
 class UserService
 {
-    public function __construct() {}      // ✓ Ignored (magic method)
-    public function getName(): string {}  // ✓ Ignored (matches ignore_pattern)
-    public function setName(string $name): void {}  // ✓ Ignored (matches ignore_pattern)
-    public function isActive(): bool {}   // ✓ Ignored (matches ignore_pattern)
+    public function __construct() {}                           // ✓ Ignored (magic method)
+    public function getName(): string { return ''; }          // ✓ Ignored (matches ignore_pattern)
+    public function setName(string $name): void {}            // ✓ Ignored (matches ignore_pattern)
+    public function isActive(): bool { return true; }         // ✓ Ignored (matches ignore_pattern)
 
     // 10 regular public methods — at the limit, no error
     public function register(): void {}
@@ -65,7 +65,7 @@ class UserService
     public function restore(): void {}
     public function sendWelcomeEmail(): void {}
     public function sendPasswordReset(): void {}
-    public function generateToken(): string {}
+    public function generateToken(): string { return ''; }
     public function revokeToken(): void {}
 }
 // ✓ Valid — exactly 10 counted methods
@@ -103,8 +103,8 @@ parameters:
 
 class Service
 {
-    public function __construct() {}   // Counted
-    public function __toString(): string {}  // Counted
+    public function __construct() {}                    // Counted
+    public function __toString(): string { return ''; } // Counted
     public function methodOne(): void {}
     public function methodTwo(): void {}
     public function methodThree(): void {}
@@ -132,17 +132,17 @@ parameters:
 
 class DataTransferObject
 {
-    public function getName(): string {}    // Counted (no pattern exclusion)
-    public function setName(string $n): void {}  // Counted
-    public function getEmail(): string {}   // Counted
-    public function setEmail(string $e): void {}  // Counted
-    public function getAge(): int {}        // Counted
-    public function setAge(int $a): void {} // Counted
-    public function isActive(): bool {}     // Counted
-    public function isVerified(): bool {}   // Counted
-    public function process(): void {}      // Counted
-    public function validate(): void {}     // Counted
-    public function execute(): void {}      // Counted
+    public function getName(): string { return ''; }   // Counted (no pattern exclusion)
+    public function setName(string $n): void {}        // Counted
+    public function getEmail(): string { return ''; }  // Counted
+    public function setEmail(string $e): void {}       // Counted
+    public function getAge(): int { return 0; }        // Counted
+    public function setAge(int $a): void {}            // Counted
+    public function isActive(): bool { return true; }  // Counted
+    public function isVerified(): bool { return false; } // Counted
+    public function process(): void {}                 // Counted
+    public function validate(): void {}                // Counted
+    public function execute(): void {}                 // Counted
 }
 // ✗ Error: Class "DataTransferObject" has 11 public methods, which exceeds the maximum of 10. Consider refactoring.
 ```
@@ -161,11 +161,11 @@ parameters:
 
 class Builder
 {
-    public function withTimeout(int $t): self {}    // ✓ Ignored
-    public function withRetries(int $r): self {}    // ✓ Ignored
-    public function hasItems(): bool {}             // ✓ Ignored
-    public function canProcess(): bool {}           // ✓ Ignored
-    public function build(): object {}              // Counted
+    public function withTimeout(int $t): self { return $this; }   // ✓ Ignored
+    public function withRetries(int $r): self { return $this; }  // ✓ Ignored
+    public function hasItems(): bool { return true; }            // ✓ Ignored
+    public function canProcess(): bool { return true; }          // ✓ Ignored
+    public function build(): object { return new \stdClass(); }  // Counted
 }
 ```
 
