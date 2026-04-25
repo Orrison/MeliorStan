@@ -19,6 +19,7 @@ class TooManyFieldsRuleTest extends RuleTestCase
                 __DIR__ . '/Fixture/ClassAtLimit.php',
                 __DIR__ . '/Fixture/ClassWithFewFields.php',
                 __DIR__ . '/Fixture/ClassWithStaticFields.php',
+                __DIR__ . '/Fixture/ClassWithPromotedProperties.php',
                 __DIR__ . '/Fixture/TraitExceedingLimit.php',
                 __DIR__ . '/Fixture/TraitAtLimit.php',
                 __DIR__ . '/Fixture/InterfaceWithConstants.php',
@@ -26,6 +27,10 @@ class TooManyFieldsRuleTest extends RuleTestCase
             [
                 [
                     sprintf(TooManyFieldsRule::ERROR_MESSAGE_TEMPLATE, 'Class', 'ClassExceedingLimit', 16, 15),
+                    6,
+                ],
+                [
+                    sprintf(TooManyFieldsRule::ERROR_MESSAGE_TEMPLATE, 'Class', 'ClassWithPromotedProperties', 16, 15),
                     6,
                 ],
                 [
