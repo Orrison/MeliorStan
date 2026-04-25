@@ -1,0 +1,12 @@
+includes:
+    - ../../../../config/extension.neon
+
+rules:
+    - Orrison\MeliorStan\Rules\MissingImport\MissingImportRule
+
+parameters:
+    meliorstan:
+        missing_import:
+            ignore_global: false
+            exceptions:
+                - App\Services\SomeService
