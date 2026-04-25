@@ -104,7 +104,7 @@ class Registry
     public static bool $booted = false;     // Counted
 
     public string $fieldOne = '';
-    // ... 13 more instance fields
+    // ... 12 more instance fields
 }
 // ✗ Error: Class "Registry" has 16 fields, which exceeds the maximum of 15. Consider refactoring.
 ```
