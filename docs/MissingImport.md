@@ -1,6 +1,6 @@
 # MissingImport
 
-Detects classes, interfaces, enums, and traits referenced by their fully qualified name (with a leading backslash) instead of being imported with a `use` statement at the top of the file.
+Detects classes, interfaces, enums, and traits referenced by their fully qualified name (with a leading backslash) instead of being imported with a `use` statement.
 
 Referencing types by their fully qualified name obscures a file's dependencies. Using `use` statements makes every dependency immediately visible at a glance and keeps call-site code shorter and more readable.
 
@@ -60,24 +60,30 @@ class UserController
         return new User();
     }
 
-    // ✗ Error: Class "\App\Services\UserService" should not be referenced by its fully qualified name.
+    // ✗ Error: Type "\App\Traits\Auditable" should not be referenced by its fully qualified name.
+    use \App\Traits\Auditable;
+
+    // ✗ Error: Type "\App\Models\UserStatus" should not be referenced by its fully qualified name.
+    public const \App\Models\UserStatus DEFAULT_STATUS = \App\Models\UserStatus::Active;
+
+    // ✗ Error: Type "\App\Services\UserService" should not be referenced by its fully qualified name.
     public function store(\App\Services\UserService $service): void {}
 
-    // ✗ Error: Class "\App\Services\UserService" should not be referenced by its fully qualified name.
+    // ✗ Error: Type "\App\Services\UserService" should not be referenced by its fully qualified name.
     public function index(): void
     {
         $service = new \App\Services\UserService();
         \App\Services\UserService::boot();
     }
 
-    // ✗ Error: Class "\stdClass" should not be referenced by its fully qualified name.
+    // ✗ Error: Type "\stdClass" should not be referenced by its fully qualified name.
     public function raw(): void
     {
         $obj = new \stdClass();
     }
 }
 
-// ✗ Error: Class "\App\Contracts\HasLabel" should not be referenced by its fully qualified name.
+// ✗ Error: Type "\App\Contracts\HasLabel" should not be referenced by its fully qualified name.
 enum Status: string implements \App\Contracts\HasLabel
 {
     case Active = 'active';
@@ -143,9 +149,10 @@ class UserController
 
 ## Important Notes
 
-The rule inspects fully qualified names in all code contexts, including:
+The rule inspects fully qualified names in all common type-reference positions, including:
 
 - Property type declarations (`private \Foo\Bar $prop`)
+- Typed class constants — PHP 8.3+ (`public const \Foo\Bar NAME = ...`)
 - Parameter type declarations (`function foo(\Foo\Bar $x)`)
 - Return type declarations (`function foo(): \Foo\Bar`)
 - Union, intersection, and nullable types (`\Foo\Bar|\Baz\Qux`, `?\Foo\Bar`)
@@ -153,6 +160,7 @@ The rule inspects fully qualified names in all code contexts, including:
 - Static calls and property access (`\Foo\Bar::method()`, `\Foo\Bar::$prop`, `\Foo\Bar::CONST`)
 - `instanceof` checks (`$x instanceof \Foo\Bar`)
 - `catch` blocks (`catch (\Foo\Bar $e)`)
+- Trait use inside a class or trait body (`use \Foo\Bar`)
 - Class `extends` and `implements` (`class Foo extends \Bar implements \Baz`)
 - Interface `extends` (`interface Foo extends \Bar`)
 - Enum `implements` (`enum Foo implements \Bar`)

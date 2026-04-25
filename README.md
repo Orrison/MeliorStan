@@ -95,7 +95,7 @@ parameters:
 | **[BooleanArgumentFlag](docs/BooleanArgumentFlag.md)** | Detects boolean parameters in functions and methods that may indicate multiple responsibilities | Methods, Functions, Closures |
 | **[LongVariable](docs/LongVariable.md)** | Limits variable name length | Variables |
 | **[MissingClosureParameterTypehint](docs/MissingClosureParameterTypehint.md)** | Requires type hints on closure parameters | Closures |
-| **[MissingImport](docs/MissingImport.md)** | Detects classes referenced by fully qualified name instead of being imported with a `use` statement | All code contexts |
+| **[MissingImport](docs/MissingImport.md)** | Detects types referenced by fully qualified name instead of being imported with a `use` statement | Type-reference positions |
 | **[ShortMethodName](docs/ShortMethodName.md)** | Enforces minimum method name length | Methods |
 | **[ShortVariable](docs/ShortVariable.md)** | Enforces minimum variable name length | Variables |
 | **[ForbidPestPhpOnly](docs/ForbidPestPhpOnly.md)** | Prevents committed Pest tests from using the `only()` filter | Tests |
