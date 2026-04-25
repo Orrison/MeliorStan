@@ -1,0 +1,10 @@
+includes:
+    - ../../../../config/extension.neon
+
+rules:
+    - Orrison\MeliorStan\Rules\TooManyFields\TooManyFieldsRule
+
+parameters:
+    meliorstan:
+        too_many_fields:
+            max_fields: 5

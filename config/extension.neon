@@ -115,6 +115,10 @@ parametersSchema:
             ignore_pattern: string(),
             ignore_magic_methods: bool(),
         ]),
+        too_many_fields: structure([
+            max_fields: int(),
+            ignore_static_properties: bool(),
+        ]),
     ])
 
 # default parameters
@@ -210,6 +214,9 @@ parameters:
             max_methods: 10
             ignore_pattern: '^(get|set|is)'
             ignore_magic_methods: true
+        too_many_fields:
+            max_fields: 15
+            ignore_static_properties: true
 
 services:
     -
@@ -356,3 +363,8 @@ services:
             - %meliorstan.too_many_public_methods.max_methods%
             - %meliorstan.too_many_public_methods.ignore_pattern%
             - %meliorstan.too_many_public_methods.ignore_magic_methods%
+    -
+        factory: Orrison\MeliorStan\Rules\TooManyFields\Config
+        arguments:
+            - %meliorstan.too_many_fields.max_fields%
+            - %meliorstan.too_many_fields.ignore_static_properties%
