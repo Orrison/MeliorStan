@@ -1,0 +1,10 @@
+includes:
+    - ../../../../config/extension.neon
+
+rules:
+    - Orrison\MeliorStan\Rules\TooManyPublicMethods\TooManyPublicMethodsRule
+
+parameters:
+    meliorstan:
+        too_many_public_methods:
+            max_methods: 5

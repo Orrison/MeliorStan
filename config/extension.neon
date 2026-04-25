@@ -110,6 +110,11 @@ parametersSchema:
             ignore_global: bool(),
             exceptions: arrayOf(string()),
         ]),
+        too_many_public_methods: structure([
+            max_methods: int(),
+            ignore_pattern: string(),
+            ignore_magic_methods: bool(),
+        ]),
     ])
 
 # default parameters
@@ -201,6 +206,10 @@ parameters:
         missing_import:
             ignore_global: false
             exceptions: []
+        too_many_public_methods:
+            max_methods: 10
+            ignore_pattern: '^(get|set|is)'
+            ignore_magic_methods: true
 
 services:
     -
@@ -341,3 +350,9 @@ services:
         arguments:
             - %meliorstan.missing_import.ignore_global%
             - %meliorstan.missing_import.exceptions%
+    -
+        factory: Orrison\MeliorStan\Rules\TooManyPublicMethods\Config
+        arguments:
+            - %meliorstan.too_many_public_methods.max_methods%
+            - %meliorstan.too_many_public_methods.ignore_pattern%
+            - %meliorstan.too_many_public_methods.ignore_magic_methods%
