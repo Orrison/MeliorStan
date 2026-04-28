@@ -4,7 +4,6 @@ namespace Orrison\MeliorStan\Rules\ExcessiveMethodLength;
 
 use InvalidArgumentException;
 use PhpParser\Node;
-use PhpParser\Node\Expr\Closure;
 use PhpParser\Node\FunctionLike;
 use PhpParser\Node\Stmt\ClassMethod;
 use PhpParser\Node\Stmt\Function_;
@@ -18,11 +17,7 @@ use PHPStan\Rules\RuleErrorBuilder;
  */
 class ExcessiveMethodLengthRule implements Rule
 {
-    public const string ERROR_MESSAGE_TEMPLATE_METHOD = 'Method "%s" has %d lines, which exceeds the maximum of %d. Consider refactoring.';
-
-    public const string ERROR_MESSAGE_TEMPLATE_FUNCTION = 'Function "%s" has %d lines, which exceeds the maximum of %d. Consider refactoring.';
-
-    public const string ERROR_MESSAGE_TEMPLATE_CLOSURE = 'Closure has %d lines, which exceeds the maximum of %d. Consider refactoring.';
+    public const string ERROR_MESSAGE_TEMPLATE = '%s has %d lines, which exceeds the maximum of %d. Consider refactoring.';
 
     public function __construct(
         protected Config $config,
@@ -57,7 +52,9 @@ class ExcessiveMethodLengthRule implements Rule
         }
 
         return [
-            RuleErrorBuilder::message($this->buildErrorMessage($node, $name, $lineCount))
+            RuleErrorBuilder::message(
+                sprintf(self::ERROR_MESSAGE_TEMPLATE, $this->describeNode($node, $name), $lineCount, $this->config->getMaximum())
+            )
                 ->identifier('MeliorStan.excessiveMethodLength')
                 ->build(),
         ];
@@ -147,22 +144,16 @@ class ExcessiveMethodLengthRule implements Rule
         return true;
     }
 
-    protected function buildErrorMessage(FunctionLike $node, ?string $name, int $lineCount): string
+    protected function describeNode(FunctionLike $node, ?string $name): string
     {
-        $maximum = $this->config->getMaximum();
-
         if ($node instanceof ClassMethod) {
-            return sprintf(self::ERROR_MESSAGE_TEMPLATE_METHOD, $name, $lineCount, $maximum);
+            return sprintf('Method "%s"', $name);
         }
 
         if ($node instanceof Function_) {
-            return sprintf(self::ERROR_MESSAGE_TEMPLATE_FUNCTION, $name, $lineCount, $maximum);
+            return sprintf('Function "%s"', $name);
         }
 
-        if ($node instanceof Closure) {
-            return sprintf(self::ERROR_MESSAGE_TEMPLATE_CLOSURE, $lineCount, $maximum);
-        }
-
-        return sprintf(self::ERROR_MESSAGE_TEMPLATE_CLOSURE, $lineCount, $maximum);
+        return 'Closure';
     }
 }

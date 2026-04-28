@@ -19,7 +19,7 @@ class IgnorePatternTest extends RuleTestCase
             ],
             [
                 [
-                    sprintf(ExcessiveMethodLengthRule::ERROR_MESSAGE_TEMPLATE_METHOD, 'notIgnoredMethod', 13, 10),
+                    sprintf(ExcessiveMethodLengthRule::ERROR_MESSAGE_TEMPLATE, 'Method "notIgnoredMethod"', 13, 10),
                     35,
                 ],
             ]
