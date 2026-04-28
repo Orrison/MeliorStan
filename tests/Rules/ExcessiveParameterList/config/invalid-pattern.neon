@@ -1,0 +1,11 @@
+includes:
+    - ../../../../config/extension.neon
+
+rules:
+    - Orrison\MeliorStan\Rules\ExcessiveParameterList\ExcessiveParameterListRule
+
+parameters:
+    meliorstan:
+        excessive_parameter_list:
+            maximum: 3
+            ignore_pattern: '/invalid[regex'
