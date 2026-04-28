@@ -19,6 +19,11 @@ class ExcessiveMethodLengthRule implements Rule
 {
     public const string ERROR_MESSAGE_TEMPLATE = '%s has %d lines, which exceeds the maximum of %d. Consider refactoring.';
 
+    /**
+     * @var array<string, list<string>>
+     */
+    protected array $linesByFile = [];
+
     public function __construct(
         protected Config $config,
     ) {}
@@ -102,13 +107,11 @@ class ExcessiveMethodLengthRule implements Rule
             return $totalLines;
         }
 
-        $contents = @file_get_contents($filePath);
+        $lines = $this->getFileLines($filePath);
 
-        if ($contents === false) {
+        if ($lines === null) {
             return $totalLines;
         }
-
-        $lines = explode("\n", $contents);
 
         $count = 0;
 
@@ -123,6 +126,24 @@ class ExcessiveMethodLengthRule implements Rule
         }
 
         return $count;
+    }
+
+    /**
+     * @return list<string>|null
+     */
+    protected function getFileLines(string $filePath): ?array
+    {
+        if (array_key_exists($filePath, $this->linesByFile)) {
+            return $this->linesByFile[$filePath];
+        }
+
+        $contents = @file_get_contents($filePath);
+
+        if ($contents === false) {
+            return null;
+        }
+
+        return $this->linesByFile[$filePath] = explode("\n", $contents);
     }
 
     protected function isCountableLine(string $line): bool
