@@ -29,6 +29,37 @@ class DefaultOptionsTest extends RuleTestCase
         $this->analyse([__DIR__ . '/Fixture/LowComplexityClass.php'], []);
     }
 
+    public function testHighComplexityTraitTriggersError(): void
+    {
+        $this->analyse(
+            [__DIR__ . '/Fixture/HighComplexityTrait.php'],
+            [
+                [
+                    sprintf(ExcessiveClassComplexityRule::ERROR_MESSAGE_TEMPLATE, 'Trait "HighComplexityTrait"', 55, 50),
+                    5,
+                ],
+            ]
+        );
+    }
+
+    public function testHighComplexityEnumTriggersError(): void
+    {
+        $this->analyse(
+            [__DIR__ . '/Fixture/HighComplexityEnum.php'],
+            [
+                [
+                    sprintf(ExcessiveClassComplexityRule::ERROR_MESSAGE_TEMPLATE, 'Enum "HighComplexityEnum"', 55, 50),
+                    5,
+                ],
+            ]
+        );
+    }
+
+    public function testAnonymousClassIsSkipped(): void
+    {
+        $this->analyse([__DIR__ . '/Fixture/AnonymousClassHolder.php'], []);
+    }
+
     public static function getAdditionalConfigFiles(): array
     {
         return [__DIR__ . '/config/default.neon'];
