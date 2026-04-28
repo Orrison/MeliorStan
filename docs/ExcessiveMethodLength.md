@@ -94,7 +94,7 @@ class Service
     {
         // ... 35 lines ...
     }
-    // ✗ Error: Method "handle" has 35 lines, which exceeds the maximum of 30.
+    // ✗ Error: Method "handle" has 35 lines, which exceeds the maximum of 30. Consider refactoring.
 }
 ```
 
@@ -152,7 +152,7 @@ class CreateUsersTable extends Migration
     {
         // ... 120 lines ...
     }
-    // ✗ Error: Method "migrateData" has 120 lines, which exceeds the maximum of 100.
+    // ✗ Error: Method "migrateData" has 120 lines, which exceeds the maximum of 100. Consider refactoring.
 }
 ```
 
