@@ -72,14 +72,22 @@ class DefaultOptionsTest extends RuleTestCase
         );
     }
 
-    public function testAnonymousClassIsSkipped(): void
+    public function testAnonymousClassThatExceedsMaximumTriggersError(): void
     {
         $this->analyse(
+            [__DIR__ . '/Fixture/AnonymousClassHolder.php'],
             [
-                __DIR__ . '/Fixture/AnonymousClassHolder.php',
-            ],
-            []
+                [
+                    sprintf(ExcessiveClassLengthRule::ERROR_MESSAGE_TEMPLATE, 'Anonymous class', 13, 5),
+                    5,
+                ],
+            ]
         );
+    }
+
+    public function testSmallAnonymousClassNoError(): void
+    {
+        $this->analyse([__DIR__ . '/Fixture/SmallAnonymousClassHolder.php'], []);
     }
 
     public static function getAdditionalConfigFiles(): array
