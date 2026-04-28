@@ -2,29 +2,14 @@
 
 namespace Orrison\MeliorStan\Rules\CyclomaticComplexity;
 
+use Orrison\MeliorStan\Support\CyclomaticComplexityCalculator;
 use PhpParser\Node;
-use PhpParser\Node\Expr\BinaryOp\BooleanAnd;
-use PhpParser\Node\Expr\BinaryOp\BooleanOr;
-use PhpParser\Node\Expr\BinaryOp\Coalesce;
-use PhpParser\Node\Expr\BinaryOp\LogicalAnd;
-use PhpParser\Node\Expr\BinaryOp\LogicalOr;
-use PhpParser\Node\Expr\Ternary;
 use PhpParser\Node\Identifier;
-use PhpParser\Node\Stmt\Case_;
-use PhpParser\Node\Stmt\Catch_;
 use PhpParser\Node\Stmt\Class_;
 use PhpParser\Node\Stmt\ClassLike;
-use PhpParser\Node\Stmt\ClassMethod;
-use PhpParser\Node\Stmt\Do_;
-use PhpParser\Node\Stmt\ElseIf_;
 use PhpParser\Node\Stmt\Enum_;
-use PhpParser\Node\Stmt\For_;
-use PhpParser\Node\Stmt\Foreach_;
-use PhpParser\Node\Stmt\If_;
 use PhpParser\Node\Stmt\Interface_;
 use PhpParser\Node\Stmt\Trait_;
-use PhpParser\Node\Stmt\While_;
-use PhpParser\NodeFinder;
 use PHPStan\Analyser\Scope;
 use PHPStan\Rules\Rule;
 use PHPStan\Rules\RuleError;
@@ -41,6 +26,7 @@ class CyclomaticComplexityRule implements Rule
 
     public function __construct(
         protected Config $config,
+        protected CyclomaticComplexityCalculator $calculator,
     ) {}
 
     /**
@@ -72,7 +58,7 @@ class CyclomaticComplexityRule implements Rule
         $totalComplexity = 0;
 
         foreach ($methods as $method) {
-            $complexity = $this->calculateComplexity($method);
+            $complexity = $this->calculator->calculate($method);
             $totalComplexity += $complexity;
 
             if ($this->config->getShowMethodsComplexity() && $complexity > $this->config->getReportLevel()) {
@@ -111,41 +97,6 @@ class CyclomaticComplexityRule implements Rule
         }
 
         return $errors;
-    }
-
-    protected function calculateComplexity(ClassMethod $method): int
-    {
-        $complexity = 1; // Base complexity for method entry
-
-        $nodeFinder = new NodeFinder();
-
-        /** @var Node[] $nodes */
-        $nodes = $nodeFinder->find($method->stmts ?? [], function (Node $node): bool {
-            return $node instanceof If_
-                || $node instanceof ElseIf_
-                || $node instanceof While_
-                || $node instanceof Do_
-                || $node instanceof For_
-                || $node instanceof Foreach_
-                || $node instanceof Case_
-                || $node instanceof Catch_
-                || $node instanceof Ternary
-                || $node instanceof Coalesce
-                || $node instanceof BooleanAnd
-                || $node instanceof BooleanOr
-                || $node instanceof LogicalAnd
-                || $node instanceof LogicalOr;
-        });
-
-        foreach ($nodes as $node) {
-            // Skip default case in switch statements
-            if ($node instanceof Case_ && $node->cond === null) {
-                continue;
-            }
-            $complexity++;
-        }
-
-        return $complexity;
     }
 
     protected function getNodeTypeName(ClassLike $node): string

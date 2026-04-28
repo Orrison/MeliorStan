@@ -133,6 +133,10 @@ parametersSchema:
             maximum: int(),
             ignore_pattern: string(),
         ]),
+        excessive_class_complexity: structure([
+            maximum: int(),
+            ignore_pattern: string(),
+        ]),
     ])
 
 # default parameters
@@ -241,6 +245,9 @@ parameters:
             ignore_pattern: ''
         excessive_parameter_list:
             maximum: 10
+            ignore_pattern: ''
+        excessive_class_complexity:
+            maximum: 50
             ignore_pattern: ''
 
 services:
@@ -410,3 +417,9 @@ services:
         arguments:
             - %meliorstan.excessive_parameter_list.maximum%
             - %meliorstan.excessive_parameter_list.ignore_pattern%
+    - Orrison\MeliorStan\Support\CyclomaticComplexityCalculator
+    -
+        factory: Orrison\MeliorStan\Rules\ExcessiveClassComplexity\Config
+        arguments:
+            - %meliorstan.excessive_class_complexity.maximum%
+            - %meliorstan.excessive_class_complexity.ignore_pattern%
