@@ -125,6 +125,7 @@ parameters:
 | **[DepthOfInheritance](docs/DepthOfInheritance.md)** | Detects classes with excessively deep inheritance chains | Classes |
 | **[ExcessiveClassLength](docs/ExcessiveClassLength.md)** | Detects classes, interfaces, traits, and enums with excessive line counts | Classes, Interfaces, Traits, Enums |
 | **[ExcessiveMethodLength](docs/ExcessiveMethodLength.md)** | Detects methods, functions, and closures with excessive line counts | Methods, Functions, Closures |
+| **[ExcessiveClassComplexity](docs/ExcessiveClassComplexity.md)** | Detects classes with excessive total cyclomatic complexity (Weighted Method Count) | Classes, Interfaces, Traits, Enums |
 | **[ExcessiveParameterList](docs/ExcessiveParameterList.md)** | Detects functions, methods, closures, and arrow functions with too many parameters | Functions, Methods, Closures, Arrow Functions |
 | **[ExcessivePublicCount](docs/ExcessivePublicCount.md)** | Detects classes with an excessive public API surface (public methods + properties) | Classes, Interfaces, Traits, Enums |
 | **[CyclomaticComplexity](docs/CyclomaticComplexity.md)** | Detects methods with high cyclomatic complexity | Methods, Classes |
