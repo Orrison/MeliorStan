@@ -129,6 +129,10 @@ parametersSchema:
             ignore_whitespace: bool(),
             ignore_pattern: string(),
         ]),
+        excessive_parameter_list: structure([
+            maximum: int(),
+            ignore_pattern: string(),
+        ]),
     ])
 
 # default parameters
@@ -234,6 +238,9 @@ parameters:
         excessive_class_length:
             maximum: 1000
             ignore_whitespace: false
+            ignore_pattern: ''
+        excessive_parameter_list:
+            maximum: 10
             ignore_pattern: ''
 
 services:
@@ -398,3 +405,8 @@ services:
             - %meliorstan.excessive_class_length.maximum%
             - %meliorstan.excessive_class_length.ignore_whitespace%
             - %meliorstan.excessive_class_length.ignore_pattern%
+    -
+        factory: Orrison\MeliorStan\Rules\ExcessiveParameterList\Config
+        arguments:
+            - %meliorstan.excessive_parameter_list.maximum%
+            - %meliorstan.excessive_parameter_list.ignore_pattern%
