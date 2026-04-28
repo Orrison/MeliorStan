@@ -20,7 +20,7 @@ class DefaultOptionsTest extends RuleTestCase
             ],
             [
                 [
-                    sprintf(ExcessiveMethodLengthRule::ERROR_MESSAGE_TEMPLATE_METHOD, 'longMethod', 13, 10),
+                    sprintf(ExcessiveMethodLengthRule::ERROR_MESSAGE_TEMPLATE, 'Method "longMethod"', 13, 10),
                     13,
                 ],
             ]
@@ -35,7 +35,7 @@ class DefaultOptionsTest extends RuleTestCase
             ],
             [
                 [
-                    sprintf(ExcessiveMethodLengthRule::ERROR_MESSAGE_TEMPLATE_FUNCTION, 'emlLongFunction', 13, 10),
+                    sprintf(ExcessiveMethodLengthRule::ERROR_MESSAGE_TEMPLATE, 'Function "emlLongFunction"', 13, 10),
                     11,
                 ],
             ]
@@ -50,7 +50,7 @@ class DefaultOptionsTest extends RuleTestCase
             ],
             [
                 [
-                    sprintf(ExcessiveMethodLengthRule::ERROR_MESSAGE_TEMPLATE_CLOSURE, 12, 10),
+                    sprintf(ExcessiveMethodLengthRule::ERROR_MESSAGE_TEMPLATE, 'Closure', 12, 10),
                     10,
                 ],
             ]

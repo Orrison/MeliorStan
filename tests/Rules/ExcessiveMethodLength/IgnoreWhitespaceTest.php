@@ -19,7 +19,7 @@ class IgnoreWhitespaceTest extends RuleTestCase
             ],
             [
                 [
-                    sprintf(ExcessiveMethodLengthRule::ERROR_MESSAGE_TEMPLATE_METHOD, 'genuinelyLongMethod', 13, 10),
+                    sprintf(ExcessiveMethodLengthRule::ERROR_MESSAGE_TEMPLATE, 'Method "genuinelyLongMethod"', 13, 10),
                     25,
                 ],
             ]
