@@ -55,9 +55,22 @@ class DefaultOptionsTest extends RuleTestCase
         );
     }
 
-    public function testAnonymousClassIsSkipped(): void
+    public function testHighComplexityAnonymousClassTriggersError(): void
     {
-        $this->analyse([__DIR__ . '/Fixture/AnonymousClassHolder.php'], []);
+        $this->analyse(
+            [__DIR__ . '/Fixture/AnonymousClassHolder.php'],
+            [
+                [
+                    sprintf(ExcessiveClassComplexityRule::ERROR_MESSAGE_TEMPLATE, 'Anonymous class', 55, 50),
+                    5,
+                ],
+            ]
+        );
+    }
+
+    public function testLowComplexityAnonymousClassNoError(): void
+    {
+        $this->analyse([__DIR__ . '/Fixture/SimpleAnonymousClassHolder.php'], []);
     }
 
     public static function getAdditionalConfigFiles(): array

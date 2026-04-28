@@ -43,17 +43,15 @@ class ExcessiveClassLengthRule implements Rule
      */
     public function processNode(Node $node, Scope $scope): array
     {
-        if ($node instanceof Class_ && $node->isAnonymous()) {
+        $isAnonymous = $node instanceof Class_ && $node->isAnonymous();
+
+        if (! $isAnonymous && ! $node->name instanceof Identifier) {
             return [];
         }
 
-        if (! $node->name instanceof Identifier) {
-            return [];
-        }
+        $name = $node->name instanceof Identifier ? $node->name->toString() : '';
 
-        $name = $node->name->toString();
-
-        if ($this->shouldIgnoreByPattern($name)) {
+        if ($name !== '' && $this->shouldIgnoreByPattern($name)) {
             return [];
         }
 
@@ -165,6 +163,10 @@ class ExcessiveClassLengthRule implements Rule
 
     protected function describeNode(ClassLike $node): string
     {
+        if ($node instanceof Class_ && $node->isAnonymous()) {
+            return 'Anonymous class';
+        }
+
         $name = $node->name instanceof Identifier ? $node->name->toString() : '';
 
         if ($node instanceof Interface_) {
