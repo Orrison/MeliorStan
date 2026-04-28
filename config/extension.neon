@@ -119,6 +119,11 @@ parametersSchema:
             max_fields: int(),
             ignore_static_properties: bool(),
         ]),
+        excessive_method_length: structure([
+            maximum: int(),
+            ignore_whitespace: bool(),
+            ignore_pattern: string(),
+        ]),
     ])
 
 # default parameters
@@ -217,6 +222,10 @@ parameters:
         too_many_fields:
             max_fields: 15
             ignore_static_properties: true
+        excessive_method_length:
+            maximum: 100
+            ignore_whitespace: false
+            ignore_pattern: ''
 
 services:
     -
@@ -368,3 +377,9 @@ services:
         arguments:
             - %meliorstan.too_many_fields.max_fields%
             - %meliorstan.too_many_fields.ignore_static_properties%
+    -
+        factory: Orrison\MeliorStan\Rules\ExcessiveMethodLength\Config
+        arguments:
+            - %meliorstan.excessive_method_length.maximum%
+            - %meliorstan.excessive_method_length.ignore_whitespace%
+            - %meliorstan.excessive_method_length.ignore_pattern%

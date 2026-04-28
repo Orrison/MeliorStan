@@ -1,0 +1,12 @@
+includes:
+    - ../../../../config/extension.neon
+
+rules:
+    - Orrison\MeliorStan\Rules\ExcessiveMethodLength\ExcessiveMethodLengthRule
+
+parameters:
+    meliorstan:
+        excessive_method_length:
+            maximum: 10
+            ignore_whitespace: false
+            ignore_pattern: ''
