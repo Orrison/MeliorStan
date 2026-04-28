@@ -1,0 +1,12 @@
+includes:
+    - ../../../../config/extension.neon
+
+rules:
+    - Orrison\MeliorStan\Rules\ExcessiveClassLength\ExcessiveClassLengthRule
+
+parameters:
+    meliorstan:
+        excessive_class_length:
+            maximum: 5
+            ignore_whitespace: true
+            ignore_pattern: ''

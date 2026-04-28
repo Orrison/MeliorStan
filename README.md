@@ -123,6 +123,7 @@ parameters:
 | **[ForbidGotoStatements](docs/ForbidGotoStatements.md)** | Detects and reports usage of goto statements | Goto Statements |
 | **[CouplingBetweenObjects](docs/CouplingBetweenObjects.md)** | Detects classes with too many type dependencies | Classes, Interfaces, Traits, Enums |
 | **[DepthOfInheritance](docs/DepthOfInheritance.md)** | Detects classes with excessively deep inheritance chains | Classes |
+| **[ExcessiveClassLength](docs/ExcessiveClassLength.md)** | Detects classes, interfaces, traits, and enums with excessive line counts | Classes, Interfaces, Traits, Enums |
 | **[ExcessiveMethodLength](docs/ExcessiveMethodLength.md)** | Detects methods, functions, and closures with excessive line counts | Methods, Functions, Closures |
 | **[ExcessivePublicCount](docs/ExcessivePublicCount.md)** | Detects classes with an excessive public API surface (public methods + properties) | Classes, Interfaces, Traits, Enums |
 | **[CyclomaticComplexity](docs/CyclomaticComplexity.md)** | Detects methods with high cyclomatic complexity | Methods, Classes |
