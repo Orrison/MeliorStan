@@ -188,9 +188,10 @@ class NpathComplexityCalculator
         }
 
         if ($expr instanceof Ternary) {
+            $condPaths = $this->countConditionPaths($expr->cond);
             $thenPaths = $expr->if !== null ? $this->calculateExprPaths($expr->if) : 1;
 
-            return $thenPaths + $this->calculateExprPaths($expr->else);
+            return $condPaths + $thenPaths + $this->calculateExprPaths($expr->else);
         }
 
         if ($expr instanceof Coalesce) {
