@@ -1,0 +1,10 @@
+includes:
+    - ../../../../config/extension.neon
+
+rules:
+    - Orrison\MeliorStan\Rules\NpathComplexity\NpathComplexityRule
+
+parameters:
+    meliorstan:
+        npath_complexity:
+            maximum: 32

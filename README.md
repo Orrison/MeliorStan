@@ -129,6 +129,7 @@ parameters:
 | **[ExcessiveParameterList](docs/ExcessiveParameterList.md)** | Detects functions, methods, closures, and arrow functions with too many parameters | Functions, Methods, Closures, Arrow Functions |
 | **[ExcessivePublicCount](docs/ExcessivePublicCount.md)** | Detects classes with an excessive public API surface (public methods + properties) | Classes, Interfaces, Traits, Enums |
 | **[CyclomaticComplexity](docs/CyclomaticComplexity.md)** | Detects methods with high cyclomatic complexity | Methods, Classes |
+| **[NpathComplexity](docs/NpathComplexity.md)** | Detects methods and functions with high NPath complexity (number of acyclic execution paths) | Methods, Functions |
 | **[NumberOfChildren](docs/NumberOfChildren.md)** | Detects classes with too many direct child classes | Class Hierarchy |
 | **[StaticAccess](docs/StaticAccess.md)** | Detects static method calls and optionally static property access that create tight coupling | Static Access |
 | **[TooManyFields](docs/TooManyFields.md)** | Detects classes and traits with an excessive number of instance fields | Classes, Traits |
