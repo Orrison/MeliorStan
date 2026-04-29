@@ -139,6 +139,13 @@ class NpathComplexityCalculatorTest extends TestCase
         $this->assertSame(2, $this->calculator->calculate($method));
     }
 
+    public function testReturnWithTernaryWithAndConditionGivesNpathThree(): void
+    {
+        // condition has 1 && operator → condPaths=1; then=1, else=1 → 1+1+1=3
+        $method = $this->parseMethod('public function foo(int $a, int $b): string { return ($a > 0 && $b > 0) ? "yes" : "no"; }');
+        $this->assertSame(3, $this->calculator->calculate($method));
+    }
+
     public function testReturnWithNullCoalesceGivesNpathTwo(): void
     {
         $method = $this->parseMethod('public function foo(?int $a): int { return $a ?? 0; }');
