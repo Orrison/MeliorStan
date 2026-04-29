@@ -38,7 +38,13 @@ class NpathComplexityCalculator
         $npath = 1;
 
         foreach ($stmts as $stmt) {
-            $npath *= $this->calculateStmt($stmt);
+            $stmtNpath = $this->calculateStmt($stmt);
+
+            if ($stmtNpath > 1 && $npath > intdiv(PHP_INT_MAX, $stmtNpath)) {
+                return PHP_INT_MAX;
+            }
+
+            $npath *= $stmtNpath;
         }
 
         return max(1, $npath);
@@ -134,6 +140,16 @@ class NpathComplexityCalculator
 
         foreach ($tryCatch->catches as $catch) {
             $npath += $this->calculateStmtList($catch->stmts);
+        }
+
+        if ($tryCatch->finally !== null) {
+            $finallyNpath = $this->calculateStmtList($tryCatch->finally->stmts);
+
+            if ($finallyNpath > 1 && $npath > intdiv(PHP_INT_MAX, $finallyNpath)) {
+                return PHP_INT_MAX;
+            }
+
+            $npath *= $finallyNpath;
         }
 
         return max(1, $npath);
