@@ -208,6 +208,39 @@ class NpathComplexityCalculatorTest extends TestCase
         $this->assertSame(3, $this->calculator->calculate($nested));
     }
 
+    // ── try-finally ───────────────────────────────────────────────────────────
+
+    public function testTryFinallyWithNoBranchingDoesNotChangePaths(): void
+    {
+        // finally NPath = 1, so multiplying doesn't change the result
+        $method = $this->parseMethod('public function foo(): void { try { echo "ok"; } finally { echo "done"; } }');
+        $this->assertSame(1, $this->calculator->calculate($method));
+    }
+
+    public function testTryFinallyWithBranchingMultipliesNpath(): void
+    {
+        // try NPath = 1, finally NPath = 2 (the if) → 1 * 2 = 2
+        $method = $this->parseMethod('public function foo(int $b): void { try { echo "ok"; } finally { if ($b > 0) { echo "b"; } } }');
+        $this->assertSame(2, $this->calculator->calculate($method));
+    }
+
+    public function testTryCatchFinallyWithBranchingMultipliesAllPaths(): void
+    {
+        // try NPath = 1, catch NPath = 1 → additive = 2; finally NPath = 2 (the if) → 2 * 2 = 4
+        $method = $this->parseMethod('public function foo(int $b): void { try { echo "ok"; } catch (\Exception $e) { echo "err"; } finally { if ($b > 0) { echo "b"; } } }');
+        $this->assertSame(4, $this->calculator->calculate($method));
+    }
+
+    // ── overflow guard ────────────────────────────────────────────────────────
+
+    public function testCalculationCapsAtPhpIntMaxToPreventOverflow(): void
+    {
+        // 63 sequential ifs would produce 2^63 > PHP_INT_MAX; the guard returns PHP_INT_MAX instead
+        $ifs = implode(' ', array_fill(0, 63, 'if ($a > 0) { echo "x"; }'));
+        $method = $this->parseMethod("public function foo(int \$a): void { {$ifs} }");
+        $this->assertSame(PHP_INT_MAX, $this->calculator->calculate($method));
+    }
+
     // ── closure / arrow function atomicity ───────────────────────────────────
 
     public function testClosureInsideMethodIsTreatedAsAtomicNpath(): void

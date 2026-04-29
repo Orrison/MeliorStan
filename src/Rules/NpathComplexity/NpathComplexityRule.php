@@ -22,6 +22,8 @@ class NpathComplexityRule implements Rule
 {
     public const string ERROR_MESSAGE_TEMPLATE = '%s %s() has an NPath complexity of %d. The configured maximum is %d.';
 
+    public const string ERROR_MESSAGE_OVERFLOW = '%s %s() has an NPath complexity that exceeds the maximum representable value. The configured maximum is %d.';
+
     public function __construct(
         protected Config $config,
         protected NpathComplexityCalculator $calculator,
@@ -63,6 +65,16 @@ class NpathComplexityRule implements Rule
         }
 
         $type = $node instanceof ClassMethod ? 'Method' : 'Function';
+
+        if ($complexity === PHP_INT_MAX) {
+            return [
+                RuleErrorBuilder::message(
+                    sprintf(self::ERROR_MESSAGE_OVERFLOW, $type, $name, $this->config->getMaximum())
+                )
+                    ->identifier('MeliorStan.npathComplexity')
+                    ->build(),
+            ];
+        }
 
         return [
             RuleErrorBuilder::message(
