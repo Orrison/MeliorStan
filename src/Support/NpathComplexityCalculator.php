@@ -99,16 +99,25 @@ class NpathComplexityCalculator
 
     protected function calculateIf(If_ $if): int
     {
-        $npath = $this->countConditionPaths($if->cond) + $this->calculateStmtList($if->stmts);
+        $npath = $this->addSaturating(
+            $this->countConditionPaths($if->cond),
+            $this->calculateStmtList($if->stmts),
+        );
 
         foreach ($if->elseifs as $elseif) {
-            $npath += $this->countConditionPaths($elseif->cond) + $this->calculateStmtList($elseif->stmts);
+            $npath = $this->addSaturating(
+                $npath,
+                $this->addSaturating(
+                    $this->countConditionPaths($elseif->cond),
+                    $this->calculateStmtList($elseif->stmts),
+                ),
+            );
         }
 
         if ($if->else !== null) {
-            $npath += $this->calculateStmtList($if->else->stmts);
+            $npath = $this->addSaturating($npath, $this->calculateStmtList($if->else->stmts));
         } else {
-            $npath += 1;
+            $npath = $this->addSaturating($npath, 1);
         }
 
         return max(1, $npath);
@@ -124,11 +133,11 @@ class NpathComplexityCalculator
                 $hasDefault = true;
             }
 
-            $npath += max(1, $this->calculateStmtList($case->stmts));
+            $npath = $this->addSaturating($npath, max(1, $this->calculateStmtList($case->stmts)));
         }
 
         if (! $hasDefault) {
-            $npath += 1;
+            $npath = $this->addSaturating($npath, 1);
         }
 
         return max(1, $npath);
@@ -139,7 +148,7 @@ class NpathComplexityCalculator
         $npath = $this->calculateStmtList($tryCatch->stmts);
 
         foreach ($tryCatch->catches as $catch) {
-            $npath += $this->calculateStmtList($catch->stmts);
+            $npath = $this->addSaturating($npath, $this->calculateStmtList($catch->stmts));
         }
 
         if ($tryCatch->finally !== null) {
@@ -211,7 +220,7 @@ class NpathComplexityCalculator
                 $subPaths = $this->calculateExprPaths($subNode);
 
                 if ($subPaths > 1) {
-                    $total += $subPaths - 1;
+                    $total = $this->addSaturating($total, $subPaths - 1);
                 }
             } elseif (is_array($subNode)) {
                 foreach ($subNode as $item) {
@@ -219,13 +228,13 @@ class NpathComplexityCalculator
                         $subPaths = $this->calculateExprPaths($item);
 
                         if ($subPaths > 1) {
-                            $total += $subPaths - 1;
+                            $total = $this->addSaturating($total, $subPaths - 1);
                         }
                     } elseif ($item instanceof Node\Arg) {
                         $subPaths = $this->calculateExprPaths($item->value);
 
                         if ($subPaths > 1) {
-                            $total += $subPaths - 1;
+                            $total = $this->addSaturating($total, $subPaths - 1);
                         }
                     }
                 }
@@ -245,13 +254,22 @@ class NpathComplexityCalculator
                 $hasDefault = true;
             }
 
-            $total += $this->calculateExprPaths($arm->body);
+            $total = $this->addSaturating($total, $this->calculateExprPaths($arm->body));
         }
 
         if (! $hasDefault) {
-            $total += 1;
+            $total = $this->addSaturating($total, 1);
         }
 
         return max(1, $total);
+    }
+
+    protected function addSaturating(int $a, int $b): int
+    {
+        if ($b > PHP_INT_MAX - $a) {
+            return PHP_INT_MAX;
+        }
+
+        return $a + $b;
     }
 }
