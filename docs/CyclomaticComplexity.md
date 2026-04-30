@@ -189,3 +189,15 @@ class HighAverageComplexity
 - Ternary expressions (`?:`) count as a decision point
 - Class average is calculated as: total complexity of all methods / number of methods
 - Consider refactoring high-complexity methods by extracting smaller, focused methods
+
+## Related Rules
+
+This suite has three overlapping class-level complexity checks. They are intentionally complementary — each catches a failure mode the others miss. Use whichever signals you actually care about:
+
+| Rule | Class-level metric | Catches | Misses |
+|---|---|---|---|
+| `CyclomaticComplexity` (`show_classes_complexity`) | **Average** cyclomatic per method | Classes where every method is dense on average | One bad method drowned by trivial getters (the average dilutes) |
+| [`ExcessiveClassComplexity`](ExcessiveClassComplexity.md) | **Sum** of cyclomatic (Weighted Method Count) | God classes — many methods, or a few very complex ones, or both | Cannot tell breadth from depth |
+| [`CognitiveComplexity`](CognitiveComplexity.md) (`class_maximum`) | **Sum** of cognitive | Classes that are *hard to understand* — deep nesting, tangled control flow | Wide-but-simple classes (50 trivial getters score ~0) |
+
+The average in this rule (`show_classes_complexity`) is the weakest of the three signals because trivial methods dilute it. If you only want one class-level cyclomatic check, prefer `ExcessiveClassComplexity`. The average still has a niche — flagging classes where the *typical* method is dense rather than the *total* — which is why both exist (this rule mirrors PHPMD's `CyclomaticComplexity`, while `ExcessiveClassComplexity` mirrors PHPMD's `ExcessiveClassComplexity`).
