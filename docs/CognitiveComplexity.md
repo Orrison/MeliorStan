@@ -164,4 +164,18 @@ public function handle(Request $request, Closure $next): Response
 - **Ignored entirely** (cost: `0`, no nesting bump): null-coalescing operator (`??`), nullsafe (`?->`), null-coalescing assignment (`??=`), and `try`/`finally` block bodies (catches still cost their structural increment).
 - **Class total is a sum, not an average.** A class of 20 trivial getters scores ~0; a class with one extremely tangled method scores high. This makes the class threshold meaningful in a way cyclomatic averaging cannot.
 - The `ignore_pattern` matches against the method name, not the class name. Ignored methods are excluded from the class total.
-- Cognitive Complexity differs from `CyclomaticComplexity` (decision count) and `NpathComplexity` (path count). All three are complementary: cyclomatic measures testability, NPath measures coverage, cognitive measures understandability.
+
+## Related Rules
+
+This suite has three overlapping class-level complexity checks. They are intentionally complementary — each catches a failure mode the others miss. Use whichever signals you actually care about:
+
+| Rule | Class-level metric | Catches | Misses |
+|---|---|---|---|
+| `CognitiveComplexity` (`class_maximum`) | **Sum** of cognitive | Classes that are *hard to understand* — deep nesting, tangled control flow | Wide-but-simple classes (50 trivial getters score ~0) |
+| [`ExcessiveClassComplexity`](ExcessiveClassComplexity.md) | **Sum** of cyclomatic (Weighted Method Count) | God classes — many methods, or a few very complex ones, or both | Cannot tell breadth from depth |
+| [`CyclomaticComplexity`](CyclomaticComplexity.md) (`show_classes_complexity`) | **Average** cyclomatic per method | Classes where every method is dense on average | One bad method drowned by trivial getters (the average dilutes) |
+
+Cognitive vs cyclomatic at the per-method level is also worth noting:
+- **`CyclomaticComplexity`** (decision count) — measures *testability* (how many paths a test suite must exercise).
+- **[`NpathComplexity`](NpathComplexity.md)** (path product) — measures *coverage cost* (number of acyclic paths grows multiplicatively).
+- **`CognitiveComplexity`** (this rule) — measures *understandability* (how hard the code is for a human to follow), with a nesting penalty the others lack.
