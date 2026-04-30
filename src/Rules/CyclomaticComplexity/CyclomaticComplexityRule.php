@@ -51,6 +51,10 @@ class CyclomaticComplexityRule implements Rule
         }
 
         if ($node instanceof ClassLike) {
+            if (! $this->config->getShowMethodsComplexity() && ! $this->config->getShowClassesComplexity()) {
+                return [];
+            }
+
             return $this->processClassLike($node);
         }
 
