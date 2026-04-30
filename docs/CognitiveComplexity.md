@@ -161,7 +161,8 @@ public function handle(Request $request, Closure $next): Response
   - `goto` and multi-level `break N` / `continue N` (where N ≥ 2).
   - Direct recursion: a method calling itself (`$this->foo()`, `self::foo()`, `static::foo()`, or — for plain functions — `foo()`) adds **+1** (counted once per method, regardless of how many self-calls are made).
 - **Nesting-only** (cost: `0`, but nesting is incremented): `Closure` and `ArrowFunction`. Any control flow inside them is scored at `nesting + 1`.
-- **Ignored entirely** (cost: `0`, no nesting bump): null-coalescing operator (`??`), nullsafe (`?->`), null-coalescing assignment (`??=`), and `try`/`finally` block bodies (catches still cost their structural increment).
+- **Ignored entirely** (cost: `0`, no nesting bump): null-coalescing operator (`??`), nullsafe (`?->`), and null-coalescing assignment (`??=`).
+- **`try`/`finally`**: the `try` and `finally` keywords themselves add no direct increment and do not increase nesting, but control flow inside their bodies is still scored normally. `catch` blocks still cost their structural increment.
 - **Class total is a sum, not an average.** A class of 20 trivial getters scores ~0; a class with one extremely tangled method scores high. This makes the class threshold meaningful in a way cyclomatic averaging cannot.
 - The `ignore_pattern` matches against the method name, not the class name. Ignored methods are excluded from the class total.
 
