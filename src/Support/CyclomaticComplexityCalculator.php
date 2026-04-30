@@ -24,7 +24,7 @@ class CyclomaticComplexityCalculator
 {
     public function calculate(FunctionLike $node): int
     {
-        $complexity = 1; // Base complexity for method entry
+        $complexity = 1;
 
         $nodeFinder = new NodeFinder();
 
