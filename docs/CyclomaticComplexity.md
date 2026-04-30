@@ -17,17 +17,17 @@ This rule supports the following configuration options:
 ### `report_level`
 - **Type**: `int`
 - **Default**: `10`
-- **Description**: The cyclomatic complexity threshold. Methods with complexity exceeding this value will trigger an error.
+- **Description**: The cyclomatic complexity threshold. Methods and standalone functions with complexity exceeding this value will trigger an error.
 
 ### `show_classes_complexity`
 - **Type**: `bool`
 - **Default**: `true`
-- **Description**: When enabled, reports an error if the average complexity of all methods in a class exceeds the threshold.
+- **Description**: When enabled, reports an error if the average complexity of all methods in a class exceeds the threshold. (Standalone functions are unaffected by this option since they have no class to aggregate into.)
 
 ### `show_methods_complexity`
 - **Type**: `bool`
 - **Default**: `true`
-- **Description**: When enabled, reports an error for individual methods that exceed the complexity threshold.
+- **Description**: When enabled, reports an error for individual methods and standalone functions that exceed the complexity threshold.
 
 ## Usage
 
@@ -182,7 +182,7 @@ class HighAverageComplexity
 
 ## Important Notes
 
-- The rule applies to classes, interfaces, traits, and enums
+- The rule applies to classes, interfaces, traits, enums, and standalone functions. Standalone functions are reported individually (subject to `show_methods_complexity`) but never aggregated.
 - Each `case` in a switch statement adds 1 to complexity (except `default`)
 - Both short-circuit operators (`&&`, `||`) and textual operators (`and`, `or`) are counted
 - The null coalesce operator (`??`) counts as a decision point

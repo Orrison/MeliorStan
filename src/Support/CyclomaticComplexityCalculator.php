@@ -9,9 +9,9 @@ use PhpParser\Node\Expr\BinaryOp\Coalesce;
 use PhpParser\Node\Expr\BinaryOp\LogicalAnd;
 use PhpParser\Node\Expr\BinaryOp\LogicalOr;
 use PhpParser\Node\Expr\Ternary;
+use PhpParser\Node\FunctionLike;
 use PhpParser\Node\Stmt\Case_;
 use PhpParser\Node\Stmt\Catch_;
-use PhpParser\Node\Stmt\ClassMethod;
 use PhpParser\Node\Stmt\Do_;
 use PhpParser\Node\Stmt\ElseIf_;
 use PhpParser\Node\Stmt\For_;
@@ -22,14 +22,14 @@ use PhpParser\NodeFinder;
 
 class CyclomaticComplexityCalculator
 {
-    public function calculate(ClassMethod $method): int
+    public function calculate(FunctionLike $node): int
     {
         $complexity = 1; // Base complexity for method entry
 
         $nodeFinder = new NodeFinder();
 
         /** @var Node[] $nodes */
-        $nodes = $nodeFinder->find($method->stmts ?? [], function (Node $node): bool {
+        $nodes = $nodeFinder->find($node->getStmts() ?? [], function (Node $node): bool {
             return $node instanceof If_
                 || $node instanceof ElseIf_
                 || $node instanceof While_
