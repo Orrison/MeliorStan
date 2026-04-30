@@ -157,7 +157,7 @@ public function handle(Request $request, Closure $next): Response
 - **Structural increments** (cost: `1 + currentNesting`): `if`, ternary, `for`, `foreach`, `while`, `do-while`, `switch`, `match`, and `catch`. Entering one of these structures increments the nesting level for whatever lives inside.
 - **Hybrid increments** (cost: `1`, no nesting bump): `else` and `else if`.
 - **Fundamental increments** (cost: `1` flat):
-  - Each *run* of like binary boolean operators in a condition. `a && b && c` adds **+1** (one run); `a && b || c` adds **+2** (two runs); `a && b || c && d` adds **+3**.
+  - Each *run* of like binary boolean operators, wherever it appears (conditions, assignments, returns, etc.). `a && b && c` adds **+1** (one run); `a && b || c` adds **+2** (two runs); `a && b || c && d` adds **+3**.
   - `goto` and multi-level `break N` / `continue N` (where N ≥ 2).
   - Direct recursion: a method calling itself (`$this->foo()`, `self::foo()`, `static::foo()`, or — for plain functions — `foo()`) adds **+1** (counted once per method, regardless of how many self-calls are made).
 - **Nesting-only** (cost: `0`, but nesting is incremented): `Closure` and `ArrowFunction`. Any control flow inside them is scored at `nesting + 1`.

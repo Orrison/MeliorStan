@@ -338,7 +338,7 @@ class CognitiveComplexityCalculator
             return $node->num->value >= 2;
         }
 
-        return true;
+        return false;
     }
 
     protected function hasDirectRecursion(FunctionLike $node, string $name, bool $isMethod): bool
