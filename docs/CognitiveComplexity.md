@@ -154,11 +154,11 @@ public function handle(Request $request, Closure $next): Response
 
 - The rule applies to class methods and standalone functions. Closures and arrow functions are not analyzed as their own units (their bodies still contribute to the enclosing method/function score, with a +1 nesting penalty for the closure boundary).
 - Class methods are reported individually (against `method_maximum`) and aggregated for the per-class total (against `class_maximum`). Standalone functions are reported individually only — there is no class to aggregate into.
-- **Structural increments** (cost: `1 + currentNesting`): `if`, `else if`, ternary, `for`, `foreach`, `while`, `do-while`, `switch`, `match`, and `catch`. Entering one of these structures increments the nesting level for whatever lives inside.
-- **Hybrid increments** (cost: `1`, no nesting bump): `else`.
+- **Structural increments** (cost: `1 + currentNesting`): `if`, ternary, `for`, `foreach`, `while`, `do-while`, `switch`, `match`, and `catch`. Entering one of these structures increments the nesting level for whatever lives inside.
+- **Hybrid increments** (cost: `1`, no nesting bump): `else` and `else if`.
 - **Fundamental increments** (cost: `1` flat):
   - Each *run* of like binary boolean operators in a condition. `a && b && c` adds **+1** (one run); `a && b || c` adds **+2** (two runs); `a && b || c && d` adds **+3**.
-  - `goto`, labeled `break`/`continue`, and multi-level `break N` / `continue N` (where N ≥ 2).
+  - `goto` and multi-level `break N` / `continue N` (where N ≥ 2).
   - Direct recursion: a method calling itself (`$this->foo()`, `self::foo()`, `static::foo()`, or — for plain functions — `foo()`) adds **+1** (counted once per method, regardless of how many self-calls are made).
 - **Nesting-only** (cost: `0`, but nesting is incremented): `Closure` and `ArrowFunction`. Any control flow inside them is scored at `nesting + 1`.
 - **Ignored entirely** (cost: `0`, no nesting bump): null-coalescing operator (`??`), nullsafe (`?->`), null-coalescing assignment (`??=`), and `try`/`finally` block bodies (catches still cost their structural increment).
