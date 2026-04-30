@@ -1,0 +1,11 @@
+includes:
+    - ../../../../config/extension.neon
+
+rules:
+    - Orrison\MeliorStan\Rules\CognitiveComplexity\CognitiveComplexityRule
+
+parameters:
+    meliorstan:
+        cognitive_complexity:
+            method_maximum: 15
+            class_maximum: 50

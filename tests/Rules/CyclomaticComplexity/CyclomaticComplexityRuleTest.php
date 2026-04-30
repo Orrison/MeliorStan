@@ -20,6 +20,7 @@ class CyclomaticComplexityRuleTest extends RuleTestCase
                 __DIR__ . '/Fixture/VeryHighAverageComplexity.php',
                 __DIR__ . '/Fixture/HighComplexityTrait.php',
                 __DIR__ . '/Fixture/CatchAndLogicalOperators.php',
+                __DIR__ . '/Fixture/HighComplexityFunction.php',
             ],
             [
                 // HighComplexityClass::methodWithComplexityEleven (complexity 11)
@@ -60,6 +61,11 @@ class CyclomaticComplexityRuleTest extends RuleTestCase
                 // HighComplexityTrait class average (11.00)
                 [
                     sprintf(CyclomaticComplexityRule::ERROR_MESSAGE_TEMPLATE_CLASS, 'trait', 'HighComplexityTrait', 11.00, 10),
+                    6,
+                ],
+                // Standalone function processWithComplexityEleven (complexity 11)
+                [
+                    sprintf(CyclomaticComplexityRule::ERROR_MESSAGE_TEMPLATE_METHOD, 'function', 'processWithComplexityEleven', 11, 10),
                     6,
                 ],
             ]

@@ -141,6 +141,11 @@ parametersSchema:
             maximum: int(),
             ignore_pattern: string(),
         ]),
+        cognitive_complexity: structure([
+            method_maximum: int(),
+            class_maximum: int(),
+            ignore_pattern: string(),
+        ]),
     ])
 
 # default parameters
@@ -255,6 +260,10 @@ parameters:
             ignore_pattern: ''
         npath_complexity:
             maximum: 200
+            ignore_pattern: ''
+        cognitive_complexity:
+            method_maximum: 15
+            class_maximum: 50
             ignore_pattern: ''
 
 services:
@@ -426,6 +435,7 @@ services:
             - %meliorstan.excessive_parameter_list.ignore_pattern%
     - Orrison\MeliorStan\Support\CyclomaticComplexityCalculator
     - Orrison\MeliorStan\Support\NpathComplexityCalculator
+    - Orrison\MeliorStan\Support\CognitiveComplexityCalculator
     -
         factory: Orrison\MeliorStan\Rules\ExcessiveClassComplexity\Config
         arguments:
@@ -436,3 +446,9 @@ services:
         arguments:
             - %meliorstan.npath_complexity.maximum%
             - %meliorstan.npath_complexity.ignore_pattern%
+    -
+        factory: Orrison\MeliorStan\Rules\CognitiveComplexity\Config
+        arguments:
+            - %meliorstan.cognitive_complexity.method_maximum%
+            - %meliorstan.cognitive_complexity.class_maximum%
+            - %meliorstan.cognitive_complexity.ignore_pattern%
