@@ -61,7 +61,7 @@ class LongClassNameRule implements Rule
         return [];
     }
 
-    private function calculateEffectiveLength(string $className): int
+    protected function calculateEffectiveLength(string $className): int
     {
         $effectiveClassName = $className;
 
@@ -86,7 +86,7 @@ class LongClassNameRule implements Rule
         return strlen($effectiveClassName);
     }
 
-    private function getNodeTypeName(ClassLike $node): string
+    protected function getNodeTypeName(ClassLike $node): string
     {
         if ($node instanceof Node\Stmt\Class_) {
             return 'Class';

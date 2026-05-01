@@ -66,7 +66,7 @@ class ConstructorWithNameAsEnclosingClassRule implements Rule
         return $messages;
     }
 
-    private function getShortClassName(string $fullClassName): string
+    protected function getShortClassName(string $fullClassName): string
     {
         $parts = explode('\\', $fullClassName);
 

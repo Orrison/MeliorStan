@@ -70,7 +70,7 @@ class TooManyPublicMethodsRule implements Rule
     {
         $ignorePattern = $this->config->getIgnorePattern();
         $ignoreMagicMethods = $this->config->getIgnoreMagicMethods();
-        $regex = $ignorePattern === '' ? null : '/' . $ignorePattern . '/i';
+        $regex = $ignorePattern === '' ? null : '~' . $ignorePattern . '~i';
         $isInterface = $node instanceof Interface_;
         $count = 0;
 

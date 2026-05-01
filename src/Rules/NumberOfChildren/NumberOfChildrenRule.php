@@ -16,7 +16,7 @@ class NumberOfChildrenRule implements Rule
     public const string ERROR_MESSAGE_TEMPLATE = 'Class "%s" has %d direct children, exceeding the maximum of %d.';
 
     public function __construct(
-        private Config $config
+        protected Config $config
     ) {}
 
     public function getNodeType(): string

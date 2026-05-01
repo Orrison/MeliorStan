@@ -82,7 +82,7 @@ class ExcessiveClassComplexityRule implements Rule
             return false;
         }
 
-        $regex = '/' . $pattern . '/i';
+        $regex = '~' . $pattern . '~i';
 
         $result = @preg_match($regex, $name);
 

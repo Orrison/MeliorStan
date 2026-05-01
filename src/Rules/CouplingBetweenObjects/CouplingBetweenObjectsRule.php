@@ -39,7 +39,7 @@ class CouplingBetweenObjectsRule implements Rule
     public const string ERROR_MESSAGE_TEMPLATE = '%s "%s" has a coupling between objects value of %d, which exceeds the maximum of %d. Consider reducing dependencies.';
 
     /** @var array<string, true> */
-    private const array BUILTIN_TYPES = [
+    protected const array BUILTIN_TYPES = [
         'int' => true,
         'integer' => true,
         'float' => true,

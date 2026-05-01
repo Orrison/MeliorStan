@@ -77,7 +77,7 @@ class TooManyMethodsRule implements Rule
             return count($node->getMethods());
         }
 
-        $regex = '/' . $ignorePattern . '/i';
+        $regex = '~' . $ignorePattern . '~i';
         $count = 0;
 
         foreach ($node->getMethods() as $method) {

@@ -74,7 +74,7 @@ class ExcessivePublicCountRule implements Rule
     protected function countPublicMethods(ClassLike $node): int
     {
         $ignorePattern = $this->config->getIgnorePattern();
-        $regex = $ignorePattern === '' ? null : '/' . $ignorePattern . '/i';
+        $regex = $ignorePattern === '' ? null : '~' . $ignorePattern . '~i';
         $isInterface = $node instanceof Interface_;
         $count = 0;
 

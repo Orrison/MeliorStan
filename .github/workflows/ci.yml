@@ -44,7 +44,7 @@ jobs:
   test:
     strategy:
       matrix:
-        php-version: ["8.3", "8.4"]
+        php-version: ["8.3", "8.4", "8.5"]
 
     runs-on: ubuntu-22.04
 
@@ -71,7 +71,7 @@ jobs:
   static-analysis:
     strategy:
       matrix:
-        php-version: ["8.3", "8.4"]
+        php-version: ["8.3", "8.4", "8.5"]
 
     runs-on: ubuntu-22.04
 

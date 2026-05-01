@@ -14,7 +14,7 @@ use PhpParser\NodeVisitorAbstract;
 /**
  * Node visitor that marks Variable nodes as definitions if they are in definition contexts.
  */
-final class VariableDefinitionVisitor extends NodeVisitorAbstract
+class VariableDefinitionVisitor extends NodeVisitorAbstract
 {
     public const ATTRIBUTE_NAME = 'isVariableDefinition';
 
@@ -40,7 +40,7 @@ final class VariableDefinitionVisitor extends NodeVisitorAbstract
         return null;
     }
 
-    private function markDefinitionTargets(?Node $target): void
+    protected function markDefinitionTargets(?Node $target): void
     {
         if ($target === null) {
             return;

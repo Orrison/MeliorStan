@@ -20,7 +20,7 @@ class ForbidPestPhpOnlyRule implements Rule
 {
     public const string ERROR_MESSAGE = 'Pest\'s only() filter should not be used in committed tests.';
 
-    private const PEST_ENTRY_POINTS = [
+    protected const PEST_ENTRY_POINTS = [
         'test',
         'it',
     ];

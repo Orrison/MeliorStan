@@ -14,13 +14,13 @@ class Config
      * @param string[] $exceptions
      */
     public function __construct(
-        private int $maximum,
-        private array $subtractPrefixes,
-        private array $subtractSuffixes,
-        private bool $allowInForLoops,
-        private bool $allowInForeach,
-        private bool $allowInCatch,
-        private array $exceptions,
+        protected int $maximum,
+        protected array $subtractPrefixes,
+        protected array $subtractSuffixes,
+        protected bool $allowInForLoops,
+        protected bool $allowInForeach,
+        protected bool $allowInCatch,
+        protected array $exceptions,
     ) {}
 
     public function getMaximum(): int

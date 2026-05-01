@@ -24,6 +24,10 @@
             "email": "ullyott.kevin@gmail.com"
         }
     ],
+    "support": {
+        "issues": "https://github.com/Orrison/MeliorStan/issues",
+        "source": "https://github.com/Orrison/MeliorStan"
+    },
     "require": {
         "php": "^8.3",
         "phpstan/phpstan": "^2.1"
