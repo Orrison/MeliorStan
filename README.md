@@ -19,9 +19,8 @@
 ## Table of Contents
 
 - [Features](#-features)
-- [Quick Start](#-quick-start)
+- [Configuration and Usage](#-configuration-and-usage)
 - [Available Rules](#-available-rules)
-- [Configuration](#-configuration)
 - [License](#-license)
 - [AI Disclosure](#-ai-disclosure)
 - [Acknowledgments](#-acknowledgments)
@@ -35,17 +34,17 @@
 - **Extensive Documentation**: Detailed guides for each rule
 - **Well Tested**: Comprehensive test suite ensuring reliability
 
-## Quick Start
+## Configuration and Usage
 
-### Installation
+Install the package:
 
 ```bash
 composer require --dev orrison/meliorstan
 ```
 
-### Basic Usage
+MeliorStan does not auto-register any rules. Including `vendor/orrison/meliorstan/config/extension.neon` only loads the parameter schemas and config services that the rules need. There is no [phpstan/extension-installer](https://github.com/phpstan/extension-installer) integration, so every rule you want to run must be listed explicitly under `rules:` in your PHPStan config. This is intentional: each rule is opt-in so you can pick only the ones that fit your project.
 
-Add to your `phpstan.neon` configuration:
+A minimal `phpstan.neon` enabling and configuring two rules looks like this:
 
 ```neon
 includes:
@@ -54,13 +53,7 @@ includes:
 rules:
     - Orrison\MeliorStan\Rules\PascalCaseClassName\PascalCaseClassNameRule
     - Orrison\MeliorStan\Rules\CamelCaseMethodName\CamelCaseMethodNameRule
-```
 
-### Configuration
-
-Customize rule behavior in your `phpstan.neon`:
-
-```neon
 parameters:
     meliorstan:
         pascal_case_class_name:
@@ -69,6 +62,8 @@ parameters:
             allow_consecutive_uppercase: false
             allow_underscore_prefix: false
 ```
+
+Add or remove entries under `rules:` to control which checks run. Each rule's available options, defaults, and behavior are documented on its own page, linked from [Available Rules](#-available-rules) below.
 
 ## Available Rules
 
@@ -136,44 +131,6 @@ parameters:
 | **[TooManyFields](docs/TooManyFields.md)** | Detects classes and traits with an excessive number of instance fields | Classes, Traits |
 | **[TooManyMethods](docs/TooManyMethods.md)** | Detects classes with too many methods | Classes, Interfaces, Traits, Enums |
 | **[TooManyPublicMethods](docs/TooManyPublicMethods.md)** | Detects classes with too many public methods | Classes, Interfaces, Traits, Enums |
-
-## Configuration
-
-Each rule supports extensive configuration options. Refer to individual rule documentation for detailed configuration parameters.
-
-### Global Configuration Structure
-
-```neon
-parameters:
-    meliorstan:
-        rule_name:
-            option1: value1
-            option2: value2
-```
-
-### Example: Comprehensive Setup
-
-```neon
-includes:
-    - vendor/orrison/meliorstan/config/extension.neon
-
-rules:
-    - Orrison\MeliorStan\Rules\PascalCaseClassName\PascalCaseClassNameRule
-    - Orrison\MeliorStan\Rules\CamelCaseMethodName\CamelCaseMethodNameRule
-    - Orrison\MeliorStan\Rules\LongClassName\LongClassNameRule
-
-parameters:
-    meliorstan:
-        pascal_case_class_name:
-            allow_consecutive_uppercase: true
-        camel_case_method_name:
-            allow_consecutive_uppercase: false
-            allow_underscore_prefix: false
-        long_class_name:
-            maximum: 50
-            subtract_prefixes: ["Abstract", "Base"]
-            subtract_suffixes: ["Interface", "Trait"]
-```
 
 ## Contributing
 
