@@ -1,6 +1,6 @@
 # ExcessivePublicCount
 
-This rule reports classes, interfaces, traits, and enums that expose an excessively large public API surface — the sum of their public methods and public properties.
+This rule reports classes, interfaces, traits, and enums that expose an excessively large public API surface (the sum of their public methods and public properties).
 
 A large public surface often signals that a class has too many responsibilities and is difficult to test thoroughly. Keeping the count in check encourages smaller, more focused classes.
 
@@ -62,19 +62,19 @@ class DataTransferObject
     public function getEmail(): string { return ''; }
     // ... 48 more getters (50 total)
 }
-// ✓ Valid — all 50 methods match the default ignore_pattern '^(get|set|is)'
+// ✓ Valid (all 50 methods match the default ignore_pattern '^(get|set|is)'
 //          and are excluded from the count.
 
 class ModestClass
 {
     public int $id = 0;
-    private int $internalState = 0;          // private — not counted
-    protected int $protectedState = 0;       // protected — not counted
+    private int $internalState = 0;          // private, not counted
+    protected int $protectedState = 0;       // protected, not counted
 
     public function process(): void {}
-    private function helper(): void {}       // private — not counted
+    private function helper(): void {}       // private, not counted
 }
-// ✓ Valid — only 2 public members; private and protected members are excluded.
+// ✓ Valid: only 2 public members; private and protected members are excluded.
 ```
 
 ### Configuration Examples
@@ -130,10 +130,10 @@ class Service
 ## Important Notes
 
 - The rule applies to classes, interfaces, traits, and enums.
-- Interface methods are always counted — all interface methods are implicitly public.
+- Interface methods are always counted: all interface methods are implicitly public.
 - Enum **cases** are not properties and are not counted. Only public methods on enums contribute to the total.
 - Compound property declarations count each declared variable separately: `public $a, $b, $c` adds 3 to the property count.
 - Private and protected members are never counted.
-- The `ignore_pattern` is case-insensitive and pattern delimiters (`/`) are added automatically — only provide the pattern itself.
+- The `ignore_pattern` is case-insensitive and pattern delimiters (`/`) are added automatically, so only provide the pattern itself.
 - A malformed `ignore_pattern` regex throws an `InvalidArgumentException` naming the offending pattern, matching the behavior of `TooManyMethods`.
-- Methods and properties are counted only from the class-like's own declaration — inherited members are not included.
+- Methods and properties are counted only from the class-like's own declaration; inherited members are not included.

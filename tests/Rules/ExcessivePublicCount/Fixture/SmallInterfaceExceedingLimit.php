@@ -3,7 +3,7 @@
 namespace Orrison\MeliorStan\Tests\Rules\ExcessivePublicCount\Fixture;
 
 /**
- * 6 interface methods (implicitly public) — exceeds a custom maximum of 5.
+ * 6 interface methods (implicitly public), exceeds a custom maximum of 5.
  */
 interface SmallInterfaceExceedingLimit
 {

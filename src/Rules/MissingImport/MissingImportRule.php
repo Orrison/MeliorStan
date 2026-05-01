@@ -144,7 +144,7 @@ class MissingImportRule implements Rule
             return $this->buildErrors($fqcns);
         }
 
-        // catch (\Foo\Bar $e) — types is a Name[]
+        // catch (\Foo\Bar $e): types is a Name[]
         if ($node instanceof Catch_) {
             $fqcns = array_values(array_map(
                 fn (Name $type): string => $type->toString(),
@@ -208,7 +208,7 @@ class MissingImportRule implements Rule
         $originalName = $node->getAttribute('originalName');
 
         // If originalName is a plain Name (not itself FullyQualified), the
-        // reference was resolved from an import — not an explicit FQCN.
+        // reference was resolved from an import, not an explicit FQCN.
         return ! ($originalName instanceof Name && ! $originalName instanceof FullyQualified);
     }
 

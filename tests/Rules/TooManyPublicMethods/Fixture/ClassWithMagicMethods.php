@@ -2,7 +2,7 @@
 
 namespace Orrison\MeliorStan\Tests\Rules\TooManyPublicMethods\Fixture;
 
-// 9 plain public methods + __construct + __toString — magic methods excluded, so no error (9 <= 10)
+// 9 plain public methods + __construct + __toString, magic methods excluded, so no error (9 <= 10)
 class ClassWithMagicMethods
 {
     public function __construct() {}

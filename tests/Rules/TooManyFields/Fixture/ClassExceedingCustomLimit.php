@@ -2,7 +2,7 @@
 
 namespace Orrison\MeliorStan\Tests\Rules\TooManyFields\Fixture;
 
-// 6 instance fields — exceeds a custom max of 5
+// 6 instance fields, exceeds a custom max of 5
 class ClassExceedingCustomLimit
 {
     public string $fieldOne = '';

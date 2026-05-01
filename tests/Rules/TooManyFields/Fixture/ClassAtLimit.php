@@ -2,7 +2,7 @@
 
 namespace Orrison\MeliorStan\Tests\Rules\TooManyFields\Fixture;
 
-// Exactly 15 instance fields — should not trigger an error
+// Exactly 15 instance fields, should not trigger an error
 class ClassAtLimit
 {
     public string $fieldOne = '';

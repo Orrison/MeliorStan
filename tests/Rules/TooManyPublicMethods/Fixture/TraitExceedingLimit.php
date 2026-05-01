@@ -2,7 +2,7 @@
 
 namespace Orrison\MeliorStan\Tests\Rules\TooManyPublicMethods\Fixture;
 
-// 11 plain public methods — should trigger an error
+// 11 plain public methods, should trigger an error
 trait TraitExceedingLimit
 {
     public function methodOne(): void {}

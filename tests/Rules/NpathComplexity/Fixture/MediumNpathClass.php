@@ -4,7 +4,7 @@ namespace Orrison\MeliorStan\Tests\Rules\NpathComplexity\Fixture;
 
 class MediumNpathClass
 {
-    // NPath = 2^6 = 64 (six independent if statements — exceeds threshold of 32 but not 200)
+    // NPath = 2^6 = 64 (six independent if statements; exceeds threshold of 32 but not 200)
     public function moderateMethod(int $a, int $b, int $c, int $d, int $e, int $f): void
     {
         if ($a > 0) {

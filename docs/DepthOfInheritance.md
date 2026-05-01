@@ -52,10 +52,10 @@ parameters:
 class Animal {}
 class Mammal extends Animal {}
 class Canine extends Mammal {}
-class Dog extends Canine {}           // ✓ Valid — depth 3
-class Labrador extends Dog {}         // ✓ Valid — depth 4
-class ChocolateLab extends Labrador {} // ✓ Valid — depth 5
-class MiniChocolateLab extends ChocolateLab {} // ✓ Valid — depth 6
+class Dog extends Canine {}           // ✓ Valid (depth 3)
+class Labrador extends Dog {}         // ✓ Valid (depth 4)
+class ChocolateLab extends Labrador {} // ✓ Valid (depth 5)
+class MiniChocolateLab extends ChocolateLab {} // ✓ Valid (depth 6)
 class TinyMiniChocolateLab extends MiniChocolateLab {} // ✗ Error: depth 7 exceeds maximum of 6
 ```
 
@@ -76,7 +76,7 @@ parameters:
 class Base {}
 class Level1 extends Base {}
 class Level2 extends Level1 {}
-class Level3 extends Level2 {}  // ✓ Valid — depth 3
+class Level3 extends Level2 {}  // ✓ Valid (depth 3)
 class Level4 extends Level3 {}  // ✗ Error: depth 4 exceeds maximum of 3
 ```
 
@@ -95,8 +95,8 @@ parameters:
 <?php
 
 // Illuminate\Routing\Controller -> Illuminate\Foundation\Bus\... (framework depth ignored)
-class AppController extends \Illuminate\Routing\Controller {}    // ✓ Now valid — vendor ancestors excluded
-class UserController extends AppController {}                     // ✓ Now valid — depth 1 (only AppController counts)
+class AppController extends \Illuminate\Routing\Controller {}    // ✓ Now valid (vendor ancestors excluded)
+class UserController extends AppController {}                     // ✓ Now valid (depth 1, only AppController counts)
 ```
 
 #### Ignored Classes
@@ -114,7 +114,7 @@ parameters:
 <?php
 
 // App\Models\SpecialModel has deep inheritance but is ignored entirely
-class SpecialModel extends DeepFrameworkBase {} // ✓ Now valid — class is skipped
+class SpecialModel extends DeepFrameworkBase {} // ✓ Now valid (class is skipped)
 ```
 
 ## Important Notes
@@ -122,4 +122,4 @@ class SpecialModel extends DeepFrameworkBase {} // ✓ Now valid — class is sk
 - This rule only checks classes. Interfaces, traits, and enums are not analyzed.
 - Anonymous classes are skipped.
 - When using `excluded_namespaces`, the rule still walks past excluded ancestors to count any non-excluded ancestors further up the chain.
-- The `ignored_classes` option skips the check entirely for the specified class — it does not affect depth counting for other classes that may extend it.
+- The `ignored_classes` option skips the check entirely for the specified class; it does not affect depth counting for other classes that may extend it.

@@ -17,7 +17,7 @@ class CyclomaticComplexityCalculatorTest extends TestCase
         $this->calculator = new CyclomaticComplexityCalculator();
     }
 
-    // ── Core functionality ────────────────────────────────────────────────────
+    // Core functionality
 
     public function testEmptyMethodHasBaseComplexityOfOne(): void
     {
@@ -109,7 +109,7 @@ class CyclomaticComplexityCalculatorTest extends TestCase
         $this->assertSame(2, $this->calculator->calculate($method));
     }
 
-    // ── Switch / match edge cases ─────────────────────────────────────────────
+    // Switch / match edge cases
 
     public function testSwitchCaseAddsOnePerCase(): void
     {
@@ -131,12 +131,12 @@ class CyclomaticComplexityCalculatorTest extends TestCase
 
     public function testMatchExpressionArmsAreNotCounted(): void
     {
-        // match arms are not included in the complexity calculation — document actual behavior
+        // match arms are not included in the complexity calculation; document actual behavior
         $method = $this->parseMethod('public function foo(int $a): string { return match($a) { 1 => "one", 2 => "two", default => "other" }; }');
         $this->assertSame(1, $this->calculator->calculate($method));
     }
 
-    // ── Nested / combined ─────────────────────────────────────────────────────
+    // Nested / combined
 
     public function testNestedConditionsAreEachCounted(): void
     {
@@ -171,7 +171,7 @@ class CyclomaticComplexityCalculatorTest extends TestCase
         $this->assertSame(11, $this->calculator->calculate($method));
     }
 
-    // ── Helpers ───────────────────────────────────────────────────────────────
+    // Helpers
 
     protected function parseMethod(string $methodCode): ClassMethod
     {

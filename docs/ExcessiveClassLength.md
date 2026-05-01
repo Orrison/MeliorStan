@@ -1,6 +1,6 @@
 # ExcessiveClassLength
 
-This rule detects classes, interfaces, traits, and enums whose line count exceeds a configurable threshold. Excessively long class-like types are a common sign of the "God class" anti-pattern — a single type that does too much and should be split into smaller, focused units.
+This rule detects classes, interfaces, traits, and enums whose line count exceeds a configurable threshold. Excessively long class-like types are a common sign of the "God class" anti-pattern: a single type that does too much and should be split into smaller, focused units.
 
 ## Configuration
 
@@ -19,7 +19,7 @@ This rule supports the following configuration options:
 ### `ignore_pattern`
 - **Type**: `string`
 - **Default**: `''`
-- **Description**: A regular expression pattern (without delimiters) matched against the class, interface, trait, or enum name. When a name matches, the declaration is skipped. Useful for legitimately large types that cannot easily be split, such as generated code or legacy God classes being incrementally refactored. Set to an empty string to apply the rule to all names. Anonymous classes have no name and are not subject to pattern matching — they are always checked.
+- **Description**: A regular expression pattern (without delimiters) matched against the class, interface, trait, or enum name. When a name matches, the declaration is skipped. Useful for legitimately large types that cannot easily be split, such as generated code or legacy God classes being incrementally refactored. Set to an empty string to apply the rule to all names. Anonymous classes have no name and are not subject to pattern matching, so they are always checked.
 
 ## Usage
 
@@ -141,4 +141,4 @@ class OrderService
 - The rule applies to named classes, interfaces, traits, enums, and anonymous classes (`new class { ... }`). Anonymous classes are reported as `Anonymous class` since they have no name. They cannot be excluded via `ignore_pattern`.
 - Line counting uses `getStartLine()` and `getEndLine()` on the parser node, so the count includes the declaration line, the opening brace, the body, and the closing brace.
 - When `ignore_whitespace` is `true`, the rule reads the source file to classify each line. This is a small per-class cost and only applies when the option is enabled.
-- The `ignore_pattern` is case-insensitive and pattern delimiters (`/`) are added automatically — only provide the pattern itself.
+- The `ignore_pattern` is case-insensitive and pattern delimiters (`/`) are added automatically, so only provide the pattern itself.

@@ -2,7 +2,7 @@
 
 Detects private properties that are declared on a class but never accessed from within that class.
 
-> **Status: Already provided by PHPStan core — no MeliorStan rule needed.**
+> **Status: Already provided by PHPStan core. No MeliorStan rule needed.**
 >
 > PHPStan ships `PHPStan\Rules\DeadCode\UnusedPrivatePropertyRule` out of the box. Its implementation is more granular than PHPMD's `UnusedPrivateField`: it distinguishes between *fully unused*, *write-only*, and *read-only* properties. MeliorStan therefore intentionally does **not** reimplement this rule.
 
@@ -15,15 +15,15 @@ parameters:
     level: 4
 ```
 
-No additional MeliorStan configuration is needed — there is no `Orrison\MeliorStan\Rules\UnusedPrivateField\...` rule to register.
+No additional MeliorStan configuration is needed; there is no `Orrison\MeliorStan\Rules\UnusedPrivateField\...` rule to register.
 
 ## What it detects
 
 PHPStan reports three distinct error variants for private properties:
 
-1. **Fully unused** — the property is neither read nor written anywhere in the class.
-2. **Never read (write-only)** — the property is assigned but its value is never used. Often a sign of a forgotten getter or genuinely dead state.
-3. **Never written (read-only)** — the property is read but never assigned. Often indicates a missing constructor parameter or setter — and may be a real bug.
+1. **Fully unused**: the property is neither read nor written anywhere in the class.
+2. **Never read (write-only)**: the property is assigned but its value is never used. Often a sign of a forgotten getter or genuinely dead state.
+3. **Never written (read-only)**: the property is read but never assigned. Often indicates a missing constructor parameter or setter, and may be a real bug.
 
 PHPStan recognizes property access via `$this->property`, `self::$property`, `static::$property`, and `ClassName::$property`.
 
@@ -45,7 +45,7 @@ parameters:
 
 ### Programmatic extension
 
-For more advanced cases, implement a `PHPStan\Rules\Properties\ReadWritePropertiesExtension`. Most popular framework PHPStan extensions (Doctrine, Symfony, Laravel) already register one for you — installing the official extension package is usually all that's needed.
+For more advanced cases, implement a `PHPStan\Rules\Properties\ReadWritePropertiesExtension`. Most popular framework PHPStan extensions (Doctrine, Symfony, Laravel) already register one for you, so installing the official extension package is usually all that's needed.
 
 ### Interaction with `checkUninitializedProperties`
 

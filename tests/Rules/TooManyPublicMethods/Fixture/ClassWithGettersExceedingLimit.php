@@ -2,7 +2,7 @@
 
 namespace Orrison\MeliorStan\Tests\Rules\TooManyPublicMethods\Fixture;
 
-// 11 public methods including getters — exceeds limit when ignore_pattern is empty
+// 11 public methods including getters, exceeds limit when ignore_pattern is empty
 class ClassWithGettersExceedingLimit
 {
     public function getName(): string

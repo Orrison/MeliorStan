@@ -1,6 +1,6 @@
 # ExcessiveClassComplexity
 
-Detects classes with an excessively high **Weighted Method Count (WMC)** — the sum of cyclomatic complexities of all methods in the class.
+Detects classes with an excessively high **Weighted Method Count (WMC)**: the sum of cyclomatic complexities of all methods in the class.
 
 A high WMC indicates a class that is doing too much. Such classes are harder to understand, test, and maintain, and can amplify problems in subclasses due to the number of inherited decision paths.
 
@@ -151,18 +151,18 @@ class LegacyServiceFacade
 
 - The rule applies to classes, interfaces, traits, and enums
 - All methods are included in the WMC calculation, including abstract and magic methods
-- The threshold applies to the **total** complexity across all methods, not the average — see `CyclomaticComplexity` for average-based checking
+- The threshold applies to the **total** complexity across all methods, not the average. See `CyclomaticComplexity` for average-based checking.
 - Consider splitting high-WMC classes into focused, single-responsibility classes
 - The `ignore_pattern` is matched case-insensitively against the class name only, not the full namespace
 
 ## Related Rules
 
-This suite has three overlapping class-level complexity checks. They are intentionally complementary — each catches a failure mode the others miss. Use whichever signals you actually care about:
+This suite has three overlapping class-level complexity checks. They are intentionally complementary: each catches a failure mode the others miss. Use whichever signals you actually care about:
 
 | Rule | Class-level metric | Catches | Misses |
 |---|---|---|---|
-| `ExcessiveClassComplexity` | **Sum** of cyclomatic (Weighted Method Count) | God classes — many methods, or a few very complex ones, or both | Cannot tell breadth from depth |
+| `ExcessiveClassComplexity` | **Sum** of cyclomatic (Weighted Method Count) | God classes (many methods, or a few very complex ones, or both) | Cannot tell breadth from depth |
 | [`CyclomaticComplexity`](CyclomaticComplexity.md) (`show_classes_complexity`) | **Average** cyclomatic per method | Classes where every method is dense on average | One bad method drowned by trivial getters (the average dilutes) |
-| [`CognitiveComplexity`](CognitiveComplexity.md) (`class_maximum`) | **Sum** of cognitive | Classes that are *hard to understand* — deep nesting, tangled control flow | Wide-but-simple classes (50 trivial getters score ~0) |
+| [`CognitiveComplexity`](CognitiveComplexity.md) (`class_maximum`) | **Sum** of cognitive | Classes that are *hard to understand* (deep nesting, tangled control flow) | Wide-but-simple classes (50 trivial getters score ~0) |
 
-WMC is the most informative cyclomatic-based class signal — averages dilute under trivial methods. Pair it with `CognitiveComplexity` to also catch classes that are tangled rather than just large.
+WMC is the most informative cyclomatic-based class signal; averages dilute under trivial methods. Pair it with `CognitiveComplexity` to also catch classes that are tangled rather than just large.

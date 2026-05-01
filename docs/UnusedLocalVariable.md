@@ -60,14 +60,14 @@ class Example
         $a = 1;
         $b = 2;
 
-        return compact('a', 'b'); // ✓ Valid — compact() string args count as reads.
+        return compact('a', 'b'); // ✓ Valid (compact() string args count as reads).
     }
 
     public function interpolation(): string
     {
         $name = 'world';
 
-        return "hello {$name}"; // ✓ Valid — variables in interpolated strings count as reads.
+        return "hello {$name}"; // ✓ Valid (variables in interpolated strings count as reads).
     }
 
     public function destructuring(): int
@@ -132,8 +132,8 @@ parameters:
 
 function example(): int
 {
-    $unused = 1; // ✓ Now valid — name is in exceptions list.
-    $tmp = 2;    // ✓ Now valid — name is in exceptions list.
+    $unused = 1; // ✓ Now valid (name is in exceptions list).
+    $tmp = 2;    // ✓ Now valid (name is in exceptions list).
 
     return 0;
 }

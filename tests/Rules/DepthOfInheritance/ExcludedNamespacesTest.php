@@ -15,7 +15,7 @@ class ExcludedNamespacesTest extends RuleTestCase
     {
         // UserExtendsVendor extends FrameworkTop -> FrameworkMiddle -> FrameworkBase
         // Without exclusions: depth = 4 (FrameworkTop, FrameworkMiddle, FrameworkBase = 3 vendor + 0 user ancestors)
-        // Wait — UserExtendsVendor has no user ancestors, just vendor ones.
+        // Wait: UserExtendsVendor has no user ancestors, just vendor ones.
         // With vendor namespace excluded: depth = 0 (all ancestors are vendor)
         // UserExtendsVendorDeep extends UserExtendsVendor -> FrameworkTop -> FrameworkMiddle -> FrameworkBase
         // With vendor namespace excluded: depth = 1 (only UserExtendsVendor counts)

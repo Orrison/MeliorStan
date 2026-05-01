@@ -3,7 +3,7 @@
 namespace Orrison\MeliorStan\Tests\Rules\ExcessivePublicCount\Fixture;
 
 /**
- * 6 public methods in a trait — exceeds a custom maximum of 5.
+ * 6 public methods in a trait, exceeds a custom maximum of 5.
  */
 trait SmallTraitExceedingLimit
 {

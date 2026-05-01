@@ -2,7 +2,7 @@
 
 namespace Orrison\MeliorStan\Tests\Rules\TooManyPublicMethods\Fixture;
 
-// 11 methods (interfaces are implicitly all-public) — should trigger an error
+// 11 methods (interfaces are implicitly all-public), should trigger an error
 interface InterfaceExceedingLimit
 {
     public function methodOne(): void;

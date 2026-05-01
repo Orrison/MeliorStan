@@ -4,7 +4,7 @@ This rule detects methods and functions with high NPath complexity, which measur
 
 NPath complexity differs fundamentally from cyclomatic complexity: instead of adding one point per decision, it **multiplies** the path count across sequential decision structures. Two independent `if` statements produce an NPath of 4 (2 × 2), not 3 like cyclomatic complexity. This exponential growth makes NPath a sensitive measure of how many distinct paths a test suite must exercise to achieve full coverage.
 
-A method with NPath complexity of 200 has 200 distinct acyclic paths — requiring 200 test cases for full coverage.
+A method with NPath complexity of 200 has 200 distinct acyclic paths, requiring 200 test cases for full coverage.
 
 ## Configuration
 
@@ -125,7 +125,7 @@ parameters:
 ```
 
 ```php
-// ✓ Now valid — name matches ignore_pattern
+// ✓ Now valid (name matches ignore_pattern)
 public function handle(Request $request, Closure $next): Response
 {
     // Complex middleware logic with many checks

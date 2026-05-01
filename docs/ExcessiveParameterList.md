@@ -163,5 +163,5 @@ class UserFactory extends Factory
 
 - The rule applies to class methods (including `__construct` and abstract methods), standalone functions, closures (`function () { ... }`), and arrow functions (`fn () => ...`).
 - Interface method signatures are also checked, as the parameter list is part of the contract's design.
-- The `ignore_pattern` is case-insensitive and pattern delimiters (`/`) are added automatically — only provide the pattern itself.
+- The `ignore_pattern` is case-insensitive and pattern delimiters (`/`) are added automatically, so only provide the pattern itself.
 - Closures and arrow functions have no name and are never affected by `ignore_pattern`.

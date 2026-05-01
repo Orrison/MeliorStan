@@ -159,7 +159,7 @@ class CreateUsersTable extends Migration
 ## Important Notes
 
 - The rule applies to class methods, standalone functions, and closures (`function () { ... }`). Arrow functions (`fn () => ...`) are excluded by design because they are syntactically a single expression.
-- Methods without a body (abstract method declarations and interface method signatures) are skipped — the rule is concerned with implementation length, not signatures.
-- The `ignore_pattern` is case-insensitive and pattern delimiters (`/`) are added automatically — only provide the pattern itself.
+- Methods without a body (abstract method declarations and interface method signatures) are skipped; the rule is concerned with implementation length, not signatures.
+- The `ignore_pattern` is case-insensitive and pattern delimiters (`/`) are added automatically, so only provide the pattern itself.
 - Line counting uses `getStartLine()` and `getEndLine()` on the parser node, so the count includes the signature line, the opening brace, the body, and the closing brace.
 - When `ignore_whitespace` is `true`, the rule reads the source file once per candidate node to classify each line. This is a small per-method cost and only applies when the option is enabled.

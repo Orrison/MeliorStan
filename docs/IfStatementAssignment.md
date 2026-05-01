@@ -2,7 +2,7 @@
 
 Detects assignments inside `if` and `elseif` conditions.
 
-Assignments in if conditions are a code smell. They can easily mask logic errors — particularly typos where `=` was written instead of `==` or `===`. Additionally, when the assigned value is falsy (e.g., `0`, `null`, `false`, or an empty string), the condition will silently always evaluate to false, leading to bugs that can be difficult to spot. All assignment forms are flagged: plain assignment (`=`), reference assignment (`=&`), and compound assignments (`+=`, `??=`, `.=`, etc.).
+Assignments in if conditions are a code smell. They can easily mask logic errors, particularly typos where `=` was written instead of `==` or `===`. Additionally, when the assigned value is falsy (e.g., `0`, `null`, `false`, or an empty string), the condition will silently always evaluate to false, leading to bugs that can be difficult to spot. All assignment forms are flagged: plain assignment (`=`), reference assignment (`=&`), and compound assignments (`+=`, `??=`, `.=`, etc.).
 
 ## Configuration
 
