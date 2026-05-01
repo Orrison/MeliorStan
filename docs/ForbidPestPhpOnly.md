@@ -2,7 +2,7 @@
 
 Detects and reports usage of Pest's `only()` filter in test suites.
 
-Pest's `only()` filter is a powerful local debugging aid that focuses a run on a single test, but it should never be committed to source control. Leaving `->only()` in the codebase causes large parts of the test suite to be skipped in CI, hiding regressions until much later. This rule keeps committed test code safe by flagging any `->only()` chains inside test files.
+Pest's `only()` filter is useful for focusing a local run on a single test, but it should never be committed to source control. Leaving `->only()` in the codebase causes large parts of the test suite to be skipped in CI, hiding regressions until much later. This rule keeps committed test code safe by flagging any `->only()` chains inside test files.
 
 ## Configuration
 

@@ -38,7 +38,7 @@ class EmptyCatchBlockRule implements Rule
     /**
      * @param Stmt[] $stmts
      */
-    private function isEmpty(array $stmts): bool
+    protected function isEmpty(array $stmts): bool
     {
         if (count($stmts) === 0) {
             return true;

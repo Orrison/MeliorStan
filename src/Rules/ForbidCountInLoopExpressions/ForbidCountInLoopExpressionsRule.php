@@ -42,7 +42,7 @@ class ForbidCountInLoopExpressionsRule implements Rule
     /**
      * @return list<IdentifierRuleError>
      */
-    private function checkLoopConditions(Stmt $loop): array
+    protected function checkLoopConditions(Stmt $loop): array
     {
         $conditions = $this->getConditionExpressions($loop);
         $errors = [];
@@ -67,7 +67,7 @@ class ForbidCountInLoopExpressionsRule implements Rule
     /**
      * @return Expr[]
      */
-    private function getConditionExpressions(Stmt $loop): array
+    protected function getConditionExpressions(Stmt $loop): array
     {
         if ($loop instanceof For_) {
             return $loop->cond;
@@ -84,7 +84,7 @@ class ForbidCountInLoopExpressionsRule implements Rule
         return [];
     }
 
-    private function findFirstCountCall(Expr $expr): ?FuncCall
+    protected function findFirstCountCall(Expr $expr): ?FuncCall
     {
         if ($expr instanceof FuncCall && $this->isCountOrSizeof($expr->name)) {
             return $expr;
@@ -118,7 +118,7 @@ class ForbidCountInLoopExpressionsRule implements Rule
     /**
      * @param Name|Expr $name
      */
-    private function isCountOrSizeof($name): bool
+    protected function isCountOrSizeof($name): bool
     {
         if (! $name instanceof Name) {
             return false;

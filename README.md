@@ -28,7 +28,7 @@
 
 ## Features
 
-- **Comprehensive Code Analysis**: Detect code smells and potential issues
+- **Code Analysis**: Detect code smells and potential issues
 - **Naming Convention Enforcement**: Ensure consistent naming across your codebase
 - **Highly Configurable**: Customize rules to match your project's standards
 - **Modern PHP Support**: Built for PHP 8.3+ with PHPStan 2.1+
@@ -84,7 +84,7 @@ parameters:
 | **[ConstantNamingConventions](docs/ConstantNamingConventions.md)** | Enforces UPPERCASE for constants | Constants |
 | **[ConstructorWithNameAsEnclosingClass](docs/ConstructorWithNameAsEnclosingClass.md)** | Prevents methods with same name as their class | Methods |
 | **[LongClassName](docs/LongClassName.md)** | Limits class/interface/trait/enum name length | Classes, Interfaces, Traits, Enums |
-| **[PascalCase Class Name](docs/PascalCaseClassName.md)** | Enforces PascalCase for class names | Classes |
+| **[PascalCaseClassName](docs/PascalCaseClassName.md)** | Enforces PascalCase for class names | Classes |
 | **[ShortClassName](docs/ShortClassName.md)** | Enforces minimum class/interface/trait/enum name length | Classes, Interfaces, Traits, Enums |
 | **[TraitConstantNamingConventions](docs/TraitConstantNamingConventions.md)** | Enforces UPPERCASE for trait constants | Trait Constants |
 
@@ -190,7 +190,7 @@ AI assistants (Claude and similar tools) are used variably in the development an
 ## Acknowledgments
 
 - [**PHPStan**](https://phpstan.org/): the foundation of modern PHP static analysis that MeliorStan builds on.
-- [**PHPMD - PHP Mess Detector**](https://phpmd.org/): the original inspiration for many of the code quality rules. MeliorStan is not a direct 1:1 port; overlapping rules have diverged in behavior and configuration. See [MeliorStan and PHPMD](docs/PHPMD.md) for more information.
+- [**PHPMD - PHP Mess Detector**](https://phpmd.org/): the original inspiration for many of the code quality rules. MeliorStan is not a direct 1:1 port; overlapping rules have diverged in behavior and configuration. See [MeliorStan and PHPMD](docs/reference/PHPMD.md) for more information.
 
 ---
 

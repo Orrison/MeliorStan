@@ -69,7 +69,7 @@ class ShortClassNameRule implements Rule
         ];
     }
 
-    private function getNodeTypeName(ClassLike $node): string
+    protected function getNodeTypeName(ClassLike $node): string
     {
         if ($node instanceof Class_) {
             return 'Class';
