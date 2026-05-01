@@ -1,8 +1,7 @@
 # MeliorStan - AI Coding Instructions
 
 ## Project Overview
-This is a PHPStan extension that provides different custom PHPstan rules with configurable options. Each rule has its own namespace under `src/Rules/` and follows a consistent architecture pattern.
-Though many of the rules are focused on providing similar functionality to PHP Mess Detector. (https://phpmd.org/) There will also be some rules that are unique to this extension.
+This is a PHPStan extension that provides custom PHPStan rules with configurable options. Each rule has its own namespace under `src/Rules/` and follows a consistent architecture pattern.
 
 ## Architecture Pattern
 Each rule follows a 3-component structure:

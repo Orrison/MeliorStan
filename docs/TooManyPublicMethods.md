@@ -2,8 +2,6 @@
 
 This rule checks if a class, interface, trait, or enum has too many public methods, which may indicate the class has an overly broad public API and should be refactored into smaller, more focused components.
 
-Based on the [PHPMD TooManyPublicMethods](https://phpmd.org/rules/codesize.html#toomanypublicmethods) rule.
-
 ## Configuration
 
 This rule supports the following configuration options:

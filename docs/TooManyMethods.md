@@ -2,8 +2,6 @@
 
 This rule checks if a class, interface, trait, or enum has too many methods, which may indicate the class is doing too much and should be refactored.
 
-Based on the [PHPMD TooManyMethods](https://phpmd.org/rules/codesize.html#toomanymethods) rule.
-
 ## Configuration
 
 This rule supports the following configuration options:

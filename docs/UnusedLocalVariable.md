@@ -2,7 +2,7 @@
 
 Detects local variables that are assigned inside a function, method, or closure but never read.
 
-This rule fills a gap in PHPStan's built-in analysis: PHPStan's dead-code detection focuses on class-level constructs (unused private methods, unused properties, etc.) and does not flag unused local variables in function bodies. This rule mirrors the behavior of PHPMD's `UnusedLocalVariable` rule so you can keep code free of dead local assignments.
+This rule fills a gap in PHPStan's built-in analysis: PHPStan's dead-code detection focuses on class-level constructs (unused private methods, unused properties, etc.) and does not flag unused local variables in function bodies. This rule keeps code free of dead local assignments.
 
 The rule analyzes each function-like (named functions, methods, closures, and arrow functions) in isolation. Variables assigned in one scope are not compared against reads in another scope.
 

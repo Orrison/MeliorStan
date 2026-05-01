@@ -2,7 +2,7 @@
 
 Detects formal parameters declared on functions, methods, and closures that are never read inside the body.
 
-This rule mirrors PHPMD's `UnusedFormalParameter` rule. PHPStan's built-in dead-code detection covers unused private methods and properties but does not flag unused parameters, so this rule fills that gap. The rule analyzes each function-like (named functions, methods, closures, arrow functions) in isolation.
+PHPStan's built-in dead-code detection covers unused private methods and properties but does not flag unused parameters, so this rule fills that gap. The rule analyzes each function-like (named functions, methods, closures, arrow functions) in isolation.
 
 ## Configuration
 
