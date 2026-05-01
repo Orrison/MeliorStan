@@ -4,7 +4,7 @@ namespace Orrison\MeliorStan\Tests\Rules\ExcessivePublicCount\Fixture;
 
 /**
  * 20 public methods (non-ignored names) + 25 public properties = 45 public members.
- * Exactly at the default maximum of 45 — should not trigger an error.
+ * Exactly at the default maximum of 45, should not trigger an error.
  */
 class ClassAtLimit
 {

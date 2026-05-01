@@ -58,26 +58,26 @@ class Example
 
     public function viaCompact(int $a, int $b): array
     {
-        return compact('a', 'b'); // ✓ Valid — compact() string args count as reads.
+        return compact('a', 'b'); // ✓ Valid (compact() string args count as reads).
     }
 
     public function variadicLike(int $a, int $b, int $c): array
     {
-        return func_get_args(); // ✓ Valid — func_get_args() suppresses reporting for the whole scope.
+        return func_get_args(); // ✓ Valid (func_get_args() suppresses reporting for the whole scope).
     }
 
-    public function __construct(public int $x) // ✓ Valid — promoted constructor params become properties.
+    public function __construct(public int $x) // ✓ Valid (promoted constructor params become properties).
     {
     }
 
     public function magic(string $name, mixed $value): void
     {
-        // ✓ Valid — magic methods (__set, __call, etc.) are never reported.
+        // ✓ Valid: magic methods (__set, __call, etc.) are never reported.
     }
 
     public function withClosure(int $outer): \Closure
     {
-        return function () use ($outer) { // ✓ Valid — closure use clause counts as a read.
+        return function () use ($outer) { // ✓ Valid (closure use clause counts as a read).
             return $outer + 1;
         };
     }
@@ -145,7 +145,7 @@ parameters:
 
 function example(int $used, int $unused): int
 {
-    // ✓ Now valid — "unused" is in the exceptions list.
+    // ✓ Now valid ("unused" is in the exceptions list).
     return $used;
 }
 ```

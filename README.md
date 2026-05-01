@@ -184,8 +184,8 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 ## Acknowledgments
 
-- [**PHPStan**](https://phpstan.org/) — the foundation of modern PHP static analysis that MeliorStan builds on.
-- [**PHPMD - PHP Mess Detector**](https://phpmd.org/) — the original inspiration for many of the code quality rules. MeliorStan is not a direct 1:1 port: overlapping rules have diverged in behavior and configuration. See [MeliorStan and PHPMD](docs/PHPMD.md) for more information.
+- [**PHPStan**](https://phpstan.org/): the foundation of modern PHP static analysis that MeliorStan builds on.
+- [**PHPMD - PHP Mess Detector**](https://phpmd.org/): the original inspiration for many of the code quality rules. MeliorStan is not a direct 1:1 port; overlapping rules have diverged in behavior and configuration. See [MeliorStan and PHPMD](docs/PHPMD.md) for more information.
 
 ---
 

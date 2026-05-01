@@ -74,7 +74,7 @@ class UnusedFormalParameterRule implements Rule
      */
     public function processNode(Node $node, Scope $scope): array
     {
-        // No body — abstract methods or interface methods.
+        // No body: abstract methods or interface methods.
         $stmts = $node->getStmts();
 
         if ($stmts === null && ! $node instanceof ArrowFunction) {
@@ -108,7 +108,7 @@ class UnusedFormalParameterRule implements Rule
                 continue;
             }
 
-            // Promoted constructor properties become real properties — never report.
+            // Promoted constructor properties become real properties, so never report.
             if ($param->flags !== 0) {
                 continue;
             }
@@ -182,12 +182,12 @@ class UnusedFormalParameterRule implements Rule
                 }
             }
 
-            // Closure body has its own scope — do not descend.
+            // Closure body has its own scope, so do not descend.
             return;
         }
 
         if ($node instanceof ArrowFunction) {
-            // Arrow functions auto-capture by value — any variable referenced
+            // Arrow functions auto-capture by value, so any variable referenced
             // inside is a read of an outer-scope variable.
             $this->walk($node->expr, $reads, $hasVariableVariable, $usesFuncGetArgs);
 

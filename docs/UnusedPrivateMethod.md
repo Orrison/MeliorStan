@@ -2,7 +2,7 @@
 
 Detects private methods that are declared on a class but never called from within that class.
 
-> **Status: Already provided by PHPStan core — no MeliorStan rule needed.**
+> **Status: Already provided by PHPStan core. No MeliorStan rule needed.**
 >
 > PHPStan ships `PHPStan\Rules\DeadCode\UnusedPrivateMethodRule` out of the box. Because PHPStan's implementation is well-maintained, integrates with the rest of its type system, and is extensible by framework packages, MeliorStan intentionally does **not** reimplement this rule.
 
@@ -15,7 +15,7 @@ parameters:
     level: 4
 ```
 
-No additional MeliorStan configuration is needed — there is no `Orrison\MeliorStan\Rules\UnusedPrivateMethod\...` rule to register.
+No additional MeliorStan configuration is needed; there is no `Orrison\MeliorStan\Rules\UnusedPrivateMethod\...` rule to register.
 
 ## What it detects
 
@@ -41,7 +41,7 @@ PHPStan recognizes calls made via:
 If a framework method is being incorrectly flagged as unused, the right fix is usually one of:
 
 1. Install the framework's official PHPStan extension package, which typically registers an `AlwaysUsedMethodExtensionProvider` for you.
-2. Implement your own `AlwaysUsedMethodExtensionProvider` — see [PHPStan's developing extensions documentation](https://phpstan.org/developing-extensions/always-used-class-methods).
+2. Implement your own `AlwaysUsedMethodExtensionProvider`. See [PHPStan's developing extensions documentation](https://phpstan.org/developing-extensions/always-used-class-methods).
 
 ## How PHPStan compares
 

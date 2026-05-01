@@ -2,7 +2,7 @@
 
 namespace Orrison\MeliorStan\Tests\Rules\TooManyFields\Fixture;
 
-// Exactly 15 instance fields in a trait — should not trigger an error
+// Exactly 15 instance fields in a trait, should not trigger an error
 trait TraitAtLimit
 {
     public string $fieldOne = '';

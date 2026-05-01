@@ -54,7 +54,7 @@ class UserService
     public function setName(string $name): void {}            // ✓ Ignored (matches ignore_pattern)
     public function isActive(): bool { return true; }         // ✓ Ignored (matches ignore_pattern)
 
-    // 10 regular public methods — at the limit, no error
+    // 10 regular public methods, at the limit, no error
     public function register(): void {}
     public function activate(): void {}
     public function deactivate(): void {}
@@ -66,7 +66,7 @@ class UserService
     public function generateToken(): string { return ''; }
     public function revokeToken(): void {}
 }
-// ✓ Valid — exactly 10 counted methods
+// ✓ Valid (exactly 10 counted methods)
 
 class GodService
 {
@@ -174,6 +174,6 @@ class Builder
 - Static public methods are counted the same as instance public methods
 - Protected and private methods are never counted
 - The `ignore_pattern` is case-insensitive (e.g., `GetName` and `getname` are both matched)
-- Pattern delimiters (`/`) are added automatically — only provide the pattern itself
+- Pattern delimiters (`/`) are added automatically; only provide the pattern itself
 - Methods are counted based on their declaration in the specific class-like structure, not inherited methods
 - Consider using this rule alongside `TooManyMethods` to distinguish between all-method bloat and public API bloat

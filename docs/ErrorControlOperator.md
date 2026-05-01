@@ -85,5 +85,5 @@ class Example
 ## Important Notes
 
 - This rule reports **all** uses of the `@` operator without exception
-- The `@` operator works on any expression, including function calls, variable accesses, array accesses, property accesses, and method calls — all are flagged
+- The `@` operator works on any expression, including function calls, variable accesses, array accesses, property accesses, and method calls; all are flagged
 - Consider using proper alternatives: input validation, return value checks, null coalescing (`??`), or `try`/`catch` blocks

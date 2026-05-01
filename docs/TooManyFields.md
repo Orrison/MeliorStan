@@ -59,7 +59,7 @@ class UserProfile
     public bool $isVerified = false;
     public string $timezone = '';
 }
-// ✓ Valid — exactly 15 fields
+// ✓ Valid (exactly 15 fields)
 
 class GodObject
 {
@@ -141,7 +141,7 @@ class ProductData
 ## Important Notes
 
 - The rule applies to classes and traits; interfaces and enums are always skipped
-- Only fields declared directly in the class or trait are counted — inherited fields are not included
+- Only fields declared directly in the class or trait are counted; inherited fields are not included
 - Compound property declarations (`public string $a, $b, $c;`) count as multiple fields (one per variable)
 - Constructor-promoted properties are counted like any other instance property
 - Consider pairing this rule with [ExcessivePublicCount](ExcessivePublicCount.md) to also limit the total public API surface

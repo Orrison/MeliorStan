@@ -2,7 +2,7 @@
 
 namespace Orrison\MeliorStan\Tests\Rules\TooManyFields\Fixture;
 
-// 16 instance fields — should trigger an error (max is 15)
+// 16 instance fields, should trigger an error (max is 15)
 class ClassExceedingLimit
 {
     public string $fieldOne = '';

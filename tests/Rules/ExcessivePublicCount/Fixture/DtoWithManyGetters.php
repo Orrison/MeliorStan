@@ -3,7 +3,7 @@
 namespace Orrison\MeliorStan\Tests\Rules\ExcessivePublicCount\Fixture;
 
 /**
- * 50 getter methods — all ignored by the default ignore_pattern '^(get|set|is)'.
+ * 50 getter methods, all ignored by the default ignore_pattern '^(get|set|is)'.
  * With the default config, this DTO should pass.
  * When ignore_pattern is set to '', every getter is counted and the class errors.
  */

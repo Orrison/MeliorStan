@@ -1,8 +1,8 @@
 # UndefinedVariable
 
-Detects variables that are used before being defined — that is, variables that are read or passed without ever being assigned a value in the current scope.
+Detects variables that are used before being defined: variables that are read or passed without ever being assigned a value in the current scope.
 
-> **Status: Already provided by PHPStan core — no MeliorStan rule needed.**
+> **Status: Already provided by PHPStan core. No MeliorStan rule needed.**
 >
 > PHPStan ships `PHPStan\Rules\Variables\DefinedVariableRule` out of the box. Because PHPStan's implementation is well-maintained, integrates with its full data-flow analysis, and is enabled at every rule level, MeliorStan intentionally does **not** reimplement this rule.
 
@@ -12,15 +12,15 @@ The rule is split across two levels:
 
 | Scenario | PHPStan level |
 |----------|---------------|
-| Variable is **always** undefined (undefined on every code path) | **Level 0** — enabled by default |
+| Variable is **always** undefined (undefined on every code path) | **Level 0** (enabled by default) |
 | Variable is **possibly** undefined (undefined on some code paths) | **Level 1** or higher |
 
 ```neon
 parameters:
-    level: 1  # or any higher level — catches both always- and possibly-undefined variables
+    level: 1  # or any higher level; catches both always- and possibly-undefined variables
 ```
 
-No MeliorStan configuration is needed — there is no `Orrison\MeliorStan\Rules\UndefinedVariable\...` rule to register.
+No MeliorStan configuration is needed; there is no `Orrison\MeliorStan\Rules\UndefinedVariable\...` rule to register.
 
 To suppress a specific occurrence, use PHPStan's standard ignore mechanism with the `variable.undefined` identifier:
 
@@ -36,7 +36,7 @@ parameters:
 
 ```php
 function greet(): string {
-    return 'Hello, ' . $name;  // $name is never assigned — always undefined
+    return 'Hello, ' . $name;  // $name is never assigned, so always undefined
 }
 ```
 

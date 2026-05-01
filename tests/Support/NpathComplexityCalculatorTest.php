@@ -17,7 +17,7 @@ class NpathComplexityCalculatorTest extends TestCase
         $this->calculator = new NpathComplexityCalculator();
     }
 
-    // ── Base cases ────────────────────────────────────────────────────────────
+    // Base cases
 
     public function testEmptyMethodHasNpathOfOne(): void
     {
@@ -37,7 +37,7 @@ class NpathComplexityCalculatorTest extends TestCase
         $this->assertSame(1, $this->calculator->calculate($method));
     }
 
-    // ── if statements ─────────────────────────────────────────────────────────
+    // if statements
 
     public function testSimpleIfWithoutElseGivesNpathTwo(): void
     {
@@ -75,7 +75,7 @@ class NpathComplexityCalculatorTest extends TestCase
         $this->assertSame(3, $this->calculator->calculate($method));
     }
 
-    // ── Loop statements ───────────────────────────────────────────────────────
+    // Loop statements
 
     public function testWhileLoopGivesNpathTwo(): void
     {
@@ -101,7 +101,7 @@ class NpathComplexityCalculatorTest extends TestCase
         $this->assertSame(2, $this->calculator->calculate($method));
     }
 
-    // ── switch ────────────────────────────────────────────────────────────────
+    // switch
 
     public function testSwitchWithTwoCasesNoDefaultGivesNpathThree(): void
     {
@@ -117,7 +117,7 @@ class NpathComplexityCalculatorTest extends TestCase
         $this->assertSame(3, $this->calculator->calculate($method));
     }
 
-    // ── try-catch ─────────────────────────────────────────────────────────────
+    // try-catch
 
     public function testTryCatchGivesNpathTwo(): void
     {
@@ -131,7 +131,7 @@ class NpathComplexityCalculatorTest extends TestCase
         $this->assertSame(3, $this->calculator->calculate($method));
     }
 
-    // ── return and expression paths ───────────────────────────────────────────
+    // return and expression paths
 
     public function testReturnWithTernaryGivesNpathTwo(): void
     {
@@ -158,7 +158,7 @@ class NpathComplexityCalculatorTest extends TestCase
         $this->assertSame(2, $this->calculator->calculate($method));
     }
 
-    // ── match expression ──────────────────────────────────────────────────────
+    // match expression
 
     public function testMatchWithThreeArmsNoDefaultGivesFourPaths(): void
     {
@@ -173,7 +173,7 @@ class NpathComplexityCalculatorTest extends TestCase
         $this->assertSame(2, $this->calculator->calculate($method));
     }
 
-    // ── sequential multiplication ─────────────────────────────────────────────
+    // sequential multiplication
 
     public function testTwoSequentialIfsMultiply(): void
     {
@@ -205,7 +205,7 @@ class NpathComplexityCalculatorTest extends TestCase
         $this->assertSame(256, $this->calculator->calculate($method)); // 2^8
     }
 
-    // ── nested vs sequential ──────────────────────────────────────────────────
+    // nested vs sequential
 
     public function testNestedIfIsAdditiveNotMultiplicative(): void
     {
@@ -215,7 +215,7 @@ class NpathComplexityCalculatorTest extends TestCase
         $this->assertSame(3, $this->calculator->calculate($nested));
     }
 
-    // ── try-finally ───────────────────────────────────────────────────────────
+    // try-finally
 
     public function testTryFinallyWithNoBranchingDoesNotChangePaths(): void
     {
@@ -238,7 +238,7 @@ class NpathComplexityCalculatorTest extends TestCase
         $this->assertSame(4, $this->calculator->calculate($method));
     }
 
-    // ── overflow guard ────────────────────────────────────────────────────────
+    // overflow guard
 
     public function testCalculationCapsAtPhpIntMaxToPreventOverflow(): void
     {
@@ -248,7 +248,7 @@ class NpathComplexityCalculatorTest extends TestCase
         $this->assertSame(PHP_INT_MAX, $this->calculator->calculate($method));
     }
 
-    // ── closure / arrow function atomicity ───────────────────────────────────
+    // closure / arrow function atomicity
 
     public function testClosureInsideMethodIsTreatedAsAtomicNpath(): void
     {
@@ -262,7 +262,7 @@ class NpathComplexityCalculatorTest extends TestCase
         $this->assertSame(1, $this->calculator->calculate($method));
     }
 
-    // ── Helpers ───────────────────────────────────────────────────────────────
+    // Helpers
 
     protected function parseMethod(string $methodCode): ClassMethod
     {

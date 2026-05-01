@@ -3,7 +3,7 @@
 namespace Orrison\MeliorStan\Tests\Rules\ExcessivePublicCount\Fixture;
 
 /**
- * 6 public properties and no methods — exceeds a custom maximum of 5.
+ * 6 public properties and no methods, exceeds a custom maximum of 5.
  * Verifies that public properties contribute to the member count.
  */
 class ClassWithPublicProperties

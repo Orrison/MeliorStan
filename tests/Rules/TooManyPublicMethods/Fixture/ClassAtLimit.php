@@ -2,7 +2,7 @@
 
 namespace Orrison\MeliorStan\Tests\Rules\TooManyPublicMethods\Fixture;
 
-// Exactly 10 plain public methods — should not trigger an error
+// Exactly 10 plain public methods, should not trigger an error
 class ClassAtLimit
 {
     public function methodOne(): void {}

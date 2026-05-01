@@ -2,7 +2,7 @@
 
 namespace Orrison\MeliorStan\Tests\Rules\TooManyFields\Fixture;
 
-// 16 promoted constructor properties — should trigger an error (max is 15)
+// 16 promoted constructor properties, should trigger an error (max is 15)
 class ClassWithPromotedProperties
 {
     public function __construct(

@@ -51,10 +51,10 @@ use App\Models\User;
 
 class UserController
 {
-    // ✓ Valid — imported via use statement
+    // ✓ Valid (imported via use statement)
     private User $user;
 
-    // ✓ Valid — imported via use statement
+    // ✓ Valid (imported via use statement)
     public function show(User $user): User
     {
         return new User();
@@ -88,7 +88,7 @@ enum Status: string implements \App\Contracts\HasLabel
 {
     case Active = 'active';
 
-    // ✓ Valid — imported via use statement
+    // ✓ Valid (imported via use statement)
     public function label(User $user): string
     {
         return $this->value;
@@ -139,7 +139,7 @@ namespace App\Http\Controllers;
 
 class UserController
 {
-    // ✓ Now valid — listed in exceptions
+    // ✓ Now valid (listed in exceptions)
     public function index(): void
     {
         $service = new \App\Services\UserService();
@@ -152,7 +152,7 @@ class UserController
 The rule inspects fully qualified names in all common type-reference positions, including:
 
 - Property type declarations (`private \Foo\Bar $prop`)
-- Typed class constants — PHP 8.3+ (`public const \Foo\Bar NAME = ...`)
+- Typed class constants in PHP 8.3+ (`public const \Foo\Bar NAME = ...`)
 - Parameter type declarations (`function foo(\Foo\Bar $x)`)
 - Return type declarations (`function foo(): \Foo\Bar`)
 - Union, intersection, and nullable types (`\Foo\Bar|\Baz\Qux`, `?\Foo\Bar`)

@@ -482,6 +482,23 @@ parameters:
 5. **Accurate Examples**: Ensure configuration examples actually require the configuration change (e.g., `httpURL` for consecutive uppercase, not `xmlData`)
 6. **Consistent Formatting**: Follow the exact structure and formatting of existing documentation files
 
+### Writing Style: Avoid AI-Like Prose
+
+This applies to ALL written content in this repo: documentation (`README.md`, `docs/*.md`, `CONTRIBUTING.md`, `CLAUDE.md`), PHP docblocks, code comments (including in test fixtures), and commit messages.
+
+1. **NEVER use em dashes (`—`).** This is the single most common AI tell. Replace with a period (start a new sentence), a comma, parentheses, or a colon, depending on what the clause is doing. If a sentence reads worse without the em dash, rewrite the sentence so the em dash is not needed.
+2. **No en dashes (`–`) in prose either.** Hyphen ranges (`1-5`) are fine.
+3. **No curly quotes (`"`, `"`, `'`, `'`) or unicode ellipses (`…`).** Use straight ASCII quotes and three periods.
+4. **Avoid telltale AI phrasing patterns**, including but not limited to:
+    - "It's not just X, it's Y" / "not only X but also Y" cadence
+    - Empty intensifiers like "comprehensive", "robust", "seamless", "powerful", "elegant", "delve", "leverage", "facilitate"
+    - Hedging filler like "It's worth noting that", "It's important to remember that"
+    - Triumphant closers like "In conclusion", "All in all"
+    - Three-item rhetorical lists for emphasis ("clean, fast, and reliable")
+5. **Prefer plain, declarative prose.** Short sentences. Direct verbs. Say what the rule does and how to configure it. No marketing voice.
+
+When editing existing files, fix any em dashes or AI-like phrasing you encounter, even if it is not the focus of your current change.
+
 ### README Integration
 When adding new rules, update `README.md` in the Rules section:
 ```markdown

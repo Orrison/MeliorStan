@@ -73,9 +73,9 @@ class UserService
     {
         Logger::info('processing');       // ✗ Error: Avoid using static access to "Logger::info()". Use dependency injection instead.
         Cache::get('key');                // ✗ Error: Avoid using static access to "Cache::get()". Use dependency injection instead.
-        self::helper();                   // ✓ Valid — self reference
-        static::helper();                // ✓ Valid — static reference
-        parent::process();               // ✓ Valid — parent reference
+        self::helper();                   // ✓ Valid, self reference
+        static::helper();                // ✓ Valid, static reference
+        parent::process();               // ✓ Valid, parent reference
     }
 }
 ```
@@ -102,9 +102,9 @@ class UserService
 {
     public function process(): void
     {
-        StringHelper::trim('value');       // ✓ Now valid — exact match exception
-        Cache::get('key');                 // ✓ Now valid — wildcard match on Illuminate\Support\Facades\*
-        Logger::info('processing');        // ✗ Error — not in exceptions list
+        StringHelper::trim('value');       // ✓ Now valid, exact match exception
+        Cache::get('key');                 // ✓ Now valid, wildcard match on Illuminate\Support\Facades\*
+        Logger::info('processing');        // ✗ Error, not in exceptions list
     }
 }
 ```
@@ -125,10 +125,10 @@ class OrderService
 {
     public function process(): void
     {
-        Order::create($data);             // ✓ Now valid — method name matches pattern
-        Collection::make([1, 2, 3]);      // ✓ Now valid — method name matches pattern
-        Carbon::fromTimestamp(time());     // ✓ Now valid — method name matches pattern
-        Logger::info('processing');        // ✗ Error — method name does not match pattern
+        Order::create($data);             // ✓ Now valid, method name matches pattern
+        Collection::make([1, 2, 3]);      // ✓ Now valid, method name matches pattern
+        Carbon::fromTimestamp(time());     // ✓ Now valid, method name matches pattern
+        Logger::info('processing');        // ✗ Error, method name does not match pattern
     }
 }
 ```
@@ -153,11 +153,11 @@ class ReportService
     public function process(): void
     {
         Config::$debug;                   // ✗ Error: Avoid using static access to "Config::$debug". Use dependency injection instead.
-        Settings::$configPath;            // ✓ Now valid — property name matches pattern
-        Settings::$defaultTimeout;        // ✓ Now valid — property name matches pattern
+        Settings::$configPath;            // ✓ Now valid, property name matches pattern
+        Settings::$defaultTimeout;        // ✓ Now valid, property name matches pattern
         Logger::info('processing');        // ✗ Error: Avoid using static access to "Logger::info()". Use dependency injection instead.
-        self::$name;                      // ✓ Valid — self reference
-        static::$name;                    // ✓ Valid — static reference
+        self::$name;                      // ✓ Valid, self reference
+        static::$name;                    // ✓ Valid, static reference
     }
 }
 ```

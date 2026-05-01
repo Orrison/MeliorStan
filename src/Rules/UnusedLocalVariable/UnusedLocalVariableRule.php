@@ -63,7 +63,7 @@ class UnusedLocalVariableRule implements Rule
     public function processNode(Node $node, Scope $scope): array
     {
         // Arrow functions consist of a single expression and cannot introduce
-        // unused locals on their own — assignments inside them do not propagate.
+        // unused locals on their own; assignments inside them do not propagate.
         if ($node instanceof ArrowFunction) {
             return [];
         }
@@ -94,7 +94,7 @@ class UnusedLocalVariableRule implements Rule
             $this->walk($stmt, $assigned, $reads, $hasVariableVariable);
         }
 
-        // Variable variables make static analysis unsafe — bail out for this scope.
+        // Variable variables make static analysis unsafe, so bail out for this scope.
         if ($hasVariableVariable) {
             return [];
         }
@@ -150,12 +150,12 @@ class UnusedLocalVariableRule implements Rule
                 }
             }
 
-            // Closure body has its own scope — do not descend.
+            // Closure body has its own scope, so do not descend.
             return;
         }
 
         if ($node instanceof ArrowFunction) {
-            // Arrow functions auto-capture by value — any variable referenced
+            // Arrow functions auto-capture by value, so any variable referenced
             // inside is a read of an outer-scope variable. Walk the body but
             // discard any assignments since they are local to the arrow fn.
             $discard = [];
@@ -179,7 +179,7 @@ class UnusedLocalVariableRule implements Rule
         }
 
         if ($node instanceof AssignOp) {
-            // e.g. $x += 1 — the LHS is both a read and a write.
+            // e.g. $x += 1: the LHS is both a read and a write.
             $this->walk($node->expr, $assigned, $reads, $hasVariableVariable);
             $this->walk($node->var, $assigned, $reads, $hasVariableVariable);
 
@@ -220,7 +220,7 @@ class UnusedLocalVariableRule implements Rule
         }
 
         if ($node instanceof Global_) {
-            // Globals cross scope boundaries — treat as used.
+            // Globals cross scope boundaries, so treat as used.
             foreach ($node->vars as $var) {
                 if ($var instanceof Variable && is_string($var->name)) {
                     $reads[$var->name] = true;
@@ -231,7 +231,7 @@ class UnusedLocalVariableRule implements Rule
         }
 
         if ($node instanceof Static_) {
-            // Static declarations persist across calls — treat as used.
+            // Static declarations persist across calls, so treat as used.
             foreach ($node->vars as $staticVar) {
                 if (is_string($staticVar->var->name)) {
                     $reads[$staticVar->var->name] = true;
@@ -262,7 +262,7 @@ class UnusedLocalVariableRule implements Rule
 
         if ($node instanceof Variable) {
             if (! is_string($node->name)) {
-                // Variable variable — $$x or ${expr}
+                // Variable variable: $$x or ${expr}
                 $hasVariableVariable = true;
                 $this->walk($node->name, $assigned, $reads, $hasVariableVariable);
 
@@ -337,7 +337,7 @@ class UnusedLocalVariableRule implements Rule
             $target instanceof PropertyFetch ||
             $target instanceof StaticPropertyFetch) {
             // Writing into a sub-element of an existing variable/property is also
-            // a read of the base — walk normally.
+            // a read of the base, so walk normally.
             $this->walk($target, $assigned, $reads, $hasVariableVariable);
 
             return;

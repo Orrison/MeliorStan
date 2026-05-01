@@ -2,7 +2,7 @@
 
 namespace Orrison\MeliorStan\Tests\Rules\TooManyPublicMethods\Fixture;
 
-// 3 plain public methods + getters/setters (ignored by default) — no error
+// 3 plain public methods + getters/setters (ignored by default), no error
 class ClassWithFewMethods
 {
     public function process(): void {}

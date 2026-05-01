@@ -39,7 +39,7 @@ class IgnoredClassesTest extends RuleTestCase
                     sprintf(DepthOfInheritanceRule::ERROR_MESSAGE_TEMPLATE, 'Level6', 6, 3),
                     5,
                 ],
-                // Level7 is ignored — no error expected
+                // Level7 is ignored, so no error expected
             ]
         );
     }

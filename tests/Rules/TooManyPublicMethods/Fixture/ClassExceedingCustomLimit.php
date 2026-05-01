@@ -2,7 +2,7 @@
 
 namespace Orrison\MeliorStan\Tests\Rules\TooManyPublicMethods\Fixture;
 
-// 6 plain public methods — exceeds a custom limit of 5
+// 6 plain public methods, exceeds a custom limit of 5
 class ClassExceedingCustomLimit
 {
     public function methodOne(): void {}
