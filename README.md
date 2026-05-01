@@ -23,6 +23,7 @@
 - [Available Rules](#-available-rules)
 - [Configuration](#-configuration)
 - [License](#-license)
+- [AI Disclosure](#-ai-disclosure)
 - [Acknowledgments](#-acknowledgments)
 
 ## Features
@@ -181,6 +182,10 @@ We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) f
 ## License
 
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+
+## AI Disclosure
+
+AI assistants (Claude and similar tools) are used variably in the development and maintenance of this project, including for research, planning, drafting documentation, and at times generating or refactoring code. A significant portion of the code is still written by hand, and **all** code, tests, and documentation are reviewed, edited, and approved by human maintainers and contributors before being committed or released. The maintainers and contributors are the authors of, and are fully accountable for, everything in this repository. If you find a bug or quality issue, treat it as a project issue and report it normally; AI involvement is never an excuse.
 
 ## Acknowledgments
 
