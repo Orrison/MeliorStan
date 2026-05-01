@@ -22,7 +22,6 @@
 - [Quick Start](#-quick-start)
 - [Available Rules](#-available-rules)
 - [Configuration](#-configuration)
-- [Inspiration](#-inspiration)
 - [License](#-license)
 - [Acknowledgments](#-acknowledgments)
 
@@ -137,17 +136,6 @@ parameters:
 | **[TooManyMethods](docs/TooManyMethods.md)** | Detects classes with too many methods | Classes, Interfaces, Traits, Enums |
 | **[TooManyPublicMethods](docs/TooManyPublicMethods.md)** | Detects classes with too many public methods | Classes, Interfaces, Traits, Enums |
 
-### Already Covered by PHPStan
-
-These PHPMD rules are intentionally not reimplemented because PHPStan already provides equivalent (or better) detection out of the box. The linked documentation explains how to enable and configure them.
-
-| PHPMD Rule | PHPStan Equivalent | Enable At |
-|------------|--------------------|-----------|
-| **[DuplicatedArrayKey](docs/DuplicatedArrayKey.md)** | `PHPStan\Rules\Arrays\DuplicateKeysInLiteralArraysRule` | Level 0 (default) |
-| **[UnusedPrivateMethod](docs/UnusedPrivateMethod.md)** | `PHPStan\Rules\DeadCode\UnusedPrivateMethodRule` | Rule level 4 |
-| **[UnusedPrivateField](docs/UnusedPrivateField.md)** | `PHPStan\Rules\DeadCode\UnusedPrivatePropertyRule` | Rule level 4 |
-| **[UndefinedVariable](docs/UndefinedVariable.md)** | `PHPStan\Rules\Variables\DefinedVariableRule` | Level 0 (always undefined) / Level 1 (possibly undefined) |
-
 ## Configuration
 
 Each rule supports extensive configuration options. Refer to individual rule documentation for detailed configuration parameters.
@@ -186,12 +174,6 @@ parameters:
             subtract_suffixes: ["Interface", "Trait"]
 ```
 
-## Inspiration
-
-Originally inspired by [**PHPMD - PHP Mess Detector**](https://phpmd.org/), this project provides modern PHPStan equivalents with enhanced configurability and PHP 8+ features.
-
-> **Note**: While inspired by PHPMD, these rules are not exact replicas. They may offer additional or renamed customization options and are adapted for PHPStan's architecture and modern PHP practices.
-
 ## Contributing
 
 We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
@@ -202,8 +184,8 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 ## Acknowledgments
 
-- [**PHPStan**](https://phpstan.org/) - The foundation of modern PHP static analysis
-- [**PHPMD**](https://phpmd.org/) - Original inspiration for code quality rules
+- [**PHPStan**](https://phpstan.org/) — the foundation of modern PHP static analysis that MeliorStan builds on.
+- [**PHPMD - PHP Mess Detector**](https://phpmd.org/) — the original inspiration for many of the code quality rules. MeliorStan is not a direct 1:1 port: overlapping rules have diverged in behavior and configuration. See [MeliorStan and PHPMD](docs/PHPMD.md) for more information.
 
 ---
 

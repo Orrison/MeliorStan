@@ -4,7 +4,7 @@ Detects variables that are used before being defined — that is, variables that
 
 > **Status: Already provided by PHPStan core — no MeliorStan rule needed.**
 >
-> PHPStan ships `PHPStan\Rules\Variables\DefinedVariableRule` out of the box. Because PHPStan's implementation is well-maintained, integrates with its full data-flow analysis, and is enabled at every rule level, MeliorStan intentionally does **not** reimplement this PHPMD rule.
+> PHPStan ships `PHPStan\Rules\Variables\DefinedVariableRule` out of the box. Because PHPStan's implementation is well-maintained, integrates with its full data-flow analysis, and is enabled at every rule level, MeliorStan intentionally does **not** reimplement this rule.
 
 ## How to enable
 
@@ -84,7 +84,7 @@ parameters:
 
 If you use [Laravel's official PHPStan extension](https://github.com/larastan/larastan), this is already configured for you.
 
-## PHPMD parity notes
+## How PHPStan compares
 
 PHPStan's behavior is a strict superset of PHPMD's `UndefinedVariable`, with several improvements:
 

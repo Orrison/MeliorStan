@@ -4,7 +4,7 @@ Detects private properties that are declared on a class but never accessed from 
 
 > **Status: Already provided by PHPStan core — no MeliorStan rule needed.**
 >
-> PHPStan ships `PHPStan\Rules\DeadCode\UnusedPrivatePropertyRule` out of the box. Its implementation is more granular than PHPMD's `UnusedPrivateField`: it distinguishes between *fully unused*, *write-only*, and *read-only* properties. MeliorStan therefore intentionally does **not** reimplement this PHPMD rule.
+> PHPStan ships `PHPStan\Rules\DeadCode\UnusedPrivatePropertyRule` out of the box. Its implementation is more granular than PHPMD's `UnusedPrivateField`: it distinguishes between *fully unused*, *write-only*, and *read-only* properties. MeliorStan therefore intentionally does **not** reimplement this rule.
 
 ## How to enable
 
@@ -58,7 +58,7 @@ parameters:
 
 PHPStan will additionally report typed properties that are never assigned in the constructor. This pairs well with `UnusedPrivatePropertyRule` because together they catch both "never written" (a likely bug) and "never initialized in constructor" (a definite bug).
 
-## PHPMD parity notes
+## How PHPStan compares
 
 PHPStan's behavior is a strict superset of PHPMD's `UnusedPrivateField`:
 

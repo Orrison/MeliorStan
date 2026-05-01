@@ -4,7 +4,7 @@ Detects duplicate keys in PHP array literals, where a later key/value pair silen
 
 > **Status: Already provided by PHPStan core — no MeliorStan rule needed.**
 >
-> PHPStan ships `PHPStan\Rules\Arrays\DuplicateKeysInLiteralArraysRule` out of the box. Because PHPStan's implementation is well-maintained, integrates with the rest of its type system, and is enabled at every rule level, MeliorStan intentionally does **not** reimplement this PHPMD rule.
+> PHPStan ships `PHPStan\Rules\Arrays\DuplicateKeysInLiteralArraysRule` out of the box. Because PHPStan's implementation is well-maintained, integrates with the rest of its type system, and is enabled at every rule level, MeliorStan intentionally does **not** reimplement this rule.
 
 ## How to enable
 
@@ -46,7 +46,7 @@ $key = 'foo';
 $array = [$key => 1, $key => 2];  // Not flagged — key is dynamic
 ```
 
-## PHPMD parity notes
+## How PHPStan compares
 
 PHPStan's behavior is equivalent to PHPMD's `DuplicatedArrayKey`, with a few improvements:
 

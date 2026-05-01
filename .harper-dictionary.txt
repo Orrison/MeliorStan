@@ -1,7 +1,11 @@
 MeliorStan
+MeliorStan's
 PHPMD
+PHPMD's
 PHPStan
 PHPStan's
 cyclomatic
 goto
 inheritdoc
+readonly
+rulesets
