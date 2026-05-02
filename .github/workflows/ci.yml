@@ -11,13 +11,13 @@ jobs:
     timeout-minutes: 10
 
     steps:
-      - uses: shivammathur/setup-php@v2
+      - uses: shivammathur/setup-php@accd6127cb78bee3e8082180cb391013d204ef9f # v2.37.0
         with:
           php-version: "8.4"
           coverage: none
 
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           ref: ${{ github.head_ref }}
 
@@ -25,7 +25,7 @@ jobs:
         uses: ./.github/actions/composer-dependency-setup
 
       - name: Cache PHP CS Fixer
-        uses: actions/cache@v4
+        uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
         with:
           path: .php-cs-fixer.cache
           key: ${{ runner.OS }}-${{ github.repository }}-phpcsfixer-${{ github.run_id }}
@@ -36,8 +36,7 @@ jobs:
         run: composer format
 
       - name: Check for changes
-        # SHA of release v20.0.1
-        uses: tj-actions/verify-changed-files@6ed7632824d235029086612d4330d659005af687
+        uses: tj-actions/verify-changed-files@a1c6acee9df209257a246f2cc6ae8cb6581c1edf # v20.0.4
         with:
           fail-if-changed: "true"
 
@@ -51,12 +50,12 @@ jobs:
     timeout-minutes: 15
 
     steps:
-      - uses: shivammathur/setup-php@v2
+      - uses: shivammathur/setup-php@accd6127cb78bee3e8082180cb391013d204ef9f # v2.37.0
         with:
           php-version: "${{ matrix.php-version }}"
           coverage: none
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           ref: ${{ github.head_ref }}
 
@@ -78,12 +77,12 @@ jobs:
     timeout-minutes: 15
 
     steps:
-      - uses: shivammathur/setup-php@v2
+      - uses: shivammathur/setup-php@accd6127cb78bee3e8082180cb391013d204ef9f # v2.37.0
         with:
           php-version: "${{ matrix.php-version }}"
           coverage: none
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           ref: ${{ github.head_ref }}
 
@@ -93,7 +92,7 @@ jobs:
           php-version: "${{ matrix.php-version }}"
 
       - name: "Result Cache for PHPStan"
-        uses: actions/cache@v4
+        uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
         with:
           path: /tmp/phpstan
           key: "${{ runner.OS }}-${{ github.repository }}-static-analysis-${{ matrix.php-version }}-${{ github.run_id }}"
